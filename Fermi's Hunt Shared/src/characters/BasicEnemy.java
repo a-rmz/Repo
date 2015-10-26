@@ -20,7 +20,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	
 	// **** RESOURCES ****
 	private String[] resources = {
-			"resources/Sprites/Enemies/BasicEnemy.png"
+			"/Sprites/Enemies/BasicEnemy.png"
 	};
 	private String url;
 	public Image enemy = null;
@@ -74,10 +74,9 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 *  Loads the image as a .png.
 	 */
 	public void setSpaceObjectImage(){
-		URL u = this.getClass().getResource(url);
 		try {
 			// Gets the image from the url defined by the resources array
-			enemy = Toolkit.getDefaultToolkit().getImage(u);
+			enemy = Toolkit.getDefaultToolkit().createImage(getClass().getResource(url));
 		} catch (Exception e) {
 			enemy = null;
 		}

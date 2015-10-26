@@ -12,7 +12,7 @@ public class Background {
 
 	// **** RESOURCES ****
 	private String[] backgrounds = {
-			"resources/Background/Level 1/fondo8Bits.png"
+			"/BackgroundImg/Level 1/fondo8Bits.png"
 	};
 	private String url;
 	public Image bg1, bg2;
@@ -75,15 +75,17 @@ public class Background {
 	 * various Background elements.
 	 */
 	public Image setBackgroundImage() {
-		URL u = this.getClass().getResource(url);
 		// Creates a temporal image to load the background.
 		Image i = null;
 		try {
 			// Gets the image from the url defined by the resources array
-			i = Toolkit.getDefaultToolkit().getImage(u);
+			i = Toolkit.getDefaultToolkit().createImage(getClass().getResource(url));
 		} catch (Exception e) {
+
+			System.out.println("Aqui pasa algo");
 			i = null;
 		}
+		System.out.println();
 		return i;
 	}
 	

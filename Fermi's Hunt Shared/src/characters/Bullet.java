@@ -12,7 +12,7 @@ public class Bullet {
 	
 	// **** RESOURCES ****
 	private String[] resources = {
-			"resources/Sprites/Bullet/BasicEnemyAttack.png"
+			"/Sprites/Bullet/BasicEnemyAttack.png"
 	};
 	private String url;
 	public Image bullet = null;
@@ -54,10 +54,9 @@ public class Bullet {
 	 *  Loads the image as a TODO TBD .gif/.png.
 	 */
 	public void setBulletImage() {
-		URL u = this.getClass().getResource(url);
 		try {
 			// Gets the image from the url defined by the resources array
-			bullet = Toolkit.getDefaultToolkit().getImage(u);
+			bullet = Toolkit.getDefaultToolkit().createImage(getClass().getResource(url));
 		} catch (Exception e) {
 			bullet = null;
 		}

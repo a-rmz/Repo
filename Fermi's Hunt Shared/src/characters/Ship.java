@@ -19,10 +19,10 @@ public class Ship extends SpaceObject{
 
 	// **** RESOURCES ****
 	private String[] resources = {
-		"resources/Sprites/Ship/sprite_ship1_singleShot.gif",
-		"resources/Sprites/Ship/sprite_ship1_singleShot_Up.gif",
-		"resources/Sprites/Ship/sprite_ship1_singleShot_Down.gif",
-		"resources/Sprites/Ship/sprite_ship1_singleShot_shoot.gif"
+		"/Sprites/Ship/sprite_ship1_singleShot.gif",
+		"/Sprites/Ship/sprite_ship1_singleShot_Up.gif",
+		"/Sprites/Ship/sprite_ship1_singleShot_Down.gif",
+		"/Sprites/Ship/sprite_ship1_singleShot_shoot.gif"
 	};
 	private String url = resources[0];
 	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
@@ -61,10 +61,9 @@ public class Ship extends SpaceObject{
 	 *  Loads the image as a .gif.
 	 */
 	public void setSpaceObjectImage() {
-		URL u = this.getClass().getResource(url);
 		try {
 			// Gets the image from the url defined by the resources array
-			ship = Toolkit.getDefaultToolkit().getImage(u);
+			ship = Toolkit.getDefaultToolkit().createImage(getClass().getResource(url));
 		} catch (Exception e) {
 			ship = null;
 		}
