@@ -3,7 +3,6 @@ package background;
 import java.awt.Dimension;
 import java.awt.Image; // mostrar imagen
 import java.awt.Toolkit;
-import java.net.URL;
 
 import managers.Position;
 
