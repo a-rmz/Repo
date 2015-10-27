@@ -38,7 +38,7 @@ public class Bullet {
 	 * @param direction
 	 */
 	public Bullet(Position p, int direction) {
-		if(direction == -1) {
+		if(direction < 0 ) {
 			// Sets the url for the Bullet image. 
 			url = resources[1];
 		} else {
