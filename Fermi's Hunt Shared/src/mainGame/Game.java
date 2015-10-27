@@ -21,7 +21,7 @@ public class Game extends JPanel implements ActionListener{
 	
 	public static Timer timer;
 	Ship p1;
-	EnemyManager e;
+	public static EnemyManager e;
 	Background bg;
 	Soundtrack st;
 		

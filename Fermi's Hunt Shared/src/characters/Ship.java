@@ -40,7 +40,8 @@ public class Ship extends SpaceObject{
 	private boolean gotHit = false;
 	public Position p = new Position(50, (screenSize().height / 2));
 	// New BulletManager to handle the bullets
-	public BulletManager bm = new BulletManager(-1);
+	private static BulletManager bm = new BulletManager(-5);
+	// Imports the list of Enemy bullets
 	private LinkedList<Bullet> b = BasicEnemy.getEnemyBullets();
 	
 	
@@ -88,7 +89,8 @@ public class Ship extends SpaceObject{
 		// Draw method from BulletManager.
 		bm.draw(g);
 		// Draws the enemy image.
-		g.drawImage(getSpaceObjectImage(), p.getX(), p.getY(), null);
+		g.drawImage(getSpaceObjectImage(), p.getX(), p.getY(),
+				getSpaceObjectImage().getWidth(null)*2, getSpaceObjectImage().getWidth(null)*2,  null);
 		// Draws the hits the player gets
 		hitsOnSelf(g);
 	}
@@ -207,6 +209,14 @@ public class Ship extends SpaceObject{
 	public boolean isAlive() {
 		if(hp > 0) return true;
 		return false;
+	}
+	
+	/**
+	 * Returns the Bullet list from the BulletManager.
+	 * @return LinkedList of Bullets
+	 */
+	public static LinkedList<Bullet> getShipBullets() {
+		return bm.returnManager();
 	}
 	
 	

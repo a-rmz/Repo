@@ -31,12 +31,15 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	
 	
 	// **** ENEMY MODIFIERS ****
+	public boolean hit = false;
 	// The timer is for the BasicEnemy to fire every certain time.
 	Timer enemyFire = new Timer(attackSpeed * 100, this);
 	private Random r = new Random();
 	public Position p;
 	// New BulletManager to handle shots.
 	private static BulletManager bm = new BulletManager();
+	// Imports the list of Ship's Bullets
+	private LinkedList<Bullet> b = BasicEnemy.getEnemyBullets();
 
 	
 	// --------------------------------------------------------------------------------
@@ -61,8 +64,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		enemyFire.start();
 		// Sets the enemy velocity to a number between 10 and 20.
 		// TODO to be defined by the enemyLevel.
-		p.setVelX((r.nextInt(2)+1)*10);
-		p.setVelY((r.nextInt(2)+1)*10);
+		p.setVelX((r.nextInt(2)+1)*5);
+		p.setVelY((r.nextInt(2)+1)*5);
 	}
 
 	
@@ -215,6 +218,22 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	// TODO Integrate with the player fire.
 	public Rectangle collider() {
 		return new Rectangle(p.getX(), p.getY(), enemy.getWidth(null), enemy.getHeight(null));
+	}
+	
+	/**
+	 *  Analyzes if any of the BasicEnemy fired Bullets hit the ship and makes
+	 *  the corresponding stats modifications.
+	 */
+	public void gotHit() {
+		// For-each to analyze every Bullet object.
+		for(Bullet a : b) {
+			// Checks if the actual Bullet's collider rectangle intersects with this'.
+			if(collider().intersects(a.collider())) {
+				// If the enemy got hit, activates the gotHit switch.
+				// The gotHit switch eliminates the ship.
+				hit = true;
+			}
+		}
 	}
 
 

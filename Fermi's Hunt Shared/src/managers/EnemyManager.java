@@ -1,9 +1,9 @@
 package managers;
 
 import java.awt.Graphics;
+import java.util.Iterator;
 
 import characters.BasicEnemy;
-
 public class EnemyManager extends Manager<BasicEnemy>{
 	
 	// NO LOCAL INSTANCES
@@ -46,10 +46,33 @@ public class EnemyManager extends Manager<BasicEnemy>{
 	 */
 	public void update() {
 		// For-each loop to update the BasicEnemy.
-		for(BasicEnemy b : l) {
-			// Calls the BasicEnemy update method.
-			b.update();
+		for(Iterator<BasicEnemy> i = l.iterator(); i.hasNext();) {
+			// Sets the Bullet b to the next Bullet in the List.
+			BasicEnemy be = i.next();
+			// Calls the Bullet updated method.
+			be.update();
+			// Checks if the Bullet has to be destroyed.
+			destroy(i, be);			
 		}
+	}
+	
+	/**
+	 *  Checks if a Bullet has gone off bounds and destroys it.
+	 * @param i Bullet Iterator
+	 * @param b Bullet Object
+	 * @return boolean true if the object is successfully destroyed.
+	 */
+	public boolean destroy(Iterator<BasicEnemy> i, BasicEnemy be) {
+		// Checks if the Bullet is off bounds.
+		if(be.hit) {
+			// Removes the BasicEnemy
+			i.remove();
+			// Destroys the object
+			be = null;
+			return true;
+		}
+		// If the Bullet was not destroyed, returns false.
+		return false;
 	}
 
 }
