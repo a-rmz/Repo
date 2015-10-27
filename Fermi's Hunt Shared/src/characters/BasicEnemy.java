@@ -39,7 +39,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	// New BulletManager to handle shots.
 	private static BulletManager bm = new BulletManager();
 	// Imports the list of Ship's Bullets
-	private LinkedList<Bullet> b = BasicEnemy.getEnemyBullets();
+	private LinkedList<Bullet> b = Ship.getShipBullets();
 
 	
 	// --------------------------------------------------------------------------------
@@ -119,6 +119,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		bm.update();
 		// Determines if the enemy's velocity has to change.
 		changeVelocity();
+		// Determines if the ship got hit
+		gotHit();
 	}
 	
 	/**

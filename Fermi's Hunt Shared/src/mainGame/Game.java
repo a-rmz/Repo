@@ -30,7 +30,7 @@ public class Game extends JPanel implements ActionListener{
 		timer = new Timer(50, this);
 		timer.start();
 		p1 = new Ship();
-		e = new EnemyManager(1, 10); //TODO
+		e = new EnemyManager(1, 3); //TODO
 		bg = new Background(1); // TODO Modify level
 		st = new Soundtrack();
 		st.playSoundtrack();

@@ -63,7 +63,7 @@ public class EnemyManager extends Manager<BasicEnemy>{
 	 * @return boolean true if the object is successfully destroyed.
 	 */
 	public boolean destroy(Iterator<BasicEnemy> i, BasicEnemy be) {
-		// Checks if the Bullet is off bounds.
+		// Checks if the Enemy is hit.
 		if(be.hit) {
 			// Removes the BasicEnemy
 			i.remove();
