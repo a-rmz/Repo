@@ -8,6 +8,27 @@ import characters.Bullet;
 import characters.SpaceObject;
 
 public class BulletManager extends Manager <Bullet> {
+
+	// ***** BULLETMANAGER MODIFIERS *****
+	
+	private int direction;
+	
+	// --------------------------------------------------------------------------------
+	
+	
+	// **** CONSTRUCTOR ****
+	public BulletManager(int direction) {
+		this.direction = direction;
+	}
+	
+	/**
+	 * This constructor makes it easier for the BasicEnemy BulletManager
+	 * If there's no parameter, automatically is set to an EnemyBulletManager
+	 */
+	public BulletManager() {
+		this.direction = 1;
+	}
+	
 	
 	// ----------------- **** METHODS **** ----------------- 
 	
@@ -33,7 +54,7 @@ public class BulletManager extends Manager <Bullet> {
 	 */
 	public void add(Position p) {
 		// Creates a new Bullet.
-		Bullet b = new Bullet(p);
+		Bullet b = new Bullet(p, direction);
 		// Adds the Bullet to the LinkedList.
 		add(b);
 	}

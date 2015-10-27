@@ -32,9 +32,11 @@ public class Bullet {
 	/**
 	 * Receives as a parameter the object who fires the bullet.
 	 * Most accurate way to obtain the object data.
+	 * The direction (1 or -1) mutliplies the velX to direct the Bullet
 	 * @param p
+	 * @param direction
 	 */
-	public Bullet(Position p) {
+	public Bullet(Position p, int direction) {
 		// Sets the url for the Bullet image. 
 		url = resources[0];
 		// Loads the bullet image.
@@ -43,6 +45,8 @@ public class Bullet {
 		this.p = p.clone();
 		// Sets the y-position to the half of the enemy image.
 		p.setPosY(p.getY() - (bullet.getHeight(null)/2));
+		// Defines the Bullet's direction
+		bulletSpeed = bulletSpeed * direction;
 	}
 
 	

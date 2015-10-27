@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
 import mainGame.Game;
+import managers.BulletManager;
 import managers.Position;
 
 public class Ship extends SpaceObject{
@@ -38,6 +39,8 @@ public class Ship extends SpaceObject{
 	// **** SHIP MODIFIERS ****
 	private boolean gotHit = false;
 	public Position p = new Position(50, (screenSize().height / 2));
+	// New BulletManager to handle the bullets
+	public BulletManager bm = new BulletManager(-1);
 	private LinkedList<Bullet> b = BasicEnemy.getEnemyBullets();
 	
 	
@@ -76,6 +79,20 @@ public class Ship extends SpaceObject{
 		return ship;
 	}
 	
+	
+	/**
+	 *  Draws the enemy ship image and the Bullets fired.
+	 * @param
+	 */
+	public void draw(Graphics g){
+		// Draw method from BulletManager.
+		bm.draw(g);
+		// Draws the enemy image.
+		g.drawImage(getSpaceObjectImage(), p.getX(), p.getY(), null);
+		// Draws the hits the player gets
+		hitsOnSelf(g);
+	}
+	
 	/**
 	 *  Every time the ship gets hit, prints the string "HIT". Activated by
 	 *  the gotHit switch. Is called directly by the TODO Game draw class.
@@ -110,6 +127,8 @@ public class Ship extends SpaceObject{
 		collidesWithBorders(screenSize());
 		// Determines if the ship got hit
 		gotHit();
+		// Updates the BulletManager
+		bm.update();
 		// If the player died, stops the game
 		if(!isAlive()) {
 			Game.timer.stop();
@@ -149,6 +168,7 @@ public class Ship extends SpaceObject{
 	// TODO
 	public void attack() {
 		url = resources[3];
+		bm.add(p);
 	}
 
 	/**

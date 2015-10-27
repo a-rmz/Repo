@@ -49,13 +49,7 @@ public class Game extends JPanel implements ActionListener{
 		g2d.drawImage(bg.getBackgroundImage(), bg.pbg2.getX(), 0, sizeX, sizeY, null);
 		
 		// Prints user Ship
-		g2d.drawImage(p1.getSpaceObjectImage(), p1.p.getX() , p1.p.getY(), 
-				p1.getSpaceObjectImage().getWidth(null)*2,
-				p1.getSpaceObjectImage().getHeight(null)*2, null);
-		
-		// Prints hits on user
-		
-		p1.hitsOnSelf(g);
+		p1.draw(g);
 		
 		// Prints enemies
 		e.draw(g);
