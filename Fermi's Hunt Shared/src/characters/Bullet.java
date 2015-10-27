@@ -11,7 +11,8 @@ public class Bullet {
 	
 	// **** RESOURCES ****
 	private String[] resources = {
-			"/Sprites/Bullet/BasicEnemyAttack.png"
+			"/Sprites/Bullet/BasicEnemyAttack.png",
+			"/Sprites/Bullet/ShipBullet.png"
 	};
 	private String url;
 	public Image bullet = null;
@@ -37,8 +38,14 @@ public class Bullet {
 	 * @param direction
 	 */
 	public Bullet(Position p, int direction) {
-		// Sets the url for the Bullet image. 
-		url = resources[0];
+		if(direction == -1) {
+			// Sets the url for the Bullet image. 
+			url = resources[1];
+		} else {
+			// Sets the url for the Bullet image. 
+			url = resources[0];
+		}
+		
 		// Loads the bullet image.
 		setBulletImage();
 		// Clones the position of the parameter to the local Position.
@@ -54,7 +61,7 @@ public class Bullet {
 	
 	// **** GRAPHICAL METHODS ****
 	/**
-	 *  Loads the image as a TODO TBD .gif/.png.
+	 *  Loads the image as a .png.
 	 */
 	public void setBulletImage() {
 		try {

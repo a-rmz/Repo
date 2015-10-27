@@ -19,10 +19,10 @@ public class Ship extends SpaceObject{
 
 	// **** RESOURCES ****
 	private String[] resources = {
-		"/Sprites/Ship/sprite_ship1_singleShot.gif",
-		"/Sprites/Ship/sprite_ship1_singleShot_Up.gif",
-		"/Sprites/Ship/sprite_ship1_singleShot_Down.gif",
-		"/Sprites/Ship/sprite_ship1_singleShot_shoot.gif"
+		"/Sprites/Ship/Single Shot/sprite_ship1_singleShot.gif",
+		"/Sprites/Ship/Single Shot/sprite_ship1_singleShot_Up.gif",
+		"/Sprites/Ship/Single Shot/sprite_ship1_singleShot_Down.gif",
+		"/Sprites/Ship/Single Shot/sprite_ship1_singleShot_shoot.gif"
 	};
 	private String url = resources[0];
 	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
@@ -86,11 +86,12 @@ public class Ship extends SpaceObject{
 	 * @param
 	 */
 	public void draw(Graphics g){
-		// Draw method from BulletManager.
-		bm.draw(g);
 		// Draws the enemy image.
 		g.drawImage(getSpaceObjectImage(), p.getX(), p.getY(),
-				getSpaceObjectImage().getWidth(null)*2, getSpaceObjectImage().getWidth(null)*2,  null);
+				getSpaceObjectImage().getWidth(null)*2,
+				getSpaceObjectImage().getHeight(null)*2,  null);
+		// Draw method from BulletManager.
+		bm.draw(g);
 		// Draws the hits the player gets
 		hitsOnSelf(g);
 	}
