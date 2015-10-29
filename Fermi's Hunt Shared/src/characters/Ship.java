@@ -66,7 +66,7 @@ public class Ship extends SpaceObject{
 	public void setSpaceObjectImage() {
 		try {
 			// Gets the image from the url defined by the resources array
-			ship = Toolkit.getDefaultToolkit().createImage(getClass().getResource(url));
+			ship = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
 		} catch (Exception e) {
 			ship = null;
 		}

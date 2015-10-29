@@ -78,7 +78,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	public void setSpaceObjectImage(){
 		try {
 			// Gets the image from the url defined by the resources array
-			enemy = Toolkit.getDefaultToolkit().createImage(getClass().getResource(url));
+			enemy = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
 		} catch (Exception e) {
 			enemy = null;
 		}

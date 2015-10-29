@@ -66,7 +66,7 @@ public class Bullet {
 	public void setBulletImage() {
 		try {
 			// Gets the image from the url defined by the resources array
-			bullet = Toolkit.getDefaultToolkit().createImage(getClass().getResource(url));
+			bullet = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
 		} catch (Exception e) {
 			bullet = null;
 		}

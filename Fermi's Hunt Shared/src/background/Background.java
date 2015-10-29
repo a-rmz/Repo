@@ -78,7 +78,7 @@ public class Background {
 		Image i = null;
 		try {
 			// Gets the image from the url defined by the resources array
-			i = Toolkit.getDefaultToolkit().createImage(getClass().getResource(url));
+			i = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
 		} catch (Exception e) {
 
 			System.out.println("Aqui pasa algo");
