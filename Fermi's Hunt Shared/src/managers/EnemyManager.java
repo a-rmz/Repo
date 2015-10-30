@@ -65,9 +65,9 @@ public class EnemyManager extends Manager<BasicEnemy>{
 	public boolean destroy(Iterator<BasicEnemy> i, BasicEnemy be) {
 		// Checks if the Enemy is hit.
 		if(be.hit) {
-			// Removes the BasicEnemy
+			// Removes the BasicEnemy.
 			i.remove();
-			// Destroys the object
+			// Destroys the object.
 			be = null;
 			return true;
 		}

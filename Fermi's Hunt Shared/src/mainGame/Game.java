@@ -34,7 +34,7 @@ public class Game extends JPanel implements ActionListener{
 		bg = new Background(1); // TODO Modify level
 		st = new Soundtrack();
 		st.playSoundtrack();
-		
+	
 		addKeyListener (new KeyInput(p1));
 		
 	}
@@ -50,7 +50,7 @@ public class Game extends JPanel implements ActionListener{
 		
 		// Prints user Ship
 		p1.draw(g);
-		
+
 		// Prints enemies
 		e.draw(g);
 		
