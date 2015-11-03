@@ -53,8 +53,9 @@ public class BulletManager extends Manager <Bullet> {
 	 * @param p
 	 */
 	public void add(Position p) {
-		// Creates a new Bullet.
+		// When the position is null, is because the BasicEnemy was destroyed
 		if(p != null) {
+			// Creates a new Bullet.
 			Bullet b = new Bullet(p, direction);
 			// Adds the Bullet to the LinkedList.
 			l.add(b);
