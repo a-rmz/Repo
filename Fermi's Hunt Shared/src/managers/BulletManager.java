@@ -54,10 +54,14 @@ public class BulletManager extends Manager <Bullet> {
 	 */
 	public void add(Position p) {
 		// Creates a new Bullet.
-		Bullet b = new Bullet(p, direction);
-		// Adds the Bullet to the LinkedList.
-		add(b);
+		if(p != null) {
+			Bullet b = new Bullet(p, direction);
+			// Adds the Bullet to the LinkedList.
+			l.add(b);
+		}
+		return;
 	}
+
 	
 	/**
 	 *  Updates every Bullet in the LinkedList.
@@ -87,13 +91,19 @@ public class BulletManager extends Manager <Bullet> {
 				b.p.getX() > (SpaceObject.screenSize().getWidth())) {
 			// If you use the Manager remove method, there's a Exception
 			// Use this remove.
-			i.remove();
+			try {
+				i.remove();
+			} catch (Exception e) {
+				System.out.println("Bullet not removed");
+			}
 			// Destroys the object
-			b = null;
+			//b = null;
 			return true;
 		}
 		// If the Bullet was not destroyed, returns false.
 		return false;
 	}
+	
+
 	
 }

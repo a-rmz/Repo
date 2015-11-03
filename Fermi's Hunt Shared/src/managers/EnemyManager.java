@@ -52,7 +52,7 @@ public class EnemyManager extends Manager<BasicEnemy>{
 			// Calls the Bullet updated method.
 			be.update();
 			// Checks if the Bullet has to be destroyed.
-			destroy(i, be);			
+			destroy(i, be);
 		}
 	}
 	
@@ -65,6 +65,7 @@ public class EnemyManager extends Manager<BasicEnemy>{
 	public boolean destroy(Iterator<BasicEnemy> i, BasicEnemy be) {
 		// Checks if the Enemy is hit.
 		if(be.hit) {
+			be.p = null;
 			// Removes the BasicEnemy.
 			i.remove();
 			// Destroys the object.
