@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
+
 import managers.BulletManager;
 import managers.Position;
 
@@ -270,9 +271,7 @@ public class Ship extends SpaceObject{
 	 * These are independent, getting called by the TODO Game class.
 	 */
 	
-	public void keyPressed(KeyEvent e) {
-		// Gets the int representation of the KeyEvent e.
-		int code = e.getKeyCode();
+	public void keyPressed(int code) {
 		// If the key pressed is UP, executes up method.
 		if(code == KeyEvent.VK_UP || code == KeyEvent.VK_W) {
 			up();
@@ -295,14 +294,12 @@ public class Ship extends SpaceObject{
 		}
 		// If the key pressed is ESC, exits the game.
 		if(code == KeyEvent.VK_ESCAPE) {
-			System.exit(0);
+			//
 		}
 		
 	}
 
-	public void keyReleased(KeyEvent e) {
-		// Gets the int representation of the KeyEvent e.
-		int code = e.getKeyCode();
+	public void keyReleased(int code) {
 		// When releasing UP key, the y-velocity is set to 0.
 		if(code == KeyEvent.VK_UP || code == KeyEvent.VK_W)
 			p.setVelY(0);

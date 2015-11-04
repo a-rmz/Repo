@@ -13,7 +13,8 @@ public class Background {
 
 	// **** RESOURCES ****
 	private String[] backgrounds = {
-			"/BackgroundImg/Level 1/fondo8Bits.png"
+			"/BackgroundImg/Level 1/fondo8Bits.png",
+			"/BackgroundImg/Main Menu/fondo8Bits.png"
 	};
 	private String url;
 	public Image bg1, bg2;
@@ -101,11 +102,9 @@ public class Background {
 	public void draw(Graphics2D g) {
 		// Prints background
 		g.drawImage(getBackgroundImage(), pbg1.getX(), 0, 
-				(int) Game.screenSize().getWidth(), 
-				(int) Game.screenSize().getHeight(), null);
+				(int) Game.WIDTH, (int) Game.HEIGHT, null);
 		g.drawImage(getBackgroundImage(), pbg2.getX(), 0, 
-				(int) Game.screenSize().getWidth(), 
-				(int) Game.screenSize().getHeight(), null);
+				(int) Game.WIDTH, (int) Game.HEIGHT, null);
 	}
 	
 }

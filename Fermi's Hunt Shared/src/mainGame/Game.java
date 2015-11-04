@@ -16,8 +16,13 @@ import gameManager.GameStateManager;
 @SuppressWarnings("serial")
 public class Game extends JPanel implements Runnable, KeyListener{
 
+	// Dimensions
+	public static final int WIDTH = (int) screenSize().getWidth();
+	public static final int HEIGHT = (int) screenSize().getHeight();
+	
+	
 	// Thread
-	private Thread thread;
+	private static Thread thread;
 	private boolean running = false;
 	private int FPS = 60;
 	private long targetTime = 1_000 / FPS;
@@ -33,10 +38,11 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		super();
 		setFocusable(true);
 		requestFocus();
+		
 	}
 	
 	
-	public static Dimension screenSize() {
+	private static Dimension screenSize() {
 		int xMax = (int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth());
 		int yMax = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		Dimension d = new Dimension(xMax, yMax);

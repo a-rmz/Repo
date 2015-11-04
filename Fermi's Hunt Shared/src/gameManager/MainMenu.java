@@ -16,9 +16,7 @@ public class MainMenu extends GameState{
 	private String[] options = {
 			"Start", "Help", "Quit"
 		};
-	
-	//Thread
-	Thread mainMenu;
+
 	
 	// Graphics
 	Background mBG;
@@ -55,7 +53,7 @@ public class MainMenu extends GameState{
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
 		g.setColor(FontColor);
 		g.setFont(font);
-		g.drawString("Fermi's Hunt", (int) Game.screenSize().getWidth()/3, 150);
+		g.drawString("Fermi's Hunt", (int) Game.WIDTH/3, 150);
 		
 		// Draw menu options
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 30);
@@ -69,8 +67,8 @@ public class MainMenu extends GameState{
 			}
 			
 			g.drawString(options[i], 
-					(int) Game.screenSize().getWidth()/2 - 100, 
-					(int) Game.screenSize().getHeight()/2 + (i * 60));
+					(int) Game.WIDTH/2 - 100, 
+					(int) Game.HEIGHT/2 + (i * 60));
 		}
 	}
 

@@ -3,23 +3,27 @@ package gameManager.levels;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.Timer;
-
 import background.Background;
 import characters.Ship;
 import gameManager.GameState;
+import gameManager.GameStateManager;
 import managers.EnemyManager;
 import soundtracks.Soundtrack;
 
 public class Level1 extends GameState {
 	
-	public static Timer timer;
+	
+	// Atributes
+	GameStateManager gsm;
 	Ship p1;
 	public static EnemyManager e;
+	
+	// Graphics
 	Background bg;
 	Soundtrack st;
 		
-	public Level1(){
+	public Level1(GameStateManager gsm){
+		this.gsm = gsm;
 		init();		
 	}
 	
@@ -58,13 +62,12 @@ public class Level1 extends GameState {
 	
 	@Override
 	public void keyPressed(int k) {
-		// TODO Auto-generated method stub
-		
+		p1.keyPressed(k);		
 	}
 
 	@Override
 	public void keyReleased(int k) {
-		// TODO Auto-generated method stub
+		p1.keyReleased(k);
 		
 	}
 
