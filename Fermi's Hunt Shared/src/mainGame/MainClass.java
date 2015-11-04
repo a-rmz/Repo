@@ -15,10 +15,7 @@ import javax.swing.JFrame;
 		frame.pack();
 		frame.add(g);
 		frame.setVisible(true);
-	   
-		
-	 
-	 }
+}
 	 
 	 
 	 
