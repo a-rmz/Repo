@@ -11,7 +11,6 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
-import mainGame.Game;
 import managers.BulletManager;
 import managers.Position;
 
@@ -134,7 +133,7 @@ public class Ship extends SpaceObject{
 		bm.update();
 		// If the player died, stops the game
 		if(!isAlive()) {
-			Game.timer.stop();
+			System.out.println("Ship is dead");
 		}
 	}
 	

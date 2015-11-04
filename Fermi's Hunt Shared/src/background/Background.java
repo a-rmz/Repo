@@ -1,9 +1,11 @@
 package background;
 
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.Image; // mostrar imagen
 import java.awt.Toolkit;
 
+import mainGame.Game;
 import managers.Position;
 
 // TODO Tranquilo shiquito, yo te cubro
@@ -94,6 +96,16 @@ public class Background {
 	 */
 	public Image getBackgroundImage() {
 		return bg1;
+	}
+	
+	public void draw(Graphics2D g) {
+		// Prints background
+		g.drawImage(getBackgroundImage(), pbg1.getX(), 0, 
+				(int) Game.screenSize().getWidth(), 
+				(int) Game.screenSize().getHeight(), null);
+		g.drawImage(getBackgroundImage(), pbg2.getX(), 0, 
+				(int) Game.screenSize().getWidth(), 
+				(int) Game.screenSize().getHeight(), null);
 	}
 	
 }

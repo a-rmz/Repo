@@ -1,81 +1,122 @@
 package mainGame;
 
 
+import java.awt.Dimension;
 import java.awt.Graphics; // mostrar imagen
 import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel; // mostrar imagen
-import javax.swing.Timer;
 
-import background.Background;
-import characters.Ship;
-import characters.SpaceObject;
-import managers.EnemyManager;
-import navigation.KeyInput;
-import soundtracks.Soundtrack;
+import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel implements ActionListener{
+public class Game extends JPanel implements Runnable, KeyListener{
+
+	// Thread
+	private Thread thread;
+	private boolean running = false;
+	private int FPS = 60;
+	private long targetTime = 1_000 / FPS;
 	
-	public static Timer timer;
-	Ship p1;
-	public static EnemyManager e;
-	Background bg;
-	Soundtrack st;
-		
-	public Game(){
+	// Image
+	private BufferedImage image;
+	private Graphics2D g;
+	
+	// Game State Manager
+	private GameStateManager gsm;
+	
+	public Game() {
+		super();
 		setFocusable(true);
-		timer = new Timer(50, this);
-		timer.start();
-		p1 = new Ship();
-		e = new EnemyManager(1, 10); //TODO
-		bg = new Background(1); // TODO Modify level
-		st = new Soundtrack();
-		st.playSoundtrack();
+		requestFocus();
+	}
 	
-		addKeyListener (new KeyInput(p1));
+	
+	public static Dimension screenSize() {
+		int xMax = (int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth());
+		int yMax = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+		Dimension d = new Dimension(xMax, yMax);
+		return d;
+	}
+	
+	
+	public void addNotify() {
+		super.addNotify();
+		if(thread == null) {
+			thread = new Thread(this, "GameThread");
+			addKeyListener(this);
+			thread.start();
+		}
+	}
+	
+	private void init() {
+		
+		image = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
+		g = (Graphics2D) image.getGraphics();
+		running = true;
+		
+		gsm = new GameStateManager();
+	}
+	
+	public void run() {
+		
+		init();
+		
+		long start;
+		long elapsed;
+		long wait;
+		
+		// GameLoop
+		
+		while(running) {
+			start = System.nanoTime();
+			
+			update();
+			draw();
+			drawToScreen();
+			
+			elapsed = System.nanoTime() - start;
+			
+			wait = targetTime - elapsed / 1_000_000;
+			if(wait < 0) wait = 5;
+			
+			try {
+				Thread.sleep(wait);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	
-	public void paint(Graphics g){
-		super.paint(g);
-		int sizeX = (int) SpaceObject.screenSize().getWidth();
-		int sizeY = (int) SpaceObject.screenSize().getHeight();
-		Graphics2D g2d = (Graphics2D) g;
-		// Prints background
-		g2d.drawImage(bg.getBackgroundImage(), bg.pbg1.getX(), 0, sizeX, sizeY, null);
-		g2d.drawImage(bg.getBackgroundImage(), bg.pbg2.getX(), 0, sizeX, sizeY, null);
-		
-		// Prints user Ship
-		p1.draw(g);
+	private void update() {
+		gsm.update();
+	}
+	private void draw() {
+		gsm.draw(g);
+	}
+	private void drawToScreen() { 
+		Graphics g2 = getGraphics();
+		g2.drawImage(image,  0, 0, 
+				(int) Game.screenSize().getWidth(), 
+				(int) Game.screenSize().getHeight(), null); //TODO
+		g2.dispose();
+	}
+	
+	
+	public void keyPressed(KeyEvent key) {
+		gsm.keyPressed(key.getKeyCode());
+	}
 
-		// Prints enemies
-		e.draw(g);
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		repaint();
-		update();
-				
+	public void keyReleased(KeyEvent key) {
+		gsm.keyReleased(key.getKeyCode());
 	}
 	
-	public void update(){
-		bg.update();
-		p1.update();
-		e.update();
-	}
-	
-	public void pauseBackground(){
-		timer.stop();
-	}
-	
-	public void quitPauseBackground(){
-		timer.restart();
-	}
+	public void keyTyped(KeyEvent key) { }
 		
 		
 }
