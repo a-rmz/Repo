@@ -30,7 +30,7 @@ public class Ship extends SpaceObject{
 	
 	
 	// **** PLAYER STATS ****
-	private int hp;
+	public int hp;
 	private int level;
 //	private int ammo;
 	private int killedEnemies;
@@ -43,6 +43,7 @@ public class Ship extends SpaceObject{
 	private static BulletManager bm = new BulletManager(-5);
 	// Imports the list of Enemy bullets
 	private List<Bullet> b = BasicEnemy.getEnemyBullets();
+
 	
 	
 	// --------------------------------------------------------------------------------
