@@ -9,8 +9,8 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.util.LinkedList;
-
+import java.util.Iterator;
+import java.util.List;
 
 import managers.BulletManager;
 import managers.Position;
@@ -42,7 +42,7 @@ public class Ship extends SpaceObject{
 	// New BulletManager to handle the bullets
 	private static BulletManager bm = new BulletManager(-5);
 	// Imports the list of Enemy bullets
-	private LinkedList<Bullet> b = BasicEnemy.getEnemyBullets();
+	private List<Bullet> b = BasicEnemy.getEnemyBullets();
 	
 	
 	// --------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ public class Ship extends SpaceObject{
 		bm.update();
 		// If the player died, stops the game
 		if(!isAlive()) {
-			System.out.println("Ship is dead");
+			//System.out.println("Ship is dead");
 		}
 	}
 	
@@ -189,9 +189,10 @@ public class Ship extends SpaceObject{
 	 */
 	public void gotHit() {
 		// For-each to analyze every Bullet object.
-		for(Bullet a : b) {
+		synchronized(b) {for(Iterator<Bullet> a = b.iterator(); a.hasNext(); ) {
+			Bullet hitter = a.next();
 			// Checks if the actual Bullet's collider rectangle intersects with this'.
-			if(collider().intersects(a.collider())) {
+			if(collider().intersects(hitter.collider())) {
 				// If the ship got hit, activates the gotHit switch.
 				// The gotHit switch affects the graphic representation of the hits.
 				gotHit = true;
@@ -199,6 +200,7 @@ public class Ship extends SpaceObject{
 				hp -= 1;
 				// Only as a console verifier.
 				System.out.println("Hit");
+				}
 			}
 		}
 	}
@@ -216,7 +218,7 @@ public class Ship extends SpaceObject{
 	 * Returns the Bullet list from the BulletManager.
 	 * @return LinkedList of Bullets
 	 */
-	public static LinkedList<Bullet> getShipBullets() {
+	public static List<Bullet> getShipBullets() {
 		return bm.returnManager();
 	}
 	

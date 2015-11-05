@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.Timer;
@@ -39,7 +39,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	// New BulletManager to handle shots.
 	public static BulletManager bm = new BulletManager();
 	// Imports the list of Ship's Bullets
-	private LinkedList<Bullet> b = Ship.getShipBullets();
+	private List<Bullet> b = Ship.getShipBullets();
 
 	
 	// --------------------------------------------------------------------------------
@@ -201,7 +201,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 * Returns the Bullet list from the BulletManager.
 	 * @return LinkedList of Bullets
 	 */
-	public static LinkedList<Bullet> getEnemyBullets() {
+	public static List<Bullet> getEnemyBullets() {
 		return bm.returnManager();
 	}
 	

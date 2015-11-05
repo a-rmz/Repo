@@ -38,10 +38,11 @@ public class BulletManager extends Manager <Bullet> {
 	 * @param g
 	 */
 	public void draw(Graphics g) {
-		// For-each loop to draw every Bullet.
-		for(Bullet b : l) {
-			// Calls the Bullet draw method.
-			b.draw(g);
+		
+		synchronized (l) {for(Iterator<Bullet> b = l.iterator(); b.hasNext();) {
+			Bullet bDraw = b.next();
+			bDraw.draw(g);
+			}
 		}
 	}
 	
@@ -70,14 +71,15 @@ public class BulletManager extends Manager <Bullet> {
 	public void update() {
 		// This for loop avoids the java.util.ConcurrentModificationException
 		// If you use a foreach loop, you can't modify the list.
-		for(Iterator<Bullet> i = l.iterator(); i.hasNext();) {
+		synchronized(l) { for(Iterator<Bullet> i = l.iterator(); i.hasNext();) {
 			// Sets the Bullet b to the next Bullet in the List.
 			Bullet b = i.next();
 			// Calls the Bullet updated method.
 			b.update();
 			// Checks if the Bullet has to be destroyed.
 			destroy(i, b);			
-		} 
+			}// End for 
+		}// End synchronized
 	}
 	
 	/**

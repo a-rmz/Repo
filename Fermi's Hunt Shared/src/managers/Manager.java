@@ -1,12 +1,14 @@
 package managers;
 
 
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Manager <Type> {
 	
 	// **** LOCAL LIST ****
-	LinkedList<Type> l = new LinkedList<Type>();
+	List<Type> l = Collections.synchronizedList(new LinkedList<Type>());
 	
 	
 	// ----------------- **** METHODS **** ----------------- 
@@ -40,7 +42,7 @@ public class Manager <Type> {
 	 *  Returns the LinkedList.
 	 * @return
 	 */
-	public LinkedList<Type> returnManager() {
+	public List<Type> returnManager() {
 		return l;
 	}
 	
