@@ -142,11 +142,11 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 			
 			// The nextBoolean determines if the x-velocity has to change in +-5.
 			if(r.nextBoolean()) {
-				p.setVelX(p.getVelX()+ (r.nextInt(5)-10));
+				p.setVelX(p.getVelX()+ (r.nextInt(5)-15));
 			}
 			// The nextBoolean determines if the y-velocity has to change in +-5.
 			if(r.nextBoolean()) {
-				p.setVelY(p.getVelY()+ (r.nextInt(5)-10));
+				p.setVelY(p.getVelY()+ (r.nextInt(5)-15));
 			}
 		}	
 	}

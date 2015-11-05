@@ -31,9 +31,9 @@ public class Ship extends SpaceObject{
 	
 	// **** PLAYER STATS ****
 	private int hp;
-//	private int level;
+	private int level;
 //	private int ammo;
-//	private int killedEnemies;
+	private int killedEnemies;
 	
 	
 	// **** SHIP MODIFIERS ****
@@ -52,6 +52,8 @@ public class Ship extends SpaceObject{
 	public Ship() {
 		// Initialize ship stats
 		hp = 5;
+		level = 1;
+		killedEnemies = 0;
 		// Loads the ship image
 		setSpaceObjectImage();
 	}
@@ -296,7 +298,7 @@ public class Ship extends SpaceObject{
 		}
 		// If the key pressed is ESC, exits the game.
 		if(code == KeyEvent.VK_ESCAPE) {
-			//
+			System.exit(0);
 		}
 		
 	}
