@@ -23,7 +23,6 @@ public class PauseMenu extends GameState implements Runnable{
 	// Thread
 	Thread pauseMenu;
 	private boolean running;
-
 	
 	// Graphics
 	Background pBG;
