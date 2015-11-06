@@ -50,8 +50,9 @@ public class Bullet {
 		setBulletImage();
 		// Clones the position of the parameter to the local Position.
 		this.p = p.clone();
+		this.p.setPosX(this.p.getX());
 		// Sets the y-position to the half of the enemy image.
-		p.setPosY(p.getY() - (bullet.getHeight(null)/2));
+		this.p.setPosY(this.p.getY()/* - (bullet.getHeight(null)/2)*/);
 		// Defines the Bullet's direction
 		bulletSpeed = bulletSpeed * direction;
 	}
