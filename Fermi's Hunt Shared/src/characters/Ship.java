@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import java.util.List;
 
+import mainGame.Game;
 import managers.BulletManager;
 import managers.Position;
 
@@ -32,7 +33,7 @@ public class Ship extends SpaceObject{
 	// **** PLAYER STATS ****
 	public int hp;
 	private int level;
-//	private int ammo;
+	private int ammo;
 	private int killedEnemies;
 	
 	
@@ -299,7 +300,7 @@ public class Ship extends SpaceObject{
 		}
 		// If the key pressed is ESC, exits the game.
 		if(code == KeyEvent.VK_ESCAPE) {
-			System.exit(0);
+			Game.pauseMenu();
 		}
 		
 	}

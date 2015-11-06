@@ -10,7 +10,9 @@ public class GameStateManager {
 	private int currentState;
 	
 	public static final int MENUSTATE = 0;
-	public static final int LEVEL1STATE = 1;
+	public static final int PAUSESTATE = 1;
+	public static final int LEVEL1STATE = 2;
+	
 	
 	public GameStateManager() {
 		
@@ -18,6 +20,7 @@ public class GameStateManager {
 		
 		currentState = MENUSTATE;
 		gameStates.add(new MainMenu(this));	
+		gameStates.add(new PauseMenu(this));
 		gameStates.add(new Level1(this));
 		
 	}

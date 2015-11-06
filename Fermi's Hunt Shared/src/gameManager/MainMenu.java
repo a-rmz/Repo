@@ -36,7 +36,7 @@ public class MainMenu extends GameState{
 
 	@Override
 	public void init() {
-		mBG = new Background(1);
+		mBG = new Background(Background.MAIN_MENU);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class MainMenu extends GameState{
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
 		g.setColor(FontColor);
 		g.setFont(font);
-		g.drawString("Fermi's Hunt", (int) Game.WIDTH/3, 150);
+		g.drawString("Fermis Hunt", (int) Game.WIDTH/3, 150);
 		
 		// Draw menu options
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 30);

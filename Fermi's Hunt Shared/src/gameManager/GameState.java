@@ -1,6 +1,9 @@
 package gameManager;
 
-public abstract class GameState {
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public abstract class GameState extends JPanel{
 
 	protected GameStateManager gsm;
 	

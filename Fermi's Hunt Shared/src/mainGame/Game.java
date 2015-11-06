@@ -33,7 +33,7 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	private Graphics2D g;
 	
 	// Game State Manager
-	private GameStateManager gsm;
+	private static GameStateManager gsm;
 	
 	public Game() {
 		super();
@@ -105,21 +105,39 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	
 	private void update() {
 		gsm.update();
+		
+		try {
+		    if (paused) {
+		        synchronized (this) {
+		            while (paused) {
+		                wait();
+		            }
+		        }
+		    }
+		} catch (InterruptedException e) {
+		    e.printStackTrace();
+		}
 	}
+	
 	private void draw() {
 		gsm.draw(g);
 	}
 	private void drawToScreen() { 
 		Graphics g2 = getGraphics();
-		g2.drawImage(image,  0, 0, 
-				(int) Game.screenSize().getWidth(), 
-				(int) Game.screenSize().getHeight(), null); //TODO
+		g2.drawImage(image,  0, 0, Game.WIDTH, Game.HEIGHT, null); //TODO
 		g2.dispose();
 	}
 	
-	public static void resumeGame() {
+	public static void pauseMenu() {
+		gsm.setState(GameStateManager.PAUSESTATE);
+	}
+	
+	public static synchronized void resumeGame() {
 		paused = false;
-		thread.notify();
+		synchronized (thread) {
+			thread.notify();
+		}
+		gsm.setState(GameStateManager.LEVEL1STATE);
 	}
 	
 	public void keyPressed(KeyEvent key) {

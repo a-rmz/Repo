@@ -54,7 +54,7 @@ public class Level1 extends GameState {
 	public void init() {
 		p1 = new Ship();
 		e = new EnemyManager(1, 10); //TODO
-		bg = new Background(1); // TODO Modify level
+		bg = new Background(Background.LEVEL_1);
 		st = new Soundtrack();
 		st.playSoundtrack();		
 	}

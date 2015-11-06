@@ -13,8 +13,9 @@ public class Background {
 
 	// **** RESOURCES ****
 	private String[] backgrounds = {
-			"/BackgroundImg/Level 1/fondo8Bits.png",
-			"/BackgroundImg/Main Menu/fondo8Bits.png"
+			"/BackgroundImg/Main Menu/fondo8Bits.png",
+			"/BackgroundImg/Pause Menu/pm_img.png",
+			"/BackgroundImg/Level 1/fondo8Bits.png"
 	};
 	private String url;
 	public Image bg1, bg2;
@@ -23,8 +24,8 @@ public class Background {
 	// **** PLAYER STATS ****
 	public int level = 1;
 	public static final int MAIN_MENU = 0;
-	public static final int PAUSE_MENU = 0;
-	public static final int LEVEL_1= 0;
+	public static final int PAUSE_MENU = 1;
+	public static final int LEVEL_1= 2;
 
 	
 	// **** SHIP MODIFIERS ****
@@ -46,9 +47,9 @@ public class Background {
 	 * For further level assistance, consult level manager. 
 	 * @param level
 	 */
-	public Background(int level){
+	public Background(int index){
 		// Defines the image to be loaded.
-		url = backgrounds[(level - 1)];
+		url = backgrounds[index];
 		// Loads the image to both background images.
 		bg1 = setBackgroundImage();
 		bg2 = setBackgroundImage();
@@ -86,11 +87,8 @@ public class Background {
 			// Gets the image from the url defined by the resources array
 			i = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
 		} catch (Exception e) {
-
-			System.out.println("Aqui pasa algo");
 			i = null;
 		}
-		System.out.println();
 		return i;
 	}
 	
