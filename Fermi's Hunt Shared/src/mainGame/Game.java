@@ -24,6 +24,7 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	// Thread
 	private static Thread thread;
 	private boolean running = false;
+	private static boolean paused = false;
 	private int FPS = 60;
 	private long targetTime = 1_000 / FPS;
 	
@@ -68,6 +69,9 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		gsm = new GameStateManager();
 	}
 	
+	/**
+	 *  Game loop
+	 */
 	public void run() {
 		
 		init();
@@ -113,6 +117,10 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		g2.dispose();
 	}
 	
+	public static void resumeGame() {
+		paused = false;
+		thread.notify();
+	}
 	
 	public void keyPressed(KeyEvent key) {
 		gsm.keyPressed(key.getKeyCode());
