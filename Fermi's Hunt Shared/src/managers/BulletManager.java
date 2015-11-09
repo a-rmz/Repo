@@ -12,6 +12,8 @@ import characters.SpaceObject;
 public class BulletManager extends Manager <Bullet> {
 
 	// ***** BULLETMANAGER MODIFIERS *****
+	public static final int SHIP = 0;
+	public static final int BASIC_ENEMY = 1;
 	
 	private int direction;
 	
@@ -19,11 +21,11 @@ public class BulletManager extends Manager <Bullet> {
 	
 	
 	// **** CONSTRUCTOR ****
-	public BulletManager(SpaceObject s) {
-		if(s instanceof Ship) {
+	public BulletManager(int type) {
+		if(type == SHIP) {
 			direction = -1;
 		}
-		if(s instanceof BasicEnemy) {
+		if(type == BASIC_ENEMY) {
 			direction = 1;
 		}
 	}

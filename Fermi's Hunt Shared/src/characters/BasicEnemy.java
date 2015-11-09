@@ -37,7 +37,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	private Random r = new Random();
 	public Position p;
 	// New BulletManager to handle shots.
-	public static BulletManager bm = new BulletManager();
+	public static BulletManager bm = new BulletManager(BulletManager.BASIC_ENEMY);
 	// Imports the list of Ship's Bullets
 	private List<Bullet> b = Ship.getShipBullets();
 
