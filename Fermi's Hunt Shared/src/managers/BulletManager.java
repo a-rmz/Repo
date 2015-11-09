@@ -4,9 +4,7 @@ package managers;
 import java.awt.Graphics;
 import java.util.Iterator;
 
-import characters.BasicEnemy;
 import characters.Bullet;
-import characters.Ship;
 import characters.SpaceObject;
 
 public class BulletManager extends Manager <Bullet> {

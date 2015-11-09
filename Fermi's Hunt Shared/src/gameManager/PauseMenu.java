@@ -116,6 +116,9 @@ public class PauseMenu extends GameState implements Runnable{
 				currentChoice = 0;
 			}
 		}
+		if(k == KeyEvent.VK_ESCAPE) {
+			Game.resumeGame();
+		}
 	}
 
 	@Override

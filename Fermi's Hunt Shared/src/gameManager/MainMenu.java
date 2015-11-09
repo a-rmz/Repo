@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import background.Background;
 import mainGame.Game;
 
+@SuppressWarnings("serial")
 public class MainMenu extends GameState{
 	
 	// Atributes

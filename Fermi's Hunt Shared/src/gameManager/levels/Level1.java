@@ -10,6 +10,7 @@ import gameManager.GameStateManager;
 import managers.EnemyManager;
 import soundtracks.Soundtrack;
 
+@SuppressWarnings("serial")
 public class Level1 extends GameState {
 	
 	
@@ -24,7 +25,11 @@ public class Level1 extends GameState {
 		
 	public Level1(GameStateManager gsm){
 		this.gsm = gsm;
-		init();		
+		p1 = new Ship();
+		e = new EnemyManager(1, 2); //TODO
+		bg = new Background(Background.LEVEL_1);
+		st = new Soundtrack();
+		st.playSoundtrack();
 	}
 	
 	public void draw(Graphics2D g2d){
@@ -51,13 +56,7 @@ public class Level1 extends GameState {
 
 	
 	@Override
-	public void init() {
-		p1 = new Ship();
-		e = new EnemyManager(1, 2); //TODO
-		bg = new Background(Background.LEVEL_1);
-		st = new Soundtrack();
-		st.playSoundtrack();		
-	}
+	public void init() { }
 
 	
 	@Override
