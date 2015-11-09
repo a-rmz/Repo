@@ -15,7 +15,7 @@ public class MainMenu extends GameState{
 	GameStateManager gsm;
 	int currentChoice;
 	private String[] options = {
-			"Start", "Help", "Quit"
+			"Continue", "New Game", "Load", "Help", "Credits", "Quit" 
 		};
 
 	
@@ -74,14 +74,25 @@ public class MainMenu extends GameState{
 	}
 
 	private void select() {
-		if(currentChoice == 0) {
+		switch(currentChoice) {
+		case 0:
+			// Continue
+			break;
+		case 1:
 			gsm.setState(GameStateManager.LEVEL1STATE);
-		} 
-		if(currentChoice == 1) {
+			break;
+		case 2:
+			// Load
+			break;
+		case 3:
 			// Help
-		}
-		if(currentChoice == 2) {
+			break;
+		case 4: 
+			// Credits
+			break;
+		case 5:
 			System.exit(0);
+			break;
 		}
 	}
 	

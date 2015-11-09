@@ -17,7 +17,7 @@ public class PauseMenu extends GameState implements Runnable{
 	
 	int currentChoice;
 	private String[] options = {
-			"Continue", "Quit"
+			"Resume", "Save", "Load", "Help", "Quit"
 		};
 	
 	// Thread
@@ -92,11 +92,19 @@ public class PauseMenu extends GameState implements Runnable{
 
 
 	private void select() {
-		if(currentChoice == 0) {
+		switch(currentChoice) {
+		case 0:
 			Game.resumeGame();
-		} 
-		if(currentChoice == 1) {
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
 			System.exit(0);
+			break;
 		}
 	}
 	
