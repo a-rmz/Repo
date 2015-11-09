@@ -110,6 +110,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 * Updates the position, the enemy stats, and the BulletManager.
 	 */		
 	public void update(){
+		enemyFire.setDelay((r.nextInt(3)+1) * 1000);
 		// Modifies the enemy's position on getVel units.
 		p.increasePosY(p.getVelY());
 		p.increasePosX(p.getVelX());

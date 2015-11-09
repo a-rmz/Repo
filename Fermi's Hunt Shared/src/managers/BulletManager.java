@@ -4,7 +4,9 @@ package managers;
 import java.awt.Graphics;
 import java.util.Iterator;
 
+import characters.BasicEnemy;
 import characters.Bullet;
+import characters.Ship;
 import characters.SpaceObject;
 
 public class BulletManager extends Manager <Bullet> {
@@ -17,17 +19,15 @@ public class BulletManager extends Manager <Bullet> {
 	
 	
 	// **** CONSTRUCTOR ****
-	public BulletManager(int direction) {
-		this.direction = direction;
+	public BulletManager(SpaceObject s) {
+		if(s instanceof Ship) {
+			direction = -1;
+		}
+		if(s instanceof BasicEnemy) {
+			direction = 1;
+		}
 	}
-	
-	/**
-	 * This constructor makes it easier for the BasicEnemy BulletManager
-	 * If there's no parameter, automatically is set to an EnemyBulletManager
-	 */
-	public BulletManager() {
-		this.direction = 1;
-	}
+
 	
 	
 	// ----------------- **** METHODS **** ----------------- 

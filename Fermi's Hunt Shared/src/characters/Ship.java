@@ -41,7 +41,7 @@ public class Ship extends SpaceObject{
 	private boolean gotHit = false;
 	public Position p = new Position(50, (screenSize().height / 2));
 	// New BulletManager to handle the bullets
-	private static BulletManager bm = new BulletManager(-5);
+	private static BulletManager bm = new BulletManager(this);
 	// Imports the list of Enemy bullets
 	private List<Bullet> b = BasicEnemy.getEnemyBullets();
 

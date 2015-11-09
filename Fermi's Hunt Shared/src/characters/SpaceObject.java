@@ -7,6 +7,8 @@ import java.awt.Toolkit;
 
 public abstract class SpaceObject {
 	
+	public int level;
+	
 	// ----------------- **** METHODS **** ----------------- 
 	
 	// **** GRAPHICAL METHODS ****
