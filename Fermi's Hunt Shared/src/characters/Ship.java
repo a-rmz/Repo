@@ -133,9 +133,7 @@ public class Ship extends SpaceObject{
 		// Updates the BulletManager
 		bm.update();
 		// If the player died, stops the game
-		if(!isAlive()) {
-			Game.timer.stop();
-		}
+		
 	}
 	
 	/**

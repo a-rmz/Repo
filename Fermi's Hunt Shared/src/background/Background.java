@@ -56,8 +56,8 @@ public class Background {
 	 */
 	public void update(){
 		// Moves each background -1 unit at a time.
-		pbg1.increasePosX(-1);
-		pbg2.increasePosX(-1);
+		pbg1.increasePosX(-5);
+		pbg2.increasePosX(-5);
 		
 		if(pbg1.getX() == (-sSize.getWidth())){
 			pbg1.setPosX(sSize.getWidth());
