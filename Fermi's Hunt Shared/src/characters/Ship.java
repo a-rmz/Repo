@@ -140,6 +140,7 @@ public class Ship extends SpaceObject{
 		if(!isAlive()) {
 			//System.out.println("Ship is dead");
 		}
+
 	}
 	
 	/**

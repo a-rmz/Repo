@@ -1,15 +1,14 @@
 package mainGame;
 
-
 import java.awt.Dimension;
-import java.awt.Graphics; // mostrar imagen
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JPanel; // mostrar imagen
+import javax.swing.JPanel;
 
 import gameManager.GameStateManager;
 
@@ -21,12 +20,11 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	public static final int HEIGHT = (int) screenSize().getHeight();
 	
 	
-	// Thread
-	private static Thread thread;
-	private boolean running = false;
+	private static Thread LoopThread;
 	private static boolean paused = false;
+	private boolean isRunning = false;
 	private int FPS = 60;
-	private long targetTime = 1_000 / FPS;
+	private long  LoopTime = 1000 / FPS;
 	
 	// Image
 	private BufferedImage image;
@@ -39,8 +37,8 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		super();
 		setFocusable(true);
 		requestFocus();
-		
-	}
+		init();
+  }
 	
 	
 	private static Dimension screenSize() {
@@ -53,10 +51,10 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	
 	public void addNotify() {
 		super.addNotify();
-		if(thread == null) {
-			thread = new Thread(this, "GameThread");
+		if(LoopThread == null) {
+			LoopThread = new Thread(this, "GameThread");
 			addKeyListener(this);
-			thread.start();
+			LoopThread.start();
 		}
 	}
 	
@@ -64,8 +62,7 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		
 		image = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
 		g = (Graphics2D) image.getGraphics();
-		running = true;
-		
+		isRunning = true;		
 		gsm = new GameStateManager();
 	}
 	
@@ -73,70 +70,80 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	 *  Game loop
 	 */
 	public void run() {
+		// TODO Auto-generated method stub
 		
-		init();
+		long start, elapsed, wait;
+  	// Initializes what is needed for the Game.
+  	
 		
-		long start;
-		long elapsed;
-		long wait;
+		start= System.nanoTime();
+		elapsed = System.nanoTime() - start;
+		wait = LoopTime - elapsed / 1000000;
 		
-		// GameLoop
 		
-		while(running) {
-			start = System.nanoTime();
+		while(isRunning){
+    
 			
 			update();
 			draw();
 			drawToScreen();
+      
 			
-			elapsed = System.nanoTime() - start;
-			
-			wait = targetTime - elapsed / 1_000_000;
 			if(wait < 0) wait = 5;
 			
-			try {
+			try{
 				Thread.sleep(wait);
-			} catch(Exception e) {
+			}
+			catch(Exception e){
 				e.printStackTrace();
 			}
-		}
-		
+	}
 	}
 	
 	private void update() {
 		gsm.update();
 		
+    // Checks if the Game is paused.
 		try {
 		    if (paused) {
 		        synchronized (this) {
-		            while (paused) {
-		                wait();
+              // While the Game is paused, the thread is waiting.
+		            while (paused) wait();
 		            }
 		        }
-		    }
-		} catch (InterruptedException e) {
+		    } catch (InterruptedException e) {
 		    e.printStackTrace();
 		}
 	}
+
 	
 	private void draw() {
+    // Calls the GameStateManager draw method.
 		gsm.draw(g);
 	}
+  
+  // ¿?
 	private void drawToScreen() { 
 		Graphics g2 = getGraphics();
-		g2.drawImage(image,  0, 0, Game.WIDTH, Game.HEIGHT, null); //TODO
+		g2.drawImage(image,  0, 0, Game.WIDTH, Game.HEIGHT, null);
 		g2.dispose();
 	}
 	
+  // Sets the Game to pause.
 	public static void pauseMenu() {
 		gsm.setState(GameStateManager.PAUSESTATE);
 	}
 	
+  // Resumes the game.
 	public static synchronized void resumeGame() {
-		paused = false;
-		synchronized (thread) {
-			thread.notify();
+		// Sets the paused state to false.
+    paused = false;
+		synchronized (LoopThread) {
+      // Notifies the LoopThread.
+			LoopThread.notify();
 		}
+    // Activates the level where it was.
+    // TODO
 		gsm.setState(GameStateManager.LEVEL1STATE);
 	}
 	

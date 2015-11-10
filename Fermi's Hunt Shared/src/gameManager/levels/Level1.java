@@ -28,8 +28,7 @@ public class Level1 extends GameState {
 		p1 = new Ship();
 		e = new EnemyManager(1, 2); //TODO
 		bg = new Background(Background.LEVEL_1);
-		st = new Soundtrack();
-		st.playSoundtrack();
+		
 	}
 	
 	public void draw(Graphics2D g2d){
