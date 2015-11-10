@@ -81,7 +81,7 @@ public class Game extends JPanel implements Runnable, KeyListener{
 			
 			update();
 			repaint();
-			
+			drawToScreen();
       
 			
 			if(wait < 0) wait = 5;
