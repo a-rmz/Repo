@@ -6,7 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
@@ -26,9 +25,6 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	private int FPS = 60;
 	private long  LoopTime = 1000 / FPS;
 	
-	// Image
-	private BufferedImage image;
-	private Graphics2D g;
 	
 	// Game State Manager
 	private static GameStateManager gsm;
@@ -54,8 +50,6 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	
 	private void init() {
 		
-		image = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
-		g = (Graphics2D) image.getGraphics();
 		isRunning = true;		
 		gsm = new GameStateManager();
 	}
@@ -74,14 +68,13 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		elapsed = System.nanoTime() - start;
 		wait = LoopTime - elapsed / 1000000;
 		
-		if(wait < 0) wait =5;
+		if(wait < 0) wait = 5;
 		
 		while(isRunning){
     
 			
 			update();
 			repaint();
-			drawToScreen();
       
 			
 			if(wait < 0) wait = 5;
@@ -118,6 +111,7 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		Graphics2D g2d = (Graphics2D) g;
 		gsm.draw(g2d);
 	}
+	
 	
   // Sets the Game to pause.
 	public static void pauseMenu() {

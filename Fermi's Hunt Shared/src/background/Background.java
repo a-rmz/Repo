@@ -8,14 +8,14 @@ import java.awt.Toolkit;
 import mainGame.Game;
 import managers.Position;
 
-// TODO Tranquilo shiquito, yo te cubro
+
 public class Background {
 
 	// **** RESOURCES ****
 	private String[] backgrounds = {
-			"/BackgroundImg/Main Menu/fondo8Bits.png",
-			"/BackgroundImg/Pause Menu/pm_img.png",
-			"/BackgroundImg/Level 1/fondo8Bits.png"
+			"/BackgroundImg/Main_Menu/mm_img.png",
+			"/BackgroundImg/Pause_Menu/pm_img.png",
+			"/BackgroundImg/Level_1/l1_img.png"
 	};
 	private String url;
 	public Image bg1, bg2;
@@ -87,6 +87,7 @@ public class Background {
 			// Gets the image from the url defined by the resources array
 			i = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
 		} catch (Exception e) {
+			System.out.println("No load image " + url);
 			i = null;
 		}
 		return i;

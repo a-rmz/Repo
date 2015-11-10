@@ -53,7 +53,7 @@ public class PauseMenu extends GameState implements Runnable{
 	@Override
 	public void init() {
 		pBG = new Background(Background.PAUSE_MENU);
-		image = new BufferedImage(1920, 1080, BufferedImage.TYPE_INT_RGB);
+		image = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
 		g = (Graphics2D) image.getGraphics();
 	}
 
