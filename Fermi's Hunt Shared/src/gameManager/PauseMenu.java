@@ -138,8 +138,8 @@ public class PauseMenu extends GameState implements Runnable{
 	// Thread
 	public void run() {
 		while(running) {	
-			update();
 			draw(g);
+			update();
 			drawToScreen();
 		}
 	}

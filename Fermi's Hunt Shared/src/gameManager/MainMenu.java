@@ -16,7 +16,7 @@ public class MainMenu extends GameState{
 	int currentChoice;
 	private String[] options = {
 			"Continue", "New Game", "Load", "Help", "Credits", "Quit" 
-		};
+	};
 
 	
 	// Graphics
