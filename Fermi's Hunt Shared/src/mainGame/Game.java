@@ -38,6 +38,10 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		setFocusable(true);
 		requestFocus();
 		init();
+		LoopThread = new Thread(this);
+		isRunning= true;
+		LoopThread.start();
+		addKeyListener(this);
   }
 	
 	
@@ -46,16 +50,6 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		int yMax = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		Dimension d = new Dimension(xMax, yMax);
 		return d;
-	}
-	
-	
-	public void addNotify() {
-		super.addNotify();
-		if(LoopThread == null) {
-			LoopThread = new Thread(this, "GameThread");
-			addKeyListener(this);
-			LoopThread.start();
-		}
 	}
 	
 	private void init() {
@@ -80,13 +74,14 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		elapsed = System.nanoTime() - start;
 		wait = LoopTime - elapsed / 1000000;
 		
+		if(wait < 0) wait =5;
 		
 		while(isRunning){
     
 			
 			update();
 			repaint();
-			drawToScreen();
+			
       
 			
 			if(wait < 0) wait = 5;
@@ -119,14 +114,10 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	
 	private void paint(Graphics2D g) {
     // Calls the GameStateManager draw method.
-		gsm.draw(g);
-	}
-  
-  // ¿?
-	private void drawToScreen() { 
 		Graphics g2 = getGraphics();
 		g2.drawImage(image,  0, 0, Game.WIDTH, Game.HEIGHT, null);
 		g2.dispose();
+		gsm.draw(g);
 	}
 	
   // Sets the Game to pause.
@@ -155,7 +146,6 @@ public class Game extends JPanel implements Runnable, KeyListener{
 		gsm.keyReleased(key.getKeyCode());
 	}
 	
-	public void keyTyped(KeyEvent key) { }
-		
-		
-}
+	public void keyTyped(KeyEvent key) { 
+	}
+	}
