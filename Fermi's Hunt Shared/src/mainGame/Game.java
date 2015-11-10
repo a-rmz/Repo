@@ -112,12 +112,11 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	}
 
 	
-	private void paint(Graphics2D g) {
+	public void paint(Graphics g) {
+		super.paint(g);
     // Calls the GameStateManager draw method.
-		Graphics g2 = getGraphics();
-		g2.drawImage(image,  0, 0, Game.WIDTH, Game.HEIGHT, null);
-		g2.dispose();
-		gsm.draw(g);
+		Graphics2D g2d = (Graphics2D) g;
+		gsm.draw(g2d);
 	}
 	
   // Sets the Game to pause.
