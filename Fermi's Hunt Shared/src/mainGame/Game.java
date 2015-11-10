@@ -85,7 +85,7 @@ public class Game extends JPanel implements Runnable, KeyListener{
     
 			
 			update();
-			draw();
+			repaint();
 			drawToScreen();
       
 			
@@ -117,7 +117,7 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	}
 
 	
-	private void draw() {
+	private void paint(Graphics2D g) {
     // Calls the GameStateManager draw method.
 		gsm.draw(g);
 	}
