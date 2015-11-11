@@ -296,7 +296,7 @@ public class Ship extends SpaceObject{
 			right();
 		}
 		// If the key pressed is SPACE BAR, executes attack method.
-		if(code == KeyEvent.VK_SPACE) {
+		if(code == KeyEvent.VK_SPACE || code == KeyEvent.VK_ENTER) {
 			attack();
 		}
 		// If the key pressed is ESC, exits the game.
