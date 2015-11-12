@@ -2,6 +2,7 @@ package gameManager.levels;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 
 import background.Background;
 import characters.Ship;
@@ -67,6 +68,11 @@ public class Level1 extends GameState {
 	public void keyReleased(int k) {
 		p1.keyReleased(k);
 		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		p1.mouseMoved(e);
 	}
 
 }

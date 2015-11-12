@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.Iterator;
 import java.util.List;
 
@@ -323,6 +324,10 @@ public class Ship extends SpaceObject{
 		url = resources[0];
 	}	
 	
+	public void mouseMoved(MouseEvent e) {
+		p.setPosX(e.getX());
+		p.setPosY(e.getY());
+	}
 	
 	
 	

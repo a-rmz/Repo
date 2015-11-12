@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 import background.Background;
 import mainGame.Game;
@@ -116,4 +117,5 @@ public class MainMenu extends GameState{
 
 	public void keyReleased(int k) { }
 
+	public void mouseMoved(MouseEvent e) { }
 }
