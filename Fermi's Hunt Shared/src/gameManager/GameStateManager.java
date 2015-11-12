@@ -4,6 +4,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import gameManager.levels.Level1;
+import gameManager.menus.MainMenu;
+import gameManager.menus.PauseMenu;
 
 public class GameStateManager {
 
@@ -22,7 +24,6 @@ public class GameStateManager {
 		currentState = MENUSTATE;
 		gameStates.add(new MainMenu(this));	
 		gameStates.add(new PauseMenu(this));
-		gameStates.add(new Level1(this));
 		
 	}
 	
@@ -52,6 +53,13 @@ public class GameStateManager {
 	
 	public void mouseMoved(MouseEvent e) {
 		gameStates.get(currentState).mouseMoved(e);
+	}
+	
+	public void newGame() {
+		
+		
+		gameStates.add(new Level1(this));
+		this.setState(LEVEL1STATE);
 	}
 }
 

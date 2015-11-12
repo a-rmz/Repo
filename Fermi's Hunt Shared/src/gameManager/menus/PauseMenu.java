@@ -1,4 +1,4 @@
-package gameManager;
+package gameManager.menus;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -9,6 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import background.Background;
+import gameManager.GameState;
+import gameManager.GameStateManager;
 import mainGame.Game;
 
 @SuppressWarnings("serial")

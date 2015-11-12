@@ -1,4 +1,4 @@
-package gameManager;
+package gameManager.menus;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,6 +7,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import background.Background;
+import gameManager.GameState;
+import gameManager.GameStateManager;
 import mainGame.Game;
 
 @SuppressWarnings("serial")
@@ -80,7 +82,7 @@ public class MainMenu extends GameState{
 			// Continue
 			break;
 		case 1:
-			gsm.setState(GameStateManager.LEVEL1STATE);
+			gsm.newGame();
 			break;
 		case 2:
 			// Load
