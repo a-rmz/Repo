@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import background.Background;
@@ -151,7 +152,7 @@ public class PauseMenu extends GameState implements Runnable{
 	}
 
 	@Override
-	public void mouseClicked(int k) {
+	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

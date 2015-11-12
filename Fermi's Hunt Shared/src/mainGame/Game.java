@@ -1,20 +1,24 @@
 package mainGame;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
 import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel implements Runnable, KeyListener, MouseListener{
+public class Game extends JPanel implements Runnable, KeyListener, MouseMotionListener{
 
 	// Dimensions
 	public static final int WIDTH = (int) screenSize().getWidth();
@@ -40,6 +44,15 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 		isRunning= true;
 		LoopThread.start();
 		addKeyListener(this);
+		addMouseMotionListener(this);
+		
+		// Transparent 16 x 16 pixel cursor image.
+		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+
+		// Create a new blank cursor.
+		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+		    cursorImg, new Point(0, 0), "blank cursor");
+		this.setCursor(blankCursor);
   }
 	
 	
@@ -145,36 +158,13 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseListener
 	}
 
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseMoved(MouseEvent e) {
+		gsm.mouseMoved(e);
 	}
 
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -361,6 +361,10 @@ public class Ship extends SpaceObject implements MouseListener{
 		
 	}	
 	
+	public void mouseMoved(MouseEvent e) {
+		p.setPosX(e.getX());
+		p.setPosY(e.getY());
+	}
 	
 	
 	

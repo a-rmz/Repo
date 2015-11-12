@@ -1,5 +1,6 @@
 package gameManager;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import gameManager.levels.Level1;
@@ -48,8 +49,9 @@ public class GameStateManager {
 		gameStates.get(currentState).keyReleased(k);
 	}
 	
-	public void mouseClikced(int k){
-			
+	
+	public void mouseMoved(MouseEvent e) {
+		gameStates.get(currentState).mouseMoved(e);
 	}
 }
 

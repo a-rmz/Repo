@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /8A1.png
 /8A2.png
 /8B1.png
@@ -12,3 +13,9 @@
 /managers/
 /navigation/
 /soundtracks/
+=======
+/background/
+/mainGame/
+/characters/
+/gameManager/
+>>>>>>> c5322e7a63ecdf0121f5e88d6565518eccca3236
