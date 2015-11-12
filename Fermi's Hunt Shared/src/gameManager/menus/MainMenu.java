@@ -2,7 +2,10 @@ package gameManager.menus;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
@@ -120,20 +123,44 @@ public class MainMenu extends GameState{
 	public void keyReleased(int k) { }
 
 
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
+	public void mouseOver(MouseEvent e) {
+		 
+//		if(FontMetrics.this.getStringBounds(options[0], gsm)) {
+			
+//		}
 		
+		
+		if(e.getX() > 850 && e.getX() < 1090 && e.getY() > 500 && e.getY() < 540) {
+			currentChoice = 0;
+		}
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 540 && e.getY() < 620) {
+			currentChoice = 1;
+		}
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 620 && e.getY() < 680) {
+			currentChoice = 2;
+		}
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 680 && e.getY() < 760) {
+			currentChoice = 3;
+		}
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 760 && e.getY() < 800) {
+			currentChoice = 4;
+		}
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 800 && e.getY() < 860) {
+			currentChoice = 5;
+		}
 	}
 
 	@Override
+	public void mouseMoved(MouseEvent e) {
+		mouseOver(e);		
+	}
+	
+
+	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 570 && e.getY() < 610) {
-			currentChoice = 1;
-			select();
-		}
-//		System.out.println(e.getX() + ", " + e.getY());
+		mouseOver(e);
+		select();
+		System.out.println(e.getX() + ", " + e.getY());
 		
 	}
 
