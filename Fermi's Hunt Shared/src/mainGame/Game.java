@@ -1,24 +1,22 @@
 package mainGame;
 
-import java.awt.Cursor;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
-
 import javax.swing.JPanel;
 
 import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel implements Runnable, KeyListener, MouseMotionListener{
+public class Game extends JPanel implements 
+	Runnable, KeyListener, MouseMotionListener, MouseListener{
 
 	// Dimensions
 	public static final int WIDTH = (int) screenSize().getWidth();
@@ -44,15 +42,8 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseMotionLi
 		isRunning= true;
 		LoopThread.start();
 		addKeyListener(this);
-		addMouseMotionListener(this);
-		
-		// Transparent 16 x 16 pixel cursor image.
-		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
-
-		// Create a new blank cursor.
-		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
-		    cursorImg, new Point(0, 0), "blank cursor");
-		this.setCursor(blankCursor);
+		addMouseListener(this);
+		addMouseMotionListener(this);		
   }
 	
 	
@@ -66,7 +57,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseMotionLi
 	private void init() {
 		
 		isRunning = true;		
-		gsm = new GameStateManager();
+		gsm = new GameStateManager(this);
 	}
 	
 	/**
@@ -165,6 +156,41 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseMotionLi
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		gsm.mouseClicked(e);
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

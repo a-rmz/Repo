@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import gameManager.GameState;
 
+@SuppressWarnings("serial")
 public class Selector extends GameState {
 
 	@Override
@@ -39,6 +40,12 @@ public class Selector extends GameState {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

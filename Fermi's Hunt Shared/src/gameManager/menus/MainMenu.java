@@ -127,4 +127,14 @@ public class MainMenu extends GameState{
 		
 	}
 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 570 && e.getY() < 610) {
+			currentChoice = 1;
+			select();
+		}
+//		System.out.println(e.getX() + ", " + e.getY());
+		
+	}
+
 }
