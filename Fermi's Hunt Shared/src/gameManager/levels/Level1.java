@@ -74,8 +74,6 @@ public class Level1 extends GameState {
 		p1.mouseMoved(e);
 	}
 
-
-
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -86,6 +84,12 @@ public class Level1 extends GameState {
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		p1.mouseReleased(e);
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

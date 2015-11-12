@@ -16,5 +16,5 @@ public abstract class GameState extends JPanel{
 	public abstract void mouseMoved(MouseEvent e);
 	public abstract void mousePressed(MouseEvent e);
 	public abstract void mouseReleased(MouseEvent e);
-	
+	public abstract void mouseClicked(MouseEvent e);
 }

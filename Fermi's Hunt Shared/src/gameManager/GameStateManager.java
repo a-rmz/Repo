@@ -1,9 +1,16 @@
 package gameManager;
 
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import gameManager.levels.Level1;
+import gameManager.menus.MainMenu;
+import gameManager.menus.PauseMenu;
+import mainGame.Game;
 
 public class GameStateManager {
 
@@ -14,15 +21,15 @@ public class GameStateManager {
 	public static final int PAUSESTATE = 1;
 	public static final int LEVEL1STATE = 2;
 	
+	private Game game;
 	
-	public GameStateManager() {
-		
+	public GameStateManager(Game game) {
+		this.game = game;
 		gameStates = new ArrayList<GameState>();
 		
 		currentState = MENUSTATE;
 		gameStates.add(new MainMenu(this));	
 		gameStates.add(new PauseMenu(this));
-		gameStates.add(new Level1(this));
 		
 	}
 	
@@ -53,13 +60,32 @@ public class GameStateManager {
 	public void mouseMoved(MouseEvent e) {
 		gameStates.get(currentState).mouseMoved(e);
 	}
+
 	
 	public void mousePressed(MouseEvent e){
 		gameStates.get(currentState).mousePressed(e);
 		
 	}
+
 	public void mouseReleased(MouseEvent e){
 		gameStates.get(currentState).mouseReleased(e);
+	}
+	
+	public void mouseClicked(MouseEvent e) {
+		gameStates.get(currentState).mouseClicked(e);
+	}
+	
+	public void newGame() {
+//		 Transparent 16 x 16 pixel cursor image.
+		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+
+		// Create a new blank cursor.
+		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+		    cursorImg, new Point(0, 0), "blank cursor");
+		game.setCursor(blankCursor);
+		
+		gameStates.add(new Level1(this));
+		this.setState(LEVEL1STATE);
 	}
 }
 

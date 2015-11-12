@@ -1,78 +1,63 @@
-package gameManager;
+package gameManager.menus;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
 import background.Background;
+import gameManager.GameState;
+import gameManager.GameStateManager;
 import mainGame.Game;
 
 @SuppressWarnings("serial")
-public class PauseMenu extends GameState implements Runnable{
-
-	//private GameStateManager gsm;
+public class MainMenu extends GameState{
 	
+	// Atributes
+	GameStateManager gsm;
 	int currentChoice;
 	private String[] options = {
-			"Resume", "Save", "Load", "Help", "Quit"
-		};
-	
-	// Thread
-	Thread pauseMenu;
-	private boolean running;
+			"Continue", "New Game", "Load", "Help", "Credits", "Quit" 
+	};
+
 	
 	// Graphics
-	Background pBG;
+	Background mBG;
 	Color FontColor;
 	Color SelectedFontColor;
 	Font font;
-	// Image
-	private BufferedImage image;
-	private Graphics2D g;
 	
-	
-	public PauseMenu(GameStateManager gsm) {
+	// Constructor
+	public MainMenu(GameStateManager gsm) {
 		this.gsm = gsm;
-		init();
+		currentChoice = 0;
+		init();		
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
 		FontColor = Color.WHITE;
 		SelectedFontColor = Color.BLUE;
 	}
-	
-	public void addNotify() {
-		super.addNotify();
-		if(pauseMenu == null) {
-			pauseMenu = new Thread(this, "PauseMenu");
-			pauseMenu.start();
-		}
-	}
-	
+
 	@Override
 	public void init() {
-		pBG = new Background(Background.PAUSE_MENU);
-		image = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
-		g = (Graphics2D) image.getGraphics();
+		mBG = new Background(Background.MAIN_MENU);
 	}
 
 	@Override
 	public void update() {
-		pBG.update();
+		mBG.update();		
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
 		// Draw bg
-		pBG.draw(g);
+		mBG.draw(g);
 		
 		// Draw title
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
 		g.setColor(FontColor);
 		g.setFont(font);
-		g.drawString("Pause", (int) Game.WIDTH/3, 150);
+		g.drawString("Fermis Hunt", (int) Game.WIDTH/3, 150);
 		
 		// Draw menu options
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 30);
@@ -91,19 +76,24 @@ public class PauseMenu extends GameState implements Runnable{
 		}
 	}
 
-
 	private void select() {
 		switch(currentChoice) {
 		case 0:
-			Game.resumeGame();
+			// Continue
 			break;
 		case 1:
+			gsm.newGame();
 			break;
 		case 2:
+			// Load
 			break;
 		case 3:
+			// Help
 			break;
-		case 4:
+		case 4: 
+			// Credits
+			break;
+		case 5:
 			System.exit(0);
 			break;
 		}
@@ -125,37 +115,52 @@ public class PauseMenu extends GameState implements Runnable{
 				currentChoice = 0;
 			}
 		}
-		if(k == KeyEvent.VK_ESCAPE) {
-			Game.resumeGame();
-		}
 	}
 
-	@Override
-	public void keyReleased(int k) {
-		// TODO Auto-generated method stub
+	public void keyReleased(int k) { }
+
+
+	public void mouseOver(MouseEvent e) {
+		 
+//		if(FontMetrics.this.getStringBounds(options[0], gsm)) {
+			
+//		}
 		
-	}
-
-	// Thread
-	public void run() {
-		while(running) {	
-			draw(g);
-			update();
-			drawToScreen();
+		
+		if(e.getX() > 850 && e.getX() < 1090 && e.getY() > 500 && e.getY() < 540) {
+			currentChoice = 0;
 		}
-	}
-	
-	private void drawToScreen() { 
-		Graphics g2 = getGraphics();
-		g2.drawImage(image,  0, 0, Game.WIDTH, Game.HEIGHT, null);
-		g2.dispose();
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 540 && e.getY() < 620) {
+			currentChoice = 1;
+		}
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 620 && e.getY() < 680) {
+			currentChoice = 2;
+		}
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 680 && e.getY() < 760) {
+			currentChoice = 3;
+		}
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 760 && e.getY() < 800) {
+			currentChoice = 4;
+		}
+		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 800 && e.getY() < 860) {
+			currentChoice = 5;
+		}
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
+		mouseOver(e);		
+	}
+	
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		mouseOver(e);
+		select();
+		System.out.println(e.getX() + ", " + e.getY());
 		
 	}
+
 
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -168,4 +173,5 @@ public class PauseMenu extends GameState implements Runnable{
 		// TODO Auto-generated method stub
 		
 	}
+
 }
