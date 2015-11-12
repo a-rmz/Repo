@@ -116,4 +116,10 @@ public class MainMenu extends GameState{
 
 	public void keyReleased(int k) { }
 
+	@Override
+	public void mouseClicked(int k) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

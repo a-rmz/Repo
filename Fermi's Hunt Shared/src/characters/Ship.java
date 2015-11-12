@@ -9,6 +9,8 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,7 +18,7 @@ import mainGame.Game;
 import managers.BulletManager;
 import managers.Position;
 
-public class Ship extends SpaceObject{
+public class Ship extends SpaceObject implements MouseListener{
 
 	// **** RESOURCES ****
 	private String[] resources = {
@@ -321,6 +323,42 @@ public class Ship extends SpaceObject{
 			p.setVelX(0);
 		// The ship image is set to the basic image again.
 		url = resources[0];
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		attack();
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}	
 	
 	

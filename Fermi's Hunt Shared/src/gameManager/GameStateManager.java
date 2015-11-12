@@ -47,5 +47,9 @@ public class GameStateManager {
 	public void keyReleased(int k) {
 		gameStates.get(currentState).keyReleased(k);
 	}
+	
+	public void mouseClikced(int k){
+			
+	}
 }
 

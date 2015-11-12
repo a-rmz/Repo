@@ -6,13 +6,15 @@ import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
 import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel implements Runnable, KeyListener{
+public class Game extends JPanel implements Runnable, KeyListener, MouseListener{
 
 	// Dimensions
 	public static final int WIDTH = (int) screenSize().getWidth();
@@ -31,9 +33,9 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	
 	public Game() {
 		super();
+		init();
 		setFocusable(true);
 		requestFocus();
-		init();
 		LoopThread = new Thread(this);
 		isRunning= true;
 		LoopThread.start();
@@ -140,5 +142,40 @@ public class Game extends JPanel implements Runnable, KeyListener{
 	}
 	
 	public void keyTyped(KeyEvent key) { 
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	}

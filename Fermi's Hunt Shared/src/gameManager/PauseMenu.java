@@ -149,4 +149,10 @@ public class PauseMenu extends GameState implements Runnable{
 		g2.drawImage(image,  0, 0, Game.WIDTH, Game.HEIGHT, null);
 		g2.dispose();
 	}
+
+	@Override
+	public void mouseClicked(int k) {
+		// TODO Auto-generated method stub
+		
+	}
 }
