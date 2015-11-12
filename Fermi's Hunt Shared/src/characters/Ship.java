@@ -316,21 +316,13 @@ public class Ship extends SpaceObject implements MouseListener{
 		if(code == KeyEvent.VK_DOWN || code == KeyEvent.VK_S)
 			p.setVelY(0);
 		// When releasing LEFT key, the x-velocity is set to 0.
-		if(code == KeyEvent.VK_LEFT || code == KeyEvent.VK_A)
+		if(code == KeyEvent.VK_LEFT || code == KeyEvent.VK_A )
 			p.setVelX(0);
 		// When releasing RIGHT key, the x-velocity is set to 0.
 		if(code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D)
 			p.setVelX(0);
 		// The ship image is set to the basic image again.
 		url = resources[0];
-	}
-
-
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		attack();
-		
 	}
 
 
@@ -351,6 +343,8 @@ public class Ship extends SpaceObject implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		attack();
+		this.mouseMoved(arg0);
 		
 	}
 
@@ -358,12 +352,19 @@ public class Ship extends SpaceObject implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		url = resources[0];
 	}	
 	
 	public void mouseMoved(MouseEvent e) {
 		p.setPosX(e.getX());
 		p.setPosY(e.getY());
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

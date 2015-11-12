@@ -156,4 +156,16 @@ public class PauseMenu extends GameState implements Runnable{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

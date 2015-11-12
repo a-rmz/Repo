@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel implements Runnable, KeyListener, MouseMotionListener{
+public class Game extends JPanel implements Runnable, KeyListener, MouseMotionListener , MouseListener{
 
 	// Dimensions
 	public static final int WIDTH = (int) screenSize().getWidth();
@@ -45,6 +45,7 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseMotionLi
 		LoopThread.start();
 		addKeyListener(this);
 		addMouseMotionListener(this);
+		addMouseListener(this);
 		
 		// Transparent 16 x 16 pixel cursor image.
 		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
@@ -165,6 +166,41 @@ public class Game extends JPanel implements Runnable, KeyListener, MouseMotionLi
 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		gsm.mousePressed(e);
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		gsm.mouseReleased(e);
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
