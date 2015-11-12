@@ -344,7 +344,6 @@ public class Ship extends SpaceObject implements MouseListener{
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		attack();
-		this.mouseMoved(arg0);
 		
 	}
 

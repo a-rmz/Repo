@@ -27,7 +27,7 @@ public class Level1 extends GameState {
 	public Level1(GameStateManager gsm){
 		this.gsm = gsm;
 		p1 = new Ship();
-		e = new EnemyManager(1, 2); //TODO
+		e = new EnemyManager(1, 3); //TODO
 		bg = new Background(Background.LEVEL_1);
 		
 	}
