@@ -65,7 +65,7 @@ public class EnemyManager extends Manager<BasicEnemy>{
 	 */
 	public boolean destroy(Iterator<BasicEnemy> i, BasicEnemy be) {
 		// Checks if the Enemy is hit.
-		if(be.hit) {
+		if(be.getHP() <= 0) {
 			// Adds +1 to the killedEnemies record of the Player
 			Ship.getPlayer().killedEnemy();
 			// Sets the position of the former BasicEnemy to null.

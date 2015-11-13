@@ -19,6 +19,10 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	
 	// **** RESOURCES ****
 	private String[] resources = {
+			"/Sprites/Enemies/BasicEnemy.png",
+			"/Sprites/Enemies/BasicEnemy.png",
+			"/Sprites/Enemies/BasicEnemy.png",
+			"/Sprites/Enemies/BasicEnemy.png",
 			"/Sprites/Enemies/BasicEnemy.png"
 	};
 	private String url;
@@ -26,8 +30,9 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	
 	
 	// **** ENEMY STATS ****
-	public int enemyLevel;
-	public int attackSpeed =  15;
+	private int enemyLevel;
+	private int attackSpeed =  15;
+	private int hp;
 	
 	
 	// **** ENEMY MODIFIERS ****
@@ -54,6 +59,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	public BasicEnemy(int enemyLevel){
 		// Sets the position to a random int within the screen bounds.
 		p = new Position(r.nextInt(screenSize().width-100), r.nextInt(screenSize().height-100));
+		// Sets the hp.
+		hp = (int) Math.pow(enemyLevel, 2);
 		// Sets the url for the enemy image according to the enemyLevel.
 		url = resources[enemyLevel - 1];
 		// Loads the enemy image.
@@ -234,9 +241,14 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 			if(collider().intersects(a.collider())) {
 				// If the enemy got hit, activates the gotHit switch.
 				// The gotHit switch eliminates the ship.
-				hit = true;
+				hp--;
+				System.out.println("Hit enemy");
 			}
 		}
+	}
+	
+	public int getHP() {
+		return hp;
 	}
 
 

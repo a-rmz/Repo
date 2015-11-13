@@ -22,10 +22,15 @@ public class Ship extends SpaceObject implements MouseListener{
 
 	// **** RESOURCES ****
 	private String[] resources = {
-		"/Sprites/Ship/Single Shot/sprite_ship1_singleShot.gif",
-		"/Sprites/Ship/Single Shot/sprite_ship1_singleShot_Up.gif",
-		"/Sprites/Ship/Single Shot/sprite_ship1_singleShot_Down.gif",
-		"/Sprites/Ship/Single Shot/sprite_ship1_singleShot_shoot.gif"
+		"/Sprites/Ship/Single_Shot/sprite_ship1_singleShot.gif",
+		"/Sprites/Ship/Single_Shot/sprite_ship1_singleShot_Up.gif",
+		"/Sprites/Ship/Single_Shot/sprite_ship1_singleShot_Down.gif",
+		"/Sprites/Ship/Single_Shot/sprite_ship1_singleShot_shoot.gif",
+		// Ship level 2
+		"/Sprites/Ship/Double_Shot/sprite_ship1_doubleShot.gif",
+		"/Sprites/Ship/Double_Shot/sprite_ship1_doubleShot_Up.gif",
+		"/Sprites/Ship/Double_Shot/sprite_ship1_doubleShot_Down.gif",
+		"/Sprites/Ship/Double_Shot/sprite_ship1_doubleShot_shoot.gif"
 	};
 	private String url = resources[0];
 	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
@@ -36,6 +41,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	public int hp;
 	private int level;
 	private int killedEnemies;
+	private int xp;
 	
 	
 	// **** SHIP MODIFIERS ****
@@ -112,7 +118,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	/**
 	 *  Every time the ship gets hit, prints the string "HIT". Activated by
-	 *  the gotHit switch. Is called directly by the TODO Game draw class.
+	 *  the gotHit switch. Is called directly by the class' draw method.
 	 * @param g
 	 */
 	public void hitsOnSelf(Graphics g) {
@@ -146,7 +152,8 @@ public class Ship extends SpaceObject implements MouseListener{
 		gotHit();
 		// Updates the BulletManager
 		bm.update();
-		// If the player died, stops the game
+		// Checks if the Player has leveled up.
+		levelUp();
 		if(!isAlive()) {
 			//System.out.println("Ship is dead");
 		}
@@ -189,8 +196,21 @@ public class Ship extends SpaceObject implements MouseListener{
 		bm.add(p);
 	}
 	
+	/**
+	 *  This method is called from the EnemyManager every time an enemy is 
+	 *  deleted from the manager.
+	 */
 	public void killedEnemy() {
-		this.killedEnemies++;
+		// Increases the killedEnemies.
+		killedEnemies++;
+		// Increases the xp.
+		xp += 100; // TODO multiply by enemyLevel
+	}
+	
+	private void levelUp() {
+		if(xp == (300 * level)) {
+			this.level++;
+		}
 	}
 
 	/**
@@ -250,7 +270,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void up(){
 		// Changes the actual ship image
-		url = resources[1];
+		url = resources[(level * 4) - 3];
 		// Changes the ship speed and allows it to move diagonally.
 		p.setVelY(-15);
 	}
@@ -260,7 +280,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void down() {
 		// Changes the actual ship image
-		url = resources[2];
+		url = resources[(level * 4) - 2];
 		// Changes the ship speed and allows it to move diagonally.
 		p.setVelY(15);
 	}
@@ -270,7 +290,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void left() {
 		// Changes the actual ship image
-		url = resources[1];
+		url = resources[(level * 4) - 4];
 		// Changes the ship speed and allows it to move diagonally.
 		p.setVelX(-15);
 	}
@@ -280,7 +300,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void right() {
 		// Changes the actual ship image
-		url = resources[2];
+		url = resources[(level * 4) - 4];
 		// Changes the ship speed and allows it to move diagonally.
 		p.setVelX(15);
 	}
@@ -333,8 +353,8 @@ public class Ship extends SpaceObject implements MouseListener{
 		// When releasing RIGHT key, the x-velocity is set to 0.
 		if(code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D)
 			p.setVelX(0);
-		// The ship image is set to the basic image again.
-		url = resources[0];
+		// The ship image is set to the basic image again according to the level.
+		url = resources[(level * 4) - 4];
 	}
 
 
@@ -351,7 +371,6 @@ public class Ship extends SpaceObject implements MouseListener{
 		
 	}
 
-
 	@Override
 	public void mousePressed(MouseEvent e) {
 		attack();
@@ -361,7 +380,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		url = resources[0];
+		url = resources[(level * 4) - 4];
 	}	
 	
 	public void mouseMoved(MouseEvent e) {
