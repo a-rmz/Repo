@@ -48,12 +48,15 @@ public class Ship extends SpaceObject implements MouseListener{
 	private List<Bullet> b = BasicEnemy.getEnemyBullets();
 
 	
+	// ***** SINGLETON INSTANCE *****
+	private static Ship instance = new Ship();
+	
 	
 	// --------------------------------------------------------------------------------
 	
 	
 	// **** CONSTRUCTOR ****
-	public Ship() {
+	private Ship() {
 		// Initialize ship stats
 		hp = 5;
 		level = 1;
@@ -64,6 +67,12 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	
 	// ----------------- **** METHODS **** ----------------- 
+	
+	// ***** SINGLETON *****
+	
+	public static Ship getPlayer() {
+		return instance;
+	}
 	
 	// **** GRAPHICAL METHODS ****
 	/**
@@ -225,7 +234,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 * Returns the Bullet list from the BulletManager.
 	 * @return LinkedList of Bullets
 	 */
-	public static List<Bullet> getShipBullets() {
+	public List<Bullet> getShipBullets() {
 		return bm.returnManager();
 	}
 	
