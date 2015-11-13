@@ -12,6 +12,7 @@ import java.util.Random;
 
 import javax.swing.Timer;
 
+import mainGame.Game;
 import managers.BulletManager;
 import managers.Position;
 
@@ -45,7 +46,6 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	public static BulletManager bm = new BulletManager(BulletManager.BASIC_ENEMY);
 	// Imports the list of Ship's Bullets
 	private List<Bullet> b = Ship.getPlayer().getShipBullets();
-
 	
 	// --------------------------------------------------------------------------------
 	
@@ -58,7 +58,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 */
 	public BasicEnemy(int enemyLevel){
 		// Sets the position to a random int within the screen bounds.
-		p = new Position(r.nextInt(screenSize().width-100), r.nextInt(screenSize().height-100));
+		p = new Position(r.nextInt(Game.WIDTH + 100), 
+						r.nextInt(Game.HEIGHT - 100));
 		// Sets the hp.
 		hp = (int) Math.pow(enemyLevel, 2);
 		// Sets the url for the enemy image according to the enemyLevel.
