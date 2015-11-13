@@ -2,9 +2,12 @@ package gameManager.menus;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
 
 import background.Background;
 import gameManager.GameState;
@@ -20,7 +23,7 @@ public class MainMenu extends GameState{
 	private String[] options = {
 			"Continue", "New Game", "Load", "Help", "Credits", "Quit" 
 	};
-
+	private Rectangle[] optionsRect;
 	
 	// Graphics
 	Background mBG;
@@ -41,6 +44,7 @@ public class MainMenu extends GameState{
 	@Override
 	public void init() {
 		mBG = new Background(Background.MAIN_MENU);
+		optionsRect = new Rectangle[options.length];
 	}
 
 	@Override
@@ -52,6 +56,9 @@ public class MainMenu extends GameState{
 	public void draw(Graphics2D g) {
 		// Draw bg
 		mBG.draw(g);
+
+		// Helps to center the text.
+		FontMetrics fm = g.getFontMetrics(font);
 		
 		// Draw title
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
@@ -71,8 +78,19 @@ public class MainMenu extends GameState{
 			}
 			
 			g.drawString(options[i], 
-					(int) Game.WIDTH/2 - 100, 
+					(int) Game.WIDTH/2 - fm.stringWidth(options[i])/2, 
 					(int) Game.HEIGHT/2 + (i * 60));
+			
+			// Fills the array with the collision rectangles.n
+			if (!(optionsRect[options.length-1] instanceof Rectangle)) {
+				Rectangle2D bounds = fm.getStringBounds(options[i], g);
+				optionsRect[i] = new Rectangle(
+						(int) Game.WIDTH/2 - fm.stringWidth(options[i])/2 - 10, 
+						(int) Game.HEIGHT/2 + (i * 60) - 30, 
+						(int) bounds.getWidth() + 15, 
+						(int) bounds.getHeight() + 10
+					);
+			}
 		}
 	}
 
@@ -120,31 +138,14 @@ public class MainMenu extends GameState{
 	public void keyReleased(int k) { }
 
 
-	public void mouseOver(MouseEvent e) {
-		 
-//		if(FontMetrics.this.getStringBounds(options[0], gsm)) {
-			
-//		}
-		
-		
-		if(e.getX() > 850 && e.getX() < 1090 && e.getY() > 500 && e.getY() < 540) {
-			currentChoice = 0;
+	public boolean mouseOver(MouseEvent e) {
+		for(int i = 0; i < options.length; i++) {
+			if(optionsRect[i].contains(e.getPoint())) {
+				currentChoice = i;
+				return true;
+			}
 		}
-		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 540 && e.getY() < 620) {
-			currentChoice = 1;
-		}
-		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 620 && e.getY() < 680) {
-			currentChoice = 2;
-		}
-		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 680 && e.getY() < 760) {
-			currentChoice = 3;
-		}
-		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 760 && e.getY() < 800) {
-			currentChoice = 4;
-		}
-		if(e.getX() > 850 && e.getX() < 1120 && e.getY() > 800 && e.getY() < 860) {
-			currentChoice = 5;
-		}
+		return false;
 	}
 
 	@Override
@@ -155,9 +156,12 @@ public class MainMenu extends GameState{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		mouseOver(e);
-		select();
-		System.out.println(e.getX() + ", " + e.getY());
+		// Only admits clicking if the mouse is over the option.
+		if(mouseOver(e)) {
+			select();	
+		}
+	
+//		System.out.println(e.getX() + ", " + e.getY());
 		
 	}
 

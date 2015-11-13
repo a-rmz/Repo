@@ -1,11 +1,15 @@
 package gameManager.menus;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import background.Background;
@@ -22,6 +26,7 @@ public class PauseMenu extends GameState implements Runnable{
 	private String[] options = {
 			"Resume", "Save", "Load", "Help", "Quit"
 		};
+	private Rectangle[] optionsRect;
 	
 	// Thread
 	Thread pauseMenu;
@@ -55,9 +60,12 @@ public class PauseMenu extends GameState implements Runnable{
 	
 	@Override
 	public void init() {
+		currentChoice = 0;
 		pBG = new Background(Background.PAUSE_MENU);
 		image = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
 		g = (Graphics2D) image.getGraphics();
+		gsm.game.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		optionsRect = new Rectangle[options.length];
 	}
 
 	@Override
@@ -79,6 +87,8 @@ public class PauseMenu extends GameState implements Runnable{
 		// Draw menu options
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 30);
 		g.setFont(font);
+		// Helps to center the text.
+		FontMetrics fm = g.getFontMetrics(font);
 		for(int i = 0; i < options.length; i++) {
 			
 			if(i == currentChoice) {
@@ -88,8 +98,20 @@ public class PauseMenu extends GameState implements Runnable{
 			}
 			
 			g.drawString(options[i], 
-					(int) Game.WIDTH/2 - 100, 
+					(int) Game.WIDTH/2 - fm.stringWidth(options[i])/2, 
 					(int) Game.HEIGHT/2 + (i * 60));
+			
+			// Fills the array with the collision rectangles.
+			if (!(optionsRect[options.length-1] instanceof Rectangle)) {
+				Rectangle2D bounds = fm.getStringBounds(options[i], g);
+				optionsRect[i] = new Rectangle(
+						(int) Game.WIDTH/2 - fm.stringWidth(options[i])/2 - 10, 
+						(int) Game.HEIGHT/2 + (i * 60) - 30, 
+						(int) bounds.getWidth() + 15, 
+						(int) bounds.getHeight() + 10
+					);
+			}
+			
 		}
 	}
 
@@ -153,9 +175,29 @@ public class PauseMenu extends GameState implements Runnable{
 		g2.dispose();
 	}
 
+	// TODO boolean
+	public boolean mouseOver(MouseEvent e) {
+		for(int i = 0; i < options.length; i++) {
+			if(optionsRect[i].contains(e.getPoint())) {
+				currentChoice = i;
+				return true;
+			}
+		}
+		return false;
+	}
+
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
+		mouseOver(e);		
+	}
+	
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// Only admits clicking if the mouse is over the option.
+		if(mouseOver(e)) {
+			select();
+		}
 		
 	}
 
@@ -167,10 +209,5 @@ public class PauseMenu extends GameState implements Runnable{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 	
-	}
-	
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }

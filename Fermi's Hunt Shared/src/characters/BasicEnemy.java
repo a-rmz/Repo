@@ -63,7 +63,6 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		p = new Position(r.nextInt(Game.WIDTH / 3) + (2 * Game.WIDTH / 3	), 
 						r.nextInt(Game.HEIGHT - 100));
 		origin = p.clone();
-		System.out.println(origin.toString());
 		p.setPosX(Game.WIDTH + 100);
 		// Sets the hp.
 		hp = (int) Math.pow(enemyLevel, 2);
@@ -145,7 +144,6 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		if((p.getX() >= (origin.getX() + (2 * p.getVelX()))) &&
 				(p.getX()) <= (origin.getX() - (2 * p.getVelX()))) {
 			enabled = true;
-			System.out.println("Enabled");
 			return;
 		}
 		// Disables the Enemy until it reaches its position

@@ -21,12 +21,11 @@ public class GameStateManager {
 	public static final int PAUSESTATE = 1;
 	public static final int LEVEL1STATE = 2;
 	
-	private Game game;
+	public Game game;
 	
 	public GameStateManager(Game game) {
 		this.game = game;
 		gameStates = new ArrayList<GameState>();
-		
 		currentState = MENUSTATE;
 		gameStates.add(new MainMenu(this));	
 		gameStates.add(new PauseMenu(this));
