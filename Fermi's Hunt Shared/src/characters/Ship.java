@@ -35,7 +35,6 @@ public class Ship extends SpaceObject implements MouseListener{
 	// **** PLAYER STATS ****
 	public int hp;
 	private int level;
-	private int ammo;
 	private int killedEnemies;
 	
 	
@@ -188,6 +187,10 @@ public class Ship extends SpaceObject implements MouseListener{
 	public void attack() {
 		url = resources[3];
 		bm.add(p);
+	}
+	
+	public void killedEnemy() {
+		this.killedEnemies++;
 	}
 
 	/**
