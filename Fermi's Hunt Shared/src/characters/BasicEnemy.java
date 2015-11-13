@@ -42,6 +42,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	Timer enemyFire;
 	private Random r = new Random();
 	public Position p;
+	private Position origin;
 	// New BulletManager to handle shots.
 	public static BulletManager bm = new BulletManager(BulletManager.BASIC_ENEMY);
 	// Imports the list of Ship's Bullets
@@ -58,11 +59,12 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 * @param enemyLevel
 	 */
 	public BasicEnemy(int enemyLevel){
-		// Disables the Enemy until it reaches its position
-		enabled = false;
 		// Sets the position to a random int within the screen bounds.
-		p = new Position(r.nextInt(Game.WIDTH + 100), 
+		p = new Position(r.nextInt(Game.WIDTH / 3) + (2 * Game.WIDTH / 3	), 
 						r.nextInt(Game.HEIGHT - 100));
+		origin = p.clone();
+		System.out.println(origin.toString());
+		p.setPosX(Game.WIDTH + 100);
 		// Sets the hp.
 		hp = (int) Math.pow(enemyLevel, 2);
 		// Sets the url for the enemy image according to the enemyLevel.
@@ -73,12 +75,9 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		this.enemyLevel = enemyLevel;
 		// Initializes the timer.
 		enemyFire = new Timer(attackSpeed * 100 * (r.nextInt(2) + 1), this);
+		entering();
 		// Starts the enemyFire timer.
 		enemyFire.start();
-		// Sets the enemy velocity to a number between 10 and 20.
-		// TODO to be defined by the enemyLevel.
-		p.setVelX((r.nextInt(2)+1)*5);
-		p.setVelY((r.nextInt(2)+1)*5);
 	}
 
 	
@@ -123,18 +122,39 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 * Updates the position, the enemy stats, and the BulletManager.
 	 */		
 	public void update(){
-		enemyFire.setDelay((r.nextInt(3)+1) * 1000);
-		// Modifies the enemy's position on getVel units.
-		p.increasePosY(p.getVelY());
+		if (enabled) {
+			enemyFire.setDelay((r.nextInt(3)+1) * 1000);
+			// Determines if the enemy's velocity has to change.
+			changeVelocity();
+			// Modifies the enemy's position on getVel units.
+			p.increasePosY(p.getVelY());
+			p.increasePosX(p.getVelX());
+			// Determines if the ship collided with the screen borders
+			collidesWithBorders(screenSize());
+			// Update method from the BulletManager.
+			bm.update();
+			// Determines if the ship got hit
+			gotHit();
+		} else {
+			entering();
+		}
+	}
+	
+	private void entering() {
+		// Checks if the Enemy is within a range of velX from the origin.
+		if((p.getX() >= (origin.getX() + (2 * p.getVelX()))) &&
+				(p.getX()) <= (origin.getX() - (2 * p.getVelX()))) {
+			enabled = true;
+			System.out.println("Enabled");
+			return;
+		}
+		// Disables the Enemy until it reaches its position
+		enabled = false;
+		// Sets the enemy velocity to a number between 10 and 20.
+		// TODO to be defined by the enemyLevel.
+		p.setVelX(-25);
+		// Takes the Enemy to the Position
 		p.increasePosX(p.getVelX());
-		// Determines if the ship collided with the screen borders
-		if(enabled) collidesWithBorders(screenSize());
-		// Update method from the BulletManager.
-		bm.update();
-		// Determines if the enemy's velocity has to change.
-		changeVelocity();
-		// Determines if the ship got hit
-		gotHit();
 	}
 	
 	/**

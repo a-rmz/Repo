@@ -140,4 +140,19 @@ public class Position {
 	public Position clone() {
 		return new Position(x, y);
 	}
+	
+	/**
+	 *  Overrides the Object method. Only checks the coordinates, not the velocities.
+	 * @param p
+	 * @return
+	 */
+	public boolean equals(Position p) {
+		if(this.getX() != p.getX()) return false;
+		if(this.getY() != p.getY()) return false;
+		return true;
+	}
+	
+	public String toString() {
+		return "Position: (" + x + ", " + y + ")";
+	}
 }
