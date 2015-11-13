@@ -39,13 +39,14 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	// **** ENEMY MODIFIERS ****
 	public boolean hit = false;
 	// The timer is for the BasicEnemy to fire every certain time.
-	Timer enemyFire = new Timer(attackSpeed * 100, this);
+	Timer enemyFire;
 	private Random r = new Random();
 	public Position p;
 	// New BulletManager to handle shots.
 	public static BulletManager bm = new BulletManager(BulletManager.BASIC_ENEMY);
 	// Imports the list of Ship's Bullets
 	private List<Bullet> b = Ship.getPlayer().getShipBullets();
+	private boolean enabled;
 	
 	// --------------------------------------------------------------------------------
 	
@@ -57,6 +58,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 * @param enemyLevel
 	 */
 	public BasicEnemy(int enemyLevel){
+		// Disables the Enemy until it reaches its position
+		enabled = false;
 		// Sets the position to a random int within the screen bounds.
 		p = new Position(r.nextInt(Game.WIDTH + 100), 
 						r.nextInt(Game.HEIGHT - 100));
@@ -68,6 +71,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		setSpaceObjectImage();
 		// Sets the enemy level to the parameter enemyLevel.
 		this.enemyLevel = enemyLevel;
+		// Initializes the timer.
+		enemyFire = new Timer(attackSpeed * 100 * (r.nextInt(2) + 1), this);
 		// Starts the enemyFire timer.
 		enemyFire.start();
 		// Sets the enemy velocity to a number between 10 and 20.
@@ -123,7 +128,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		p.increasePosY(p.getVelY());
 		p.increasePosX(p.getVelX());
 		// Determines if the ship collided with the screen borders
-		collidesWithBorders(screenSize());
+		if(enabled) collidesWithBorders(screenSize());
 		// Update method from the BulletManager.
 		bm.update();
 		// Determines if the enemy's velocity has to change.
