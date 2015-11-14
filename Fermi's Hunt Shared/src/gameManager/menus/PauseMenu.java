@@ -9,16 +9,14 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import background.Background;
-import gameManager.GameState;
 import gameManager.GameStateManager;
 import mainGame.Game;
 
 @SuppressWarnings("serial")
-public class PauseMenu extends GameState implements Runnable{
+public class PauseMenu extends Menu implements Runnable{
 
 	//private GameStateManager gsm;
 	
@@ -103,22 +101,17 @@ public class PauseMenu extends GameState implements Runnable{
 			
 			// Fills the array with the collision rectangles.
 			if (!(optionsRect[options.length-1] instanceof Rectangle)) {
-				Rectangle2D bounds = fm.getStringBounds(options[i], g);
-				optionsRect[i] = new Rectangle(
-						(int) Game.WIDTH/2 - fm.stringWidth(options[i])/2 - 10, 
-						(int) Game.HEIGHT/2 + (i * 60) - 30, 
-						(int) bounds.getWidth() + 15, 
-						(int) bounds.getHeight() + 10
-					);
+				optionsRect[i] = createOptionBorder(options[i], i, g, fm);
 			}
 			
 		}
 	}
 
 
-	private void select() {
+	protected void select() {
 		switch(currentChoice) {
 		case 0:
+			gsm.game.hideCursor();
 			Game.resumeGame();
 			break;
 		case 1:
@@ -175,7 +168,6 @@ public class PauseMenu extends GameState implements Runnable{
 		g2.dispose();
 	}
 
-	// TODO boolean
 	public boolean mouseOver(MouseEvent e) {
 		for(int i = 0; i < options.length; i++) {
 			if(optionsRect[i].contains(e.getPoint())) {

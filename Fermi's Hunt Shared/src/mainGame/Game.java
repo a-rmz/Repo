@@ -1,15 +1,19 @@
 package mainGame;
 
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+
 import javax.swing.JPanel;
 
 import gameManager.GameStateManager;
@@ -127,14 +131,23 @@ public class Game extends JPanel implements
   // Resumes the game.
 	public static synchronized void resumeGame() {
 		// Sets the paused state to false.
-    paused = false;
+		paused = false;
 		synchronized (LoopThread) {
-      // Notifies the LoopThread.
+		// Notifies the LoopThread.
 			LoopThread.notify();
 		}
-    // Activates the level where it was.
-    // TODO
+		// Activates the level where it was.
 		gsm.setState(GameStateManager.LEVEL1STATE);
+	}
+	
+	public void hideCursor() {
+		//Transparent 16 x 16 pixel cursor image.
+		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+
+		// Create a new blank cursor.
+		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+		    cursorImg, new Point(0, 0), "blank cursor");
+		setCursor(blankCursor);
 	}
 	
 	public void keyPressed(KeyEvent key) {

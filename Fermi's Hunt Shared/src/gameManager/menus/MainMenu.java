@@ -7,20 +7,19 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
 
 import background.Background;
-import gameManager.GameState;
 import gameManager.GameStateManager;
 import mainGame.Game;
 
 @SuppressWarnings("serial")
-public class MainMenu extends GameState{
+public class MainMenu extends Menu{
 	
 	// Atributes
 	GameStateManager gsm;
 	int currentChoice;
-	private String[] options = {
+	
+	String[] options = { 
 			"Continue", "New Game", "Load", "Help", "Credits", "Quit" 
 	};
 	private Rectangle[] optionsRect;
@@ -56,9 +55,6 @@ public class MainMenu extends GameState{
 	public void draw(Graphics2D g) {
 		// Draw bg
 		mBG.draw(g);
-
-		// Helps to center the text.
-		FontMetrics fm = g.getFontMetrics(font);
 		
 		// Draw title
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
@@ -69,6 +65,9 @@ public class MainMenu extends GameState{
 		// Draw menu options
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 30);
 		g.setFont(font);
+
+		// Helps to center the text.
+		FontMetrics fm = g.getFontMetrics(font);
 		for(int i = 0; i < options.length; i++) {
 			
 			if(i == currentChoice) {
@@ -83,18 +82,12 @@ public class MainMenu extends GameState{
 			
 			// Fills the array with the collision rectangles.n
 			if (!(optionsRect[options.length-1] instanceof Rectangle)) {
-				Rectangle2D bounds = fm.getStringBounds(options[i], g);
-				optionsRect[i] = new Rectangle(
-						(int) Game.WIDTH/2 - fm.stringWidth(options[i])/2 - 10, 
-						(int) Game.HEIGHT/2 + (i * 60) - 30, 
-						(int) bounds.getWidth() + 15, 
-						(int) bounds.getHeight() + 10
-					);
+				optionsRect[i] = createOptionBorder(options[i], i, g, fm);
 			}
 		}
 	}
 
-	private void select() {
+	protected void select() {
 		switch(currentChoice) {
 		case 0:
 			// Continue

@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -260,9 +261,10 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 */
 	public void gotHit() {
 		// For-each to analyze every Bullet object.
-		for(Bullet a : b) {
+		for(Iterator<Bullet> a = b.iterator(); a.hasNext();) {
+			Bullet bt = a.next();
 			// Checks if the actual Bullet's collider rectangle intersects with this'.
-			if(collider().intersects(a.collider())) {
+			if(collider().intersects(bt.collider())) {
 				// If the enemy got hit, activates the gotHit switch.
 				// The gotHit switch eliminates the ship.
 				hp--;
