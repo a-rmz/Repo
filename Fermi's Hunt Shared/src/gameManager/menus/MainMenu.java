@@ -30,6 +30,9 @@ public class MainMenu extends Menu{
 	Color SelectedFontColor;
 	Font font;
 	
+	// SubMenus
+	HelpMenu hM;
+	
 	// Constructor
 	public MainMenu(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -44,15 +47,24 @@ public class MainMenu extends Menu{
 	public void init() {
 		mBG = new Background(Background.MAIN_MENU);
 		optionsRect = new Rectangle[options.length];
+		hM = HelpMenu.menu();
 	}
 
 	@Override
 	public void update() {
+		if(helpMenu) {
+			hM.update();
+			return;
+		}
 		mBG.update();		
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
+		if(helpMenu) {
+			hM.draw(g);
+			return;
+		}
 		// Draw bg
 		mBG.draw(g);
 		
@@ -100,6 +112,8 @@ public class MainMenu extends Menu{
 			break;
 		case 3:
 			// Help
+			helpMenu = true;
+			currentChoice = 0;
 			break;
 		case 4: 
 			// Credits
@@ -111,6 +125,10 @@ public class MainMenu extends Menu{
 	}
 	
 	public void keyPressed(int k) {
+		if(helpMenu) {
+			hM.keyPressed(k);
+			return;
+		}
 		if(k == KeyEvent.VK_ENTER) {
 			select();
 		}
@@ -132,6 +150,10 @@ public class MainMenu extends Menu{
 
 
 	public boolean mouseOver(MouseEvent e) {
+		if(helpMenu) {
+			// HelpMenu stuff here
+			return false;
+		}
 		for(int i = 0; i < options.length; i++) {
 			if(optionsRect[i].contains(e.getPoint())) {
 				currentChoice = i;

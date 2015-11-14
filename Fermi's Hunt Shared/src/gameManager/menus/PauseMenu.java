@@ -1,7 +1,6 @@
 package gameManager.menus;
 
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -48,6 +47,16 @@ public class PauseMenu extends Menu implements Runnable{
 		SelectedFontColor = Color.BLUE;
 	}
 	
+	@Override
+	public void init() {
+		currentChoice = 0;
+		pBG = new Background(Background.PAUSE_MENU);
+		image = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
+		g = (Graphics2D) image.getGraphics();
+		gsm.game.showCursor();
+		optionsRect = new Rectangle[options.length];
+	}
+	
 	public void addNotify() {
 		super.addNotify();
 		if(pauseMenu == null) {
@@ -55,24 +64,22 @@ public class PauseMenu extends Menu implements Runnable{
 			pauseMenu.start();
 		}
 	}
-	
-	@Override
-	public void init() {
-		currentChoice = 0;
-		pBG = new Background(Background.PAUSE_MENU);
-		image = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
-		g = (Graphics2D) image.getGraphics();
-		gsm.game.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-		optionsRect = new Rectangle[options.length];
-	}
 
 	@Override
 	public void update() {
+		if(helpMenu) {
+			HelpMenu.menu().update();
+			return;
+		}
 		pBG.update();
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
+		if(helpMenu) {
+			HelpMenu.menu().draw(g);
+			return;
+		}
 		// Draw bg
 		pBG.draw(g);
 		
@@ -111,22 +118,33 @@ public class PauseMenu extends Menu implements Runnable{
 	protected void select() {
 		switch(currentChoice) {
 		case 0:
+			// Resume
 			gsm.game.hideCursor();
 			Game.resumeGame();
 			break;
 		case 1:
+			// Save
 			break;
 		case 2:
+			// Load
 			break;
 		case 3:
+			// Help
+			helpMenu = true;
+			currentChoice = 0;
 			break;
 		case 4:
+			// Quit
 			System.exit(0);
 			break;
 		}
 	}
 	
 	public void keyPressed(int k) {
+		if(helpMenu) {
+			HelpMenu.menu().keyPressed(k);
+			return;
+		}
 		if(k == KeyEvent.VK_ENTER) {
 			select();
 		}
@@ -169,6 +187,10 @@ public class PauseMenu extends Menu implements Runnable{
 	}
 
 	public boolean mouseOver(MouseEvent e) {
+		if(helpMenu) {
+			// HelpMenu stuff here
+			return false;
+		}
 		for(int i = 0; i < options.length; i++) {
 			if(optionsRect[i].contains(e.getPoint())) {
 				currentChoice = i;

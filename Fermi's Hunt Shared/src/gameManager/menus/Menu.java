@@ -10,6 +10,8 @@ import mainGame.Game;
 
 @SuppressWarnings("serial")
 public abstract class Menu extends GameState {
+	
+	protected static boolean helpMenu = false;
 
 	Rectangle createOptionBorder(String option, int i, Graphics2D g, FontMetrics fm) {
 

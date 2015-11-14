@@ -149,6 +149,9 @@ public class Game extends JPanel implements
 		    cursorImg, new Point(0, 0), "blank cursor");
 		setCursor(blankCursor);
 	}
+	public void showCursor() {
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+	}
 	
 	public void keyPressed(KeyEvent key) {
 		gsm.keyPressed(key.getKeyCode());
