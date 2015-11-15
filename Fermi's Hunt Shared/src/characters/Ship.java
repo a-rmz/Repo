@@ -31,10 +31,10 @@ public class Ship extends SpaceObject implements MouseListener{
 			},
 			// Ship level 2
 			{
-			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_singleShot.gif",
-			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_singleShot_Up.gif",
-			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_singleShot_Down.gif",
-			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_singleShot_shoot.gif",
+			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot.gif",
+			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Up.gif",
+			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Down.gif",
+			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_shoot.gif",
 			}
 		}, 
 			// Ship TYPE 2
@@ -433,6 +433,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		attack();
+		mouseMoved(e);
 	}
 
 

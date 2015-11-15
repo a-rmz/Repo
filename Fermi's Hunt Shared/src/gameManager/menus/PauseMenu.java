@@ -194,10 +194,15 @@ public class PauseMenu extends Menu implements Runnable{
 		}
 
 		for(int i = 0; i < options.length; i++) {
-			if(optionsRect[i].contains(e.getPoint())) {
+			try {
+				if(optionsRect[i].contains(e.getPoint())) {
 				currentChoice = i;
 				return true;
+				}
+			} catch (Exception ex) {
+				System.out.println("Error madafaca: \n" + ex	);
 			}
+			
 		}
 		return false;
 	}
