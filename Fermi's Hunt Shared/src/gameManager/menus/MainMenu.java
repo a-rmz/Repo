@@ -8,6 +8,7 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import Effects.SoundEffects;
 import background.Background;
 import gameManager.GameStateManager;
 import mainGame.Game;
@@ -30,6 +31,10 @@ public class MainMenu extends Menu{
 	Color SelectedFontColor;
 	Font font;
 	
+	//backGround Sound
+	SoundEffects se = new SoundEffects();
+
+	
 	// SubMenus
 	HelpMenu hM;
 	
@@ -41,6 +46,9 @@ public class MainMenu extends Menu{
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
 		FontColor = Color.WHITE;
 		SelectedFontColor = Color.BLUE;
+		se.backGroundMenuMusic(0);
+		se.play();
+		
 	}
 
 	@Override
@@ -48,6 +56,8 @@ public class MainMenu extends Menu{
 		mBG = new Background(Background.MAIN_MENU);
 		optionsRect = new Rectangle[options.length];
 		hM = HelpMenu.menu();
+	
+		
 	}
 
 	@Override
@@ -106,6 +116,7 @@ public class MainMenu extends Menu{
 			break;
 		case 1:
 			gsm.newGame();
+			se.Stop();
 			break;
 		case 2:
 			// Load

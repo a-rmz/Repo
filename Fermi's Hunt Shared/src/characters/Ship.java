@@ -11,12 +11,14 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 import mainGame.Game;
 import managers.BulletManager;
 import managers.Position;
+import Effects.SoundEffects;
 
 public class Ship extends SpaceObject implements MouseListener{
 
@@ -34,7 +36,10 @@ public class Ship extends SpaceObject implements MouseListener{
 	};
 	private String url = resources[0];
 	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
-	Image ship = null;
+	Image ship = null; 
+	HashMap<String, SoundEffects> effects = new HashMap<>();
+	
+	
 	
 	
 	// **** PLAYER STATS ****
@@ -68,6 +73,10 @@ public class Ship extends SpaceObject implements MouseListener{
 		killedEnemies = 0;
 		// Loads the ship image
 		setSpaceObjectImage();
+		
+		SoundEffects ShotSound = new SoundEffects();
+		effects.put("shot", ShotSound);
+		
 	}
 	
 	
@@ -194,6 +203,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	public void attack() {
 		url = resources[3];
 		bm.add(p);
+		effects.get("shot").shipShotSound(0);;
 	}
 	
 	/**

@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+import Effects.SoundEffects;
 import background.Background;
 import gameManager.GameStateManager;
 import mainGame.Game;
@@ -24,6 +25,9 @@ public class PauseMenu extends Menu implements Runnable{
 			"Resume", "Save", "Load", "Help", "Quit"
 		};
 	private Rectangle[] optionsRect;
+	
+	//backGround Sound
+	SoundEffects se = new SoundEffects();
 	
 	// Thread
 	Thread pauseMenu;
@@ -45,6 +49,7 @@ public class PauseMenu extends Menu implements Runnable{
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
 		FontColor = Color.WHITE;
 		SelectedFontColor = Color.BLUE;
+		se.backGroundMenuMusic(0);
 	}
 	
 	@Override
@@ -55,6 +60,8 @@ public class PauseMenu extends Menu implements Runnable{
 		g = (Graphics2D) image.getGraphics();
 		gsm.game.showCursor();
 		optionsRect = new Rectangle[options.length];
+		se.play();
+		
 	}
 	
 	public void addNotify() {
@@ -121,6 +128,7 @@ public class PauseMenu extends Menu implements Runnable{
 			// Resume
 			gsm.game.hideCursor();
 			Game.resumeGame();
+			se.Stop();
 			break;
 		case 1:
 			// Save

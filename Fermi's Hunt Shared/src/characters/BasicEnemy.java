@@ -13,9 +13,12 @@ import java.util.Random;
 
 import javax.swing.Timer;
 
+import Effects.SoundEffects;
 import mainGame.Game;
 import managers.BulletManager;
 import managers.Position;
+
+
 
 public class BasicEnemy extends SpaceObject implements ActionListener{
 	
@@ -26,10 +29,14 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 			"/Sprites/Enemies/BasicEnemy.png",
 			"/Sprites/Enemies/BasicEnemy.png",
 			"/Sprites/Enemies/BasicEnemy.png"
+			
 	};
 	private String url;
 	public Image enemy = null;
-	
+	public Image explosion = null;
+
+	//*******ENEMY SOUND EFFECTS********
+	public SoundEffects se = new SoundEffects();
 	
 	// **** ENEMY STATS ****
 	private int enemyLevel;
@@ -39,6 +46,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	
 	// **** ENEMY MODIFIERS ****
 	public boolean hit = false;
+	public boolean dead= false;
 	// The timer is for the BasicEnemy to fire every certain time.
 	Timer enemyFire;
 	private Random r = new Random();
@@ -113,7 +121,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		bm.draw(g);
 		// Draws the enemy image.
 		g.drawImage(getSpaceObjectImage(), p.getX(), p.getY(), null);
-	}
+	
+}
 
 	
 	
@@ -122,6 +131,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 * Updates the position, the enemy stats, and the BulletManager.
 	 */		
 	public void update(){
+	
 		if (enabled) {
 			enemyFire.setDelay((r.nextInt(3)+1) * 1000);
 			// Determines if the enemy's velocity has to change.
@@ -138,7 +148,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		} else {
 			entering();
 		}
-	}
+	
+}
 	
 	private void entering() {
 		// Checks if the Enemy is within a range of velX from the origin.
@@ -228,6 +239,12 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	public void attack() {
 		// Adds a new Bullet to the BulletManager with the actual enemy position.
 		bm.add(p);
+		
+		if(dead){
+		se.close();
+		}else{
+		se.enemyShotSound(0);
+		}
 	}
 	
 	/**
@@ -265,10 +282,13 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 			Bullet bt = a.next();
 			// Checks if the actual Bullet's collider rectangle intersects with this'.
 			if(collider().intersects(bt.collider())) {
-				// If the enemy got hit, activates the gotHit switch.
+				
+			// If the enemy got hit, activates the gotHit switch.
 				// The gotHit switch eliminates the ship.
-				hp--;
+				hp--;	
 				System.out.println("Hit enemy");
+				
+				
 			}
 		}
 	}
@@ -276,7 +296,12 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	public int getHP() {
 		return hp;
 	}
-
+	
+	
 
 	
+	
+
+
+
 }
