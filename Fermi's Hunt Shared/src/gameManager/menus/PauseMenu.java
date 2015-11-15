@@ -191,6 +191,7 @@ public class PauseMenu extends Menu implements Runnable{
 			// HelpMenu stuff here
 			return false;
 		}
+
 		for(int i = 0; i < options.length; i++) {
 			if(optionsRect[i].contains(e.getPoint())) {
 				currentChoice = i;

@@ -256,6 +256,14 @@ public class Ship extends SpaceObject implements MouseListener{
 		return bm.returnManager();
 	}
 	
+	public void setShipName(String shipName) {
+		this.shipName = shipName;
+	}
+	
+	public String getShipName() {
+		return this.shipName;
+	}
+	
 	
 	
 	// **** USER KEY INTERACTION ****
