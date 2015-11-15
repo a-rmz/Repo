@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
+import Effects.SoundEffects;
 import gameManager.GameState;
 import mainGame.Game;
 
@@ -24,6 +25,7 @@ public abstract class Menu extends GameState {
 			);
 	}	
 		
+	public static SoundEffects se = new SoundEffects();
 	protected abstract void select();
 
 }

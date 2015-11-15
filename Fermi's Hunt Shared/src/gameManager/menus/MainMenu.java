@@ -31,9 +31,6 @@ public class MainMenu extends Menu{
 	Color SelectedFontColor;
 	Font font;
 	
-	//backGround Sound
-	SoundEffects se = new SoundEffects();
-
 	
 	// SubMenus
 	HelpMenu hM;
@@ -116,7 +113,7 @@ public class MainMenu extends Menu{
 			break;
 		case 1:
 			gsm.newGame();
-			se.Stop();
+//			se.Stop();
 			break;
 		case 2:
 			// Load

@@ -235,9 +235,9 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		bm.add(p);
 		
 		if(dead){
-		se.close();
+			se.close();
 		}else{
-		se.enemyShotSound(0);
+			se.enemyShotSound(0);
 		}
 	}
 	
@@ -254,7 +254,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		attack();		
+		if(enabled) attack();		
 	}
 
 	/**

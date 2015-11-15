@@ -71,7 +71,7 @@ public class SoundEffects {
 		
 	}
 	
-public void enemyShotSound(int n){
+	public void enemyShotSound(int n){
 	
 		
 		try{
@@ -139,7 +139,7 @@ public void enemyShotSound(int n){
 		}
 		
 	}
-public void backGroundMusic(int n){
+	public void backGroundMusic(int n){
 	
 		
 		try{
@@ -173,7 +173,7 @@ public void backGroundMusic(int n){
 		}
 		
 	}
-public void backGroundMenuMusic(int n){
+	public void backGroundMenuMusic(int n){
 	
 	
 	try{
@@ -215,7 +215,7 @@ public void backGroundMenuMusic(int n){
 		
 	}
 
-	public void Stop() {
+	public void stop() {
 		try{
 		if(clip.isRunning()) clip.stop();
 		} catch( Exception e){
@@ -224,7 +224,7 @@ public void backGroundMenuMusic(int n){
 	}
 	
 	public void close(){
-		Stop();
+		stop();
 		clip.close();
 	}
 	public void pause(){

@@ -131,7 +131,7 @@ public class PauseMenu extends Menu implements Runnable{
 			// Resume
 			gsm.game.hideCursor();
 			Game.resumeGame();
-			se.Stop();
+			se.stop();
 			break;
 		case 1:
 			// Save
@@ -211,7 +211,7 @@ public class PauseMenu extends Menu implements Runnable{
 				return true;
 				}
 			} catch (Exception ex) {
-				System.out.println("Error madafaca: \n" + ex	);
+				System.out.println("Error madafaca (PauseMenu): " + ex.toString());
 			}
 			
 		}

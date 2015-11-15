@@ -451,6 +451,7 @@ public class CustomizeMenu extends Menu{
 		} else if (mouseOverPoints(e)) {
 			setPoints();
 		} else if (mouseOverLaunch(e)) {
+			se.stop();
 			gsm.setState(GameStateManager.LEVEL1STATE);
 			gsm.game.hideCursor();
 		}
