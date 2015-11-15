@@ -161,7 +161,8 @@ public class PauseMenu extends Menu implements Runnable{
 			}
 		}
 		if(k == KeyEvent.VK_ESCAPE) {
-			Game.resumeGame();
+			currentChoice = 0;
+			select();
 		}
 	}
 

@@ -51,6 +51,9 @@ public class Ship extends SpaceObject implements MouseListener{
 	private int level;
 	private int killedEnemies;
 	private int xp;
+	private int shield;
+	private int fireRate;
+	private int speed;
 	
 	
 	// **** SHIP MODIFIERS ****

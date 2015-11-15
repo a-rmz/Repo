@@ -66,6 +66,13 @@ public class CustomizeMenu extends Menu{
 	// Name
 	String name = "";
 	
+	// Player Stats
+	private int pointsLeft = 10;
+	private int shield;
+	private int fireRate;
+	private int speed;
+	private boolean stats[][]= {{false}, {false}};
+	
 	// GameStateManager
 	GameStateManager gsm;
 	
@@ -85,6 +92,7 @@ public class CustomizeMenu extends Menu{
 		gsm.game.showCursor();
 		cBG = new Background(Background.CUSTOMIZE_MENU);
 		ships = new Rectangle[ShipThumb.shipQuant()];
+		stats = new boolean[3][10];
 		for(int i = 0; i < ShipThumb.shipQuant(); i++) {
 			ships[i] = new Rectangle(
 				(i * 200) + 200,
@@ -117,6 +125,7 @@ public class CustomizeMenu extends Menu{
 		drawShipOptions(g);
 		drawMainShip(g);
 		drawShipName(g);
+		drawShipCustomPoints(g);
 	}
 	
 	public void drawMainShip(Graphics2D g) {
@@ -201,10 +210,73 @@ public class CustomizeMenu extends Menu{
 		}
 	}
 	
+	private void drawShipCustomPoints(Graphics2D g) {
+		g.setStroke(new BasicStroke(5));
+		g.setColor(Color.BLACK);
+		// Draws the frame and background
+		Rectangle r = new Rectangle(
+				ships[1].x + ships[2].width + 225, 
+				200, 
+				1000, 
+				760
+				);
+		g.draw(r);		
+		g.setColor(new Color(0, 0, 0, 200));
+		g.fillRect(r.x, r.y, r.width, r.height);
+		
+		String points = "Points left: " + pointsLeft;
+		// Draws the header
+		g.setColor(Color.WHITE);
+		Font f = new Font("8-Bit Madness", Font.PLAIN, 60);
+		FontMetrics fm = g.getFontMetrics(f);
+		g.setFont(f);
+		g.drawString(points, 
+				(int) (r.getCenterX() - fm.stringWidth(points)/2),
+				r.y + 100);
+		
+		f = new Font("8-Bit Madness", Font.PLAIN, 30);
+		fm = g.getFontMetrics(f);
+		String buffer = "Shield: ";
+		g.drawString(buffer, r.x + 50, r.y + 250);
+		buffer = "Speed: ";
+		g.drawString(buffer, r.x + 50, r.y + 400);
+		buffer = "Fire Rate: ";
+		g.drawString(buffer, r.x + 50, r.y + 550);
+		drawPoints(g);
+	}
+	
 
 	
 	private void setShipName() {
 		// Do magic stuff
+	}
+	
+	private void drawPoints(Graphics2D g) {
+		Rectangle r = new Rectangle(
+			ships[1].x + ships[2].width + 225, 
+			200, 
+			1000, 
+			760
+			);
+		Color ctrue = new Color(255, 216, 0, 100);
+		Color cfalse = new Color(205, 16, 26, 100);
+		
+		g.setStroke(new BasicStroke(4));
+		for(int i = 0; i < 3; i++) {
+			for(int j = 0; j < 10; j++) {
+				if(stats[i][j]) {
+					g.setColor(ctrue);
+					g.fillRect(r.x + 150 + (j*40), r.y + 280 + (i * 150), 30, 40);
+					g.setColor(Color.BLACK);
+					g.drawRect(r.x + 150 + (j*40), r.y + 280 + (i * 150), 30, 40);
+				} else {
+					g.setColor(cfalse);
+					g.fillRect(r.x + 150 + (j*40), r.y + 280 + (i * 150), 30, 40);
+					g.setColor(Color.BLACK);
+					g.drawRect(r.x + 150 + (j*40), r.y + 280 + (i * 150), 30, 40);					
+				}
+			}
+		}
 	}
 
 	@Override
@@ -212,6 +284,7 @@ public class CustomizeMenu extends Menu{
 		switch(k) {
 		case KeyEvent.VK_ESCAPE:
 			gsm.setState(GameStateManager.LEVEL1STATE);
+			gsm.game.hideCursor();
 			break;
 		}
 		

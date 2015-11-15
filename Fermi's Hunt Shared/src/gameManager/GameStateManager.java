@@ -72,7 +72,6 @@ public class GameStateManager {
 	}
 	
 	public void newGame() {
-		game.hideCursor();
 		setState(CUSTOMIZESTATE);
 		gameStates.add(new Level1(this));
 	}
