@@ -25,4 +25,5 @@ public abstract class Menu extends GameState {
 	}	
 		
 	protected abstract void select();
+
 }

@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import background.Background;
-import gameManager.GameStateManager;
+import gameManager.*;
 import mainGame.Game;
 
 @SuppressWarnings("serial")
@@ -37,6 +37,9 @@ public class PauseMenu extends Menu implements Runnable{
 	// Image
 	private BufferedImage image;
 	private Graphics2D g;
+	
+	// GameStateManager
+	GameStateManager gsm;
 	
 	
 	public PauseMenu(GameStateManager gsm) {
