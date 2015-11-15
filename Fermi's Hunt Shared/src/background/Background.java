@@ -16,6 +16,7 @@ public class Background {
 			"/BackgroundImg/Main_Menu/mm_img.png",
 			"/BackgroundImg/Pause_Menu/pm_img.png",
 			"/BackgroundImg/Help_Menu/hm_img.png",
+			"/BackgroundImg/Customize_Menu/cm_img.png",
 			"/BackgroundImg/Level_1/l1_img.png"
 	};
 	private String url;
@@ -27,7 +28,8 @@ public class Background {
 	public static final int MAIN_MENU = 0;
 	public static final int PAUSE_MENU = 1;
 	public static final int HELP_MENU = 2;
-	public static final int LEVEL_1= 3;
+	public static final int CUSTOMIZE_MENU = 3;
+	public static final int LEVEL_1= 4;
 
 	
 	// **** SHIP MODIFIERS ****

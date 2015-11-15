@@ -22,15 +22,15 @@ public class Ship extends SpaceObject implements MouseListener{
 
 	// **** RESOURCES ****
 	private String[] resources = {
-		"/Sprites/Ship/Single_Shot/sprite_ship1_singleShot.gif",
-		"/Sprites/Ship/Single_Shot/sprite_ship1_singleShot_Up.gif",
-		"/Sprites/Ship/Single_Shot/sprite_ship1_singleShot_Down.gif",
-		"/Sprites/Ship/Single_Shot/sprite_ship1_singleShot_shoot.gif",
+		"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot.gif",
+		"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_Up.gif",
+		"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_Down.gif",
+		"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_shoot.gif",
 		// Ship level 2
-		"/Sprites/Ship/Double_Shot/sprite_ship1_doubleShot.gif",
-		"/Sprites/Ship/Double_Shot/sprite_ship1_doubleShot_Up.gif",
-		"/Sprites/Ship/Double_Shot/sprite_ship1_doubleShot_Down.gif",
-		"/Sprites/Ship/Double_Shot/sprite_ship1_doubleShot_shoot.gif"
+		"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot.gif",
+		"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Up.gif",
+		"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Down.gif",
+		"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_shoot.gif"
 	};
 	private String url = resources[0];
 	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
@@ -38,6 +38,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	
 	// **** PLAYER STATS ****
+	public String shipName;
 	public int hp;
 	private int level;
 	private int killedEnemies;
@@ -257,7 +258,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 * Returns the Bullet list from the BulletManager.
 	 * @return LinkedList of Bullets
 	 */
-	public List<Bullet> getShipBullets() {
+	public synchronized List<Bullet> getShipBullets() {
 		return bm.returnManager();
 	}
 	
