@@ -2,7 +2,6 @@ package gameManager.menus;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -10,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import background.Background;
+import characters.Sprite;
 import gameManager.GameStateManager;
 import mainGame.Game;
 
@@ -19,7 +19,9 @@ public class CustomizeMenu extends Menu{
 	// Graphics
 	Background cBG;
 	String[] baseShips = {
-		"/Sprites/Ship/thumbs/sprite_ship1_singleShot_thumb.gif"	
+		"/Sprites/Ship/thumbs/sprite_ship1_singleShot_thumb.gif",
+		"/Sprites/Ship/thumbs/sprite_ship1_singleShot_thumb.gif",
+		"/Sprites/Ship/thumbs/sprite_ship1_singleShot_thumb.gif"
 	};
 	Image[] shipThumbs = new Image[3];
 	
@@ -31,6 +33,7 @@ public class CustomizeMenu extends Menu{
 	// Constructor
 	public CustomizeMenu(GameStateManager gsm) {
 		this.gsm = gsm;
+		init();
 	}
 	
 	@Override
@@ -57,7 +60,7 @@ public class CustomizeMenu extends Menu{
 	
 	private void loadThumbs() {
 		for(int i = 0; i < 3; i++) {
-			
+			shipThumbs[i] = Sprite.loadSprite(baseShips[i], this);
 		}
 	}
 
@@ -76,20 +79,25 @@ public class CustomizeMenu extends Menu{
 	}
 	
 	private void drawShipOptions(Graphics2D g) {
-		// Draw the ships
-		Graphics gr = (Graphics) g;
-		gr.drawImage(shipThumbs[0], 
-					ships[0].getX(),
-					ships[0].getY()
-					
-				);
-		
 		g.setStroke(new BasicStroke(3));
-		g.setColor(Color.BLACK);
+		Color back = new Color(0, 0, 0, 125);
 		// Draw a Rectangle for each frame.
 		for(Rectangle r : ships) {
-			//g.draw(r);
-			g.drawRect(r.x, r.y, r.width, r.height);
+			g.setColor(Color.BLACK);
+			g.draw(r);
+			g.setColor(back);
+			g.fillRect(r.x, r.y, r.width, r.height);
+		}
+		
+		// Draw the ships
+		for(int i = 0; i < 3; i++) {
+			g.drawImage(shipThumbs[0], 
+					(int) ships[i].getX(),
+					(int) ships[i].getY(),
+					(int) ships[i].getWidth(),
+					(int) ships[i].getHeight(),
+					this
+				);
 		}
 	}
 

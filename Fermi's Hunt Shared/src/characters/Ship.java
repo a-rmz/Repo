@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -85,12 +84,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 *  Loads the image as a .gif.
 	 */
 	public void setSpaceObjectImage() {
-		try {
-			// Gets the image from the url defined by the resources array
-			ship = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
-		} catch (Exception e) {
-			ship = null;
-		}
+		ship = Sprite.loadSprite(url, this);
 	}
 	
 	/**

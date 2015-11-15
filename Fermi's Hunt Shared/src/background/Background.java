@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Image; // mostrar imagen
 import java.awt.Toolkit;
 
+import characters.Sprite;
 import mainGame.Game;
 import managers.Position;
 
@@ -85,16 +86,7 @@ public class Background {
 	 * various Background elements.
 	 */
 	public Image setBackgroundImage() {
-		// Creates a temporal image to load the background.
-		Image i = null;
-		try {
-			// Gets the image from the url defined by the resources array
-			i = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
-		} catch (Exception e) {
-			System.out.println("No load image " + url);
-			i = null;
-		}
-		return i;
+		return Sprite.loadSprite(url, this);
 	}
 	
 	/**

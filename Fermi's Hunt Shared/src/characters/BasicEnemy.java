@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
@@ -88,12 +87,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 *  Loads the image as a .png.
 	 */
 	public void setSpaceObjectImage(){
-		try {
-			// Gets the image from the url defined by the resources array
-			enemy = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
-		} catch (Exception e) {
-			enemy = null;
-		}
+		enemy = Sprite.loadSprite(url, this);
 	}	
 
 	/**
