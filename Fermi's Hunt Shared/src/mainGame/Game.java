@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import Effects.SoundEffects;
 import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
@@ -25,6 +26,10 @@ public class Game extends JPanel implements
 	// Dimensions
 	public static final int WIDTH = (int) screenSize().getWidth();
 	public static final int HEIGHT = (int) screenSize().getHeight();
+	
+	//*****BacGround Music******* 
+	
+	
 	
 	
 	private static Thread LoopThread;
@@ -48,7 +53,8 @@ public class Game extends JPanel implements
 		addKeyListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
-  }
+		
+}
 	
 	
 	private static Dimension screenSize() {
@@ -69,6 +75,7 @@ public class Game extends JPanel implements
 	 */
 	public void run() {
 		// TODO Auto-generated method stub
+		
 		
 		long start, elapsed, wait;
   	// Initializes what is needed for the Game.
@@ -104,9 +111,10 @@ public class Game extends JPanel implements
     // Checks if the Game is paused.
 		try {
 		    if (paused) {
+		  
 		        synchronized (this) {
               // While the Game is paused, the thread is waiting.
-		            while (paused) wait();
+		            while (paused) wait(); 
 		            }
 		        }
 		    } catch (InterruptedException e) {
@@ -126,6 +134,8 @@ public class Game extends JPanel implements
   // Sets the Game to pause.
 	public static void pauseMenu() {
 		gsm.setState(GameStateManager.PAUSESTATE);
+		
+		
 	}
 	
   // Resumes the game.

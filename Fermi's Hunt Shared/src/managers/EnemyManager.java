@@ -1,16 +1,26 @@
 package managers;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import characters.BasicEnemy;
 import characters.Ship;
-public class EnemyManager extends Manager<BasicEnemy>{
+import Effects.Explosion;
+import Effects.SoundEffects;
+
+public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 	
 	// NO LOCAL INSTANCES
 	
 	// --------------------------------------------------------------------------------
 	
+	//******* Attributes for effects********
+	ArrayList<Explosion> BUUM = new ArrayList<Explosion>();
+	SoundEffects se = new SoundEffects();
+	
+	private Thread thread;
+	private boolean isRunning;
 	
 	// **** CONSTRUCTOR ****
 	public EnemyManager(int level, int number) {
@@ -21,6 +31,12 @@ public class EnemyManager extends Manager<BasicEnemy>{
 			// Adds the new enemy to the LinkedList.
 			add(e);
 		}
+		isRunning=true;
+		thread = new Thread(this);
+		thread.start();
+		
+		
+		
 	}
 	
 	
@@ -32,6 +48,14 @@ public class EnemyManager extends Manager<BasicEnemy>{
 	 * @param g
 	 */
 	public void draw(Graphics g) {
+		
+		for(int x =0 ; x< BUUM.size(); x++){
+			Explosion e = BUUM.get(x);
+			e.draw(g);
+			
+		}
+		
+		
 		// For-each loop to draw the BasicEnemy.
 		for(BasicEnemy b : l) {
 			// Calls the BasicEnemy draw method.
@@ -51,6 +75,7 @@ public class EnemyManager extends Manager<BasicEnemy>{
 			// Sets the Bullet b to the next Bullet in the List.
 			BasicEnemy be = i.next();
 			// Calls the Bullet updated method.
+		
 			be.update();
 			// Checks if the Bullet has to be destroyed.
 			destroy(i, be);
@@ -63,21 +88,51 @@ public class EnemyManager extends Manager<BasicEnemy>{
 	 * @param b Bullet Object
 	 * @return boolean true if the object is successfully destroyed.
 	 */
-	public boolean destroy(Iterator<BasicEnemy> i, BasicEnemy be) {
+	 public boolean destroy(Iterator<BasicEnemy> i, BasicEnemy be) {
 		// Checks if the Enemy is hit.
 		if(be.getHP() <= 0) {
+			be.dead = true;
+			Explosion e = new Explosion(be.p.getX(),be.p.getY());
+			BUUM.add(e);
+			se.ExplosionSound(0);
+			
+		
 			// Adds +1 to the killedEnemies record of the Player
 			Ship.getPlayer().killedEnemy();
 			// Sets the position of the former BasicEnemy to null.
+		
 			be.p = null;
 			// Removes the BasicEnemy.
 			i.remove();
 			// Destroys the object.
+		
 			be = null;
+	
+			
 			return true;
 		}
 		// If the Bullet was not destroyed, returns false.
 		return false;
+	}
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+		while(isRunning){
+		for(int x=0; x<BUUM.size() ; x++){
+			try {
+				Thread.sleep(550);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			BUUM.remove(x);
+		}
+	}
+		
 	}
 
 }
