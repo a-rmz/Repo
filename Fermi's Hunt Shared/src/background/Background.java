@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Image; // mostrar imagen
 import java.awt.Toolkit;
 
+import characters.Sprite;
 import mainGame.Game;
 import managers.Position;
 
@@ -16,6 +17,7 @@ public class Background {
 			"/BackgroundImg/Main_Menu/mm_img.png",
 			"/BackgroundImg/Pause_Menu/pm_img.png",
 			"/BackgroundImg/Help_Menu/hm_img.png",
+			"/BackgroundImg/Customize_Menu/cm_img.png",
 			"/BackgroundImg/Level_1/l1_img.png"
 	};
 	private String url;
@@ -27,7 +29,8 @@ public class Background {
 	public static final int MAIN_MENU = 0;
 	public static final int PAUSE_MENU = 1;
 	public static final int HELP_MENU = 2;
-	public static final int LEVEL_1= 3;
+	public static final int CUSTOMIZE_MENU = 3;
+	public static final int LEVEL_1= 4;
 
 	
 	// **** SHIP MODIFIERS ****
@@ -83,16 +86,7 @@ public class Background {
 	 * various Background elements.
 	 */
 	public Image setBackgroundImage() {
-		// Creates a temporal image to load the background.
-		Image i = null;
-		try {
-			// Gets the image from the url defined by the resources array
-			i = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
-		} catch (Exception e) {
-			System.out.println("No load image " + url);
-			i = null;
-		}
-		return i;
+		return Sprite.loadSprite(url, this);
 	}
 	
 	/**

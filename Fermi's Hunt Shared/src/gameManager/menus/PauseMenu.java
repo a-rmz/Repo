@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 
 import Effects.SoundEffects;
 import background.Background;
-import gameManager.GameStateManager;
+import gameManager.*;
 import mainGame.Game;
 
 @SuppressWarnings("serial")
@@ -41,6 +41,9 @@ public class PauseMenu extends Menu implements Runnable{
 	// Image
 	private BufferedImage image;
 	private Graphics2D g;
+	
+	// GameStateManager
+	GameStateManager gsm;
 	
 	
 	public PauseMenu(GameStateManager gsm) {
@@ -169,7 +172,8 @@ public class PauseMenu extends Menu implements Runnable{
 			}
 		}
 		if(k == KeyEvent.VK_ESCAPE) {
-			Game.resumeGame();
+			currentChoice = 0;
+			select();
 		}
 	}
 
@@ -199,11 +203,17 @@ public class PauseMenu extends Menu implements Runnable{
 			// HelpMenu stuff here
 			return false;
 		}
+
 		for(int i = 0; i < options.length; i++) {
-			if(optionsRect[i].contains(e.getPoint())) {
+			try {
+				if(optionsRect[i].contains(e.getPoint())) {
 				currentChoice = i;
 				return true;
+				}
+			} catch (Exception ex) {
+				System.out.println("Error madafaca: \n" + ex	);
 			}
+			
 		}
 		return false;
 	}

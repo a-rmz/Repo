@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
@@ -96,12 +95,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 *  Loads the image as a .png.
 	 */
 	public void setSpaceObjectImage(){
-		try {
-			// Gets the image from the url defined by the resources array
-			enemy = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
-		} catch (Exception e) {
-			enemy = null;
-		}
+		enemy = Sprite.loadSprite(url, this);
 	}	
 
 	/**
@@ -277,8 +271,9 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 *  the corresponding stats modifications.
 	 */
 	public void gotHit() {
-		// For-each to analyze every Bullet object.
-		for(Iterator<Bullet> a = b.iterator(); a.hasNext();) {
+		synchronized (b) {
+			// For-each to analyze every Bullet object.
+			for(Iterator<Bullet> a = b.iterator(); a.hasNext();) {
 			Bullet bt = a.next();
 			// Checks if the actual Bullet's collider rectangle intersects with this'.
 			if(collider().intersects(bt.collider())) {
@@ -287,10 +282,10 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 				// The gotHit switch eliminates the ship.
 				hp--;	
 				System.out.println("Hit enemy");
-				
-				
-			}
-		}
+				} // End if
+			} // End for
+		}// End synchronized
+		
 	}
 	
 	public int getHP() {

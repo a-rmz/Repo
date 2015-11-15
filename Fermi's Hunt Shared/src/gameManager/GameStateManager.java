@@ -4,8 +4,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import gameManager.levels.Level1;
-import gameManager.menus.MainMenu;
-import gameManager.menus.PauseMenu;
+import gameManager.menus.*;
 import mainGame.Game;
 
 public class GameStateManager {
@@ -14,8 +13,9 @@ public class GameStateManager {
 	private int currentState;
 	
 	public static final int MENUSTATE = 0;
-	public static final int PAUSESTATE = 1;
-	public static final int LEVEL1STATE = 2;
+	public static final int CUSTOMIZESTATE = 1;
+	public static final int PAUSESTATE = 2;
+	public static final int LEVEL1STATE = 3;
 	
 	public Game game;
 	
@@ -24,6 +24,7 @@ public class GameStateManager {
 		gameStates = new ArrayList<GameState>();
 		currentState = MENUSTATE;
 		gameStates.add(new MainMenu(this));	
+		gameStates.add(new CustomizeMenu(this));
 		gameStates.add(new PauseMenu(this));
 		
 	}
@@ -71,9 +72,8 @@ public class GameStateManager {
 	}
 	
 	public void newGame() {
-		game.hideCursor();
+		setState(CUSTOMIZESTATE);
 		gameStates.add(new Level1(this));
-		this.setState(LEVEL1STATE);
 	}
 }
 
