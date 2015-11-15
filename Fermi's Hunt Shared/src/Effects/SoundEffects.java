@@ -28,7 +28,8 @@ public class SoundEffects {
 			"/Sounds/sectorZ.mp3"
 	};
 	public  String[] backGroundMenuMusic ={
-			"/Sounds/MenuMusic.mp3"
+			"/Sounds/MenuMusic.mp3",
+			"/Sounds/sectorZ.mp3"
 	};
 	
 	public SoundEffects(){

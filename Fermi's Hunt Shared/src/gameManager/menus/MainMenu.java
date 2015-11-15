@@ -46,7 +46,7 @@ public class MainMenu extends Menu{
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
 		FontColor = Color.WHITE;
 		SelectedFontColor = Color.BLUE;
-		se.backGroundMenuMusic(0);
+		se.backGroundMenuMusic(1);
 		se.play();
 		
 	}
