@@ -20,27 +20,63 @@ import managers.Position;
 public class Ship extends SpaceObject implements MouseListener{
 
 	// **** RESOURCES ****
-	private String[][] resources = {
+	private String[][][] resources = {
+			// Ship TYPE 1
+		{
 			{
-		"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot.gif",
-		"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_Up.gif",
-		"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_Down.gif",
-		"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_shoot.gif",
+			"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot.gif",
+			"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_Down.gif",
+			"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_shoot.gif",
 			},
-		// Ship level 2
+			// Ship level 2
 			{
-		"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot.gif",
-		"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Up.gif",
-		"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Down.gif",
-		"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_shoot.gif"
+			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_singleShot.gif",
+			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_singleShot_Down.gif",
+			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_singleShot_shoot.gif",
 			}
+		}, 
+			// Ship TYPE 2
+		{
+			{
+			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot.gif",
+			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_Down.gif",
+			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_shoot.gif",
+			},
+			// Ship level 2
+			{
+			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot.gif",
+			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_Down.gif",
+			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_shoot.gif",
+			}
+		}, 
+		// Ship TYPE 3
+		{
+			{
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_Down.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_shoot.gif",
+			},
+			// Ship level 2
+			{
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_Down.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_shoot.gif",
+			}
+		}, 
 	};
+	public int shipType = 0;
 	private final int BASIC_SHIP = 0;
 	private final int SHIP_UP = 1;
 	private final int SHIP_DOWN = 2;
 	private final int SHIP_SHOOT = 3;
 	
-	private String url = resources[0][BASIC_SHIP];
+	private String url = resources[shipType][0][BASIC_SHIP];
 	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
 	Image ship = null;
 	
@@ -51,9 +87,9 @@ public class Ship extends SpaceObject implements MouseListener{
 	private int level;
 	private int killedEnemies;
 	private int xp;
-	private int shield;
-	private int fireRate;
-	private int speed;
+	public int shield;
+	public int fireRate;
+	public int speed;
 	
 	
 	// **** SHIP MODIFIERS ****
@@ -78,6 +114,9 @@ public class Ship extends SpaceObject implements MouseListener{
 		hp = 5;
 		level = 1;
 		killedEnemies = 0;
+		shield = 0;
+		fireRate = 0;
+		speed = 0;
 		// Loads the ship image
 		setSpaceObjectImage();
 	}
@@ -199,7 +238,7 @@ public class Ship extends SpaceObject implements MouseListener{
 
 	// TODO
 	public void attack() {
-		url = resources[level-1][SHIP_SHOOT];
+		url = resources[shipType][level-1][SHIP_SHOOT];
 		bm.add(p);
 	}
 	
@@ -276,6 +315,11 @@ public class Ship extends SpaceObject implements MouseListener{
 		return this.shipName;
 	}
 	
+	public void changeType(int shipType) {
+		this.shipType = shipType;
+		url = resources[shipType][0][BASIC_SHIP];
+	}
+
 	
 	
 	// **** USER KEY INTERACTION ****
@@ -285,7 +329,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void up(){
 		// Changes the actual ship image
-		url = resources[level-1][SHIP_UP];
+		url = resources[shipType][level-1][SHIP_UP];
 		// Changes the ship speed and allows it to move diagonally.
 		p.setVelY(-15);
 	}
@@ -295,7 +339,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void down() {
 		// Changes the actual ship image
-		url = resources[level-1][SHIP_DOWN];
+		url = resources[shipType][level-1][SHIP_DOWN];
 		// Changes the ship speed and allows it to move diagonally.
 		p.setVelY(15);
 	}
@@ -305,7 +349,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void left() {
 		// Changes the actual ship image
-		url = resources[level-1][BASIC_SHIP];
+		url = resources[shipType][level-1][BASIC_SHIP];
 		// Changes the ship speed and allows it to move diagonally.
 		p.setVelX(-15);
 	}
@@ -315,7 +359,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void right() {
 		// Changes the actual ship image
-		url = resources[level-1][BASIC_SHIP];
+		url = resources[shipType][level-1][BASIC_SHIP];
 		// Changes the ship speed and allows it to move diagonally.
 		p.setVelX(15);
 	}
@@ -369,7 +413,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		if(code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D)
 			p.setVelX(0);
 		// The ship image is set to the basic image again according to the level.
-		url = resources[level-1][BASIC_SHIP];
+		url = resources[shipType][level-1][BASIC_SHIP];
 	}
 
 
@@ -395,7 +439,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		url = resources[level-1][BASIC_SHIP];
+		url = resources[shipType][level-1][BASIC_SHIP];
 	}	
 	
 	public void mouseMoved(MouseEvent e) {

@@ -23,6 +23,7 @@ public class CustomizeMenu extends Menu{
 		// Members
 		private String shipName;
 		private Image ship;
+		private int id;
 		
 		// Options
 		private static final String names[] = {
@@ -39,6 +40,7 @@ public class CustomizeMenu extends Menu{
 		
 		public ShipThumb(int type) {
 			shipName = names[type];
+			id = type;
 			ship = Sprite.loadSprite(baseShips[type], this);
 		}
 		
@@ -50,6 +52,9 @@ public class CustomizeMenu extends Menu{
 		}
 		public static int shipQuant() {
 			return names.length;
+		}
+		public int getID() {
+			return id;
 		}
 	}
 
@@ -67,11 +72,20 @@ public class CustomizeMenu extends Menu{
 	String name = "";
 	
 	// Player Stats
-	private int pointsLeft = 10;
+	private static int pointsLeft = 10;
 	private int shield;
 	private int fireRate;
 	private int speed;
 	private boolean stats[][]= {{false}, {false}};
+	private boolean flag[] = {false, false, false};
+	private int ptsPos;
+	private Rectangle statsRect[][];
+	Rectangle oR = new Rectangle(
+			775, 
+			200, 
+			1000, 
+			760);
+	private boolean readyToLaunch = false;
 	
 	// GameStateManager
 	GameStateManager gsm;
@@ -102,8 +116,19 @@ public class CustomizeMenu extends Menu{
 			);
 		}
 		loadThumbs();
+		initPoints();
 		mainShip = thumbs[0];
+		
 		Ship.getPlayer().setShipName("Enter Ship name");
+	}
+	
+	private void initPoints() {
+		statsRect = new Rectangle[3][10];
+		for(int i = 0; i < 3; i++) {
+			for(int j = 0; j < 10; j++) {
+				statsRect[i][j] = new Rectangle(oR.x + 150 + (j*40), oR.y + 280 + (i * 150), 30, 40);
+			}
+		}
 	}
 	
 	private void loadThumbs() {
@@ -115,7 +140,11 @@ public class CustomizeMenu extends Menu{
 	@Override
 	public void update() {
 		cBG.update();
-		
+		if(pointsLeft == 0) {
+			readyToLaunch = true;
+		} else {
+			readyToLaunch = false;
+		}
 	}
 
 	@Override
@@ -126,6 +155,7 @@ public class CustomizeMenu extends Menu{
 		drawMainShip(g);
 		drawShipName(g);
 		drawShipCustomPoints(g);
+		if(readyToLaunch) drawLaunch(g);
 	}
 	
 	public void drawMainShip(Graphics2D g) {
@@ -214,15 +244,9 @@ public class CustomizeMenu extends Menu{
 		g.setStroke(new BasicStroke(5));
 		g.setColor(Color.BLACK);
 		// Draws the frame and background
-		Rectangle r = new Rectangle(
-				ships[1].x + ships[2].width + 225, 
-				200, 
-				1000, 
-				760
-				);
-		g.draw(r);		
+		g.draw(oR);		
 		g.setColor(new Color(0, 0, 0, 200));
-		g.fillRect(r.x, r.y, r.width, r.height);
+		g.fillRect(oR.x, oR.y, oR.width, oR.height);
 		
 		String points = "Points left: " + pointsLeft;
 		// Draws the header
@@ -231,33 +255,21 @@ public class CustomizeMenu extends Menu{
 		FontMetrics fm = g.getFontMetrics(f);
 		g.setFont(f);
 		g.drawString(points, 
-				(int) (r.getCenterX() - fm.stringWidth(points)/2),
-				r.y + 100);
+				(int) (oR.getCenterX() - fm.stringWidth(points)/2),
+				oR.y + 100);
 		
 		f = new Font("8-Bit Madness", Font.PLAIN, 30);
 		fm = g.getFontMetrics(f);
 		String buffer = "Shield: ";
-		g.drawString(buffer, r.x + 50, r.y + 250);
+		g.drawString(buffer, oR.x + 50, oR.y + 250);
 		buffer = "Speed: ";
-		g.drawString(buffer, r.x + 50, r.y + 400);
+		g.drawString(buffer, oR.x + 50, oR.y + 400);
 		buffer = "Fire Rate: ";
-		g.drawString(buffer, r.x + 50, r.y + 550);
+		g.drawString(buffer, oR.x + 50, oR.y + 550);
 		drawPoints(g);
 	}
 	
-
-	
-	private void setShipName() {
-		// Do magic stuff
-	}
-	
 	private void drawPoints(Graphics2D g) {
-		Rectangle r = new Rectangle(
-			ships[1].x + ships[2].width + 225, 
-			200, 
-			1000, 
-			760
-			);
 		Color ctrue = new Color(255, 216, 0, 100);
 		Color cfalse = new Color(205, 16, 26, 100);
 		
@@ -266,19 +278,88 @@ public class CustomizeMenu extends Menu{
 			for(int j = 0; j < 10; j++) {
 				if(stats[i][j]) {
 					g.setColor(ctrue);
-					g.fillRect(r.x + 150 + (j*40), r.y + 280 + (i * 150), 30, 40);
+					g.fillRect(oR.x + 150 + (j*40), oR.y + 280 + (i * 150), 30, 40);
 					g.setColor(Color.BLACK);
-					g.drawRect(r.x + 150 + (j*40), r.y + 280 + (i * 150), 30, 40);
+					g.draw(statsRect[i][j]);
 				} else {
 					g.setColor(cfalse);
-					g.fillRect(r.x + 150 + (j*40), r.y + 280 + (i * 150), 30, 40);
+					g.fillRect(oR.x + 150 + (j*40), oR.y + 280 + (i * 150), 30, 40);
 					g.setColor(Color.BLACK);
-					g.drawRect(r.x + 150 + (j*40), r.y + 280 + (i * 150), 30, 40);					
+					g.draw(statsRect[i][j]);					
 				}
 			}
 		}
 	}
 
+	private void drawLaunch(Graphics2D g) {
+		
+		Image launchBtn = Sprite.loadSprite(
+				"/BackgroundImg/Customize_Menu/launch_btn.png", this);
+		g.drawImage(launchBtn,
+				(int) (oR.x + oR.getWidth() - 50 - launchBtn.getWidth(this)),
+				(int) (oR.y + oR.getHeight() - 50 - launchBtn.getHeight(this)), 
+				launchBtn.getWidth(this), launchBtn.getHeight(this), this);
+	}
+	
+	
+
+	
+	private void setShipName() {
+		// Do magic stuff
+	}
+	
+	private void setPoints() {
+		if(pointsLeft <= 0) {
+			subtractPoints();
+			return;
+		}
+		for(int i = 0; i < 3; i++) {
+			if(!flag[i]) continue;
+			for(int j = 0; j <= ptsPos && pointsLeft > 0; j++) {
+				if(stats[i][ptsPos]) {
+					subtractPoints();
+					flag[i] = false;
+					return;
+				}
+				if(!stats[i][j]) {
+					stats[i][j] = true;
+					pointsLeft--;
+				}
+				switch(i) {
+				case 0:
+					Ship.getPlayer().shield++; break;
+				case 1:
+					Ship.getPlayer().speed++; break;
+				case 2:
+					Ship.getPlayer().fireRate++; break;
+				}
+			}
+			flag[i] = false;
+		}
+	}
+	
+	private void subtractPoints() {
+		for(int i = 0; i < 3; i++) {
+			if(!flag[i]) continue;
+			for(int j = ptsPos; stats[i][j] && pointsLeft <=10; j++) {
+				if(stats[i][j]) {
+					stats[i][j] = false;
+					pointsLeft++;
+				}
+				switch(i) {
+				case 0:
+					Ship.getPlayer().shield--; break;
+				case 1:
+					Ship.getPlayer().speed--; break;
+				case 2:
+					Ship.getPlayer().fireRate--; break;
+				}
+			}
+			flag[i] = false;
+		}
+		
+	}
+	
 	@Override
 	public void keyPressed(int k) {		
 		switch(k) {
@@ -309,6 +390,37 @@ public class CustomizeMenu extends Menu{
 		if(mainShipName.contains(e.getPoint())) return true;
 		return false;
 	}
+	private boolean mouseOverPoints(MouseEvent e) {
+		for(int i = 0; i < 3; i++) {
+			for(int j = 0; j < 10; j++) {
+				if(statsRect[i][j].contains(e.getPoint())) {
+					ptsPos = j;
+					flag[i] = true;
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	private boolean mouseOverLaunch(MouseEvent e) {
+		if(!readyToLaunch) return false;
+		
+		
+		
+		Image launchBtn = Sprite.loadSprite(
+				"/BackgroundImg/Customize_Menu/launch_btn.png", this);
+		
+		Rectangle launch = new Rectangle(
+				(int) (oR.x + oR.getWidth() - 50 - launchBtn.getWidth(this)),
+				(int) (oR.y + oR.getHeight() - 50 - launchBtn.getHeight(this)), 
+				launchBtn.getWidth(this), launchBtn.getHeight(this));
+		
+		if(launch.contains(e.getPoint())) {
+			return true;
+		}		
+		return true;
+	}
+	
 	
 	@Override
 	public void mouseMoved(MouseEvent e) {
@@ -332,8 +444,14 @@ public class CustomizeMenu extends Menu{
 	public void mouseClicked(MouseEvent e) {
 		if(mouseOverThumbs(e)) {
 			// Automatically switches between ships.
+			Ship.getPlayer().changeType(mainShip.getID());
 		} else if (mouseOverName(e)) {
 			setShipName();
+		} else if (mouseOverPoints(e)) {
+			setPoints();
+		} else if (mouseOverLaunch(e)) {
+			gsm.setState(GameStateManager.LEVEL1STATE);
+			gsm.game.hideCursor();
 		}
 		
 	}
