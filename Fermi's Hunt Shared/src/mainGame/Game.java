@@ -15,8 +15,6 @@ import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
-
-import Effects.SoundEffects;
 import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
