@@ -14,6 +14,7 @@ import background.Background;
 import characters.Ship;
 import characters.Sprite;
 import gameManager.GameStateManager;
+import gameManager.levels.Level1;
 import mainGame.Game;
 
 @SuppressWarnings("serial")

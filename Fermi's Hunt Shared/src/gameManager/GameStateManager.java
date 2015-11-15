@@ -25,8 +25,7 @@ public class GameStateManager {
 		currentState = MENUSTATE;
 		gameStates.add(new MainMenu(this));	
 		gameStates.add(new CustomizeMenu(this));
-		gameStates.add(new PauseMenu(this));
-		
+		gameStates.add(new PauseMenu(this));		
 	}
 	
 	

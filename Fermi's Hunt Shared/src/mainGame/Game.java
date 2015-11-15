@@ -132,8 +132,7 @@ public class Game extends JPanel implements
   // Sets the Game to pause.
 	public static void pauseMenu() {
 		gsm.setState(GameStateManager.PAUSESTATE);
-		
-		
+			
 	}
 	
   // Resumes the game.

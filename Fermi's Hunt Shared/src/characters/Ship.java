@@ -443,7 +443,6 @@ public class Ship extends SpaceObject implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		attack();
-		mouseMoved(e);
 	}
 
 
