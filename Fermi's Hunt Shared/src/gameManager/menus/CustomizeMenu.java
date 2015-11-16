@@ -449,7 +449,7 @@ public class CustomizeMenu extends Menu{
 		} else if (mouseOverLaunch(e)) {
 			se.stop();
 			gsm.setState(GameStateManager.LEVEL1STATE);
-			Ship.getPlayer().initTimers();
+			Ship.getPlayer().initPlayer();
 			gsm.game.hideCursor();
 		}
 		

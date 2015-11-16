@@ -221,7 +221,16 @@ public class Ship extends SpaceObject implements MouseListener{
 
 	}
 	
-	public void initTimers() {
+	public void initPlayer() {
+		initTimers();
+		if(speed == 0) {
+			speed = 5;
+		}
+		speed *= 2.5;
+	}
+	
+	private void initTimers() {
+		if(fireRate == 0) fireRate = 1;
 		FireRateTimer = new Timer(
 				(int) 1_000 / fireRate,
 				new ActionListener() {
@@ -230,7 +239,6 @@ public class Ship extends SpaceObject implements MouseListener{
 						canShoot = true;
 					}
 				});
-		System.out.println(FireRateTimer.getDelay() / 1000.0);
 		FireRateTimer.start();
 	}
 	
@@ -267,11 +275,24 @@ public class Ship extends SpaceObject implements MouseListener{
 	// TODO
 	public void attack() {
 		if(canShoot) {
-			url = resources[shipType][level-1][SHIP_SHOOT];
-			bm.add(p);
-			effects.get("shot").shipShotSound(0);
-			canShoot = false;
-			FireRateTimer.restart();
+			if(level == 1) {
+				url = resources[shipType][level-1][SHIP_SHOOT];
+				bm.add(p);
+				effects.get("shot").shipShotSound(0);
+				canShoot = false;
+				FireRateTimer.restart();
+			} else 
+			if(level == 2) {
+				Position bp = p.clone();
+				url = resources[shipType][level-1][SHIP_SHOOT];
+				for(int i = 0; i < level; i++) {
+					bp.setPosY(p.getY() + (i * 30));
+					bm.add(bp);
+					effects.get("shot").shipShotSound(0);
+					canShoot = false;
+					FireRateTimer.restart();
+				}
+			}
 		}
 	}
 	
@@ -364,7 +385,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Changes the actual ship image
 		url = resources[shipType][level-1][SHIP_UP];
 		// Changes the ship speed and allows it to move diagonally.
-		p.setVelY(-15);
+		p.setVelY(-speed);
 	}
 	
 	/**
@@ -374,7 +395,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Changes the actual ship image
 		url = resources[shipType][level-1][SHIP_DOWN];
 		// Changes the ship speed and allows it to move diagonally.
-		p.setVelY(15);
+		p.setVelY(speed);
 	}
 	
 	/**
@@ -384,7 +405,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Changes the actual ship image
 		url = resources[shipType][level-1][BASIC_SHIP];
 		// Changes the ship speed and allows it to move diagonally.
-		p.setVelX(-15);
+		p.setVelX(-speed);
 	}
 	
 	/**
@@ -394,7 +415,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Changes the actual ship image
 		url = resources[shipType][level-1][BASIC_SHIP];
 		// Changes the ship speed and allows it to move diagonally.
-		p.setVelX(15);
+		p.setVelX(speed);
 	}
 	
 	
@@ -465,7 +486,10 @@ public class Ship extends SpaceObject implements MouseListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		attack();
+		if(e.getButton() == MouseEvent.BUTTON1) {
+			attack();
+		}
+		
 	}
 
 
@@ -475,9 +499,62 @@ public class Ship extends SpaceObject implements MouseListener{
 		url = resources[shipType][level-1][BASIC_SHIP];
 	}	
 	
+	private boolean mouseNotMoved(MouseEvent e) {
+		if(e == null) {
+			p.setVelX(0);
+			p.setVelY(0);
+			url = resources[shipType][level-1][BASIC_SHIP];
+			return true;
+		}
+		return false;
+	}
+	
 	public void mouseMoved(MouseEvent e) {
-		p.setPosX(e.getX());
-		p.setPosY(e.getY());
+		/*if(mouseNotMoved(e)) return;
+		
+		int mouseX = e.getX(), mouseY = e.getY();
+		int shipX = p.getX(), shipY = p.getY();
+		
+		if(mouseX > shipX && mouseY < shipY) {
+			right();
+			up();
+		} else
+		if(mouseX < shipX && mouseY < shipY) {
+			left();
+			up();
+		} else
+		if(mouseX < shipX && mouseY > shipY) {
+			left();
+			down();
+		} else
+		if(mouseX > shipX && mouseY > shipY) {
+			right();
+			down();
+		} else
+		if(mouseX > shipX && 
+				(mouseY + (Game.HEIGHT / 10) < shipY) &&
+				(mouseY - (Game.HEIGHT / 10) > shipY)) {
+			p.setVelY(0);
+			right();
+		} else
+		if(mouseX < shipX && 
+				(mouseY + (Game.HEIGHT / 5) < shipY) &&
+				(mouseY - (Game.HEIGHT / 5) > shipY)) {
+			p.setVelY(0);
+			left();
+		} else
+		if(mouseY > shipY && 
+				(mouseX + (Game.WIDTH / 5) > shipX) &&
+				(mouseX - (Game.WIDTH / 5) < shipX)) {
+			p.setVelX(0);
+			up();
+		} else
+		if(mouseY < shipY && 
+				(mouseX + (Game.WIDTH / 5) > shipX) &&
+				(mouseX - (Game.WIDTH / 5) < shipX)) {
+			p.setVelX(0);
+			down();
+		}*/
 	}
 
 
