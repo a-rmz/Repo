@@ -7,17 +7,20 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.Timer;
 
+import Effects.SoundEffects;
 import mainGame.Game;
 import managers.BulletManager;
 import managers.Position;
-import Effects.SoundEffects;
 
 public class Ship extends SpaceObject implements MouseListener{
 
@@ -98,6 +101,10 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	
 	// **** SHIP MODIFIERS ****
+	private Timer FireRateTimer;
+	private boolean canShoot = true;
+	private Timer ShieldRegenTimer;
+	
 	private boolean gotHit = false;
 	public Position p = new Position(50, (screenSize().height / 2));
 	// New BulletManager to handle the bullets
@@ -124,7 +131,6 @@ public class Ship extends SpaceObject implements MouseListener{
 		speed = 0;
 		// Loads the ship image
 		setSpaceObjectImage();
-		
 		SoundEffects ShotSound = new SoundEffects();
 		effects.put("shot", ShotSound);
 		
@@ -215,6 +221,19 @@ public class Ship extends SpaceObject implements MouseListener{
 
 	}
 	
+	public void initTimers() {
+		FireRateTimer = new Timer(
+				(int) 1_000 / fireRate,
+				new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						canShoot = true;
+					}
+				});
+		System.out.println(FireRateTimer.getDelay() / 1000.0);
+		FireRateTimer.start();
+	}
+	
 	/**
 	 *  According to the dimensions of the screen, determines if
 	 *  the ship collided with the screen borders and modifies its
@@ -247,9 +266,13 @@ public class Ship extends SpaceObject implements MouseListener{
 
 	// TODO
 	public void attack() {
-		url = resources[shipType][level-1][SHIP_SHOOT];
-		bm.add(p);
-		effects.get("shot").shipShotSound(0);;
+		if(canShoot) {
+			url = resources[shipType][level-1][SHIP_SHOOT];
+			bm.add(p);
+			effects.get("shot").shipShotSound(0);
+			canShoot = false;
+			FireRateTimer.restart();
+		}
 	}
 	
 	/**

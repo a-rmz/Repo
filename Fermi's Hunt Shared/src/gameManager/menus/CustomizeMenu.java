@@ -14,7 +14,6 @@ import background.Background;
 import characters.Ship;
 import characters.Sprite;
 import gameManager.GameStateManager;
-import gameManager.levels.Level1;
 import mainGame.Game;
 
 @SuppressWarnings("serial")
@@ -74,9 +73,6 @@ public class CustomizeMenu extends Menu{
 	
 	// Player Stats
 	private static int pointsLeft = 10;
-	private int shield;
-	private int fireRate;
-	private int speed;
 	private boolean stats[][]= {{false}, {false}};
 	private boolean flag[] = {false, false, false};
 	private int ptsPos;
@@ -342,7 +338,7 @@ public class CustomizeMenu extends Menu{
 	private void subtractPoints() {
 		for(int i = 0; i < 3; i++) {
 			if(!flag[i]) continue;
-			for(int j = ptsPos; stats[i][j] && pointsLeft <=10; j++) {
+			for(int j = ptsPos; stats[i][j] && pointsLeft < 10; j++) {
 				if(stats[i][j]) {
 					stats[i][j] = false;
 					pointsLeft++;
@@ -453,6 +449,7 @@ public class CustomizeMenu extends Menu{
 		} else if (mouseOverLaunch(e)) {
 			se.stop();
 			gsm.setState(GameStateManager.LEVEL1STATE);
+			Ship.getPlayer().initTimers();
 			gsm.game.hideCursor();
 		}
 		
