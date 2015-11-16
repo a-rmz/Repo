@@ -96,6 +96,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	private int killedEnemies;
 	private int xp;
 	public int shield;
+	private int shieldTop;
 	public int fireRate;
 	public int speed;
 	
@@ -104,6 +105,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	private Timer FireRateTimer;
 	private boolean canShoot = true;
 	private Timer ShieldRegenTimer;
+	private boolean shieldOff = false;
 	
 	private boolean gotHit = false;
 	public Position p = new Position(50, (screenSize().height / 2));
@@ -218,7 +220,6 @@ public class Ship extends SpaceObject implements MouseListener{
 		if(!isAlive()) {
 			//System.out.println("Ship is dead");
 		}
-
 	}
 	
 	public void initPlayer() {
@@ -239,7 +240,20 @@ public class Ship extends SpaceObject implements MouseListener{
 						canShoot = true;
 					}
 				});
+		
+		if(shield == 0) shield = 1;
+		shieldTop = shield;
+		ShieldRegenTimer = new Timer(
+				(int) 10_000 / shield,
+				new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						shieldRegen();
+					}
+				});
+		
 		FireRateTimer.start();
+		ShieldRegenTimer.start();
 	}
 	
 	/**
@@ -269,6 +283,12 @@ public class Ship extends SpaceObject implements MouseListener{
 			if (p.getY() > d.getHeight()){
 				// The position is set to the screen size minus the image height.
 				p.setPosY(d.getHeight() - sizeY);
+		}
+	}
+	
+	private void shieldRegen() {
+		if(shield < shieldTop) {
+			shield++;
 		}
 	}
 
@@ -335,8 +355,13 @@ public class Ship extends SpaceObject implements MouseListener{
 				// If the ship got hit, activates the gotHit switch.
 				// The gotHit switch affects the graphic representation of the hits.
 				gotHit = true;
-				// Stat modifiers.
-				hp -= 1;
+				// If the ship has no shield, the attack enters straight.
+				if(shieldOff) {
+					// Stat modifiers.
+					hp -= 1;
+				} else {
+					shield -= 1;
+				}				
 				// Only as a console verifier.
 				System.out.println("Hit");
 				}
