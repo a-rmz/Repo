@@ -401,9 +401,7 @@ public class CustomizeMenu extends Menu{
 	}
 	private boolean mouseOverLaunch(MouseEvent e) {
 		if(!readyToLaunch) return false;
-		
-		
-		
+
 		Image launchBtn = Sprite.loadSprite(
 				"/BackgroundImg/Customize_Menu/launch_btn.png", this);
 		
@@ -415,7 +413,7 @@ public class CustomizeMenu extends Menu{
 		if(launch.contains(e.getPoint())) {
 			return true;
 		}		
-		return true;
+		return false;
 	}
 	
 	
