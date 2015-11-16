@@ -302,7 +302,7 @@ public class CustomizeMenu extends Menu{
 
 	
 	private void setShipName() {
-		// Do magic stuff
+			// Do magic stuff
 	}
 	
 	private void setPoints() {
