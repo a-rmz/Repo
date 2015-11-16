@@ -499,16 +499,6 @@ public class Ship extends SpaceObject implements MouseListener{
 		url = resources[shipType][level-1][BASIC_SHIP];
 	}	
 	
-	private boolean mouseNotMoved(MouseEvent e) {
-		if(e == null) {
-			p.setVelX(0);
-			p.setVelY(0);
-			url = resources[shipType][level-1][BASIC_SHIP];
-			return true;
-		}
-		return false;
-	}
-	
 	public void mouseMoved(MouseEvent e) {
 		/*if(mouseNotMoved(e)) return;
 		
