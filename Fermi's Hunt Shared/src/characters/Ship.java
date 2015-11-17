@@ -20,6 +20,7 @@ import javax.swing.Timer;
 import Effects.SoundEffects;
 import mainGame.Game;
 import managers.BulletManager;
+import managers.HUD;
 import managers.Position;
 
 public class Ship extends SpaceObject implements MouseListener{
@@ -86,7 +87,8 @@ public class Ship extends SpaceObject implements MouseListener{
 	Image ship = null; 
 	HashMap<String, SoundEffects> effects = new HashMap<>();
 	
-	
+	//********HUD********
+	HUD hud = new HUD();
 	
 	
 	// **** PLAYER STATS ****
@@ -169,6 +171,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 * @param
 	 */
 	public void draw(Graphics g){
+		
 		// Draws the enemy image.
 		g.drawImage(getSpaceObjectImage(), p.getX(), p.getY(),
 				getSpaceObjectImage().getWidth(null)*2,
@@ -177,6 +180,9 @@ public class Ship extends SpaceObject implements MouseListener{
 		bm.draw(g);
 		// Draws the hits the player gets
 		hitsOnSelf(g);
+		
+		//Draws HUD
+		hud.draw(g);
 	}
 	
 	/**
