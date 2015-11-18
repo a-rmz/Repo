@@ -14,6 +14,7 @@ import background.Background;
 import characters.Ship;
 import characters.Sprite;
 import gameManager.GameStateManager;
+import gameManager.menus.popups.NamePopup;
 import mainGame.Game;
 
 @SuppressWarnings("serial")
@@ -65,7 +66,7 @@ public class CustomizeMenu extends Menu{
 	Rectangle[] ships;
 	
 	Rectangle mainShipName;
-	
+	NamePopup np;
 	ShipThumb mainShip;
 	
 	// Name
@@ -116,7 +117,9 @@ public class CustomizeMenu extends Menu{
 		initPoints();
 		mainShip = thumbs[0];
 		
-		Ship.getPlayer().setShipName("Enter Ship name");
+		name = "Enter Ship name";
+		Ship.getPlayer().setShipName(name);
+		np = new NamePopup(gsm, name);
 	}
 	
 	private void initPoints() {
@@ -152,6 +155,7 @@ public class CustomizeMenu extends Menu{
 		drawMainShip(g);
 		drawShipName(g);
 		drawShipCustomPoints(g);
+		if(np.visible()) np.drawNamePopup(g);
 		if(readyToLaunch) drawLaunch(g);
 	}
 	
@@ -302,7 +306,8 @@ public class CustomizeMenu extends Menu{
 
 	
 	private void setShipName() {
-		// Do magic stuff
+		Ship.getPlayer().setShipName("");
+		np.setVisible(true);		
 	}
 	
 	private void setPoints() {
