@@ -128,7 +128,8 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 			String newName = name.substring(0, name.length() - 1);
 			name = newName;
 		} else 
-		if(charBuffer == KeyEvent.VK_ENTER && name.length() > 0) {
+		if(charBuffer == 13 && name.length() > 0) {
+			System.out.println("Enter");
 			finish();
 		}
 	}
