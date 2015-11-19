@@ -6,6 +6,12 @@
 /fondo8Bits_re.png
 /gameManager/
 /mainGame/
+<<<<<<< HEAD
 /managers/
 /navigation/
 /soundtracks/
+=======
+/Effects/
+/managers/
+>>>>>>> ship-stats
+/HUD/
