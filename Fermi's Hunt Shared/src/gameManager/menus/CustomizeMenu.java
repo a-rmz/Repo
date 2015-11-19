@@ -7,7 +7,6 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import background.Background;
@@ -108,7 +107,7 @@ public class CustomizeMenu extends Menu{
 		for(int i = 0; i < ShipThumb.shipQuant(); i++) {
 			ships[i] = new Rectangle(
 				(i * 200) + 200,
-				(int) (3 * Game.HEIGHT / 4),
+				3 * Game.HEIGHT / 4,
 				150,
 				150
 			);
@@ -233,10 +232,10 @@ public class CustomizeMenu extends Menu{
 		
 		if(mainShipName == null) {
 			mainShipName = new Rectangle(
-					(int) (2 * Game.WIDTH / 3) - fm.stringWidth(name)/2 + 30, 
-					(int) 150 - fm.getHeight(), 
-					(int) fm.stringWidth(name), 
-					(int) fm.getHeight()
+					2 * Game.WIDTH / 3 - fm.stringWidth(name)/2 + 30, 
+					150 - fm.getHeight(), 
+					fm.stringWidth(name), 
+					fm.getHeight()
 				);
 		}
 	}

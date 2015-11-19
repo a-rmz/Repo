@@ -160,6 +160,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	/**
 	 *  Loads the image as a .gif.
 	 */
+	@Override
 	public void setSpaceObjectImage() {
 		ship = Sprite.loadSprite(url, this);
 	}
@@ -168,6 +169,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 *  Returns the ship image.
 	 *  @return Ship image.
 	 */
+	@Override
 	public Image getSpaceObjectImage() {
 		return ship;
 	}
@@ -216,6 +218,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	/**
 	 * Updates the position and ship stats.
 	 */
+	@Override
 	public void update() {
 		// Re-loads the ship image
 		setSpaceObjectImage();
@@ -247,7 +250,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	private void initTimers() {
 		if(fireRate == 0) fireRate = 1;
 		FireRateTimer = new Timer(
-				(int) 1_000 / fireRate,
+				1_000 / fireRate,
 				new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -258,7 +261,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		if(shield == 0) shield = 1;
 		shieldTop = shield;
 		ShieldRegenTimer = new Timer(
-				(int) 10_000 / shield,
+				10_000 / shield,
 				new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -275,6 +278,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 *  the ship collided with the screen borders and modifies its
 	 *  position.
 	 */
+	@Override
 	public void collidesWithBorders(Dimension d) {
 		// Gets the x/y size of the image.
 		int sizeX = getSpaceObjectImage().getWidth(null);
@@ -355,6 +359,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 *  determine when it gets hit.
 	 *  @return Rectangle with the dimensions of the ship.
 	 */
+	@Override
 	public Rectangle collider() {
 		return new Rectangle(p.getX(), p.getY(), ship.getWidth(null), ship.getHeight(null));
 	}

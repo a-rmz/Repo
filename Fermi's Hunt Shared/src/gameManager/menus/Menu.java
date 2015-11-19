@@ -18,8 +18,8 @@ public abstract class Menu extends GameState {
 
 		Rectangle2D bounds = fm.getStringBounds(option, g);
 		return new Rectangle(
-				(int) Game.WIDTH/2 - fm.stringWidth(option)/2 - 10, 
-				(int) Game.HEIGHT/2 + (i * 60) - 30, 
+				Game.WIDTH/2 - fm.stringWidth(option)/2 - 10, 
+				Game.HEIGHT/2 + (i * 60) - 30, 
 				(int) bounds.getWidth() + 15, 
 				(int) bounds.getHeight() + 10
 			);

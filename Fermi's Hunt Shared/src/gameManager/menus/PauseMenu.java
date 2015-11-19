@@ -67,6 +67,7 @@ public class PauseMenu extends Menu implements Runnable{
 		
 	}
 	
+	@Override
 	public void addNotify() {
 		super.addNotify();
 		if(pauseMenu == null) {
@@ -97,7 +98,7 @@ public class PauseMenu extends Menu implements Runnable{
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
 		g.setColor(FontColor);
 		g.setFont(font);
-		g.drawString("Pause", (int) Game.WIDTH/3, 150);
+		g.drawString("Pause", Game.WIDTH/3, 150);
 		
 		// Draw menu options
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 30);
@@ -113,8 +114,8 @@ public class PauseMenu extends Menu implements Runnable{
 			}
 			
 			g.drawString(options[i], 
-					(int) Game.WIDTH/2 - fm.stringWidth(options[i])/2, 
-					(int) Game.HEIGHT/2 + (i * 60));
+					Game.WIDTH/2 - fm.stringWidth(options[i])/2, 
+					Game.HEIGHT/2 + (i * 60));
 			
 			// Fills the array with the collision rectangles.
 			if (!(optionsRect[options.length-1] instanceof Rectangle)) {
@@ -125,6 +126,7 @@ public class PauseMenu extends Menu implements Runnable{
 	}
 
 
+	@Override
 	protected void select() {
 		switch(currentChoice) {
 		case 0:
@@ -151,6 +153,7 @@ public class PauseMenu extends Menu implements Runnable{
 		}
 	}
 	
+	@Override
 	public void keyPressed(int k) {
 		if(helpMenu) {
 			HelpMenu.menu().keyPressed(k);
@@ -184,6 +187,7 @@ public class PauseMenu extends Menu implements Runnable{
 	}
 
 	// Thread
+	@Override
 	public void run() {
 		while(running) {	
 			draw(g);
@@ -233,6 +237,7 @@ public class PauseMenu extends Menu implements Runnable{
 		
 	}
 
+	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		

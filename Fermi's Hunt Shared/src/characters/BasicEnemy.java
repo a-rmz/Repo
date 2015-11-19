@@ -94,6 +94,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	/**
 	 *  Loads the image as a .png.
 	 */
+	@Override
 	public void setSpaceObjectImage(){
 		enemy = Sprite.loadSprite(url, this);
 	}	
@@ -102,6 +103,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 *  Returns the enemy image.
 	 *  @return Enemy image.
 	 */
+	@Override
 	public Image getSpaceObjectImage() {
 		return enemy;
 	}
@@ -124,6 +126,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	/**
 	 * Updates the position, the enemy stats, and the BulletManager.
 	 */		
+	@Override
 	public void update(){
 	
 		if (enabled) {
@@ -194,6 +197,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 *  the ship collided with the screen borders and modifies its
 	 *  position.
 	 */
+	@Override
 	public void collidesWithBorders(Dimension d) {
 		// Gets the x/y size of the image.
 		int sizeX = getSpaceObjectImage().getWidth(null);

@@ -100,9 +100,9 @@ public class Background {
 	public void draw(Graphics2D g) {
 		// Prints background
 		g.drawImage(getBackgroundImage(), pbg1.getX(), 0, 
-				(int) Game.WIDTH, (int) Game.HEIGHT, null);
+				Game.WIDTH, Game.HEIGHT, null);
 		g.drawImage(getBackgroundImage(), pbg2.getX(), 0, 
-				(int) Game.WIDTH, (int) Game.HEIGHT, null);
+				Game.WIDTH, Game.HEIGHT, null);
 	}
 	
 }

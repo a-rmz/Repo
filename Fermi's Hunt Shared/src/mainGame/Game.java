@@ -71,6 +71,7 @@ public class Game extends JPanel implements
 	/**
 	 *  Game loop
 	 */
+	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		
@@ -121,6 +122,7 @@ public class Game extends JPanel implements
 	}
 
 	
+	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -161,18 +163,22 @@ public class Game extends JPanel implements
 		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	}
 	
+	@Override
 	public void keyPressed(KeyEvent key) {
 		gsm.keyPressed(key.getKeyCode());
 	}
 
+	@Override
 	public void keyReleased(KeyEvent key) {
 		gsm.keyReleased(key.getKeyCode());
 	}
 	
+	@Override
 	public void keyTyped(KeyEvent key) { 
 	}
 
 
+	@Override
 	public void mouseMoved(MouseEvent e) {
 		gsm.mouseMoved(e);
 	}
@@ -185,6 +191,7 @@ public class Game extends JPanel implements
 	}
 
 	
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		gsm.mouseClicked(e);
 	}
@@ -195,16 +202,19 @@ public class Game extends JPanel implements
 	
 	}
 	
+	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		gsm.mousePressed(e);
 	}
 	
+	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		gsm.mouseReleased(e);
 	}
 	
+	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}

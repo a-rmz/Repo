@@ -137,6 +137,7 @@ public class Position {
 	 *  Duplicates the actual position to a new one.
 	 *  @return Position with (x, y) coordinates.
 	 */
+	@Override
 	public Position clone() {
 		return new Position(x, y);
 	}
@@ -152,6 +153,7 @@ public class Position {
 		return true;
 	}
 	
+	@Override
 	public String toString() {
 		return "Position: (" + x + ", " + y + ")";
 	}
