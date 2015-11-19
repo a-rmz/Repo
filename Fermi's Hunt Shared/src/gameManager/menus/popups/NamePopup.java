@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import characters.Ship;
 import gameManager.GameStateManager;
 
 public class NamePopup implements KeyListener, MouseListener, MouseMotionListener{
@@ -20,6 +21,9 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 	private Font f = new Font("8-Bit Madness", Font.PLAIN, 30);
 	private String name;
 	private String buffer;
+	private char charBuffer;
+	private int keyPosX;
+	private int keyPosY;
 	Keyboard keyboard;
 	private Rectangle textFrame;
 	private Rectangle popupFrame;
@@ -82,6 +86,10 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 	public boolean visible() {
 		return isVisible;
 	}
+	private void finish() {
+		Ship.getPlayer().setShipName(name);
+		setVisible(false);
+	}
 
 
 	public boolean mouseOverKey(MouseEvent e) {
@@ -90,17 +98,55 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 				if(keyboard.getKeyShape(i, j).contains(e.getPoint())) {
 					keyboard.usedKey(i, j);
 					buffer = "" + keyboard.getKeyValue(i, j);
+					keyPosX = i;
+					keyPosY = j;
 					return true;
 				}
 			}
 		}
 		return false;
 	}
+	private boolean mouseOverSpecialKey(MouseEvent e) {
+		for(int i = 0; i < 3; i++) {
+			if(keyboard.getSpecialKeyShape(i).contains(e.getPoint())) {
+				keyboard.usedKey(i, -1);
+				charBuffer = keyboard.getSpecialKeyValue(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	private void specialKeyAction() {
+		if(name.length() > 15) {
+			if(charBuffer == KeyEvent.VK_ENTER) {
+				finish();
+			} else if(charBuffer == KeyEvent.VK_BACK_SPACE) {
+				if(name.length() <= 0) return;
+				String newName = name.substring(0, name.length() - 1);
+				name = newName;
+			}
+			else return;
+		}
+		if(charBuffer == KeyEvent.VK_SPACE) {
+			name += " ";
+		} else
+		if(charBuffer == KeyEvent.VK_BACK_SPACE) {
+			if(name.length() <= 0) return;
+			String newName = name.substring(0, name.length() - 1);
+			name = newName;
+		} else 
+		if(charBuffer == KeyEvent.VK_ENTER && name.length() > 0) {
+			finish();
+		}
+	}
 	
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		if(mouseOverKey(e)) {
 			// Magic
+		} else
+		if(mouseOverSpecialKey(e)) {
+			// More magic
 		}
 		
 	}
@@ -111,12 +157,27 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 			if(name.length() > 15) return;
 			name += buffer;
 			buffer = "";
+		} else
+		if(mouseOverSpecialKey(e)) {
+			specialKeyAction();
 		}
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		if(name.length() > 15) return;
+		if(name.length() > 15) {
+			// If the name length is bigger than 15, only accepts ENTER 
+			if(e.getKeyChar() == KeyEvent.VK_ENTER) {
+				finish();
+			} else if(e.getKeyChar() == KeyEvent.VK_BACK_SPACE) {
+				if(name.length() <= 0) return;
+				String newName = name.substring(0, name.length() - 1);
+				name = newName;
+			}
+			else {
+				return;
+			}
+		}
 		if(e.getKeyChar() >= KeyEvent.VK_A && e.getKeyChar() <= KeyEvent.VK_Z) {
 			name += e.getKeyChar();
 		} else if(e.getKeyChar() >= 97 && e.getKeyChar() <= 122) {
@@ -138,7 +199,12 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 			if(name.length() <= 0) return;
 			String newName = name.substring(0, name.length() - 1);
 			name = newName;
-		} 
+		} else if(e.getKeyChar() == KeyEvent.VK_ENTER) {
+			if(name.length() > 0) finish();
+			else return;
+		} else if(e.getKeyChar() == KeyEvent.VK_RIGHT) {
+			
+		}
 	}
 
 	@Override

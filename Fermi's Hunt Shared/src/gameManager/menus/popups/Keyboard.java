@@ -14,7 +14,7 @@ public class Keyboard {
 	private class Key {
 		public char keyVal;
 		public boolean use;
-		private Rectangle keyForm;
+		protected Rectangle keyForm;
 		
 		public Key(char keyVal) {
 			this.keyVal = keyVal;
@@ -84,12 +84,11 @@ public class Keyboard {
 			}
 			g.setFont(ft);
 			FontMetrics kfm = g.getFontMetrics(ft);
-			Rectangle kForm = new Rectangle(x, y, 175, 100);
 			g.setStroke(new BasicStroke(4));
-			g.draw(kForm);
+			g.draw(keyForm);
 			g.drawString(kName, 
-					(int) (kForm.getCenterX() - kfm.stringWidth(kName)/2), 
-					(int) (kForm.getY() + (3 * kfm.getHeight() / 2))
+					(int) (keyForm.getCenterX() - kfm.stringWidth(kName)/2), 
+					(int) (keyForm.getY() + (3 * kfm.getHeight() / 2))
 							);
 		}
 	}
@@ -143,6 +142,10 @@ public class Keyboard {
 		specialKeys[0] = new SpecialKey(' ', "Space");
 		specialKeys[1] = new SpecialKey(8, "<-"); // Backspace
 		specialKeys[2] = new SpecialKey(13, "ENTER"); // Enter
+		
+		for(int i = 0; i < 3; i++) {
+			specialKeys[i].setForm(new Rectangle(x + 1210, y + 10 + (170 * i), 175, 100));
+		}
 	}
 
 	public Rectangle getKeyShape(int i, int j) {
@@ -151,10 +154,21 @@ public class Keyboard {
 	public char getKeyValue(int i, int j) {
 		return keyboard[i][j].getKeyVal();
 	}
+	public Rectangle getSpecialKeyShape(int i) {
+		return specialKeys[i].getForm();
+	}
+	public char getSpecialKeyValue(int i) {
+		return specialKeys[i].getKeyVal();
+	}
 	public void usedKey(int i, int j) {
 		previousUsed.unused();
-		keyboard[i][j].using();
-		previousUsed = keyboard[i][j];
+		if(j == -1) {
+			specialKeys[i].using();
+			previousUsed = specialKeys[i];
+		} else {
+			keyboard[i][j].using();
+			previousUsed = keyboard[i][j];
+		}
 	}
 	
 	public void drawKeyboard(Graphics2D g, int x, int y) {

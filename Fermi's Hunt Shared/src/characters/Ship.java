@@ -40,6 +40,13 @@ public class Ship extends SpaceObject implements MouseListener{
 			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Up.gif",
 			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Down.gif",
 			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_shoot.gif",
+			},
+			// Ship level 3
+			{
+			"/Sprites/Ship/Ship_1/Missile/sprite_ship1_missile.gif",
+			"/Sprites/Ship/Ship_1/Missile/sprite_ship1_missile_Up.gif",
+			"/Sprites/Ship/Ship_1/Missile/sprite_ship1_missile_Down.gif",
+			"/Sprites/Ship/Ship_1/Missile/sprite_ship1_missile_Shoot.gif",
 			}
 		}, 
 			// Ship TYPE 2
@@ -312,6 +319,9 @@ public class Ship extends SpaceObject implements MouseListener{
 					canShoot = false;
 					FireRateTimer.restart();
 				}
+			} else
+			if(level == 3) {
+				// Level 3 magic
 			}
 		}
 	}

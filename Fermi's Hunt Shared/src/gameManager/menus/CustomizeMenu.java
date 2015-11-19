@@ -155,8 +155,8 @@ public class CustomizeMenu extends Menu{
 		drawMainShip(g);
 		drawShipName(g);
 		drawShipCustomPoints(g);
-		if(np.visible()) np.drawNamePopup(g);
 		if(readyToLaunch) drawLaunch(g);
+		if(np.visible()) np.drawNamePopup(g);
 	}
 	
 	public void drawMainShip(Graphics2D g) {
@@ -221,7 +221,7 @@ public class CustomizeMenu extends Menu{
 		
 		// Draws the ship name
 		g.setColor(Color.WHITE);
-		Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
+		Font f = new Font("8-Bit Madness", Font.PLAIN, 120);
 		g.setFont(f);
 		FontMetrics fm = g.getFontMetrics(f);
 		
@@ -343,7 +343,7 @@ public class CustomizeMenu extends Menu{
 	private void subtractPoints() {
 		for(int i = 0; i < 3; i++) {
 			if(!flag[i]) continue;
-			for(int j = ptsPos; stats[i][j] && pointsLeft < 10; j++) {
+			for(int j = ptsPos; stats[i][j] && pointsLeft <= 10; j++) {
 				if(stats[i][j]) {
 					stats[i][j] = false;
 					pointsLeft++;
@@ -363,15 +363,7 @@ public class CustomizeMenu extends Menu{
 	}
 	
 	@Override
-	public void keyPressed(int k) {		
-		switch(k) {
-		case KeyEvent.VK_ESCAPE:
-			gsm.setState(GameStateManager.LEVEL1STATE);
-			gsm.game.hideCursor();
-			break;
-		}
-		
-	}
+	public void keyPressed(int k) {	}
 
 	@Override
 	public void keyReleased(int k) {
@@ -442,6 +434,7 @@ public class CustomizeMenu extends Menu{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		if(np.visible()) return;
 		if(mouseOverThumbs(e)) {
 			// Automatically switches between ships.
 			Ship.getPlayer().changeType(mainShip.getID());
