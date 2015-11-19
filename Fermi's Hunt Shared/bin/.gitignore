@@ -1,4 +1,10 @@
+/8A1.png
+/8A2.png
+/8B1.png
+/BackgroundImg/
 /Effects/
+/HUD/
+/Sounds/
 /Soundtrack/
 /Sprites/
 /background/
@@ -6,17 +12,6 @@
 /fondo8Bits_re.png
 /gameManager/
 /mainGame/
-<<<<<<< HEAD
 /managers/
 /navigation/
 /soundtracks/
-=======
-/Effects/
-/managers/
->>>>>>> ship-stats
-/HUD/
-/8A1.png
-/8A2.png
-/8B1.png
-/BackgroundImg/
-/Sounds/
