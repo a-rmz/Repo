@@ -89,6 +89,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	//********HUD********
 	HUD hud = new HUD();
+	int hpCounter = 8;
 	
 	
 	// **** PLAYER STATS ****
@@ -136,8 +137,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Loads the ship image
 		setSpaceObjectImage();
 		SoundEffects ShotSound = new SoundEffects();
-		effects.put("shot", ShotSound);
-		
+		effects.put("shot", ShotSound);	
 	}
 	
 	
@@ -229,6 +229,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	}
 	
 	public void initPlayer() {
+		hud.setHUDstats(shield , speed, fireRate);
 		initTimers();
 		if(speed == 0) {
 			speed = 5;
@@ -365,11 +366,18 @@ public class Ship extends SpaceObject implements MouseListener{
 				if(shieldOff) {
 					// Stat modifiers.
 					hp -= 1;
+						//hpCounter -= 1;
+					// Change HUD
+						//hud.change_HUD_Live(hpCounter);
 				} else {
 					shield -= 1;
 				}				
 				// Only as a console verifier.
 				System.out.println("Hit");
+				hpCounter -= 1;
+				if(hpCounter <= 0) hpCounter = 0;
+				hud.change_HUD_Live(hpCounter);
+				
 				}
 			}
 		}

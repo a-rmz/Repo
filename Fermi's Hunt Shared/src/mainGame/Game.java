@@ -123,8 +123,9 @@ public class Game extends JPanel implements
 	
 	public void paint(Graphics g) {
 		super.paint(g);
-    // Calls the GameStateManager draw method.
 		Graphics2D g2d = (Graphics2D) g;
+    // Calls the GameStateManager draw method.
+		
 		gsm.draw(g2d);
 	}
 	
