@@ -17,13 +17,9 @@ import gameManager.GameStateManager;
 
 public class NamePopup implements KeyListener, MouseListener, MouseMotionListener{
 	
-	private GameStateManager gsm;
-	private Font f = new Font("8-Bit Madness", Font.PLAIN, 30);
 	private String name;
 	private String buffer;
 	private char charBuffer;
-	private int keyPosX;
-	private int keyPosY;
 	Keyboard keyboard;
 	private Rectangle textFrame;
 	private Rectangle popupFrame;
@@ -32,7 +28,6 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 	private boolean isVisible = false;
 	
 	public NamePopup(GameStateManager gsm, String name) {
-		this.gsm = gsm;
 		this.name = name;
 		keyboard = new Keyboard();
 		init();
@@ -98,8 +93,6 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 				if(keyboard.getKeyShape(i, j).contains(e.getPoint())) {
 					keyboard.usedKey(i, j);
 					buffer = "" + keyboard.getKeyValue(i, j);
-					keyPosX = i;
-					keyPosY = j;
 					return true;
 				}
 			}
@@ -202,8 +195,6 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 		} else if(e.getKeyChar() == KeyEvent.VK_ENTER) {
 			if(name.length() > 0) finish();
 			else return;
-		} else if(e.getKeyChar() == KeyEvent.VK_RIGHT) {
-			
 		}
 	}
 
