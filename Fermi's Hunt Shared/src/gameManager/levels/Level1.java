@@ -33,7 +33,7 @@ public class Level1 extends GameState {
 	
 	public void draw(Graphics2D g2d){
 		
-		Graphics g = (Graphics2D) g2d;
+		Graphics g = (Graphics) g2d;
 		
 		// Prints the Background
 		bg.draw(g2d);
