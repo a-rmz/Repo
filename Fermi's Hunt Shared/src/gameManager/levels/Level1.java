@@ -27,13 +27,13 @@ public class Level1 extends GameState {
 	public Level1(GameStateManager gsm){
 		this.gsm = gsm;
 		p1 = Ship.getPlayer();
-		e = new EnemyManager(1, 3); //TODO
+		e = new EnemyManager(1, 10); //TODO
 		bg = new Background(Background.LEVEL_1);
 	}
 	
 	public void draw(Graphics2D g2d){
 		
-		Graphics g = (Graphics2D) g2d;
+		Graphics g = (Graphics) g2d;
 		
 		// Prints the Background
 		bg.draw(g2d);
