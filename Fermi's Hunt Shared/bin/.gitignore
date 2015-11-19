@@ -1,18 +1,11 @@
-/Sounds/
-/gameManager/
+/Effects/
+/Soundtrack/
 /Sprites/
-/8A1.png
-/8A2.png
-/8B1.png
-/BackgroundImg/
-<<<<<<< HEAD
-/fondo8Bits_re.png
-=======
-/Fonts/
->>>>>>> customize
 /background/
 /characters/
+/fondo8Bits_re.png
+/gameManager/
 /mainGame/
-/Effects/
 /managers/
-/HUD/
+/navigation/
+/soundtracks/
