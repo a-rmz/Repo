@@ -2,11 +2,11 @@ package gameManager.menus;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import background.Background;
+import characters.Sprite;
 
 @SuppressWarnings("serial")
 public class HelpMenu extends Menu {
@@ -22,7 +22,7 @@ public class HelpMenu extends Menu {
 		@Override
 		public void init() {
 			hBG = new Background(Background.HELP_MENU);	
-			hlp = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/BackgroundImg/Help_Menu/hlp.png"));
+			hlp = Sprite.loadSprite("/BackgroundImg/Help_Menu/hlp.png", this);
 		}
 		
 		public static HelpMenu menu() {
