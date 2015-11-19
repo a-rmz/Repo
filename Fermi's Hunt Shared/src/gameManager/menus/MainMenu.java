@@ -8,7 +8,6 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import Effects.SoundEffects;
 import background.Background;
 import gameManager.GameStateManager;
 import mainGame.Game;
@@ -79,7 +78,7 @@ public class MainMenu extends Menu{
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
 		g.setColor(FontColor);
 		g.setFont(font);
-		g.drawString("Fermis Hunt", (int) Game.WIDTH/3, 150);
+		g.drawString("Fermis Hunt", Game.WIDTH/3, 150);
 		
 		// Draw menu options
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 30);
@@ -96,8 +95,8 @@ public class MainMenu extends Menu{
 			}
 			
 			g.drawString(options[i], 
-					(int) Game.WIDTH/2 - fm.stringWidth(options[i])/2, 
-					(int) Game.HEIGHT/2 + (i * 60));
+					Game.WIDTH/2 - fm.stringWidth(options[i])/2, 
+					Game.HEIGHT/2 + (i * 60));
 			
 			// Fills the array with the collision rectangles.n
 			if (!(optionsRect[options.length-1] instanceof Rectangle)) {
@@ -106,6 +105,7 @@ public class MainMenu extends Menu{
 		}
 	}
 
+	@Override
 	protected void select() {
 		switch(currentChoice) {
 		case 0:
@@ -132,6 +132,7 @@ public class MainMenu extends Menu{
 		}
 	}
 	
+	@Override
 	public void keyPressed(int k) {
 		if(helpMenu) {
 			hM.keyPressed(k);
@@ -154,6 +155,7 @@ public class MainMenu extends Menu{
 		}
 	}
 
+	@Override
 	public void keyReleased(int k) { }
 
 

@@ -1,5 +1,7 @@
 package mainGame;
 
+import java.awt.Frame;
+
 import javax.swing.JFrame;
 
  public class MainClass {
@@ -8,7 +10,7 @@ import javax.swing.JFrame;
 		Game g = new Game();		
 		JFrame frame = new JFrame();
 
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setUndecorated(true);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

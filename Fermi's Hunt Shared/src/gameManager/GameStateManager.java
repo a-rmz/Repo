@@ -3,7 +3,6 @@ package gameManager;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import characters.Ship;
 import gameManager.levels.Level1;
 import gameManager.menus.*;
 import mainGame.Game;

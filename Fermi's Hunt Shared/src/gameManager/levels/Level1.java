@@ -31,9 +31,10 @@ public class Level1 extends GameState {
 		bg = new Background(Background.LEVEL_1);
 	}
 	
+	@Override
 	public void draw(Graphics2D g2d){
 		
-		Graphics g = (Graphics) g2d;
+		Graphics g = g2d;
 		
 		// Prints the Background
 		bg.draw(g2d);
@@ -47,6 +48,7 @@ public class Level1 extends GameState {
 	}
 
 
+	@Override
 	public void update(){
 		bg.update();
 		p1.update();
@@ -69,6 +71,7 @@ public class Level1 extends GameState {
 		
 	}
 
+	@Override
 	public void mouseMoved(MouseEvent e) {
 		p1.mouseMoved(e);
 	}
