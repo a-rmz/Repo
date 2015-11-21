@@ -6,7 +6,7 @@ import java.awt.Image;
 import characters.Sprite;
 
 public class HUD {
-	
+	private boolean wait;
 	private Image hud;
 	private Image shieldBar, speedBar, fireRateBar;
 	private String url, urlShield, urlSpeed, urlFire;
@@ -45,6 +45,7 @@ public class HUD {
 		Y = 0;
 		Bx = 290;
 		By = 110;
+		wait = false;
 	}
 	
 	public Image getHUDImage(){
@@ -62,6 +63,13 @@ public class HUD {
 	public void change_HUD_Live(int n){
 		url = HUD_Live[n];
 		set_HUD_Image();
+	}
+	
+	public void HUD_Wait(){
+		wait = true;
+	}
+	public void HUD_Start(){
+		wait = false;
 	}
 	public void setHUDstats(int shield, int speed, int fire){
 		change_HUD_stats(shield,speed,fire);
@@ -84,10 +92,13 @@ public class HUD {
 	}   
 	
 	public void draw(Graphics g){ 
+		if(wait){return;
+		}else{
 		g.drawImage(getHUDImage(), X, Y, null);
 		g.drawImage(getShieldBarImage(), Bx, By, null);
 		g.drawImage(getSpeedBarImage(), Bx, (By + 20), null);
-		g.drawImage(getFireRateBarImage(), Bx, (By + 40),null);   
+		g.drawImage(getFireRateBarImage(), Bx, (By + 40),null);
+		}   
 	}
 	
 }

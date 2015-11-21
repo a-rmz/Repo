@@ -258,7 +258,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(enabled) attack();		
+		if(enabled) attack();	
+		
 	}
 
 	/**

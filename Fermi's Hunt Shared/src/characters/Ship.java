@@ -608,6 +608,12 @@ public class Ship extends SpaceObject implements MouseListener{
 		
 	}
 	
+	public void hudWaith(){
+		hud.HUD_Wait();
+	}
+	public void hudstart(){
+		hud.HUD_Start();
+	}
 	
 	
 }

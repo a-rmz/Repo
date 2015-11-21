@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 
 import background.Background;
 import characters.Ship;
+import cinematics.NewGameCM;
 import gameManager.GameState;
 import gameManager.GameStateManager;
 import managers.EnemyManager;
@@ -19,6 +20,8 @@ public class Level1 extends GameState {
 	GameStateManager gsm;
 	Ship p1;
 	public static EnemyManager e;
+	public NewGameCM cinematic;
+	
 	
 	// Graphics
 	Background bg;
@@ -27,8 +30,10 @@ public class Level1 extends GameState {
 	public Level1(GameStateManager gsm){
 		this.gsm = gsm;
 		p1 = Ship.getPlayer();
-		e = new EnemyManager(1, 10); //TODO
+		e = new EnemyManager(1, 5); //TODO
 		bg = new Background(Background.LEVEL_1);
+		cinematic = new NewGameCM();
+
 	}
 	
 	@Override
@@ -41,9 +46,17 @@ public class Level1 extends GameState {
 		
 		// Prints user Ship
 		p1.draw(g);
-
+		
+		
+//*******************************************************************//
+		
+		
 		// Prints enemies
-		e.draw(g);
+		
+		if(cinematic.isRunning){ cinematic.draw(g);}
+		// Prints enemies
+		if(cinematic.enemyAppears)  e.draw(g);
+		
 		
 	}
 
@@ -52,7 +65,10 @@ public class Level1 extends GameState {
 	public void update(){
 		bg.update();
 		p1.update();
-		e.update();
+	
+		if(cinematic.enemyAppears) e.update();
+
+		
 	}
 
 	

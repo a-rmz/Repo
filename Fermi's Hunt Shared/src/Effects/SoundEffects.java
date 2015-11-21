@@ -25,7 +25,8 @@ public class SoundEffects {
 	};
 	
 	public  String[] backGroundMusic ={
-			"/Sounds/sectorZ.mp3"
+			"/Sounds/sectorZ.mp3",
+			"/Sounds/warning.mp3"
 	};
 	public  String[] backGroundMenuMusic ={
 			"/Sounds/MenuMusic.mp3",
@@ -209,7 +210,7 @@ public class SoundEffects {
 }
 	
 	public void play(){
-		if (clip == null) return;
+		if (clip == null || clip.isRunning() ) {return;}
 		clip.setFramePosition(0);
 		clip.start();
 		
