@@ -24,6 +24,7 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 	
 	private int enemiesOnScreen;
 	private int maxEnemies;
+	private int totalEnemies;
 	private int maxLevel;
 	private int level;
 	
@@ -78,7 +79,7 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 	 *  Uses the BasicEnemy update method to update every BasicEnemy on the LinkedList.
 	 */
 	public void update() {
-		for(int i = enemiesOnScreen; i < maxEnemies; i++) {
+		for(int i = enemiesOnScreen; i < maxEnemies && totalEnemies < maxLevel; i++) {
 			add(new BasicEnemy(level));
 			enemiesOnScreen++;
 		}
