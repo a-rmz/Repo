@@ -10,11 +10,6 @@ import Effects.Explosion;
 import Effects.SoundEffects;
 
 
-private int enemiesOnScreen;
-private int maxEnemies;
-private int totalEnemies;
-private int maxLevel;
-
 public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 	
 	// NO LOCAL INSTANCES
@@ -22,28 +17,37 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 	// --------------------------------------------------------------------------------
 	
 	//******* Attributes for effects********
-	ArrayList<Explosion> BUUM = new ArrayList<Explosion>();
-	SoundEffects se = new SoundEffects();
-	
-	private Thread thread;
-	private boolean isRunning;
-	
-	// **** CONSTRUCTOR ****
-	public EnemyManager(int level, int number) {
-		// Fills the LinkedList with number Enemies.
-		for(int i = 0; i < number; i++) {
-			// Creates a new Enemy.
-			BasicEnemy e = new BasicEnemy(level);
-			// Adds the new enemy to the LinkedList.
-			add(e);
+		ArrayList<Explosion> BUUM = new ArrayList<Explosion>();
+		SoundEffects se = new SoundEffects();
+		
+		private Thread thread;
+		private boolean isRunning;
+		
+		private int enemiesOnScreen;
+		private int maxEnemies;
+		private int totalEnemies;
+		private int maxLevel;
+		private int level;
+		
+		// **** CONSTRUCTOR ****
+		public EnemyManager(int level, int maxEnemies, int number) {
+			this.maxEnemies = maxEnemies;
+			maxLevel = number;
+			this.level = level;
+			enemiesOnScreen = 0;
+			// Fills the LinkedList with number Enemies.
+			for(int i = 0; i < maxEnemies; i++) {
+				// Creates a new Enemy.
+				BasicEnemy e = new BasicEnemy(level);
+				// Adds the new enemy to the LinkedList.
+				add(e);
+				enemiesOnScreen++;
+			}
+			isRunning=true;
+			thread = new Thread(this);
+			thread.start();
+			
 		}
-		isRunning=true;
-		thread = new Thread(this);
-		thread.start();
-		
-		
-		
-	}
 	
 	
 	// ----------------- **** METHODS **** ----------------- 
@@ -76,6 +80,10 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 	 *  Uses the BasicEnemy update method to update every BasicEnemy on the LinkedList.
 	 */
 	public void update() {
+		for(int i = enemiesOnScreen; i < maxEnemies && totalEnemies < maxLevel; i++) {
+			add(new BasicEnemy(level));
+			enemiesOnScreen++;
+		}
 		// For-each loop to update the BasicEnemy.
 		for(Iterator<BasicEnemy> i = l.iterator(); i.hasNext();) {
 			// Sets the Bullet b to the next Bullet in the List.
@@ -114,10 +122,10 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 		
 			be = null;
 	
-			
+			enemiesOnScreen--;
 			return true;
 		}
-		// If the Bullet was not destroyed, returns false.
+		// If the Enemy was not destroyed, returns false.
 		return false;
 	}
 
