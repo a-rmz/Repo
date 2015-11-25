@@ -427,6 +427,10 @@ public class Ship extends SpaceObject implements MouseListener{
 		this.shipType = shipType;
 		url = resources[shipType][0][BASIC_SHIP];
 	}
+	
+	public int getLevel() {
+		return this.level;
+	}
 
 	
 	

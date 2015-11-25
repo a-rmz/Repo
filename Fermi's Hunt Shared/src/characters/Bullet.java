@@ -20,10 +20,12 @@ public class Bullet {
 	
 	// **** BULLET STATS ****
 	private int bulletSpeed = -30; 
+	private int bulletDamage = 0;
 	
 	
 	// **** BULLET MODIFIERS ****
 	public Position p;
+	private boolean ship = false;
 	
 	
 	// --------------------------------------------------------------------------------
@@ -41,9 +43,13 @@ public class Bullet {
 		if(direction < 0 ) {
 			// Sets the url for the Bullet image. 
 			url = resources[1];
+			bulletDamage = Ship.getPlayer().getLevel();
+			ship = true;
+			System.out.println(bulletDamage);
 		} else {
 			// Sets the url for the Bullet image. 
 			url = resources[0];
+			bulletDamage = 1;
 		}
 		
 		// Loads the bullet image.
@@ -97,7 +103,13 @@ public class Bullet {
 	 */
 	public void update() {
 		p.increasePosX(bulletSpeed);
-		
+		if(ship) {
+			bulletDamage = Ship.getPlayer().getLevel();
+		}
+	}
+	
+	public int getDamage() {
+		return this.bulletDamage;
 	}
 	
 	/**
