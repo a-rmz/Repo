@@ -12,7 +12,8 @@ public class Bullet {
 	// **** RESOURCES ****
 	private String[] resources = {
 			"/Sprites/Bullet/BasicEnemyAttack.png",
-			"/Sprites/Bullet/ShipBullet.png"
+			"/Sprites/Bullet/ShipBullet.png",
+			"/Sprites/Bullet/ShipMissile.png",
 	};
 	private String url;
 	public Image bullet = null;
@@ -105,7 +106,12 @@ public class Bullet {
 		p.increasePosX(bulletSpeed);
 		if(ship) {
 			bulletDamage = Ship.getPlayer().getLevel();
+			bulletDamage = (bulletDamage * 2) - 1;
+			if(Ship.getPlayer().getLevel() == 3) {
+				url = resources[2];
+			}
 		}
+		setBulletImage();
 	}
 	
 	public int getDamage() {
