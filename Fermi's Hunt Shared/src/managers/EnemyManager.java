@@ -9,6 +9,12 @@ import characters.Ship;
 import Effects.Explosion;
 import Effects.SoundEffects;
 
+
+private int enemiesOnScreen;
+private int maxEnemies;
+private int totalEnemies;
+private int maxLevel;
+
 public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 	
 	// NO LOCAL INSTANCES
