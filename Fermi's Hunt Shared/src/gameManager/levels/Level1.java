@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import background.Background;
 import characters.Ship;
 import cinematics.NewGameCM;
+
 import gameManager.GameState;
 import gameManager.GameStateManager;
 import managers.EnemyManager;
@@ -33,7 +34,6 @@ public class Level1 extends GameState {
 		e = new EnemyManager(1, 5); //TODO
 		bg = new Background(Background.LEVEL_1);
 		cinematic = new NewGameCM();
-
 	}
 	
 	@Override

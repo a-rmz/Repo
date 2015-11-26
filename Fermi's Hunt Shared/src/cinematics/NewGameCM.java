@@ -6,6 +6,7 @@ import java.awt.Image;
 import Effects.SoundEffects;
 import characters.Sprite;
 
+
 public class NewGameCM implements Runnable {
 	
 	private Image text;
@@ -54,7 +55,7 @@ public class NewGameCM implements Runnable {
 	}
 	
 	public void update(){
-		if(i == 9 ) isRunning = false;
+		if(i == 9 ) {isRunning = false; return;}
 		
 		url = resources[i];
 		
@@ -136,7 +137,7 @@ public class NewGameCM implements Runnable {
 					e.printStackTrace();
 				}
 				
-				if(r==5) i = 8;
+				if(r==7) i = 8;
 				update();
 				break;
 			
