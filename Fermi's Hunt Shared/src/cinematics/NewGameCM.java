@@ -112,12 +112,12 @@ public class NewGameCM implements Runnable {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			
+				se5.play();
 				
 				break;
 			case 4:
 			case 5:
-				se5.play();
+				
 				i++;
 				
 				try {
