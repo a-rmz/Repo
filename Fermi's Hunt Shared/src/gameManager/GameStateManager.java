@@ -9,7 +9,7 @@ import mainGame.Game;
 
 public class GameStateManager {
 
-	private ArrayList<GameState>  gameStates;
+	public ArrayList<GameState>  gameStates;
 	private int currentState;
 	
 	public static final int MENUSTATE = 0;
@@ -72,10 +72,6 @@ public class GameStateManager {
 	
 	public void newGame() {
 		setState(CUSTOMIZESTATE);
-		
-	
-		gameStates.add(new Level1(this));
-
 	}
 }
 

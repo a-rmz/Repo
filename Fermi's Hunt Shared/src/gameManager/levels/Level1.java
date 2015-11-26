@@ -34,7 +34,6 @@ public class Level1 extends GameState {
 		e = new EnemyManager(2, 3, 10); //TODO
 		bg = new Background(Background.LEVEL_1);
 		cinematic = new NewGameCM();
-		initCinematic();
 	}
 	
 	public void  initCinematic(){
