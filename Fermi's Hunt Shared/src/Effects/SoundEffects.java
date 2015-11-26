@@ -32,8 +32,43 @@ public class SoundEffects {
 			"/Sounds/MenuMusic.mp3",
 			"/Sounds/sectorZ.mp3"
 	};
+	public  String[] EffectsSounds ={
+			"/Sounds/Alarm.mp3",
+			"/Sounds/Control_tower_radio.mp3",
+			"/Sounds/Keyboard.mp3"
+	};
 	
 	public SoundEffects(){
+		
+	}
+public void FXSound(int n){
+	
+		
+		try{
+			
+			AudioInputStream ais =
+					AudioSystem.getAudioInputStream(
+						getClass().getResourceAsStream(EffectsSounds[n])	
+					);
+			AudioFormat baseFormat = ais.getFormat();
+			AudioFormat decodeFormat = new AudioFormat(
+					AudioFormat.Encoding.PCM_SIGNED,
+					baseFormat.getSampleRate(),
+					16,
+					baseFormat.getChannels(),
+					baseFormat.getChannels() * 2,
+					baseFormat.getSampleRate(),
+					false
+					);
+			AudioInputStream dais = AudioSystem.getAudioInputStream(
+					decodeFormat, ais);
+			
+			clip = AudioSystem.getClip();
+			clip.open(dais);													
+					
+		} catch(Exception e){
+			e.printStackTrace();
+		}
 		
 	}
 	

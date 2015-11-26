@@ -72,6 +72,8 @@ public class GameStateManager {
 	
 	public void newGame() {
 		setState(CUSTOMIZESTATE);
+		
+	
 		gameStates.add(new Level1(this));
 
 	}

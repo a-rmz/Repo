@@ -443,9 +443,12 @@ public class CustomizeMenu extends Menu{
 			setPoints();
 		} else if (mouseOverLaunch(e)) {
 			se.stop();
-			gsm.setState(GameStateManager.LEVEL1STATE);
 			Ship.getPlayer().initPlayer();
 			gsm.game.hideCursor();
+			
+			gsm.setState(GameStateManager.LEVEL1STATE);
+			
+			
 		}
 		
 	}

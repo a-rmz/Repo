@@ -31,9 +31,14 @@ public class Level1 extends GameState {
 	public Level1(GameStateManager gsm){
 		this.gsm = gsm;
 		p1 = Ship.getPlayer();
-		e = new EnemyManager(2, 1, 10); //TODO
+		e = new EnemyManager(2, 3, 10); //TODO
 		bg = new Background(Background.LEVEL_1);
 		cinematic = new NewGameCM();
+		initCinematic();
+	}
+	
+	public void  initCinematic(){
+		cinematic.startAnimation();
 	}
 	
 	@Override

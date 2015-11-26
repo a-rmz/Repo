@@ -10,7 +10,7 @@ import characters.Sprite;
 public class NewGameCM implements Runnable {
 	
 	private Image text;
-	public SoundEffects se, se2;
+	public SoundEffects se, se2, se3, se4, se5;
 	public boolean isRunning;
 	public boolean  enemyAppears;
 	private String url;
@@ -37,14 +37,25 @@ public class NewGameCM implements Runnable {
 		X= 300;
 		Y= 670;
 		i= 0;
-		isRunning = true;
+		isRunning = false;
 		enemyAppears = false;
 		se = new SoundEffects();
 		se2 = new SoundEffects();
+		se3 = new SoundEffects();
+		se4 = new SoundEffects();
+		se5 = new SoundEffects();
 		se.backGroundMenuMusic(0);
 		se2.backGroundMusic(1);
-		t.start();	
+		se3.FXSound(2);
+		se4.FXSound(0);
+		se5.FXSound(1);
 		
+		
+	}
+	
+	public void startAnimation(){
+		isRunning = true;
+		t.start();	
 	}
 
 	public boolean endCinematic(){
@@ -90,6 +101,7 @@ public class NewGameCM implements Runnable {
 			case 1:
 			case 2:
 			case 3:
+				se3.play();
 				se.play();
 				i++;
 				update();
@@ -105,7 +117,7 @@ public class NewGameCM implements Runnable {
 				break;
 			case 4:
 			case 5:
-				
+				se5.play();
 				i++;
 				
 				try {
@@ -123,7 +135,7 @@ public class NewGameCM implements Runnable {
 			
 			case 6:
 			case 7:
-				
+				se4.play();
 				
 				if( r % 2 == 0){ i = 6;}
 				else{i = 7;}
