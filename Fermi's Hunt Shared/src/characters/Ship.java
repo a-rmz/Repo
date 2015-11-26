@@ -332,7 +332,11 @@ public class Ship extends SpaceObject implements MouseListener{
 				}
 			} else
 			if(level == 3) {
-				// Level 3 magic
+				bm.add(p);
+				url = resources[shipType][level-1][SHIP_SHOOT];
+				effects.get("shot").shipShotSound(0);
+				canShoot = false;
+				FireRateTimer.restart();
 			}
 		}
 	}
@@ -426,6 +430,10 @@ public class Ship extends SpaceObject implements MouseListener{
 	public void changeType(int shipType) {
 		this.shipType = shipType;
 		url = resources[shipType][0][BASIC_SHIP];
+	}
+	
+	public int getLevel() {
+		return this.level;
 	}
 
 	

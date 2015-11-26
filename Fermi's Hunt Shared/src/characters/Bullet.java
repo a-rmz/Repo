@@ -12,7 +12,8 @@ public class Bullet {
 	// **** RESOURCES ****
 	private String[] resources = {
 			"/Sprites/Bullet/BasicEnemyAttack.png",
-			"/Sprites/Bullet/ShipBullet.png"
+			"/Sprites/Bullet/ShipBullet.png",
+			"/Sprites/Bullet/ShipMissile.png",
 	};
 	private String url;
 	public Image bullet = null;
@@ -20,10 +21,12 @@ public class Bullet {
 	
 	// **** BULLET STATS ****
 	private int bulletSpeed = -30; 
+	private int bulletDamage = 0;
 	
 	
 	// **** BULLET MODIFIERS ****
 	public Position p;
+	private boolean ship = false;
 	
 	
 	// --------------------------------------------------------------------------------
@@ -41,9 +44,13 @@ public class Bullet {
 		if(direction < 0 ) {
 			// Sets the url for the Bullet image. 
 			url = resources[1];
+			bulletDamage = Ship.getPlayer().getLevel();
+			ship = true;
+			System.out.println(bulletDamage);
 		} else {
 			// Sets the url for the Bullet image. 
 			url = resources[0];
+			bulletDamage = 1;
 		}
 		
 		// Loads the bullet image.
@@ -97,7 +104,18 @@ public class Bullet {
 	 */
 	public void update() {
 		p.increasePosX(bulletSpeed);
-		
+		if(ship) {
+			bulletDamage = Ship.getPlayer().getLevel();
+			bulletDamage = (bulletDamage * 2) - 1;
+			if(Ship.getPlayer().getLevel() == 3) {
+				url = resources[2];
+			}
+		}
+		setBulletImage();
+	}
+	
+	public int getDamage() {
+		return this.bulletDamage;
 	}
 	
 	/**

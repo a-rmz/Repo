@@ -285,7 +285,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 				
 			// If the enemy got hit, activates the gotHit switch.
 				// The gotHit switch eliminates the ship.
-				hp--;	
+				hp -= bt.getDamage();	
 				System.out.println("Hit enemy");
 				} // End if
 			} // End for
