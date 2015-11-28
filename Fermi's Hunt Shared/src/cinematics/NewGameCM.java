@@ -14,31 +14,30 @@ public class NewGameCM implements Runnable {
 	public boolean isRunning;
 	public boolean  enemyAppears;
 	private String url;
-	private int X, Y, i;
-	int rr = 0;
-	int r = 0;
+	private int X, Y, i, r;
+	
 	Thread t;
 	
 	String[] resources= {
 		"/newGameCM/Text1.png", //0
 		"/newGameCM/Text2.png",//1
 		"/newGameCM/Text3.png",	//2
-		"/newGameCM/TextK4.png",//3
-		"/newGameCM/TextK5.png",//4
-		"/newGameCM/TextK6.png",//5
+		"/newGameCM/Text4.png",//3
+		"/newGameCM/Text5.png",//4
+		"/newGameCM/Text6.png",//5
 		"/newGameCM/HostileRed.png", // 6
-		"/newGameCM/HostileNone.png",//7
+		"/newGameCM/Danger.png",//7
 		"/newGameCM/Fire.png", // 8
 		
 	};
 	
 	public NewGameCM(){
 		t = new Thread(this);
-		X= 300;
-		Y= 670;
+		X= 0;
+		r = 0;
+		Y= 730;
 		i= 0;
-		isRunning = false;
-		enemyAppears = false;
+		isRunning = enemyAppears = false;
 		se = new SoundEffects();
 		se2 = new SoundEffects();
 		se3 = new SoundEffects();
@@ -99,48 +98,96 @@ public class NewGameCM implements Runnable {
 			switch (i){
 			case 0:
 			case 1:
-			case 2:
-			case 3:
 				se3.play();
 				se.play();
-				i++;
 				update();
 				try {
 					
-					Thread.sleep(4000);
+					Thread.sleep(8000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				se5.play();
+				i++;
+				break;
+			case 2:
 				
+				try {
+					
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				update();
+				i++;
+				break;
+			case 3:
+				se5.play();
+				update();
+				
+				
+				try {
+					
+					Thread.sleep(8000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				i++;
 				break;
 			case 4:
-			case 5:
-				
-				i++;
-				
+				update();
 				try {
 					
-					Thread.sleep(2500);
+					Thread.sleep(4500);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			
+				i++;
+				break;
+			case 5:
 				enemyAppears = true;
+				update();
+				try {
+					
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				se.close();
 				se2.play();
-				update();
+				
+				i++;
 				break;
 			
 			case 6:
 			case 7:
+			
+				se5.close();
 				se4.play();
 				
-				if( r % 2 == 0){ i = 6;}
-				else{i = 7;}
-				r++;
+				if( (r % 2) == 0){ 
+					i = 6; 
+				}else{
+					i = 7; 
+				}
+			
 				
+				
+				if(i == 7) {
+					X=0; Y = 0;
+				}else{ 
+					X =300;  Y = 670;
+				}
+				
+				
+				update();
+				if(r==7) i = 8;
 				try {
 					
 					Thread.sleep(500);
@@ -149,24 +196,24 @@ public class NewGameCM implements Runnable {
 					e.printStackTrace();
 				}
 				
-				if(r==7) i = 8;
-				update();
+				
+				r++;
+				
 				break;
 			
 			case 8:
 				X = 300;
 				Y = 400;
-				
 		
-			
+				update();
 				try {
 					
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				update();
+				
 				i++;
 
 				break;
