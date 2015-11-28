@@ -1,14 +1,7 @@
 package mainGame;
 
-import java.awt.Container;
 import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import cinematics.NewGameCinematic;
 
  public class MainClass {
 
@@ -24,9 +17,7 @@ import cinematics.NewGameCinematic;
 		frame.pack();
 		frame.setContentPane(g);
 		frame.setVisible(true);
-		
-	
-		
+			
 }
 	 
 	 

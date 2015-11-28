@@ -73,7 +73,7 @@ public class CustomizeMenu extends Menu{
 	String name = "";
 	
 	// Player Stats
-	private static int pointsLeft = 10;
+	private static int pointsLeft = 15;
 	private boolean stats[][]= {{false}, {false}};
 	private boolean flag[] = {false, false, false};
 	private int ptsPos;
