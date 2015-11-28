@@ -353,7 +353,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	}
 	
 	private void levelUp() {
-		if(xp == (300 * level)) {
+		if(xp == (300 * Math.pow(level, 2))) {
 			this.level++;
 		}
 	}
