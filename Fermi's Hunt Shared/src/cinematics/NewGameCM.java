@@ -5,6 +5,7 @@ import java.awt.Image;
 
 import Effects.SoundEffects;
 import characters.Sprite;
+import mainGame.Game;
 
 
 public class NewGameCM implements Runnable {
@@ -34,8 +35,8 @@ public class NewGameCM implements Runnable {
 	public NewGameCM(){
 		t = new Thread(this);
 		X= 0;
+		Y= (Game.HEIGHT) - 350 ;
 		r = 0;
-		Y= 730;
 		i= 0;
 		isRunning = enemyAppears = false;
 		se = new SoundEffects();
@@ -182,7 +183,7 @@ public class NewGameCM implements Runnable {
 				if(i == 7) {
 					X=0; Y = 0;
 				}else{ 
-					X =300;  Y = 670;
+					X = (Game.WIDTH / 2 ) - 700  ;  Y = (Game.HEIGHT / 2) - 200 ;
 				}
 				
 				
@@ -202,8 +203,8 @@ public class NewGameCM implements Runnable {
 				break;
 			
 			case 8:
-				X = 300;
-				Y = 400;
+				X = (Game.WIDTH / 2 ) - 700;
+				Y =  (Game.HEIGHT / 2) - 200 ;
 		
 				update();
 				try {
