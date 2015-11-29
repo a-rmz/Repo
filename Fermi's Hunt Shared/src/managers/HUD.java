@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import characters.Sprite;
+import mainGame.Game;
 
 public class HUD {
 	private boolean wait;
@@ -12,15 +13,15 @@ public class HUD {
 	private String url, urlShield, urlSpeed, urlFire;
 	private int X, Y, Bx, By;
 	public  String[] HUD_Live = {
-			"/HUD/HUD0.png",
-			"/HUD/HUD1.png",
-			"/HUD/HUD2.png",
-			"/HUD/HUD3.png",
-			"/HUD/HUD4.png",
-			"/HUD/HUD5.png",
-			"/HUD/HUD6.png",
-			"/HUD/HUD7.png",
-			"/HUD/HUD8.png"
+			"/HUD/test0.png",
+			"/HUD/test1.png",
+			"/HUD/test2.png",
+			"/HUD/test3.png",
+			"/HUD/test4.png",
+			"/HUD/test5.png",
+			"/HUD/test6.png",
+			"/HUD/test7.png",
+			"/HUD/test8.png"
 	};
 	
 	public  String[] HUD_StatsBar = {
@@ -41,7 +42,7 @@ public class HUD {
 	public HUD(){
 		url= HUD_Live[8];
 		set_HUD_Image();
-		X = 0;
+		X = (Game.WIDTH /2) -700 ;
 		Y = 0;
 		Bx = 290;
 		By = 110;
@@ -95,9 +96,10 @@ public class HUD {
 		if(wait){return;
 		}else{
 		g.drawImage(getHUDImage(), X, Y, null);
-		g.drawImage(getShieldBarImage(), Bx, By, null);
+		/*g.drawImage(getShieldBarImage(), Bx, By, null);
 		g.drawImage(getSpeedBarImage(), Bx, (By + 20), null);
 		g.drawImage(getFireRateBarImage(), Bx, (By + 40),null);
+		*/
 		}   
 	}
 	
