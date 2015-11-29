@@ -6,9 +6,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 
-@SuppressWarnings("serial")
 public class Keyboard {
 	
 	private class Key {
@@ -98,9 +96,6 @@ public class Keyboard {
 	private Key[][] keyboard;
 	private SpecialKey[] specialKeys;
 	private Key previousUsed;
-	// Image
-	private BufferedImage image;
-	private Graphics2D g;
 	
 	public Keyboard() {
 		init();
