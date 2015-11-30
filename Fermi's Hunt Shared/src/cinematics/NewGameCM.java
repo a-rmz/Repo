@@ -23,10 +23,10 @@ public class NewGameCM implements Runnable {
 		"/newGameCM/Text1.png", //0
 		"/newGameCM/Text2.png",//1
 		"/newGameCM/Text3.png",	//2
-		"/newGameCM/animation1.png",//3
-		"/newGameCM/animation2.png",//4
-		"/newGameCM/animation3.png",//5
-		"/newGameCM/animation4.png",//6
+		"/newGameCM/animation1.gif",//3
+		"/newGameCM/animation2.gif",//4
+		"/newGameCM/animation3.gif",//5
+		"/newGameCM/animation4.gif",//6
 		"/newGameCM/HostileRed.png", // 7
 		"/newGameCM/Danger.png",//8
 		"/newGameCM/Fire.png", // 9
@@ -131,7 +131,7 @@ public class NewGameCM implements Runnable {
 				
 				try {
 					
-					Thread.sleep(8000);
+					Thread.sleep(5000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -142,7 +142,7 @@ public class NewGameCM implements Runnable {
 				update();
 				try {
 					
-					Thread.sleep(4500);
+					Thread.sleep(6000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -155,7 +155,7 @@ public class NewGameCM implements Runnable {
 				update();
 				try {
 					
-					Thread.sleep(3000);
+					Thread.sleep(5000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -168,20 +168,30 @@ public class NewGameCM implements Runnable {
 				break;
 			
 			case 6:
+				update();
+				try {
+					
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				i++;
+				break;
 			case 7:
-			
+			case 8:
 				se5.close();
 				se4.play();
 				
 				if( (r % 2) == 0){ 
-					i = 6; 
-				}else{
 					i = 7; 
+				}else{
+					i = 8; 
 				}
 			
 				
 				
-				if(i == 7) {
+				if(i == 8) {
 					X=0; Y = 0;
 				}else{ 
 					X = (Game.WIDTH / 2 ) - 700  ;  Y = (Game.HEIGHT / 2) - 200 ;
@@ -189,7 +199,7 @@ public class NewGameCM implements Runnable {
 				
 				
 				update();
-				if(r==7) i = 8;
+				if(r==7) i = 9;
 				try {
 					
 					Thread.sleep(500);
@@ -203,7 +213,7 @@ public class NewGameCM implements Runnable {
 				
 				break;
 			
-			case 8:
+			case 9:
 				X = (Game.WIDTH / 2 ) - 700;
 				Y =  (Game.HEIGHT / 2) - 200 ;
 		
@@ -219,6 +229,7 @@ public class NewGameCM implements Runnable {
 				i++;
 
 				break;
+			
 			default:
 				update();
 				
