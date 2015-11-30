@@ -3,8 +3,11 @@ package mainGame;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -13,8 +16,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JPanel;
+
 import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
@@ -63,6 +69,21 @@ public class Game extends JPanel implements
 	}
 	
 	private void init() {
+		try {
+			String url = "resources/Fonts/8-BIT MADNESS.ttf";
+			File ff = new File(url);
+			Font f = Font.createFont(Font.TRUETYPE_FONT, ff);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(f);
+			
+			url = "resources/Fonts/8-BIT WONDER.ttf";
+			ff = new File(url);
+			f = Font.createFont(Font.TRUETYPE_FONT, ff);
+			ge.registerFont(f);
+		} catch (IOException|FontFormatException e) {
+			e.printStackTrace();
+		     System.out.println("Fonts not loaded.");
+		}
 		
 		isRunning = true;		
 		gsm = new GameStateManager(this);
