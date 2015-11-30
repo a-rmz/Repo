@@ -23,12 +23,13 @@ public class NewGameCM implements Runnable {
 		"/newGameCM/Text1.png", //0
 		"/newGameCM/Text2.png",//1
 		"/newGameCM/Text3.png",	//2
-		"/newGameCM/Text4.png",//3
-		"/newGameCM/Text5.png",//4
-		"/newGameCM/Text6.png",//5
-		"/newGameCM/HostileRed.png", // 6
-		"/newGameCM/Danger.png",//7
-		"/newGameCM/Fire.png", // 8
+		"/newGameCM/animation1.png",//3
+		"/newGameCM/animation2.png",//4
+		"/newGameCM/animation3.png",//5
+		"/newGameCM/animation4.png",//6
+		"/newGameCM/HostileRed.png", // 7
+		"/newGameCM/Danger.png",//8
+		"/newGameCM/Fire.png", // 9
 		
 	};
 	
@@ -66,7 +67,7 @@ public class NewGameCM implements Runnable {
 	}
 	
 	public void update(){
-		if(i == 9 ) {isRunning = false; return;}
+		if(i == 10 ) {isRunning = false; return;}
 		
 		url = resources[i];
 		
