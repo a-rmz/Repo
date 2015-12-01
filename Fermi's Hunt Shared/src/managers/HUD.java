@@ -8,10 +8,10 @@ import mainGame.Game;
 
 public class HUD {
 	private boolean wait;
-	private Image hud, hud_down;
+	private Image hud, hudDown, hudWeapon;
 	private Image shieldBar, speedBar, fireRateBar;
-	private String url, urlHudDown, urlShield, urlSpeed, urlFire;
-	private int X, Y, Bx, By;
+	private String url, urlHudDown, urlWeapon, urlShield, urlSpeed, urlFire;
+	private int X, Y, bX, bY, wX, wY;
 	public  String[] HUD_Live = {
 			"/HUD/test0.png",
 			"/HUD/test1.png",
@@ -38,25 +38,40 @@ public class HUD {
 			"/HUD/Bar9.png",
 			"/HUD/Bar10.png"
 	};
+	
+	public String[] HUD_Weapon = {
+			"HUD/SimpleShot.png",
+			"HUD/DoubleShot.png",
+			"HUD/RocketLauncher.png"
+	};
 
 	
 	public HUD(){
 		url= HUD_Live[8];
 		urlHudDown = HUD_Live[9];
+		urlWeapon = HUD_Weapon[0];
 		set_HUD_Image();
 		setHUD_downImage();
+		setHUDWeapon();
+		
 		X = (Game.WIDTH /2) -700 ;
 		Y = 0;
-		Bx = ((Game.WIDTH / 2) - 700) + 33;
-		By = (Game.HEIGHT - 200) + 70;
+		bX = ((Game.WIDTH / 2) - 700) + 33;
+		bY = (Game.HEIGHT - 200) + 70;
+		wX =((Game.WIDTH / 2) - 700) + 1027;
+		wY = (Game.HEIGHT - 200) + 44;
 		wait = false;
 	}
 	
 	public Image getHUDImage(){
 		return hud;
 	}
-	public Image getHUD_downImage(){
-		return hud_down;
+	public Image getHUDDownImage(){
+		return hudDown;
+	}
+	
+	public Image getHUDWeapon(){
+		return shieldBar;
 	}
 	public Image getShieldBarImage(){
 		return shieldBar;
@@ -70,6 +85,11 @@ public class HUD {
 	public void change_HUD_Live(int n){
 		url = HUD_Live[n];
 		set_HUD_Image();
+	}
+	
+	public void changeHUDWeapon(int n){
+		urlWeapon = HUD_Weapon[n];	
+		setHUDWeapon();
 	}
 	
 	public void HUD_Wait(){
@@ -92,7 +112,11 @@ public class HUD {
 		hud = Sprite.loadSprite(url, this);
 	}
 	public void setHUD_downImage(){
-		hud_down = Sprite.loadSprite(urlHudDown, this);
+		hudDown = Sprite.loadSprite(urlHudDown, this);
+	}
+	
+	public void setHUDWeapon(){
+		hudWeapon = Sprite.loadSprite(urlWeapon, this);
 	}
 	
 	public void set_HUD_StatsImage(){
@@ -105,10 +129,11 @@ public class HUD {
 		if(wait){return;
 		}else{
 		g.drawImage(getHUDImage(), X, Y, null);
-		g.drawImage(getHUD_downImage(), (Game.WIDTH / 2) - 700, (Game.HEIGHT - 200), null);
-		g.drawImage(getShieldBarImage(), Bx, By, null);
-		g.drawImage(getSpeedBarImage(), Bx, (By + 50), null);
-		g.drawImage(getFireRateBarImage(), Bx, (By + 100),null);
+		g.drawImage(getHUDDownImage(), (Game.WIDTH / 2) - 700, (Game.HEIGHT - 200), null);
+		g.drawImage(getHUDWeapon(), wX, wY, null);
+		g.drawImage(getShieldBarImage(), bX, bY, null);
+		g.drawImage(getSpeedBarImage(), bX, (bY + 50), null);
+		g.drawImage(getFireRateBarImage(), bX, (bY + 100),null);
 		
 		}   
 	}

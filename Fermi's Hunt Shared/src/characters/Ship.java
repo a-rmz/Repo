@@ -109,6 +109,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	private int shieldTop;
 	public int fireRate;
 	public int speed;
+	private int weaponNumber;
 	
 	
 	// **** SHIP MODIFIERS ****
@@ -141,6 +142,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		shield = 0;
 		fireRate = 0;
 		speed = 0;
+		weaponNumber = 0;
 		// Loads the ship image
 		setSpaceObjectImage();
 		SoundEffects ShotSound = new SoundEffects();
@@ -355,6 +357,11 @@ public class Ship extends SpaceObject implements MouseListener{
 	private void levelUp() {
 		if(xp == (300 * Math.pow(level, 2))) {
 			this.level++;
+			
+			// Change the weapon sprite in the HUD
+			this.weaponNumber++;
+			hud.changeHUDWeapon(weaponNumber);
+			
 		}
 	}
 
