@@ -99,7 +99,7 @@ public class NewGameCM implements Runnable {
 	
 			switch (i){
 			case 0:
-				enemyAppears = true;
+			
 			case 1:
 				se3.play();
 				se.play();

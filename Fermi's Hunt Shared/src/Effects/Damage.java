@@ -28,7 +28,7 @@ public class Damage implements Runnable {
 	
 	public void start(){
 		print = true;
-		se.playAgain();
+		//se.playAgain();
 	}
 	
 	public void draw(Graphics g){
