@@ -44,23 +44,6 @@ public class Game extends JPanel implements
 
 	private class Highscore {
 		
-		// Class player for the highscore map
-		private class Player implements java.io.Serializable{
-			private String name;
-			private Integer score;
-			
-			public Player(String name, Integer score) {
-				this.name = name;
-				this.score = score;
-			}
-			public String getName() {
-				return this.name;
-			}
-			public Integer getScore() {
-				return this.score;
-			}
-		}
-		
 		private LinkedHashMap<String, Integer> scores = new LinkedHashMap<String, Integer>(5);
 		private String dir;
 		private String fName = "hscr.hsc";
@@ -173,6 +156,7 @@ public class Game extends JPanel implements
 				}
 				newScores.put(name, score);
 				scores = newScores;
+				newScores = null;
 				sort();
 			}
 		}
