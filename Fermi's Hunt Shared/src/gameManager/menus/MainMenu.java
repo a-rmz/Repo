@@ -20,7 +20,7 @@ public class MainMenu extends Menu{
 	int currentChoice;
 	
 	String[] options = { 
-			"Continue", "New Game", "Load", "Help", "Credits", "Quit" 
+			"New Game", "High Scores", "Help", "Credits", "Quit" 
 	};
 	private Rectangle[] optionsRect;
 	
@@ -109,24 +109,21 @@ public class MainMenu extends Menu{
 	protected void select() {
 		switch(currentChoice) {
 		case 0:
-			// Continue
-			break;
-		case 1:
 			gsm.newGame();
 //			se.Stop();
 			break;
-		case 2:
-			// Load
+		case 1:
+			// High Scores
 			break;
-		case 3:
+		case 2:
 			// Help
 			helpMenu = true;
 			currentChoice = 0;
 			break;
-		case 4: 
+		case 3: 
 			// Credits
 			break;
-		case 5:
+		case 4:
 			System.exit(0);
 			break;
 		}
