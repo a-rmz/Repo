@@ -33,6 +33,7 @@ public class MainMenu extends Menu{
 	
 	// SubMenus
 	HelpMenu hM;
+	HighscoreMenu hsM;
 	
 	// Constructor
 	public MainMenu(GameStateManager gsm) {
@@ -52,7 +53,7 @@ public class MainMenu extends Menu{
 		mBG = new Background(Background.MAIN_MENU);
 		optionsRect = new Rectangle[options.length];
 		hM = HelpMenu.menu();
-	
+		hsM = HighscoreMenu.menu();
 		
 	}
 
@@ -62,6 +63,10 @@ public class MainMenu extends Menu{
 			hM.update();
 			return;
 		}
+		if(highscoreMenu) {
+			hsM.update();
+			return;
+		}
 		mBG.update();		
 	}
 
@@ -69,6 +74,10 @@ public class MainMenu extends Menu{
 	public void draw(Graphics2D g) {
 		if(helpMenu) {
 			hM.draw(g);
+			return;
+		}
+		if(highscoreMenu) {
+			hsM.draw(g);
 			return;
 		}
 		// Draw bg
@@ -114,6 +123,7 @@ public class MainMenu extends Menu{
 			break;
 		case 1:
 			// High Scores
+			highscoreMenu = true;
 			break;
 		case 2:
 			// Help
@@ -133,6 +143,10 @@ public class MainMenu extends Menu{
 	public void keyPressed(int k) {
 		if(helpMenu) {
 			hM.keyPressed(k);
+			return;
+		}
+		if(highscoreMenu) {
+			hsM.keyPressed(k);
 			return;
 		}
 		if(k == KeyEvent.VK_ENTER) {
@@ -159,6 +173,10 @@ public class MainMenu extends Menu{
 	public boolean mouseOver(MouseEvent e) {
 		if(helpMenu) {
 			// HelpMenu stuff here
+			return false;
+		}
+		if(highscoreMenu) {
+			// hsM stuff here
 			return false;
 		}
 		for(int i = 0; i < options.length; i++) {

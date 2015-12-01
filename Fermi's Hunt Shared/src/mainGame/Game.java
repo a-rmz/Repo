@@ -1,6 +1,7 @@
 package mainGame;
 
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -42,7 +43,7 @@ import gameManager.GameStateManager;
 public class Game extends JPanel implements 
 	Runnable, KeyListener, MouseMotionListener, MouseListener{
 
-	private class Highscore {
+	public class Highscore {
 		
 		private LinkedHashMap<String, Integer> scores = new LinkedHashMap<String, Integer>(5);
 		private String dir;
@@ -67,7 +68,7 @@ public class Game extends JPanel implements
 			hsFile = mkf.toFile();
 			if(Files.notExists(mkd)) {
 				mkdir();
-			} else
+			}
 			if(Files.notExists(mkf)) {
 				mkfil();
 				initHS();
@@ -93,11 +94,11 @@ public class Game extends JPanel implements
 			}
 		}
 		private void initHS() {
-			scores.put("Javier Dávalos", 9999);
+			scores.put("Javier Davalos", 9999);
 			scores.put("John Cena", 9999);
 			scores.put("Chuck Norris", 9999);
 			scores.put(":v", 9999);
-			scores.put("Yo", 9999);
+			scores.put("MC Dinero", 9999);
 			save();
 		}
 		
@@ -110,8 +111,6 @@ public class Game extends JPanel implements
 				ois = new ObjectInputStream(fis);
 				
 				scores = (LinkedHashMap<String, Integer>) ois.readObject();
-				
-				System.out.println(scores.toString());
 				ois.close();
 			} catch (Exception e) {
 				System.out.println("Hashtable not loaded");
@@ -178,8 +177,35 @@ public class Game extends JPanel implements
 		}
 			
 		
+		public void draw(java.awt.Graphics2D g, int x, int y) {
+			Font f = new Font("8-Bit Madness", Font.PLAIN, 80);
+			g.setFont(f);
+			g.setColor(Color.WHITE);
+			
+			Iterator<Map.Entry<String, Integer>> it = scores.entrySet().iterator();
+			for(int i = 0; i < 5; i++) {
+				Map.Entry<String, Integer> tmp = it.next();
+				g.drawString((i+1) + ". " + tmp.getKey(), x, (y + i*60));
+				g.drawString("" + tmp.getValue(), x + Game.WIDTH/3 + 100, (y + i*60));
+							
+			}
+		}
+		
 		public String toString() {
-			return scores.toString();
+			String ret = "";
+			Iterator<Map.Entry<String, Integer>> it = scores.entrySet().iterator();
+			for(int i = 0; i < 5; i++) {
+				Map.Entry<String, Integer> tmp = it.next();
+				if(tmp.getKey().length() < 5) {
+					ret += (i+1) + ". " + tmp.getKey() + "\t\t\t" + tmp.getValue() + "\n";
+				} else if(tmp.getKey().length() < 13) {
+					ret += (i+1) + ". " + tmp.getKey() + "\t\t" + tmp.getValue() + "\n";
+				} else {
+					ret += (i+1) + ". " + tmp.getKey() + "\t" + tmp.getValue() + "\n";
+				}
+				
+			}
+			return ret;
 		}
 	}
 	
@@ -193,6 +219,9 @@ public class Game extends JPanel implements
 	private boolean isRunning = false;
 	private int FPS = 60;
 	private long  LoopTime = 1000 / FPS;
+	
+	// Scores
+	public static Highscore hs;
 	
 	
 	// Game State Manager
@@ -221,9 +250,7 @@ public class Game extends JPanel implements
 	}
 	
 	private void init() {
-		Highscore hs = new Highscore();
-		hs.addScore("Alex", 10000);
-		System.out.println(hs.toString());
+		hs = new Highscore();
 		// Font load
 		try {
 			String url = "resources/Fonts/8-BIT MADNESS.ttf";
