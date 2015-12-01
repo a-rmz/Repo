@@ -29,6 +29,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -153,8 +154,27 @@ public class Game extends JPanel implements
 		}
 	
 		public void addScore(String name, int score) {
+			boolean mustReplace = false;
+			for(Integer value : scores.values()) {
+				if(score > value) {
+					mustReplace = true;
+					break;
+				}
+			}
 			
-			
+			if(mustReplace) {
+				LinkedHashMap<String, Integer> newScores = 
+						new LinkedHashMap<String, Integer>(5);
+				
+				Iterator<Map.Entry<String, Integer>> i = scores.entrySet().iterator();
+				for(int ctr = 0; ctr < 4; ctr++) {
+					Map.Entry<String, Integer> tmp = i.next();
+					newScores.put(tmp.getKey(), tmp.getValue());
+				}
+				newScores.put(name, score);
+				scores = newScores;
+				sort();
+			}
 		}
 
 		private void sort() {
@@ -218,6 +238,7 @@ public class Game extends JPanel implements
 	
 	private void init() {
 		Highscore hs = new Highscore();
+		hs.addScore("Alex", 10000);
 		System.out.println(hs.toString());
 		// Font load
 		try {
