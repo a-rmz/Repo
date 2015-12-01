@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import background.Background;
+import characters.Sprite;
 import gameManager.GameStateManager;
 import mainGame.Game;
 
@@ -29,6 +31,8 @@ public class MainMenu extends Menu{
 	Color FontColor;
 	Color SelectedFontColor;
 	Font font;
+	Image banner;
+	String copyright = "© VALHALLA STUDIOS 2015";
 	
 	
 	// SubMenus
@@ -50,11 +54,11 @@ public class MainMenu extends Menu{
 
 	@Override
 	public void init() {
-		mBG = new Background(Background.MAIN_MENU);
+		mBG = new Background(Background.MAIN_MENU, 6);
 		optionsRect = new Rectangle[options.length];
 		hM = HelpMenu.menu();
 		hsM = HighscoreMenu.menu();
-		
+		banner = Sprite.loadSprite("/BackgroundImg/Main_Menu/banner-game.png", this);
 	}
 
 	@Override
@@ -84,17 +88,21 @@ public class MainMenu extends Menu{
 		mBG.draw(g);
 		
 		// Draw title
-		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
+		g.drawImage(banner, (Game.WIDTH/2) - (banner.getWidth(this)/2), 100, null);
+		
+		// Draws copyright
 		g.setColor(FontColor);
+		font = new Font("Minecraft", Font.PLAIN, 30);
+		FontMetrics fm = g.getFontMetrics(font);
 		g.setFont(font);
-		g.drawString("Fermis Hunt", Game.WIDTH/3, 150);
+		g.drawString(copyright, Game.WIDTH/2 - fm.stringWidth(copyright)/2, Game.HEIGHT - 30);
 		
 		// Draw menu options
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 30);
 		g.setFont(font);
 
 		// Helps to center the text.
-		FontMetrics fm = g.getFontMetrics(font);
+		fm = g.getFontMetrics(font);
 		for(int i = 0; i < options.length; i++) {
 			
 			if(i == currentChoice) {
@@ -105,13 +113,13 @@ public class MainMenu extends Menu{
 			
 			g.drawString(options[i], 
 					Game.WIDTH/2 - fm.stringWidth(options[i])/2, 
-					Game.HEIGHT/2 + (i * 60));
+					Game.HEIGHT/2 + 100 + (i * 60));
 			
 			// Fills the array with the collision rectangles.n
 			if (!(optionsRect[options.length-1] instanceof Rectangle)) {
-				optionsRect[i] = createOptionBorder(options[i], i, g, fm);
+				optionsRect[i] = createMainOptionBorder(options[i], i, g, fm);
 			}
-		}
+		} // End for
 	}
 
 	@Override

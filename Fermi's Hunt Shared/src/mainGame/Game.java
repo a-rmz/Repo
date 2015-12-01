@@ -17,7 +17,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -102,6 +101,7 @@ public class Game extends JPanel implements
 			save();
 		}
 		
+		@SuppressWarnings("unchecked")
 		private void lfil() {
 			FileInputStream fis;
 			ObjectInputStream ois;
@@ -263,10 +263,18 @@ public class Game extends JPanel implements
 			ff = new File(url);
 			f = Font.createFont(Font.TRUETYPE_FONT, ff);
 			ge.registerFont(f);
+			
+			url = "resources/Fonts/MINECRAFT.ttf";
+			ff = new File(url);
+			f = Font.createFont(Font.TRUETYPE_FONT, ff);
+			ge.registerFont(f);
+			
 		} catch (IOException|FontFormatException e) {
 			e.printStackTrace();
 		     System.out.println("Fonts not loaded.");
 		}
+		
+		// Icon load
 		
 		// Initialize game
 		isRunning = true;		
