@@ -57,12 +57,11 @@ public class Level1 extends GameState {
 		
 //*******************************************************************//
 		
-		
 		// Prints enemies
 		
-		if(cinematic.isRunning){ cinematic.draw(g);}
-		
-		
+		if(cinematic.isRunning){ 
+			cinematic.draw(g);
+		}
 		
 	}
 
@@ -74,6 +73,9 @@ public class Level1 extends GameState {
 	
 		if(cinematic.enemyAppears) e.update();
 
+		if(!Ship.getPlayer().isAlive()) {
+			gsm.setState(GameStateManager.ENDGAME);
+		}
 		
 	}
 

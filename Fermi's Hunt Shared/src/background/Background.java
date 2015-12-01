@@ -19,7 +19,8 @@ public class Background {
 			"/BackgroundImg/Help_Menu/hm_img.png",
 			"/BackgroundImg/Customize_Menu/cm_img.png",
 			"/BackgroundImg/Highscore_Menu/hsm_img.png",
-			"/BackgroundImg/Level_1/l1_img.png"
+			"/BackgroundImg/Level_1/l1_img.png",
+			"/BackgroundImg/EndGame/endgame_anim.gif"
 	};
 	private String url;
 	public Image bg1, bg2;
@@ -34,7 +35,8 @@ public class Background {
 	public static final int HELP_MENU = 2;
 	public static final int CUSTOMIZE_MENU = 3;
 	public static final int SCORE_MENU = 4;
-	public static final int LEVEL_1= 5;
+	public static final int LEVEL_1 = 5;
+	public static final int ENDGAME = 6;
 
 	
 	// **** SHIP MODIFIERS ****

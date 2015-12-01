@@ -1,9 +1,7 @@
 package characters;
 
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -244,9 +242,6 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Checks if the Player has leveled up.
 		levelUp();
 		changeScoreAndXpInHUD();
-		if(!isAlive()) {
-			//System.out.println("Ship is dead");
-		}
 	}
 	
 	private void changeScoreAndXpInHUD() {
@@ -278,7 +273,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		if(shield == 0) shield = 1;
 		shieldTop = shield;
 		ShieldRegenTimer = new Timer(
-				10_000 / shield,
+				15_000 / shield,
 				new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -407,12 +402,9 @@ public class Ship extends SpaceObject implements MouseListener{
 				if(shieldOff) {
 					// Stat modifiers.
 					hp -= 1;
-						//hpCounter -= 1;
-					// Change HUD
-						//hud.change_HUD_Live(hpCounter);
 				} else {
 					shield -= 1;
-				}				
+				}			
 				// Only as a console verifier.
 				System.out.println("Hit");
 				hpCounter -= 1;
@@ -584,51 +576,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	}	
 	
 	public void mouseMoved(MouseEvent e) {
-		/*if(mouseNotMoved(e)) return;
 		
-		int mouseX = e.getX(), mouseY = e.getY();
-		int shipX = p.getX(), shipY = p.getY();
-		
-		if(mouseX > shipX && mouseY < shipY) {
-			right();
-			up();
-		} else
-		if(mouseX < shipX && mouseY < shipY) {
-			left();
-			up();
-		} else
-		if(mouseX < shipX && mouseY > shipY) {
-			left();
-			down();
-		} else
-		if(mouseX > shipX && mouseY > shipY) {
-			right();
-			down();
-		} else
-		if(mouseX > shipX && 
-				(mouseY + (Game.HEIGHT / 10) < shipY) &&
-				(mouseY - (Game.HEIGHT / 10) > shipY)) {
-			p.setVelY(0);
-			right();
-		} else
-		if(mouseX < shipX && 
-				(mouseY + (Game.HEIGHT / 5) < shipY) &&
-				(mouseY - (Game.HEIGHT / 5) > shipY)) {
-			p.setVelY(0);
-			left();
-		} else
-		if(mouseY > shipY && 
-				(mouseX + (Game.WIDTH / 5) > shipX) &&
-				(mouseX - (Game.WIDTH / 5) < shipX)) {
-			p.setVelX(0);
-			up();
-		} else
-		if(mouseY < shipY && 
-				(mouseX + (Game.WIDTH / 5) > shipX) &&
-				(mouseX - (Game.WIDTH / 5) < shipX)) {
-			p.setVelX(0);
-			down();
-		}*/
 	}
 
 
