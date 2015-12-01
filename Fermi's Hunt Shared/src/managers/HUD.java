@@ -10,8 +10,8 @@ public class HUD {
 	private boolean wait;
 	private Image hud, hudDown, hudWeapon;
 	private Image shieldBar, speedBar, fireRateBar;
-	private String url, urlHudDown, urlWeapon, urlShield, urlSpeed, urlFire;
-	private int X, Y, bX, bY, wX, wY;
+	private String url, urlHudDown, urlWeapon, urlShield, urlSpeed, urlFire, Sscore, Sxp;
+	private int X, Y, bX, bY, wX, wY, sX, sY, xX, xY, score, xp;
 	public  String[] HUD_Live = {
 			"/HUD/test0.png",
 			"/HUD/test1.png",
@@ -47,12 +47,17 @@ public class HUD {
 
 	
 	public HUD(){
+		
 		url= HUD_Live[8];
 		urlHudDown = HUD_Live[9];
 		urlWeapon = HUD_Weapon[0];
+		score = 0;
+		xp = 0;
+		
 		set_HUD_Image();
 		setHUD_downImage();
 		setHUDWeapon();
+		ScoreAndXPToString();
 		
 		X = (Game.WIDTH /2) -700 ;
 		Y = 0;
@@ -60,6 +65,11 @@ public class HUD {
 		bY = (Game.HEIGHT - 200) + 70;
 		wX =((Game.WIDTH / 2) - 700) + 1027;
 		wY = (Game.HEIGHT - 200) + 44;
+		sX = ((Game.WIDTH / 2) - 700) + 488;
+		xX = ((Game.WIDTH / 2) - 700) + 864;
+		sY = (Game.HEIGHT - 200) + 68;
+		xY = (Game.HEIGHT - 200) + 68;
+		
 		wait = false;
 	}
 	
@@ -115,6 +125,18 @@ public class HUD {
 		hudDown = Sprite.loadSprite(urlHudDown, this);
 	}
 	
+	public void setScoreAndXP(int score, int xp){
+		this.score = score;
+		this.xp = xp;
+		ScoreAndXPToString();
+		
+	}
+	
+	public void ScoreAndXPToString(){
+		Sscore = "" + score;
+		Sxp = "" + xp;
+	}
+	
 	public void setHUDWeapon(){
 		hudWeapon = Sprite.loadSprite(urlWeapon, this);
 	}
@@ -131,6 +153,8 @@ public class HUD {
 		g.drawImage(getHUDImage(), X, Y, null);
 		g.drawImage(getHUDDownImage(), (Game.WIDTH / 2) - 700, (Game.HEIGHT - 200), null);
 		g.drawImage(getHUDWeapon(), wX, wY, null);
+		g.drawString(Sscore, sX, sY);
+		g.drawString(Sxp, xX, xY);
 		g.drawImage(getShieldBarImage(), bX, bY, null);
 		g.drawImage(getSpeedBarImage(), bX, (bY + 50), null);
 		g.drawImage(getFireRateBarImage(), bX, (bY + 100),null);

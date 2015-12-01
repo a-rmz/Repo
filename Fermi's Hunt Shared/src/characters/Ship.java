@@ -235,11 +235,18 @@ public class Ship extends SpaceObject implements MouseListener{
 		bm.update();
 		// Checks if the Player has leveled up.
 		levelUp();
+		changeScoreAndXpInHUD();
 		if(!isAlive()) {
 			//System.out.println("Ship is dead");
 		}
 	}
 	
+	private void changeScoreAndXpInHUD() {
+		hud.setScoreAndXP(0, xp);
+		
+	}
+
+
 	public void initPlayer() {
 		hud.setHUDstats(shield , speed, fireRate);
 		initTimers();
