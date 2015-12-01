@@ -128,6 +128,7 @@ public class MainMenu extends Menu{
 		case 2:
 			// Help
 			helpMenu = true;
+			hM.restart();
 			currentChoice = 0;
 			break;
 		case 3: 
@@ -199,9 +200,9 @@ public class MainMenu extends Menu{
 		// Only admits clicking if the mouse is over the option.
 		if(mouseOver(e)) {
 			select();	
+		} else if(helpMenu) {
+			hM.mouseClicked(e);
 		}
-	
-//		System.out.println(e.getX() + ", " + e.getY());
 		
 	}
 

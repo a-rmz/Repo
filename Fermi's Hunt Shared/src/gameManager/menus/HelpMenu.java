@@ -12,7 +12,8 @@ import characters.Sprite;
 public class HelpMenu extends Menu {
 	// Graphics
 		Background hBG;
-		private Image hlp;
+		private Image hm1, hm2;
+		private boolean off = false;
 
 		private static HelpMenu instance = new HelpMenu();
 		
@@ -22,7 +23,12 @@ public class HelpMenu extends Menu {
 		@Override
 		public void init() {
 			hBG = new Background(Background.HELP_MENU);	
-			hlp = Sprite.loadSprite("/BackgroundImg/Help_Menu/hlp.png", this);
+			hm1 = Sprite.loadSprite("/BackgroundImg/Help_Menu/hm_info1.png", this);
+			hm2 = Sprite.loadSprite("/BackgroundImg/Help_Menu/hm_info2.png", this);
+		}
+		
+		public void restart() {
+			off = false;
 		}
 		
 		public static HelpMenu menu() {
@@ -37,14 +43,22 @@ public class HelpMenu extends Menu {
 		@Override
 		public void draw(Graphics2D g) {
 			hBG.draw(g);
-			g.drawImage(hlp, 300, 300, null);
+			
+			g.drawImage(hm2, 0, 0, null);
+			if(!off) {
+				g.drawImage(hm1, 0, 0, null);
+			} 
+			
+			
 		}
 
 		@Override
 		public void keyPressed(int k) {
 			if(k == KeyEvent.VK_ESCAPE) {
 				helpMenu = false;
-			}		
+			} else {
+				off = true;
+			}
 		}
 
 		@Override
@@ -64,7 +78,6 @@ public class HelpMenu extends Menu {
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 		@Override
@@ -74,7 +87,6 @@ public class HelpMenu extends Menu {
 		}
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
+			off = true;
 		}
 }
