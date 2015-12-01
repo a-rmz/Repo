@@ -24,6 +24,7 @@ public class CustomizeMenu extends Menu{
 		// Members
 		private String shipName;
 		private Image ship;
+		private Image tFrame;
 		private int id;
 		
 		// Options
@@ -43,10 +44,14 @@ public class CustomizeMenu extends Menu{
 			shipName = names[type];
 			id = type;
 			ship = Sprite.loadSprite(baseShips[type], this);
+			tFrame = Sprite.loadSprite("/BackgroundImg/Customize_Menu/tFrame.png", this);
 		}
 		
 		public Image getThumb() {
 			return ship;
+		}
+		public Image getFrame() {
+			return tFrame;
 		}
 		public String getName() {
 			return shipName;
@@ -61,6 +66,7 @@ public class CustomizeMenu extends Menu{
 
 	// Graphics
 	private Image frame;
+	private Image mainFrame;
 	Background cBG;
 	
 	ShipThumb[] thumbs = new ShipThumb[3];
@@ -106,6 +112,7 @@ public class CustomizeMenu extends Menu{
 		cBG = new Background(Background.CUSTOMIZE_MENU);
 		ships = new Rectangle[ShipThumb.shipQuant()];
 		frame = Sprite.loadSprite("/BackgroundImg/Customize_Menu/frame.png", this);
+		mainFrame = Sprite.loadSprite("/BackgroundImg/Customize_Menu/main_frame.png", this);
 		stats = new boolean[3][10];
 		for(int i = 0; i < ShipThumb.shipQuant(); i++) {
 			ships[i] = new Rectangle(
@@ -162,18 +169,15 @@ public class CustomizeMenu extends Menu{
 	}
 	
 	public void drawMainShip(Graphics2D g) {
-		g.setStroke(new BasicStroke(5));
-		g.setColor(Color.BLACK);
-		// Draws the frame and background
+
 		Rectangle r = new Rectangle(
 				200, 
 				150, 
 				ships[1].x + ships[2].width, 
 				ships[1].x + ships[2].width
 				);
-		g.draw(r);
-		g.setColor(new Color(0, 0, 0, 200));
-		g.fillRect(r.x, r.y, r.width, r.height);
+
+		g.drawImage(mainFrame, 150, 100, mainFrame.getWidth(null), mainFrame.getHeight(null), null);
 		
 		// Draws the ship name
 		g.setColor(Color.WHITE);
@@ -196,18 +200,17 @@ public class CustomizeMenu extends Menu{
 	}
 	
 	private void drawShipOptions(Graphics2D g) {
-		g.setStroke(new BasicStroke(3));
-		Color back = new Color(0, 0, 0, 125);
-		// Draw a Rectangle for each frame.
-		for(Rectangle r : ships) {
-			g.setColor(Color.BLACK);
-			g.draw(r);
-			g.setColor(back);
-			g.fillRect(r.x, r.y, r.width, r.height);
-		}
-		
+				
 		// Draw the ships
 		for(int i = 0; i < ShipThumb.shipQuant(); i++) {
+			g.drawImage(thumbs[i].getFrame(), 
+					(int) ships[i].getX() - 10,
+					(int) ships[i].getY() - 10,
+					thumbs[i].getFrame().getWidth(null),
+					thumbs[i].getFrame().getHeight(null),
+					this
+				);
+			
 			g.drawImage(thumbs[i].getThumb(), 
 					(int) ships[i].getX(),
 					(int) ships[i].getY(),
