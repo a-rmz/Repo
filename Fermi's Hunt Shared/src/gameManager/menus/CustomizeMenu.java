@@ -86,7 +86,7 @@ public class CustomizeMenu extends Menu{
 	private int ptsPos;
 	private Rectangle statsRect[][];
 	Rectangle oR = new Rectangle(
-			775, 
+			800, 
 			200, 
 			1000, 
 			760);
