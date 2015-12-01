@@ -1,5 +1,7 @@
 package managers;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -7,6 +9,7 @@ import characters.Sprite;
 import mainGame.Game;
 
 public class HUD {
+	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
 	private boolean wait;
 	private Image hud, hudDown, hudWeapon;
 	private Image shieldBar, speedBar, fireRateBar;
@@ -147,7 +150,13 @@ public class HUD {
 		fireRateBar = Sprite.loadSprite(urlFire, this);
 	}   
 	
+	public void drawDamage(){
+		
+	}
+	
 	public void draw(Graphics g){ 
+		g.setColor(Color.WHITE);
+		g.setFont(f);
 		if(wait){return;
 		}else{
 		g.drawImage(getHUDImage(), X, Y, null);

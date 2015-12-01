@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.swing.Timer;
 
+import Effects.Damage;
 import Effects.SoundEffects;
 import mainGame.Game;
 import managers.BulletManager;
@@ -90,13 +91,16 @@ public class Ship extends SpaceObject implements MouseListener{
 	private final int SHIP_SHOOT = 3;
 	
 	private String url = resources[shipType][0][BASIC_SHIP];
-	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
+	
 	Image ship = null; 
 	HashMap<String, SoundEffects> effects = new HashMap<>();
 	
 	//********HUD********
 	HUD hud = new HUD();
 	int hpCounter = 8;
+	
+	//*********Effects*****
+	Damage damage;
 	
 	
 	// **** PLAYER STATS ****
@@ -147,6 +151,8 @@ public class Ship extends SpaceObject implements MouseListener{
 		setSpaceObjectImage();
 		SoundEffects ShotSound = new SoundEffects();
 		effects.put("shot", ShotSound);	
+		// ship damage effect
+		damage = new Damage();
 	}
 	
 	
@@ -194,6 +200,8 @@ public class Ship extends SpaceObject implements MouseListener{
 		
 		//Draws HUD
 		hud.draw(g);
+		
+		damage.draw(g);
 	}
 	
 	/**
@@ -203,11 +211,11 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void hitsOnSelf(Graphics g) {
 		// Graphics previous modifiers.
-		g.setColor(Color.WHITE);
-		g.setFont(f);
+	
 		// If the ship got hit, prints the "HIT" string.
 		// TODO Implement to a random position near the ship.
 		if(gotHit) {
+			
 			g.drawString("Hit", p.getX()+10, p.getY()+15);
 		}
 		// Again the gotHit switch is set to false.
@@ -410,7 +418,7 @@ public class Ship extends SpaceObject implements MouseListener{
 				hpCounter -= 1;
 				if(hpCounter <= 0) hpCounter = 0;
 				hud.change_HUD_Live(hpCounter);
-				
+				damage.start();
 				}
 			}
 		}
