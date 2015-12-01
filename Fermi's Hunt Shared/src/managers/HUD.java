@@ -9,7 +9,7 @@ import characters.Sprite;
 import mainGame.Game;
 
 public class HUD {
-	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
+	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 15);
 	private boolean wait;
 	private Image hud, hudDown, hudWeapon;
 	private Image shieldBar, speedBar, fireRateBar;
@@ -68,8 +68,8 @@ public class HUD {
 		bY = (Game.HEIGHT - 200) + 70;
 		wX =((Game.WIDTH / 2) - 700) + 1027;
 		wY = (Game.HEIGHT - 200) + 44;
-		sX = ((Game.WIDTH / 2) - 700) + 488;
-		sY = (Game.HEIGHT - 200) + 68;
+		sX = ((Game.WIDTH / 2) - 700) + 485;
+		sY = (Game.HEIGHT - 200) + 70;
 	
 		
 		wait = false;
