@@ -144,6 +144,7 @@ public class PauseMenu extends Menu implements Runnable{
 		case 3:
 			// Help
 			helpMenu = true;
+			HelpMenu.menu().restart();
 			currentChoice = 0;
 			break;
 		case 4:
