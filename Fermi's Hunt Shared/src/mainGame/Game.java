@@ -1,6 +1,7 @@
 package mainGame;
 
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,8 +17,23 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.JPanel;
 
@@ -27,13 +43,175 @@ import gameManager.GameStateManager;
 public class Game extends JPanel implements 
 	Runnable, KeyListener, MouseMotionListener, MouseListener{
 
+	public class Highscore {
+		
+		private LinkedHashMap<String, Integer> scores = new LinkedHashMap<String, Integer>(5);
+		private String dir;
+		private String fName = "hscr.hsc";
+		private Path mkd;
+		private Path mkf;
+		private File hsFile;
+		
+		public Highscore() {			
+			char os;
+			os = (System.getProperty("os.name").contains("Win")) ? 'w' : 'o';
+			if(os == 'w') {
+				dir = System.getenv("AppData");
+				dir += "/Fermi/";
+			}
+			if(os == 'o') {
+				dir = System.getProperty("user.home");
+				dir += "/Library/Application Support/Fermi/";
+			}
+			mkd = Paths.get(dir);
+			mkf = Paths.get(dir + fName);
+			hsFile = mkf.toFile();
+			if(Files.notExists(mkd)) {
+				mkdir();
+			}
+			if(Files.notExists(mkf)) {
+				mkfil();
+				initHS();
+			} else lfil();
+		}
+		
+		private void mkdir() {
+			try {
+				Files.createDirectories(mkd);
+				System.out.println("Directorio creado.");
+			} catch (Exception e) {
+				System.out.println("Error al crear el directorio.");
+				e.printStackTrace();
+			}
+		}
+		private void mkfil() {
+			try {
+				System.out.println("Archivo creado.");
+				Files.createFile(mkf);
+			} catch (Exception e) {
+				System.out.println("Error al crear el archivo.");
+				e.printStackTrace();
+			}
+		}
+		private void initHS() {
+			scores.put("Javier Davalos", 9999);
+			scores.put("John Cena", 9999);
+			scores.put("Chuck Norris", 9999);
+			scores.put(":v", 9999);
+			scores.put("MC Dinero", 9999);
+			save();
+		}
+		
+		private void lfil() {
+			FileInputStream fis;
+			ObjectInputStream ois;
+			
+			try {
+				fis = new FileInputStream(hsFile);
+				ois = new ObjectInputStream(fis);
+				
+				scores = (LinkedHashMap<String, Integer>) ois.readObject();
+				ois.close();
+			} catch (Exception e) {
+				System.out.println("Hashtable not loaded");
+				e.printStackTrace();
+			}
+		}
+		
+		private void save() {
+			FileOutputStream fos;
+			ObjectOutputStream oos;
+			
+			try {
+				fos = new FileOutputStream(hsFile);
+				oos = new ObjectOutputStream(fos);
+				oos.writeObject(scores);
+				oos.close();
+				fos.close();
+			} catch (Exception e) {
+				System.out.println("Hashtable not saved");
+				e.printStackTrace();
+			}
+			
+		}
+	
+		public void addScore(String name, int score) {
+			boolean mustReplace = false;
+			for(Integer value : scores.values()) {
+				if(score > value) {
+					mustReplace = true;
+					break;
+				}
+			}
+			
+			if(mustReplace) {
+				LinkedHashMap<String, Integer> newScores = 
+						new LinkedHashMap<String, Integer>(5);
+				
+				Iterator<Map.Entry<String, Integer>> i = scores.entrySet().iterator();
+				for(int ctr = 0; ctr < 4; ctr++) {
+					Map.Entry<String, Integer> tmp = i.next();
+					newScores.put(tmp.getKey(), tmp.getValue());
+				}
+				newScores.put(name, score);
+				scores = newScores;
+				newScores = null;
+				sort();
+			}
+		}
+
+		private void sort() {
+			List<Map.Entry<String, Integer>> unsorted =
+					  new ArrayList<Map.Entry<String, Integer>>(scores.entrySet());
+			
+			Collections.sort(unsorted, new Comparator<Map.Entry<String, Integer>>() {
+				public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
+					return -a.getValue().compareTo(b.getValue());
+				}
+			});
+			
+			scores.clear();
+			for(Map.Entry<String, Integer> entry : unsorted) {
+				scores.put(entry.getKey(), entry.getValue());
+			}
+		}
+			
+		
+		public void draw(java.awt.Graphics2D g, int x, int y) {
+			Font f = new Font("8-Bit Madness", Font.PLAIN, 80);
+			g.setFont(f);
+			g.setColor(Color.WHITE);
+			
+			Iterator<Map.Entry<String, Integer>> it = scores.entrySet().iterator();
+			for(int i = 0; i < 5; i++) {
+				Map.Entry<String, Integer> tmp = it.next();
+				g.drawString((i+1) + ". " + tmp.getKey(), x, (y + i*85));
+				g.drawString("" + tmp.getValue(), x + Game.WIDTH/3 + 100, (y + i*85));
+							
+			}
+		}
+		
+		public String toString() {
+			String ret = "";
+			Iterator<Map.Entry<String, Integer>> it = scores.entrySet().iterator();
+			for(int i = 0; i < 5; i++) {
+				Map.Entry<String, Integer> tmp = it.next();
+				if(tmp.getKey().length() < 5) {
+					ret += (i+1) + ". " + tmp.getKey() + "\t\t\t" + tmp.getValue() + "\n";
+				} else if(tmp.getKey().length() < 13) {
+					ret += (i+1) + ". " + tmp.getKey() + "\t\t" + tmp.getValue() + "\n";
+				} else {
+					ret += (i+1) + ". " + tmp.getKey() + "\t" + tmp.getValue() + "\n";
+				}
+				
+			}
+			return ret;
+		}
+	}
+	
 	// Dimensions
 	public static final int WIDTH = (int) screenSize().getWidth();
 	public static final int HEIGHT = (int) screenSize().getHeight();
-	
-	//*****BacGround Music******* 
-	
-	
 	
 	
 	private static Thread LoopThread;
@@ -41,6 +219,9 @@ public class Game extends JPanel implements
 	private boolean isRunning = false;
 	private int FPS = 60;
 	private long  LoopTime = 1000 / FPS;
+	
+	// Scores
+	public static Highscore hs;
 	
 	
 	// Game State Manager
@@ -69,6 +250,8 @@ public class Game extends JPanel implements
 	}
 	
 	private void init() {
+		hs = new Highscore();
+		// Font load
 		try {
 			String url = "resources/Fonts/8-BIT MADNESS.ttf";
 			File ff = new File(url);
@@ -85,6 +268,7 @@ public class Game extends JPanel implements
 		     System.out.println("Fonts not loaded.");
 		}
 		
+		// Initialize game
 		isRunning = true;		
 		gsm = new GameStateManager(this);
 	}

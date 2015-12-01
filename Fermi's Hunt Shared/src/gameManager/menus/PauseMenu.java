@@ -22,7 +22,7 @@ public class PauseMenu extends Menu implements Runnable{
 	
 	int currentChoice;
 	private String[] options = {
-			"Resume", "Save", "Load", "Help", "Quit"
+			"Resume", "High Scores", "Help", "Quit"
 		};
 	private Rectangle[] optionsRect;
 	
@@ -136,17 +136,15 @@ public class PauseMenu extends Menu implements Runnable{
 			se.stop();
 			break;
 		case 1:
-			// Save
-			break;
+			// High Scores
+			
 		case 2:
-			// Load
-			break;
-		case 3:
 			// Help
 			helpMenu = true;
+			HelpMenu.menu().restart();
 			currentChoice = 0;
 			break;
-		case 4:
+		case 3:
 			// Quit
 			System.exit(0);
 			break;

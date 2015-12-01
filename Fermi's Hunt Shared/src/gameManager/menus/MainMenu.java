@@ -20,7 +20,7 @@ public class MainMenu extends Menu{
 	int currentChoice;
 	
 	String[] options = { 
-			"Continue", "New Game", "Load", "Help", "Credits", "Quit" 
+			"New Game", "High Scores", "Help", "Credits", "Quit" 
 	};
 	private Rectangle[] optionsRect;
 	
@@ -33,6 +33,7 @@ public class MainMenu extends Menu{
 	
 	// SubMenus
 	HelpMenu hM;
+	HighscoreMenu hsM;
 	
 	// Constructor
 	public MainMenu(GameStateManager gsm) {
@@ -52,7 +53,7 @@ public class MainMenu extends Menu{
 		mBG = new Background(Background.MAIN_MENU);
 		optionsRect = new Rectangle[options.length];
 		hM = HelpMenu.menu();
-	
+		hsM = HighscoreMenu.menu();
 		
 	}
 
@@ -62,6 +63,10 @@ public class MainMenu extends Menu{
 			hM.update();
 			return;
 		}
+		if(highscoreMenu) {
+			hsM.update();
+			return;
+		}
 		mBG.update();		
 	}
 
@@ -69,6 +74,10 @@ public class MainMenu extends Menu{
 	public void draw(Graphics2D g) {
 		if(helpMenu) {
 			hM.draw(g);
+			return;
+		}
+		if(highscoreMenu) {
+			hsM.draw(g);
 			return;
 		}
 		// Draw bg
@@ -109,24 +118,23 @@ public class MainMenu extends Menu{
 	protected void select() {
 		switch(currentChoice) {
 		case 0:
-			// Continue
-			break;
-		case 1:
 			gsm.newGame();
 //			se.Stop();
 			break;
-		case 2:
-			// Load
+		case 1:
+			// High Scores
+			highscoreMenu = true;
 			break;
-		case 3:
+		case 2:
 			// Help
 			helpMenu = true;
+			hM.restart();
 			currentChoice = 0;
 			break;
-		case 4: 
+		case 3: 
 			// Credits
 			break;
-		case 5:
+		case 4:
 			System.exit(0);
 			break;
 		}
@@ -136,6 +144,10 @@ public class MainMenu extends Menu{
 	public void keyPressed(int k) {
 		if(helpMenu) {
 			hM.keyPressed(k);
+			return;
+		}
+		if(highscoreMenu) {
+			hsM.keyPressed(k);
 			return;
 		}
 		if(k == KeyEvent.VK_ENTER) {
@@ -164,6 +176,10 @@ public class MainMenu extends Menu{
 			// HelpMenu stuff here
 			return false;
 		}
+		if(highscoreMenu) {
+			// hsM stuff here
+			return false;
+		}
 		for(int i = 0; i < options.length; i++) {
 			if(optionsRect[i].contains(e.getPoint())) {
 				currentChoice = i;
@@ -184,9 +200,9 @@ public class MainMenu extends Menu{
 		// Only admits clicking if the mouse is over the option.
 		if(mouseOver(e)) {
 			select();	
+		} else if(helpMenu) {
+			hM.mouseClicked(e);
 		}
-	
-//		System.out.println(e.getX() + ", " + e.getY());
 		
 	}
 

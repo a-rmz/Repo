@@ -13,6 +13,7 @@ import mainGame.Game;
 public abstract class Menu extends GameState {
 	
 	protected static boolean helpMenu = false;
+	protected static boolean highscoreMenu = false;
 
 	Rectangle createOptionBorder(String option, int i, Graphics2D g, FontMetrics fm) {
 

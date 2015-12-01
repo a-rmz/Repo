@@ -18,10 +18,13 @@ public class Background {
 			"/BackgroundImg/Pause_Menu/pm_img.png",
 			"/BackgroundImg/Help_Menu/hm_img.png",
 			"/BackgroundImg/Customize_Menu/cm_img.png",
+			"/BackgroundImg/Highscore_Menu/hsm_img.png",
 			"/BackgroundImg/Level_1/l1_img.png"
 	};
 	private String url;
 	public Image bg1, bg2;
+	
+	private int rate = -10;
 	
 	
 	// **** PLAYER STATS ****
@@ -30,7 +33,8 @@ public class Background {
 	public static final int PAUSE_MENU = 1;
 	public static final int HELP_MENU = 2;
 	public static final int CUSTOMIZE_MENU = 3;
-	public static final int LEVEL_1= 4;
+	public static final int SCORE_MENU = 4;
+	public static final int LEVEL_1= 5;
 
 	
 	// **** SHIP MODIFIERS ****
@@ -60,6 +64,21 @@ public class Background {
 		bg2 = setBackgroundImage();
 	}
 
+
+	/**
+	 * Constructor. Receives as parameter the actual level (or enemy level) and the
+	 * speed rate for the Background movement POSITIVE.
+	 * @param level
+	 */
+	public Background(int index, int rate){
+		this.rate = -rate;
+		// Defines the image to be loaded.
+		url = backgrounds[index];
+		// Loads the image to both background images.
+		bg1 = setBackgroundImage();
+		bg2 = setBackgroundImage();
+	}
+
 	
 	
 	// **** LOGICAL METHODS ****
@@ -68,8 +87,8 @@ public class Background {
 	 */
 	public void update(){
 		// Moves each background -1 unit at a time.
-		pbg1.increasePosX(-10);
-		pbg2.increasePosX(-10);
+		pbg1.increasePosX(rate);
+		pbg2.increasePosX(rate);
 		
 		if(pbg1.getX() == (-sSize.getWidth())){
 			pbg1.setPosX(sSize.getWidth());
