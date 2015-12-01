@@ -1,9 +1,8 @@
 package characters;
 
 
-import java.awt.Color;
+
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -250,7 +249,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	}
 	
 	private void changeScoreAndXpInHUD() {
-		hud.setScoreAndXP(0, xp);
+		hud.setScoreAndXP(xp);
 		
 	}
 

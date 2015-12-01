@@ -19,7 +19,7 @@ public class Damage implements Runnable {
 	
 	public Damage(){
 		se = new SoundEffects();
-		se.FXSound(0);
+		se.FXSound(3);
 		thread = new Thread(this);
 		listen = true;
 		setDamegeImage();
@@ -28,7 +28,7 @@ public class Damage implements Runnable {
 	
 	public void start(){
 		print = true;
-		//se.playAgain();
+		se.playAgain();
 	}
 	
 	public void draw(Graphics g){

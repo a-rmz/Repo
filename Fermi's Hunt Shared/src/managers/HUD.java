@@ -13,8 +13,8 @@ public class HUD {
 	private boolean wait;
 	private Image hud, hudDown, hudWeapon;
 	private Image shieldBar, speedBar, fireRateBar;
-	private String url, urlHudDown, urlWeapon, urlShield, urlSpeed, urlFire, Sscore, Sxp;
-	private int X, Y, bX, bY, wX, wY, sX, sY, xX, xY, score, xp;
+	private String url, urlHudDown, urlWeapon, urlShield, urlSpeed, urlFire, Sscore;
+	private int X, Y, bX, bY, wX, wY, sX, sY,  score;
 	public  String[] HUD_Live = {
 			"/HUD/test0.png",
 			"/HUD/test1.png",
@@ -55,7 +55,7 @@ public class HUD {
 		urlHudDown = HUD_Live[9];
 		urlWeapon = HUD_Weapon[0];
 		score = 0;
-		xp = 0;
+		
 		
 		set_HUD_Image();
 		setHUD_downImage();
@@ -69,9 +69,8 @@ public class HUD {
 		wX =((Game.WIDTH / 2) - 700) + 1027;
 		wY = (Game.HEIGHT - 200) + 44;
 		sX = ((Game.WIDTH / 2) - 700) + 488;
-		xX = ((Game.WIDTH / 2) - 700) + 864;
 		sY = (Game.HEIGHT - 200) + 68;
-		xY = (Game.HEIGHT - 200) + 68;
+	
 		
 		wait = false;
 	}
@@ -112,14 +111,12 @@ public class HUD {
 		wait = false;
 	}
 	public void setHUDstats(int shield, int speed, int fire){
-		change_HUD_stats(shield,speed,fire);
-		set_HUD_StatsImage();
-	}
-	public void change_HUD_stats(int shield, int speed, int fire){
 		urlShield = HUD_StatsBar[shield];
 		urlSpeed = HUD_StatsBar[speed];
 		urlFire = HUD_StatsBar[fire];
+		set_HUD_StatsImage();
 	}
+	
 	
 	public void set_HUD_Image(){
 		hud = Sprite.loadSprite(url, this);
@@ -128,16 +125,15 @@ public class HUD {
 		hudDown = Sprite.loadSprite(urlHudDown, this);
 	}
 	
-	public void setScoreAndXP(int score, int xp){
+	public void setScoreAndXP(int score){
 		this.score = score;
-		this.xp = xp;
 		ScoreAndXPToString();
 		
 	}
 	
 	public void ScoreAndXPToString(){
 		Sscore = "" + score;
-		Sxp = "" + xp;
+		
 	}
 	
 	public void setHUDWeapon(){
@@ -163,7 +159,6 @@ public class HUD {
 		g.drawImage(getHUDDownImage(), (Game.WIDTH / 2) - 700, (Game.HEIGHT - 200), null);
 		g.drawImage(getHUDWeapon(), wX, wY, null);
 		g.drawString(Sscore, sX, sY);
-		g.drawString(Sxp, xX, xY);
 		g.drawImage(getShieldBarImage(), bX, bY, null);
 		g.drawImage(getSpeedBarImage(), bX, (bY + 50), null);
 		g.drawImage(getFireRateBarImage(), bX, (bY + 100),null);
