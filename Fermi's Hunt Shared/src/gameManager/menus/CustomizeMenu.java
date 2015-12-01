@@ -306,8 +306,6 @@ public class CustomizeMenu extends Menu{
 	}
 	
 	
-
-	
 	private void setShipName() {
 		Ship.getPlayer().setShipName("");
 		np.setVisible(true);
