@@ -147,6 +147,10 @@ public class HUD {
 		fireRateBar = Sprite.loadSprite(urlFire, this);
 	}   
 	
+	public void drawDamage(){
+		
+	}
+	
 	public void draw(Graphics g){ 
 		if(wait){return;
 		}else{

@@ -99,6 +99,7 @@ public class NewGameCM implements Runnable {
 	
 			switch (i){
 			case 0:
+				enemyAppears = true;
 			case 1:
 				se3.play();
 				se.play();
@@ -131,7 +132,7 @@ public class NewGameCM implements Runnable {
 				
 				try {
 					
-					Thread.sleep(8000);
+					Thread.sleep(12000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -151,11 +152,11 @@ public class NewGameCM implements Runnable {
 				i++;
 				break;
 			case 5:
-				enemyAppears = true;
+				
 				update();
 				try {
 					
-					Thread.sleep(9000);
+					Thread.sleep(11000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -169,9 +170,13 @@ public class NewGameCM implements Runnable {
 			
 			case 6:
 				update();
+				
+				enemyAppears = true;
+		
+				
 				try {
 					
-					Thread.sleep(9000);
+					Thread.sleep(5000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -182,7 +187,7 @@ public class NewGameCM implements Runnable {
 			case 8:
 				se5.close();
 				se4.play();
-				
+			
 				if( (r % 2) == 0){ 
 					i = 7; 
 				}else{

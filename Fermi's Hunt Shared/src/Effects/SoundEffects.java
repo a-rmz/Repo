@@ -250,6 +250,12 @@ public void FXSound(int n){
 		clip.start();
 		
 	}
+	public void playAgain(){
+		if (clip == null) {return;}
+		clip.setFramePosition(0);
+		clip.start();
+		
+	}
 
 	public void stop() {
 		try{
