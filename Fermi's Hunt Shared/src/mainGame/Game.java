@@ -9,6 +9,7 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -17,7 +18,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -37,6 +37,7 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
+import characters.Sprite;
 import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
@@ -102,6 +103,7 @@ public class Game extends JPanel implements
 			save();
 		}
 		
+		@SuppressWarnings("unchecked")
 		private void lfil() {
 			FileInputStream fis;
 			ObjectInputStream ois;
@@ -249,6 +251,13 @@ public class Game extends JPanel implements
 		return d;
 	}
 	
+	public List<Image> iconList() {
+		List<Image> i = new ArrayList<Image>(2);
+		i.add(Sprite.loadSprite("/icon/icon16.png", this));
+		i.add(Sprite.loadSprite("/icon/icon32.png", this));
+		return i;
+	}
+	
 	private void init() {
 		hs = new Highscore();
 		// Font load
@@ -263,10 +272,18 @@ public class Game extends JPanel implements
 			ff = new File(url);
 			f = Font.createFont(Font.TRUETYPE_FONT, ff);
 			ge.registerFont(f);
+			
+			url = "resources/Fonts/MINECRAFT.ttf";
+			ff = new File(url);
+			f = Font.createFont(Font.TRUETYPE_FONT, ff);
+			ge.registerFont(f);
+			
 		} catch (IOException|FontFormatException e) {
 			e.printStackTrace();
 		     System.out.println("Fonts not loaded.");
 		}
+		
+		// Icon load
 		
 		// Initialize game
 		isRunning = true;		

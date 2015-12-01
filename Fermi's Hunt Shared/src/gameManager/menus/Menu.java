@@ -25,6 +25,17 @@ public abstract class Menu extends GameState {
 				(int) bounds.getHeight() + 10
 			);
 	}	
+	
+	Rectangle createMainOptionBorder(String option, int i, Graphics2D g, FontMetrics fm) {
+
+		Rectangle2D bounds = fm.getStringBounds(option, g);
+		return new Rectangle(
+				Game.WIDTH/2 - fm.stringWidth(option)/2 - 10, 
+				Game.HEIGHT/2 + 100 + (i * 60) - 30, 
+				(int) bounds.getWidth() + 15, 
+				(int) bounds.getHeight() + 10
+			);
+	}
 		
 	public static SoundEffects se = new SoundEffects();
 	protected abstract void select();
