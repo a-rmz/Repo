@@ -8,9 +8,9 @@ import mainGame.Game;
 
 public class HUD {
 	private boolean wait;
-	private Image hud;
+	private Image hud, hud_down;
 	private Image shieldBar, speedBar, fireRateBar;
-	private String url, urlShield, urlSpeed, urlFire;
+	private String url, urlHudDown, urlShield, urlSpeed, urlFire;
 	private int X, Y, Bx, By;
 	public  String[] HUD_Live = {
 			"/HUD/test0.png",
@@ -21,7 +21,8 @@ public class HUD {
 			"/HUD/test5.png",
 			"/HUD/test6.png",
 			"/HUD/test7.png",
-			"/HUD/test8.png"
+			"/HUD/test8.png",
+			"/HUD/HUD_down.png"
 	};
 	
 	public  String[] HUD_StatsBar = {
@@ -41,16 +42,21 @@ public class HUD {
 	
 	public HUD(){
 		url= HUD_Live[8];
+		urlHudDown = HUD_Live[9];
 		set_HUD_Image();
+		setHUD_downImage();
 		X = (Game.WIDTH /2) -700 ;
 		Y = 0;
-		Bx = 290;
-		By = 110;
+		Bx = ((Game.WIDTH / 2) - 700) + 33;
+		By = (Game.HEIGHT - 200) + 70;
 		wait = false;
 	}
 	
 	public Image getHUDImage(){
 		return hud;
+	}
+	public Image getHUD_downImage(){
+		return hud_down;
 	}
 	public Image getShieldBarImage(){
 		return shieldBar;
@@ -85,6 +91,9 @@ public class HUD {
 	public void set_HUD_Image(){
 		hud = Sprite.loadSprite(url, this);
 	}
+	public void setHUD_downImage(){
+		hud_down = Sprite.loadSprite(urlHudDown, this);
+	}
 	
 	public void set_HUD_StatsImage(){
 		shieldBar = Sprite.loadSprite(urlShield, this);
@@ -96,10 +105,11 @@ public class HUD {
 		if(wait){return;
 		}else{
 		g.drawImage(getHUDImage(), X, Y, null);
-		/*g.drawImage(getShieldBarImage(), Bx, By, null);
-		g.drawImage(getSpeedBarImage(), Bx, (By + 20), null);
-		g.drawImage(getFireRateBarImage(), Bx, (By + 40),null);
-		*/
+		g.drawImage(getHUD_downImage(), (Game.WIDTH / 2) - 700, (Game.HEIGHT - 200), null);
+		g.drawImage(getShieldBarImage(), Bx, By, null);
+		g.drawImage(getSpeedBarImage(), Bx, (By + 50), null);
+		g.drawImage(getFireRateBarImage(), Bx, (By + 100),null);
+		
 		}   
 	}
 	
