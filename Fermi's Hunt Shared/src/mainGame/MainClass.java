@@ -9,7 +9,11 @@ import javax.swing.JFrame;
 		Game g = new Game();	
 		JFrame frame = new JFrame();
 		
+		// Sets icon
+		frame.setIconImages(g.iconList());
+		// Maximizes
 		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+		// Removes the bars
 		frame.setUndecorated(true);
 		frame.setLayout(null);
 		frame.setResizable(false);

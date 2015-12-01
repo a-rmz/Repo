@@ -60,6 +60,7 @@ public class CustomizeMenu extends Menu{
 	}
 
 	// Graphics
+	private Image frame;
 	Background cBG;
 	
 	ShipThumb[] thumbs = new ShipThumb[3];
@@ -104,6 +105,7 @@ public class CustomizeMenu extends Menu{
 		gsm.game.showCursor();
 		cBG = new Background(Background.CUSTOMIZE_MENU);
 		ships = new Rectangle[ShipThumb.shipQuant()];
+		frame = Sprite.loadSprite("/BackgroundImg/Customize_Menu/frame.png", this);
 		stats = new boolean[3][10];
 		for(int i = 0; i < ShipThumb.shipQuant(); i++) {
 			ships[i] = new Rectangle(
@@ -245,9 +247,7 @@ public class CustomizeMenu extends Menu{
 		g.setStroke(new BasicStroke(5));
 		g.setColor(Color.BLACK);
 		// Draws the frame and background
-		g.draw(oR);		
-		g.setColor(new Color(0, 0, 0, 200));
-		g.fillRect(oR.x, oR.y, oR.width, oR.height);
+		g.drawImage(frame, oR.x, oR.y, null);
 		
 		String points = "Points left: " + pointsLeft;
 		// Draws the header
@@ -257,16 +257,16 @@ public class CustomizeMenu extends Menu{
 		g.setFont(f);
 		g.drawString(points, 
 				(int) (oR.getCenterX() - fm.stringWidth(points)/2),
-				oR.y + 100);
+				oR.y + 200);
 		
 		f = new Font("8-Bit Madness", Font.PLAIN, 30);
 		fm = g.getFontMetrics(f);
 		String buffer = "Shield: ";
-		g.drawString(buffer, oR.x + 50, oR.y + 250);
+		g.drawString(buffer, oR.x + 100, oR.y + 250);
 		buffer = "Speed: ";
-		g.drawString(buffer, oR.x + 50, oR.y + 400);
+		g.drawString(buffer, oR.x + 100, oR.y + 400);
 		buffer = "Fire Rate: ";
-		g.drawString(buffer, oR.x + 50, oR.y + 550);
+		g.drawString(buffer, oR.x + 100, oR.y + 550);
 		drawPoints(g);
 	}
 	

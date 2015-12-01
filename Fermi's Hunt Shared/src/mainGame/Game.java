@@ -9,6 +9,7 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -36,6 +37,7 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
+import characters.Sprite;
 import gameManager.GameStateManager;
 
 @SuppressWarnings("serial")
@@ -247,6 +249,13 @@ public class Game extends JPanel implements
 		int yMax = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight());
 		Dimension d = new Dimension(xMax, yMax);
 		return d;
+	}
+	
+	public List<Image> iconList() {
+		List<Image> i = new ArrayList<Image>(2);
+		i.add(Sprite.loadSprite("/icon/icon16.png", this));
+		i.add(Sprite.loadSprite("/icon/icon32.png", this));
+		return i;
 	}
 	
 	private void init() {
