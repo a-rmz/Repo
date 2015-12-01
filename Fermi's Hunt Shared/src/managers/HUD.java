@@ -40,9 +40,9 @@ public class HUD {
 	};
 	
 	public String[] HUD_Weapon = {
-			"HUD/SimpleShot.png",
-			"HUD/DoubleShot.png",
-			"HUD/RocketLauncher.png"
+			"/HUD/SimpleShot.png",
+			"/HUD/DoubleShot.png",
+			"/HUD/RocketLauncher.png"
 	};
 
 	
@@ -71,7 +71,7 @@ public class HUD {
 	}
 	
 	public Image getHUDWeapon(){
-		return shieldBar;
+		return hudWeapon;
 	}
 	public Image getShieldBarImage(){
 		return shieldBar;
