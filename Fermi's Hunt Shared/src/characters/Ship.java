@@ -245,7 +245,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	}
 	
 	private void changeScoreAndXpInHUD() {
-		hud.setScoreAndXP(0, xp);
+		hud.setScoreAndXP(xp);
 		
 	}
 

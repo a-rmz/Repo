@@ -35,7 +35,9 @@ public class SoundEffects {
 	public  String[] EffectsSounds ={
 			"/Sounds/Alarm.mp3",
 			"/Sounds/Control_tower_radio.mp3",
-			"/Sounds/Keyboard.mp3"
+			"/Sounds/Keyboard.mp3",
+			"/Sounds/hurt.mp3",
+			"/Sounds/levelUp.mp3"
 	};
 	
 	public SoundEffects(){
@@ -259,7 +261,7 @@ public void FXSound(int n){
 
 	public void stop() {
 		try{
-		if(clip.isRunning()) clip.stop();
+		clip.stop();
 		} catch( Exception e){
 			e.printStackTrace();
 		}
