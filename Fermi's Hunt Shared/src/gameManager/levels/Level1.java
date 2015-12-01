@@ -48,6 +48,9 @@ public class Level1 extends GameState {
 		// Prints the Background
 		bg.draw(g2d);
 		
+		// Prints enemies
+		if(cinematic.enemyAppears)  e.draw(g);
+		
 		// Prints user Ship
 		p1.draw(g);
 		
@@ -58,8 +61,7 @@ public class Level1 extends GameState {
 		// Prints enemies
 		
 		if(cinematic.isRunning){ cinematic.draw(g);}
-		// Prints enemies
-		if(cinematic.enemyAppears)  e.draw(g);
+		
 		
 		
 	}
