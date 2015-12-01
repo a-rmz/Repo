@@ -22,7 +22,7 @@ public class HelpMenu extends Menu {
 		}
 		@Override
 		public void init() {
-			hBG = new Background(Background.HELP_MENU);	
+			hBG = new Background(Background.HELP_MENU, 5);	
 			hm1 = Sprite.loadSprite("/BackgroundImg/Help_Menu/hm_info1.png", this);
 			hm2 = Sprite.loadSprite("/BackgroundImg/Help_Menu/hm_info2.png", this);
 		}

@@ -185,8 +185,8 @@ public class Game extends JPanel implements
 			Iterator<Map.Entry<String, Integer>> it = scores.entrySet().iterator();
 			for(int i = 0; i < 5; i++) {
 				Map.Entry<String, Integer> tmp = it.next();
-				g.drawString((i+1) + ". " + tmp.getKey(), x, (y + i*60));
-				g.drawString("" + tmp.getValue(), x + Game.WIDTH/3 + 100, (y + i*60));
+				g.drawString((i+1) + ". " + tmp.getKey(), x, (y + i*85));
+				g.drawString("" + tmp.getValue(), x + Game.WIDTH/3 + 100, (y + i*85));
 							
 			}
 		}
