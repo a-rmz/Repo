@@ -91,7 +91,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	private final int SHIP_SHOOT = 3;
 	
 	private String url = resources[shipType][0][BASIC_SHIP];
-	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 20);
+	
 	Image ship = null; 
 	HashMap<String, SoundEffects> effects = new HashMap<>();
 	
@@ -196,7 +196,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Draw method from BulletManager.
 		bm.draw(g);
 		// Draws the hits the player gets
-		
+		hitsOnSelf(g);
 		
 		//Draws HUD
 		hud.draw(g);
@@ -211,8 +211,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	 */
 	public void hitsOnSelf(Graphics g) {
 		// Graphics previous modifiers.
-		g.setColor(Color.WHITE);
-		g.setFont(f);
+	
 		// If the ship got hit, prints the "HIT" string.
 		// TODO Implement to a random position near the ship.
 		if(gotHit) {
