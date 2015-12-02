@@ -268,7 +268,7 @@ public void FXSound(int n){
 	}
 	
 	public void close(){
-		stop();
+
 		clip.close();
 	}
 	public void pause(){

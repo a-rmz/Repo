@@ -10,10 +10,11 @@ import mainGame.Game;
 
 public class NewGameCM implements Runnable {
 	
-	private Image text;
+	private Image text, levelUpImage;
 	public SoundEffects se, se2, se3, se4, se5;
 	public boolean isRunning;
-	public boolean  enemyAppears;
+	public boolean enemyAppears;
+	public boolean levelUp;
 	private String url;
 	private int X, Y, i, r;
 	
@@ -32,6 +33,7 @@ public class NewGameCM implements Runnable {
 		"/newGameCM/Fire.png", // 9
 		
 	};
+
 	
 	public NewGameCM(){
 		t = new Thread(this);
@@ -53,7 +55,6 @@ public class NewGameCM implements Runnable {
 		
 		
 	}
-	
 	public void startAnimation(){
 		isRunning = true;
 		t.start();	
@@ -82,12 +83,8 @@ public class NewGameCM implements Runnable {
 		text = Sprite.loadSprite(url, this);
 	}
 	
-	public void changeFrame(){
-		
-	}
-	
-	public void initCinematic(){
-		
+	public void levelUp(){
+		levelUp = true;
 	}
 
 	@Override
@@ -96,10 +93,9 @@ public class NewGameCM implements Runnable {
 	
 		while(isRunning){
 			
-	
 			switch (i){
 			case 0:
-			
+				enemyAppears = true;
 			case 1:
 				se3.play();
 				se.play();

@@ -9,12 +9,15 @@ import characters.Sprite;
 import mainGame.Game;
 
 public class HUD {
+	
 	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 15);
 	private boolean wait;
 	private Image hud, hudDown, hudWeapon;
 	private Image shieldBar, speedBar, fireRateBar;
 	private String url, urlHudDown, urlWeapon, urlShield, urlSpeed, urlFire, Sscore;
 	private int X, Y, bX, bY, wX, wY, sX, sY,  score;
+
+	
 	public  String[] HUD_Live = {
 			"/HUD/test0.png",
 			"/HUD/test1.png",
@@ -47,6 +50,10 @@ public class HUD {
 			"/HUD/DoubleShot.png",
 			"/HUD/RocketLauncher.png"
 	};
+	
+	String[] levelUpResource = {
+			"/newGameCM/LevelUp.png"
+	};
 
 	
 	public HUD(){
@@ -68,9 +75,9 @@ public class HUD {
 		bY = (Game.HEIGHT - 200) + 70;
 		wX =((Game.WIDTH / 2) - 700) + 1027;
 		wY = (Game.HEIGHT - 200) + 44;
-		sX = ((Game.WIDTH / 2) - 700) + 485;
-		sY = (Game.HEIGHT - 200) + 70;
-	
+		sX = ((Game.WIDTH / 2) - 700) + 483;
+		sY = (Game.HEIGHT - 200) + 65;
+		
 		
 		wait = false;
 	}
