@@ -28,8 +28,7 @@ public class EndGameMenu extends Menu {
 	
 	public EndGameMenu(GameStateManager gsm) {
 		this.gsm = gsm;
-		np = new NamePopup(gsm, "");
-		init();
+		egBG = new Background(Background.ENDGAME, 0);
 	}
 	
 	@Override
@@ -42,8 +41,7 @@ public class EndGameMenu extends Menu {
 	public void init() {
 		cont = false;
 		nameSet = false;
-		np.reset();
-		egBG = new Background(Background.ENDGAME, 0);
+		np = new NamePopup(gsm, "");
 	}
 
 	@Override
@@ -80,7 +78,7 @@ public class EndGameMenu extends Menu {
 	
 	@Override
 	public void keyPressed(int k) {
-		if(k == KeyEvent.VK_SPACE) {
+		if(k == KeyEvent.VK_ENTER) {
 			cont = true;
 		}
 	}

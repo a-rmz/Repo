@@ -3,6 +3,7 @@ package gameManager;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import gameManager.levels.Level1;
 import gameManager.menus.*;
 import mainGame.Game;
 
@@ -27,13 +28,17 @@ public class GameStateManager {
 		gameStates.add(new CustomizeMenu(this));
 		gameStates.add(new PauseMenu(this));
 		gameStates.add(new EndGameMenu(this));
+		gameStates.add(new Level1(this));
 	}
 	
 	
 	public void setState(int state) {
 		currentState = state;
 		gameStates.get(currentState).init();
-		
+	}
+	
+	public int getState() {
+		return currentState;
 	}
 	
 	public void update() {

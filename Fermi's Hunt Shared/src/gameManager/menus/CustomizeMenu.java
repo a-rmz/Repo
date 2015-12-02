@@ -476,11 +476,7 @@ public class CustomizeMenu extends Menu{
 			gsm.game.hideCursor();
 			Level1 l1 = new Level1(gsm);
 			l1.initCinematic();
-			if(firstGame) {
-				firstGame = false;
-				gsm.gameStates.add(l1);
-			}
-			gsm.gameStates.set(GameStateManager.LEVEL1STATE, l1);			
+			gsm.gameStates.add(l1);		
 			gsm.setState(GameStateManager.LEVEL1STATE);			
 		}
 		
