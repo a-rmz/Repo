@@ -193,31 +193,11 @@ public class Ship extends SpaceObject implements MouseListener{
 				getSpaceObjectImage().getHeight(null)*2,  null);
 		// Draw method from BulletManager.
 		bm.draw(g);
-		// Draws the hits the player gets
-		hitsOnSelf(g);
 		
 		//Draws HUD
 		hud.draw(g);
 		
 		damage.draw(g);
-	}
-	
-	/**
-	 *  Every time the ship gets hit, prints the string "HIT". Activated by
-	 *  the gotHit switch. Is called directly by the class' draw method.
-	 * @param g
-	 */
-	public void hitsOnSelf(Graphics g) {
-		// Graphics previous modifiers.
-	
-		// If the ship got hit, prints the "HIT" string.
-		// TODO Implement to a random position near the ship.
-		if(gotHit) {
-			
-			g.drawString("Hit", p.getX()+10, p.getY()+15);
-		}
-		// Again the gotHit switch is set to false.
-		gotHit = false;
 	}
 	
 	
@@ -402,8 +382,10 @@ public class Ship extends SpaceObject implements MouseListener{
 				if(shieldOff) {
 					// Stat modifiers.
 					hp -= 1;
+					System.out.println("-1 life");
 				} else {
 					shield -= 1;
+					System.out.println("-1 shield");
 				}			
 				// Only as a console verifier.
 				System.out.println("Hit");

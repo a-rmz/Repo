@@ -74,5 +74,8 @@ public class GameStateManager {
 	public void newGame() {
 		setState(CUSTOMIZESTATE);
 	}
+	public void endGame() {
+		setState(ENDGAME);
+	}
 }
 

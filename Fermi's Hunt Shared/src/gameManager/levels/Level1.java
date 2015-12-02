@@ -74,7 +74,7 @@ public class Level1 extends GameState {
 		if(cinematic.enemyAppears) e.update();
 
 		if(!Ship.getPlayer().isAlive()) {
-			gsm.setState(GameStateManager.ENDGAME);
+			gsm.endGame();
 		}
 		
 	}
