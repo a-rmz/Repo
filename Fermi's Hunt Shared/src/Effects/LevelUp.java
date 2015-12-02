@@ -10,7 +10,7 @@ import mainGame.Game;
 public class LevelUp implements Runnable {
 	
 	public String[] levelUpImage = {
-			"/newGameCM/LevelUP.png"
+			"/newGameCM/LevelUp.png"
 		};
 		
 		private SoundEffects se;
