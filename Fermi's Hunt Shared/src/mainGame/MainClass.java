@@ -1,6 +1,7 @@
 package mainGame;
 
 import java.awt.Frame;
+
 import javax.swing.JFrame;
 
  public class MainClass {
