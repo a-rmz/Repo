@@ -106,6 +106,7 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 		// Checks if the Enemy is hit.
 		if(be.getHP() <= 0) {
 			be.dead = true;
+			
 			Explosion e = new Explosion(be.p.getX(),be.p.getY());
 			BUUM.add(e);
 			se.ExplosionSound(0);
@@ -118,6 +119,7 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 			be.p = null;
 			// Removes the BasicEnemy.
 			i.remove();
+		
 			// Destroys the object.
 		
 			be = null;
@@ -137,7 +139,7 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 		while(isRunning){
 		for(int x=0; x<BUUM.size() ; x++){
 			try {
-				Thread.sleep(550);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

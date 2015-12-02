@@ -10,7 +10,7 @@ import mainGame.Game;
 
 public class NewGameCM implements Runnable {
 	
-	private Image text, levelUpImage;
+	private Image text;
 	public SoundEffects se, se2, se3, se4, se5;
 	public boolean isRunning;
 	public boolean enemyAppears;
@@ -68,7 +68,10 @@ public class NewGameCM implements Runnable {
 	}
 	
 	public void update(){
-		if(i == 10 ) {isRunning = false; return;}
+		if(i == 10 ) {
+		isRunning = false; 
+		return;
+		}
 		
 		url = resources[i];
 		
@@ -95,20 +98,13 @@ public class NewGameCM implements Runnable {
 			
 			switch (i){
 			case 0:
-				try {
-					
-					Thread.sleep(11000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 			case 1:
 				se3.play();
 				se.play();
 				update();
 				try {
 					
-					Thread.sleep(7000);
+					Thread.sleep(1000); //7
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -119,7 +115,7 @@ public class NewGameCM implements Runnable {
 				
 				try {
 					
-					Thread.sleep(2000);
+					Thread.sleep(1000); // 2
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -134,7 +130,7 @@ public class NewGameCM implements Runnable {
 				
 				try {
 					
-					Thread.sleep(12000);
+					Thread.sleep(1000); // 12
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -145,7 +141,7 @@ public class NewGameCM implements Runnable {
 				update();
 				try {
 					
-					Thread.sleep(10000);
+					Thread.sleep(1000); // 10
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -158,7 +154,7 @@ public class NewGameCM implements Runnable {
 				update();
 				try {
 					
-					Thread.sleep(11000);
+					Thread.sleep(1000); // 11
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -178,7 +174,7 @@ public class NewGameCM implements Runnable {
 				
 				try {
 					
-					Thread.sleep(5000);
+					Thread.sleep(1000); // 5
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -209,7 +205,7 @@ public class NewGameCM implements Runnable {
 				if(r==7) i = 9;
 				try {
 					
-					Thread.sleep(500);
+					Thread.sleep(500); // .5
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -227,7 +223,7 @@ public class NewGameCM implements Runnable {
 				update();
 				try {
 					
-					Thread.sleep(2000);
+					Thread.sleep(2000); // 2
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
