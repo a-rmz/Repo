@@ -16,6 +16,7 @@ import java.util.List;
 import javax.swing.Timer;
 
 import Effects.Damage;
+import Effects.LevelUp;
 import Effects.SoundEffects;
 import mainGame.Game;
 import managers.BulletManager;
@@ -99,6 +100,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	//*********Effects*****
 	Damage damage;
+	LevelUp levelUp;
 	
 	
 	// **** PLAYER STATS ****
@@ -151,6 +153,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		effects.put("shot", ShotSound);	
 		// ship damage effect
 		damage = new Damage();
+		levelUp = new LevelUp();
 	}
 	
 	
@@ -198,6 +201,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		hud.draw(g);
 		
 		damage.draw(g);
+		levelUp.draw(g);
 	}
 	
 	
@@ -350,6 +354,8 @@ public class Ship extends SpaceObject implements MouseListener{
 			
 			// Change the weapon sprite in the HUD
 			this.weaponNumber++;
+			
+			levelUp.start();
 			hud.changeHUDWeapon(weaponNumber);
 			
 		}
