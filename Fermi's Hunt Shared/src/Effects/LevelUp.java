@@ -6,6 +6,7 @@ import java.awt.Image;
 import characters.Sprite;
 import mainGame.Game;
 
+
 public class LevelUp implements Runnable {
 	
 	public String[] levelUpImage = {
@@ -23,7 +24,6 @@ public class LevelUp implements Runnable {
 			se.FXSound(4);
 			thread = new Thread(this);
 			listen = true;
-			print = false;
 			setLevelUpImage();
 			thread.start();
 		}
