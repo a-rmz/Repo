@@ -1,0 +1,1 @@
+03/11/2015: Arreglado el problema que hacía que apareciran Bullets en la última posición de la nave antes de ser eliminada.
