@@ -381,7 +381,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	}
 	
 	private void levelUp() {
-		if(xp == (300 * Math.pow(level, 2))) {
+		if(xp == (300 * Math.pow(level, 3))) {
 			this.level++;
 			
 			// Change the weapon sprite in the HUD

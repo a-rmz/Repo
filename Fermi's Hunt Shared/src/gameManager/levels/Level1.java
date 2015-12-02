@@ -80,7 +80,7 @@ public class Level1 extends GameState {
 		bg.update();
 		p1.update();
 		
-		if( cinematic.endCinematic() == false){
+		if(!cinematic.endCinematic()){
 			se.play();
 		}
 		

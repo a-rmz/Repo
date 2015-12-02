@@ -28,7 +28,6 @@ public class GameStateManager {
 		gameStates.add(new CustomizeMenu(this));
 		gameStates.add(new PauseMenu(this));
 		gameStates.add(new EndGameMenu(this));
-		gameStates.add(new Level1(this));
 	}
 	
 	
