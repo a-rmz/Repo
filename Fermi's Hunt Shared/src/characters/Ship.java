@@ -139,6 +139,17 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	// **** CONSTRUCTOR ****
 	private Ship() {
+		init();
+		// Loads the ship image
+		setSpaceObjectImage();
+		SoundEffects ShotSound = new SoundEffects();
+		effects.put("shot", ShotSound);	
+		// ship damage effect
+		damage = new Damage();
+		levelUp = new LevelUp();
+	}
+	
+	public void init() {
 		// Initialize ship stats
 		hp = 5;
 		level = 1;

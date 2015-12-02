@@ -16,6 +16,7 @@ import gameManager.GameStateManager;
 import gameManager.menus.popups.NamePopup;
 import mainGame.Game;
 
+@SuppressWarnings("serial")
 public class EndGameMenu extends Menu {
 
 	Background egBG;
@@ -50,7 +51,6 @@ public class EndGameMenu extends Menu {
 		se = new SoundEffects();
 		se.FXSound(6);
 		se.play();
-		
 	}
 
 	@Override
