@@ -118,6 +118,12 @@ public class HUD {
 		wait = false;
 	}
 	public void setHUDstats(int shield, int speed, int fire){
+		
+		if (speed > 10) speed = 10;
+		if (shield > 10) shield = 10;
+		if (fire> 10) fire = 10;
+		
+		
 		urlShield = HUD_StatsBar[shield];
 		urlSpeed = HUD_StatsBar[speed];
 		urlFire = HUD_StatsBar[fire];

@@ -414,15 +414,14 @@ public class Ship extends SpaceObject implements MouseListener{
 					hp -= 1;
 						//hpCounter -= 1;
 					// Change HUD
-						//hud.change_HUD_Live(hpCounter);
+					hud.change_HUD_Live(hp);
 				} else {
 					shield -= 1;
 				}				
 				// Only as a console verifier.
 				System.out.println("Hit");
-				hpCounter -= 1;
-				if(hpCounter <= 0) hpCounter = 0;
-				hud.change_HUD_Live(hpCounter);
+				
+				
 				damage.start();
 				}
 			}
