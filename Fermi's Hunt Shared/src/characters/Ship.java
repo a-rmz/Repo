@@ -120,7 +120,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	private Timer FireRateTimer;
 	private boolean canShoot = true;
 	private Timer ShieldRegenTimer;
-	private boolean shieldOff = false;
+	private boolean shieldOff = true;
 	
 	private boolean gotHit = false;
 	public Position p = new Position(50, (screenSize().height / 2));
@@ -254,9 +254,10 @@ public class Ship extends SpaceObject implements MouseListener{
 					}
 				});
 		
-		if(shield == 0) shield = 1;
 		shieldTop = shield;
-		ShieldRegenTimer = new Timer(
+		if(shield > 0) {
+			shieldOff = false;
+			ShieldRegenTimer = new Timer(
 				15_000 / shield,
 				new ActionListener() {
 					@Override
@@ -264,9 +265,10 @@ public class Ship extends SpaceObject implements MouseListener{
 						shieldRegen();
 					}
 				});
-		
+			ShieldRegenTimer.start();
+		}
 		FireRateTimer.start();
-		ShieldRegenTimer.start();
+		
 	}
 	
 	/**
