@@ -9,6 +9,8 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 
+import com.sun.glass.events.KeyEvent;
+
 import background.Background;
 import characters.Ship;
 import characters.Sprite;
@@ -80,7 +82,7 @@ public class CustomizeMenu extends Menu{
 	String name = "";
 	
 	// Player Stats
-	private static int pointsLeft = 15;
+	private static int pointsLeft;
 	private boolean stats[][]= {{false}, {false}};
 	private boolean flag[] = {false, false, false};
 	private int ptsPos;
@@ -125,10 +127,16 @@ public class CustomizeMenu extends Menu{
 		loadThumbs();
 		initPoints();
 		mainShip = thumbs[0];
+		pointsLeft = 15;
 		
 		name = "Enter Ship name";
 		Ship.getPlayer().setShipName(name);
 		np = new NamePopup(gsm, name);
+		
+		// Initialize ship stats on 0.
+		Ship.getPlayer().shield = 0;
+		Ship.getPlayer().speed = 0;
+		Ship.getPlayer().fireRate = 0;
 	}
 	
 	private void initPoints() {
@@ -316,14 +324,23 @@ public class CustomizeMenu extends Menu{
 			subtractPoints();
 			return;
 		}
+		// Checks the 3 different status
 		for(int i = 0; i < 3; i++) {
+			// If there is no flag in i-status, moves to the next.
 			if(!flag[i]) continue;
+			
+			// As long as there are points left and until it reaches the
+			// position of ptsPos, where the mouse is over.
 			for(int j = 0; j <= ptsPos && pointsLeft > 0; j++) {
+				// If that square was selected, removes the selected ones after it.
 				if(stats[i][ptsPos]) {
 					subtractPoints();
+					// Turns off the flag.
 					flag[i] = false;
 					return;
 				}
+				
+				// If the square was not selected, selects it.
 				if(!stats[i][j]) {
 					stats[i][j] = true;
 					pointsLeft--;
@@ -337,6 +354,7 @@ public class CustomizeMenu extends Menu{
 					Ship.getPlayer().fireRate++; break;
 				}
 			}
+			// Turns off the flag. 
 			flag[i] = false;
 		}
 	}
@@ -344,7 +362,7 @@ public class CustomizeMenu extends Menu{
 	private void subtractPoints() {
 		for(int i = 0; i < 3; i++) {
 			if(!flag[i]) continue;
-			for(int j = ptsPos; stats[i][j] && pointsLeft <= 10; j++) {
+			for(int j = ptsPos; stats[i][j] && pointsLeft <= 15; j++) {
 				if(stats[i][j]) {
 					stats[i][j] = false;
 					pointsLeft++;
@@ -364,7 +382,11 @@ public class CustomizeMenu extends Menu{
 	}
 	
 	@Override
-	public void keyPressed(int k) {	}
+	public void keyPressed(int k) {
+		if(k == KeyEvent.VK_ESCAPE) {
+			gsm.setState(GameStateManager.MENUSTATE);
+		}
+	}
 
 	@Override
 	public void keyReleased(int k) {
