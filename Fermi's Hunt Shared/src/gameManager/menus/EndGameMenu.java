@@ -29,7 +29,6 @@ public class EndGameMenu extends Menu {
 	
 	public EndGameMenu(GameStateManager gsm) {
 		this.gsm = gsm;
-		np = new NamePopup(gsm, "");
 	}
 	
 	@Override
@@ -40,9 +39,9 @@ public class EndGameMenu extends Menu {
 
 	@Override
 	public void init() {
+		np = new NamePopup(gsm, "");
 		cont = false;
 		nameSet = false;
-		np.reset();
 		egBG = new Background(Background.ENDGAME, 0);
 		
 		se = new SoundEffects();
