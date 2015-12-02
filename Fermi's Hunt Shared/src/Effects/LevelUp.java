@@ -10,7 +10,7 @@ import mainGame.Game;
 public class LevelUp implements Runnable {
 	
 	public String[] levelUpImage = {
-			"/newGameCM/LevelUp.png"
+			"/newGameCM/LevelUP.png"
 		};
 		
 		private SoundEffects se;
@@ -59,7 +59,7 @@ public class LevelUp implements Runnable {
 			
 			try {
 				
-				Thread.sleep(4000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
