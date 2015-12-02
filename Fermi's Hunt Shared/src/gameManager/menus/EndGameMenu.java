@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import Effects.SoundEffects;
 import background.Background;
 import characters.Ship;
+import characters.Sprite;
 import gameManager.GameStateManager;
 import gameManager.menus.popups.NamePopup;
 import mainGame.Game;
@@ -22,10 +24,11 @@ public class EndGameMenu extends Menu {
 	FontMetrics fm;
 	GameStateManager gsm;
 	SoundEffects se;
+	private Image insertCoin;
 	
 	private boolean cont = false;
 	private boolean nameSet = false;
-	private String contStr = "Press ENTER to continue";
+	private String contStr = "Press SPACE to continue";
 	
 	public EndGameMenu(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -43,7 +46,7 @@ public class EndGameMenu extends Menu {
 		cont = false;
 		nameSet = false;
 		egBG = new Background(Background.ENDGAME, 0);
-		
+		insertCoin = Sprite.loadSprite("/BackgroundImg/EndGame/endgame_insertcoin.gif", this);		
 		se = new SoundEffects();
 		se.FXSound(6);
 		se.play();
@@ -72,21 +75,28 @@ public class EndGameMenu extends Menu {
 					Game.HEIGHT - 250);
 		} else if(!nameSet) {
 			np.drawNamePopup(g);
+		} else {
+			g.drawImage(insertCoin, 0, 0, null);
 		}
 	}
 
 	
 	private void end() {
 		Game.hs.addScore(np.getName(), Ship.getPlayer().getScore());
-		gsm.restart();
 	}
 	
 	
 	@Override
 	public void keyPressed(int k) {
-		if(k == KeyEvent.VK_ENTER) {
+		if(k == KeyEvent.VK_SPACE) {
 			cont = true;
+		} 
+		if(k > 0 && nameSet) {
+			System.exit(0);
 		}
+	}
+	public void keyTyped(int k) {
+		
 	}
 
 	@Override
