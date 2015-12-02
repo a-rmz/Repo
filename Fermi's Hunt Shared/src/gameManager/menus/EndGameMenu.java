@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import background.Background;
+import characters.Ship;
 import gameManager.GameStateManager;
 import gameManager.menus.popups.NamePopup;
 import mainGame.Game;
@@ -18,12 +19,14 @@ public class EndGameMenu extends Menu {
 	NamePopup np;
 	Font f;
 	FontMetrics fm;
+	GameStateManager gsm;
 	
 	private boolean cont = false;
 	private boolean nameSet = false;
 	private String contStr = "Press ENTER to continue";
 	
 	public EndGameMenu(GameStateManager gsm) {
+		this.gsm = gsm;
 		np = new NamePopup(gsm, "");
 		init();
 	}
@@ -36,13 +39,19 @@ public class EndGameMenu extends Menu {
 
 	@Override
 	public void init() {
+		cont = false;
+		nameSet = false;
+		np.reset();
 		egBG = new Background(Background.ENDGAME, 0);
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
+		if(np.ended() && !nameSet) {
+			System.out.println(np.getName());
+			nameSet = true;
+			end();
+		}
 	}
 
 	@Override
@@ -61,6 +70,13 @@ public class EndGameMenu extends Menu {
 		}
 	}
 
+	
+	private void end() {
+		Game.hs.addScore(np.getName(), Ship.getPlayer().getScore());
+		gsm.restart();
+	}
+	
+	
 	@Override
 	public void keyPressed(int k) {
 		if(k == KeyEvent.VK_ENTER) {

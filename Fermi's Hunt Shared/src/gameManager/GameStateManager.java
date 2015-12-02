@@ -12,7 +12,7 @@ public class GameStateManager {
 	private int currentState;
 	
 	public static final int MENUSTATE = 0;
-	public static final int CUSTOMIZESTATE = 3;
+	public static final int CUSTOMIZESTATE = 1;
 	public static final int PAUSESTATE = 2;
 	public static final int ENDGAME = 3;
 	public static final int LEVEL1STATE = 4;
@@ -76,6 +76,9 @@ public class GameStateManager {
 	}
 	public void endGame() {
 		setState(ENDGAME);
+	}
+	public void restart() {
+		setState(MENUSTATE);
 	}
 }
 

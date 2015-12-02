@@ -87,6 +87,10 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 		setVisible(false);
 	}
 	
+	public void reset() {
+		running = true;
+	}
+	
 	public boolean ended() {
 		return !running;
 	}

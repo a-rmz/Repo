@@ -437,6 +437,10 @@ public class Ship extends SpaceObject implements MouseListener{
 	public int getLevel() {
 		return this.level;
 	}
+	
+	public int getScore() {
+		return this.xp;
+	}
 
 	
 	

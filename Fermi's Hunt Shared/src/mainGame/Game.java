@@ -159,6 +159,7 @@ public class Game extends JPanel implements
 				scores = newScores;
 				newScores = null;
 				sort();
+				save();
 			}
 		}
 
