@@ -95,6 +95,7 @@ public class NewGameCM implements Runnable {
 			
 			switch (i){
 			case 0:
+				update();
 				try {
 					
 					Thread.sleep(11000);
