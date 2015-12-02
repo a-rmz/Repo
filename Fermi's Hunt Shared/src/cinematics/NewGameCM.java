@@ -168,7 +168,6 @@ public class NewGameCM implements Runnable {
 			
 			case 6:
 				update();
-				
 				enemyAppears = true;
 		
 				

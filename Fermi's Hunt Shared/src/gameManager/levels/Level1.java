@@ -20,7 +20,7 @@ public class Level1 extends GameState {
 	// Atributes
 	GameStateManager gsm;
 	Ship p1;
-	public static EnemyManager e;
+	public EnemyManager e;
 	public NewGameCM cinematic;
 	
 	
@@ -31,9 +31,13 @@ public class Level1 extends GameState {
 	public Level1(GameStateManager gsm){
 		this.gsm = gsm;
 		p1 = Ship.getPlayer();
-		e = new EnemyManager(2, 3, 20); //TODO
 		bg = new Background(Background.LEVEL_1);
+		e = new EnemyManager(2, 3, 20); //TODO
 		cinematic = new NewGameCM();
+	}
+	
+	public void restartLevel() {
+		
 	}
 	
 	public void  initCinematic(){
@@ -57,7 +61,7 @@ public class Level1 extends GameState {
 		
 //*******************************************************************//
 		
-		// Prints enemies
+		// Prints cinematic
 		
 		if(cinematic.isRunning){ 
 			cinematic.draw(g);
@@ -70,11 +74,8 @@ public class Level1 extends GameState {
 	public void update(){
 		bg.update();
 		p1.update();
-	
-		if(cinematic.enemyAppears) e.update();
-
+		e.update();
 		if(!Ship.getPlayer().isAlive()) {
-			
 			gsm.endGame();
 		}
 		
@@ -82,7 +83,9 @@ public class Level1 extends GameState {
 
 	
 	@Override
-	public void init() { }
+	public void init() {
+		
+	}
 
 	
 	@Override

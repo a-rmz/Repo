@@ -58,7 +58,7 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 	 * @param g
 	 */
 	public void draw(Graphics g) {
-		
+
 		for(int x =0 ; x< BUUM.size(); x++){
 			Explosion e = BUUM.get(x);
 			e.draw(g);

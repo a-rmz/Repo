@@ -13,6 +13,7 @@ import gameManager.GameStateManager;
 import gameManager.menus.popups.NamePopup;
 import mainGame.Game;
 
+@SuppressWarnings("serial")
 public class EndGameMenu extends Menu {
 
 	Background egBG;
@@ -79,7 +80,7 @@ public class EndGameMenu extends Menu {
 	
 	@Override
 	public void keyPressed(int k) {
-		if(k == KeyEvent.VK_ENTER) {
+		if(k == KeyEvent.VK_SPACE) {
 			cont = true;
 		}
 	}
