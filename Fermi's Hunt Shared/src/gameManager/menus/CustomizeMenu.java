@@ -93,6 +93,7 @@ public class CustomizeMenu extends Menu{
 			1000, 
 			760);
 	private boolean readyToLaunch = false;
+	private boolean nameSet = false;
 	
 	// GameStateManager
 	GameStateManager gsm;
@@ -161,6 +162,10 @@ public class CustomizeMenu extends Menu{
 			readyToLaunch = true;
 		} else {
 			readyToLaunch = false;
+		}
+		if(!np.visible() && np.ended() && !nameSet) {
+			Ship.getPlayer().setShipName(np.getName());
+			nameSet = true;
 		}
 	}
 
@@ -472,9 +477,7 @@ public class CustomizeMenu extends Menu{
 			Level1 l1 = new Level1(gsm);
 			l1.initCinematic();
 			gsm.gameStates.add(l1);
-			gsm.setState(GameStateManager.LEVEL1STATE);
-			
-			
+			gsm.setState(GameStateManager.LEVEL1STATE);			
 		}
 		
 	}

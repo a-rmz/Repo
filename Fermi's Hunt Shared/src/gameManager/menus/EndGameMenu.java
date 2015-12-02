@@ -1,16 +1,30 @@
 package gameManager.menus;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import background.Background;
 import gameManager.GameStateManager;
+import gameManager.menus.popups.NamePopup;
+import mainGame.Game;
 
 public class EndGameMenu extends Menu {
 
 	Background egBG;
+	NamePopup np;
+	Font f;
+	FontMetrics fm;
+	
+	private boolean cont = false;
+	private boolean nameSet = false;
+	private String contStr = "Press ENTER to continue";
 	
 	public EndGameMenu(GameStateManager gsm) {
+		np = new NamePopup(gsm, "");
 		init();
 	}
 	
@@ -34,13 +48,24 @@ public class EndGameMenu extends Menu {
 	@Override
 	public void draw(Graphics2D g) {
 		egBG.draw(g);
-		
+		g.setColor(Color.WHITE);
+		f = new Font("8-Bit Madness", Font.PLAIN, 70);
+		g.setFont(f);
+		fm = g.getFontMetrics(f);
+		if(!cont) {
+			g.drawString(contStr,
+					Game.WIDTH/2 - fm.stringWidth(contStr)/2,
+					Game.HEIGHT - 250);
+		} else if(!nameSet) {
+			np.drawNamePopup(g);
+		}
 	}
 
 	@Override
 	public void keyPressed(int k) {
-		// TODO Auto-generated method stub
-		
+		if(k == KeyEvent.VK_ENTER) {
+			cont = true;
+		}
 	}
 
 	@Override

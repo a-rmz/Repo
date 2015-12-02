@@ -1,10 +1,7 @@
 package background;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image; // mostrar imagen
-import java.awt.Toolkit;
-import java.awt.image.ImageObserver;
 
 import characters.Sprite;
 import mainGame.Game;
@@ -72,6 +69,7 @@ public class Background {
 	 */
 	public Background(int index, int rate){
 		this.rate = -rate;
+		if(rate == 0) imgSize = Game.WIDTH;
 		// Defines the image to be loaded.
 		url = backgrounds[index];
 		// Loads the image to both background images.	

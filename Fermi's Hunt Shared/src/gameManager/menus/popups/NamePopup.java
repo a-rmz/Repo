@@ -26,6 +26,7 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 	
 	
 	private boolean isVisible = false;
+	private boolean running = true;
 	
 	public NamePopup(GameStateManager gsm, String name) {
 		this.name = name;
@@ -82,8 +83,16 @@ public class NamePopup implements KeyListener, MouseListener, MouseMotionListene
 		return isVisible;
 	}
 	private void finish() {
-		Ship.getPlayer().setShipName(name);
+		running = false;
 		setVisible(false);
+	}
+	
+	public boolean ended() {
+		return !running;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 
