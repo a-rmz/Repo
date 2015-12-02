@@ -35,10 +35,6 @@ public class MainMenu extends Menu{
 	String copyright = "© VALHALLA STUDIOS 2015";
 	
 	
-	// SubMenus
-	HelpMenu hM;
-	HighscoreMenu hsM;
-	
 	// Constructor
 	public MainMenu(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -56,19 +52,22 @@ public class MainMenu extends Menu{
 	public void init() {
 		mBG = new Background(Background.MAIN_MENU, 6);
 		optionsRect = new Rectangle[options.length];
-		hM = HelpMenu.menu();
-		hsM = HighscoreMenu.menu();
+		
 		banner = Sprite.loadSprite("/BackgroundImg/Main_Menu/banner-game.png", this);
 	}
 
 	@Override
 	public void update() {
 		if(helpMenu) {
-			hM.update();
+			HelpMenu.menu().update();
 			return;
 		}
 		if(highscoreMenu) {
-			hsM.update();
+			HighscoreMenu.menu().update();
+			return;
+		}
+		if(creditsMenu) {
+			CreditsMenu.menu().update();
 			return;
 		}
 		mBG.update();		
@@ -77,11 +76,15 @@ public class MainMenu extends Menu{
 	@Override
 	public void draw(Graphics2D g) {
 		if(helpMenu) {
-			hM.draw(g);
+			HelpMenu.menu().draw(g);
 			return;
 		}
 		if(highscoreMenu) {
-			hsM.draw(g);
+			HighscoreMenu.menu().draw(g);
+			return;
+		}
+		if(creditsMenu) {
+			CreditsMenu.menu().draw(g);
 			return;
 		}
 		// Draw bg
@@ -136,11 +139,12 @@ public class MainMenu extends Menu{
 		case 2:
 			// Help
 			helpMenu = true;
-			hM.restart();
+			HelpMenu.menu().restart();
 			currentChoice = 0;
 			break;
 		case 3: 
 			// Credits
+			creditsMenu = true;
 			break;
 		case 4:
 			System.exit(0);
@@ -151,11 +155,15 @@ public class MainMenu extends Menu{
 	@Override
 	public void keyPressed(int k) {
 		if(helpMenu) {
-			hM.keyPressed(k);
+			HelpMenu.menu().keyPressed(k);
 			return;
 		}
 		if(highscoreMenu) {
-			hsM.keyPressed(k);
+			HighscoreMenu.menu().keyPressed(k);
+			return;
+		}
+		if(creditsMenu) {
+			CreditsMenu.menu().keyPressed(k);
 			return;
 		}
 		if(k == KeyEvent.VK_ENTER) {
@@ -185,7 +193,10 @@ public class MainMenu extends Menu{
 			return false;
 		}
 		if(highscoreMenu) {
-			// hsM stuff here
+			// HighscoreMenu.menu() stuff here
+			return false;
+		}
+		if(creditsMenu) {
 			return false;
 		}
 		for(int i = 0; i < options.length; i++) {
@@ -209,7 +220,7 @@ public class MainMenu extends Menu{
 		if(mouseOver(e)) {
 			select();	
 		} else if(helpMenu) {
-			hM.mouseClicked(e);
+			HelpMenu.menu().mouseClicked(e);
 		}
 		
 	}

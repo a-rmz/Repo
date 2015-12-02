@@ -14,7 +14,8 @@ public abstract class Menu extends GameState {
 	
 	protected static boolean helpMenu = false;
 	protected static boolean highscoreMenu = false;
-	protected static boolean firstGame = true;
+	protected static boolean creditsMenu = false;
+	
 
 	Rectangle createOptionBorder(String option, int i, Graphics2D g, FontMetrics fm) {
 
