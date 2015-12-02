@@ -54,26 +54,24 @@ public class NewGameCM implements Runnable {
 		se3.FXSound(2);
 		se4.FXSound(0);
 		se5.FXSound(1);
-		
-		
-		
 	}
+	
 	public void startAnimation(){
 		isRunning = true;
 		t.start();	
 	}
 
 	public boolean endCinematic(){
-		return isRunning = false;
+		return isRunning;
 	}
 	public void draw(Graphics g){
+		if(i<=9)
 		g.drawImage(getActualImage(), X, Y, null);
 	}
 	
 	public void update(){
 		if(i == 10 ) {
-		isRunning = false; 
-		return;
+			return;
 		}
 		
 		url = resources[i];
@@ -231,18 +229,39 @@ public class NewGameCM implements Runnable {
 				i++;
 
 				break;
-			
+			case 10:
+				
+				try {
+					
+					Thread.sleep(10000); // 2
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				isRunning = false;
+				break;
+				
 			default:
 				
 				update();
+				
+				try {
+					
+					Thread.sleep(2000); // 2
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				
 				return;
 			
 			} // end Switch
 			
-		 
+			
 			
 		}
+		
 		
 	}
 

@@ -76,8 +76,13 @@ public class Level1 extends GameState {
 		bg.update();
 		p1.update();
 		
-		if(cinematic.endCinematic())	
+		if( cinematic.endCinematic() == false){
 			se.play();
+		}
+		
+		if( p1.isAlive() == false) {
+			se.stop();
+		}
 		
 		if(cinematic.enemyAppears) e.update();
 
