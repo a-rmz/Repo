@@ -95,14 +95,20 @@ public class NewGameCM implements Runnable {
 			
 			switch (i){
 			case 0:
-				enemyAppears = true;
+				try {
+					
+					Thread.sleep(11000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			case 1:
 				se3.play();
 				se.play();
 				update();
 				try {
 					
-					Thread.sleep(8000);
+					Thread.sleep(7000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
