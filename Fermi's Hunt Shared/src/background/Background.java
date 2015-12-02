@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image; // mostrar imagen
 import java.awt.Toolkit;
+import java.awt.image.ImageObserver;
 
 import characters.Sprite;
 import mainGame.Game;
@@ -26,6 +27,7 @@ public class Background {
 	public Image bg1, bg2;
 	
 	private int rate = -10;
+	private int imgSize = 4000;
 	
 	
 	// **** PLAYER STATS ****
@@ -40,13 +42,7 @@ public class Background {
 
 	
 	// **** SHIP MODIFIERS ****
-	// Since this class doesn't extends SpaceObject, you need another Dimension
-	// to get the screen size.
-	public Dimension sSize = new Dimension(
-			(int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),
-			(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
-	public Position pbg1 = new Position(0, 0);
-	public Position pbg2 = new Position(sSize.getWidth(), 0);
+	public Position pbg1, pbg2;
 	
 	
 	// --------------------------------------------------------------------------------
@@ -64,6 +60,8 @@ public class Background {
 		// Loads the image to both background images.
 		bg1 = setBackgroundImage();
 		bg2 = setBackgroundImage();
+		pbg1 = new Position(0, 0);
+		pbg2 = new Position(imgSize, 0);
 	}
 
 
@@ -76,9 +74,11 @@ public class Background {
 		this.rate = -rate;
 		// Defines the image to be loaded.
 		url = backgrounds[index];
-		// Loads the image to both background images.
+		// Loads the image to both background images.	
 		bg1 = setBackgroundImage();
 		bg2 = setBackgroundImage();
+		pbg1 = new Position(0, 0);
+		pbg2 = new Position(imgSize, 0);
 	}
 
 	
@@ -88,15 +88,15 @@ public class Background {
 	 *  Updates the position of the bg1/bg2 images.
 	 */
 	public void update(){
-		// Moves each background -1 unit at a time.
+		// Moves each background rate units at a time.
 		pbg1.increasePosX(rate);
 		pbg2.increasePosX(rate);
 		
-		if(pbg1.getX() == (-sSize.getWidth())){
-			pbg1.setPosX(sSize.getWidth());
+		if(pbg1.getX() + imgSize <= 0){
+			pbg1.setPosX(imgSize);
 		}
-		if(pbg2.getX() == (-sSize.getWidth())){
-			pbg2.setPosX(sSize.getWidth());
+		if(pbg2.getX() + imgSize <= 0){
+			pbg2.setPosX(imgSize);
 		}
 	
 	}
@@ -121,9 +121,13 @@ public class Background {
 	public void draw(Graphics2D g) {
 		// Prints background
 		g.drawImage(getBackgroundImage(), pbg1.getX(), 0, 
-				Game.WIDTH, Game.HEIGHT, null);
+				imgSize + 10,
+				Game.HEIGHT,
+				null);
 		g.drawImage(getBackgroundImage(), pbg2.getX(), 0, 
-				Game.WIDTH, Game.HEIGHT, null);
+				imgSize + 10,
+				Game.HEIGHT,
+				null);
 	}
 	
 }
