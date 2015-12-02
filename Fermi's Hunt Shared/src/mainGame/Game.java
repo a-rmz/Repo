@@ -95,11 +95,11 @@ public class Game extends JPanel implements
 			}
 		}
 		private void initHS() {
-			scores.put("Javier Davalos", 9999);
-			scores.put("John Cena", 9999);
-			scores.put("Chuck Norris", 9999);
-			scores.put(":v", 9999);
-			scores.put("MC Dinero", 9999);
+			scores.put("Javier Davalos", 1000);
+			scores.put("John Cena", 1000);
+			scores.put("Chuck Norris", 1000);
+			scores.put(":v", 1000);
+			scores.put("MC Dinero", 1000);
 			save();
 		}
 		
@@ -158,6 +158,7 @@ public class Game extends JPanel implements
 				newScores.put(name, score);
 				scores = newScores;
 				newScores = null;
+				System.out.println("Score added: " + name + " || " + score);
 				sort();
 				save();
 			}
