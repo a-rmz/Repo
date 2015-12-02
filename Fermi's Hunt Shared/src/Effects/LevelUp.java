@@ -23,7 +23,8 @@ public class LevelUp implements Runnable {
 			se.FXSound(4);
 			thread = new Thread(this);
 			listen = true;
-			setDamegeImage();
+			print = false;
+			setLevelUpImage();
 			thread.start();
 		}
 		
@@ -34,19 +35,19 @@ public class LevelUp implements Runnable {
 		
 		public void draw(Graphics g){
 			if(print)
-				g.drawImage(getDamageImage(), (Game.WIDTH / 2 ) - 700 , (Game.HEIGHT / 2) - 200, null);
+				g.drawImage(getLevelUpImage(), (Game.WIDTH / 2 ) - 700 , (Game.HEIGHT / 2) - 200, null);
 		}
 		
 		public void update(){
 			
 		}
 		
-		public void setDamegeImage(){
+		public void setLevelUpImage(){
 			url = levelUpImage[0];
 			levelUP = Sprite.loadSprite(url, this);
 		}
 		
-		public Image getDamageImage(){
+		public Image getLevelUpImage(){
 			return levelUP;
 		}
 
@@ -58,7 +59,7 @@ public class LevelUp implements Runnable {
 			
 			try {
 				
-				Thread.sleep(1500);
+				Thread.sleep(4000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

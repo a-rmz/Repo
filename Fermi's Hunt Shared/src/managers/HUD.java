@@ -75,8 +75,8 @@ public class HUD {
 		bY = (Game.HEIGHT - 200) + 70;
 		wX =((Game.WIDTH / 2) - 700) + 1027;
 		wY = (Game.HEIGHT - 200) + 44;
-		sX = ((Game.WIDTH / 2) - 700) + 483;
-		sY = (Game.HEIGHT - 200) + 65;
+		sX = ((Game.WIDTH / 2) - 700) + 490;
+		sY = (Game.HEIGHT - 200) + 64;
 		
 		
 		wait = false;
