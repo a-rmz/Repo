@@ -133,7 +133,7 @@ public void FXSound(int n){
 			
 			clip = AudioSystem.getClip();
 			clip.open(dais);
-			clip.start();
+		
 				
 					
 					

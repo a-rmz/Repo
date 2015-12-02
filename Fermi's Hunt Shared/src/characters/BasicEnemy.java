@@ -81,10 +81,11 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		// Sets the enemy level to the parameter enemyLevel.
 		this.enemyLevel = enemyLevel;
 		// Initializes the timer.
-		enemyFire = new Timer(attackSpeed * 100 * (r.nextInt(2) + 1), this);
+		//enemyFire = new Timer(attackSpeed * 100 * (r.nextInt(2) + 1), this);
 		entering();
 		// Starts the enemyFire timer.
-		enemyFire.start();
+		//enemyFire.start();
+		se.enemyShotSound(0);
 	}
 
 	
@@ -130,7 +131,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	public void update(){
 	
 		if (enabled) {
-			enemyFire.setDelay((r.nextInt(3)+1) * 1000);
+			//enemyFire.setDelay((r.nextInt(3)+1) * 1000);
 			// Determines if the enemy's velocity has to change.
 			changeVelocity();
 			// Modifies the enemy's position on getVel units.
@@ -142,7 +143,11 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 			bm.update();
 			// Determines if the ship got hit
 			gotHit();
+			
+			if( (p.getX() % 102) == 0) enemyAttack();
+			
 		} else {
+			
 			entering();
 		}
 	
@@ -157,6 +162,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		}
 		// Disables the Enemy until it reaches its position
 		enabled = false;
+		
 		// Sets the enemy velocity to a number between 10 and 20.
 		// TODO to be defined by the enemyLevel.
 		p.setVelX(-25);
@@ -241,7 +247,8 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		if(dead){
 			se.close();
 		}else{
-			se.enemyShotSound(0);
+			///////////////////////////////////////////////////////////////////////////////////
+		se.playAgain();
 		}
 	}
 	
@@ -260,6 +267,10 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(enabled) attack();	
 		
+	}
+	
+	public void enemyAttack(){
+		if(enabled) attack();
 	}
 
 	/**
@@ -295,6 +306,14 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	
 	public int getHP() {
 		return hp;
+	}
+	
+	public void stopSound(){
+		enemyFire.stop();
+	}
+	
+	public void restartSound(){
+		enemyFire.start();
 	}
 	
 	
