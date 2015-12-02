@@ -24,7 +24,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	// **** RESOURCES ****
 	private String[] resources = {
 			"/Sprites/Enemies/BasicEnemy.png",
-			"/Sprites/Enemies/BasicEnemy.png",
+			"/Sprites/Enemies/BasicEnemy2.png",
 			"/Sprites/Enemies/BasicEnemy.png",
 			"/Sprites/Enemies/BasicEnemy.png",
 			"/Sprites/Enemies/BasicEnemy.png"
@@ -75,16 +75,16 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		// Sets the hp.
 		hp = (int) Math.pow(enemyLevel, 2);
 		// Sets the url for the enemy image according to the enemyLevel.
-		url = resources[enemyLevel - 1];
+		url = resources[1];
 		// Loads the enemy image.
 		setSpaceObjectImage();
 		// Sets the enemy level to the parameter enemyLevel.
 		this.enemyLevel = enemyLevel;
 		// Initializes the timer.
-		//enemyFire = new Timer(attackSpeed * 100 * (r.nextInt(2) + 1), this);
+		
 		entering();
 		// Starts the enemyFire timer.
-		//enemyFire.start();
+		
 		se.enemyShotSound(0);
 	}
 
@@ -144,7 +144,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 			// Determines if the ship got hit
 			gotHit();
 			
-			if( (p.getX() % 64) == 0) enemyAttack();
+			if( (p.getX() % 102) == 0) enemyAttack();
 			
 		} else {
 			
@@ -247,7 +247,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		if(dead){
 			se.close();
 		}else{
-			///////////////////////////////////////////////////////////////////////////////////
+			/////////////////////////////////////////////////////////////////////////////////
 		se.playAgain();
 		}
 	}

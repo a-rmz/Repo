@@ -15,6 +15,7 @@ public class NewGameCM implements Runnable {
 	public boolean isRunning;
 	public boolean enemyAppears;
 	public boolean levelUp;
+	
 	private String url;
 	private int X, Y, i, r;
 	
@@ -41,17 +42,19 @@ public class NewGameCM implements Runnable {
 		Y= (Game.HEIGHT) - 350 ;
 		r = 0;
 		i= 0;
-		isRunning = enemyAppears = false;
+		isRunning = enemyAppears  = false;
 		se = new SoundEffects();
 		se2 = new SoundEffects();
 		se3 = new SoundEffects();
 		se4 = new SoundEffects();
 		se5 = new SoundEffects();
+	
 		se.backGroundMenuMusic(0);
 		se2.backGroundMusic(1);
 		se3.FXSound(2);
 		se4.FXSound(0);
 		se5.FXSound(1);
+		
 		
 		
 	}
@@ -84,10 +87,6 @@ public class NewGameCM implements Runnable {
 	
 	public void setActualImage(){
 		text = Sprite.loadSprite(url, this);
-	}
-	
-	public void levelUp(){
-		levelUp = true;
 	}
 
 	@Override
@@ -234,13 +233,14 @@ public class NewGameCM implements Runnable {
 				break;
 			
 			default:
+				
 				update();
 				
 				return;
 			
 			} // end Switch
 			
-		
+		 
 			
 		}
 		

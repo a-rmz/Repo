@@ -2,8 +2,10 @@ package gameManager.levels;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import Effects.SoundEffects;
 import background.Background;
 import characters.Ship;
 import cinematics.NewGameCM;
@@ -22,7 +24,7 @@ public class Level1 extends GameState {
 	Ship p1;
 	public static EnemyManager e;
 	public NewGameCM cinematic;
-	
+	SoundEffects se ;
 	
 	// Graphics
 	Background bg;
@@ -34,6 +36,9 @@ public class Level1 extends GameState {
 		e = new EnemyManager(2, 3, 20); //TODO
 		bg = new Background(Background.LEVEL_1);
 		cinematic = new NewGameCM();
+		se = new SoundEffects();
+		se.FXSound(5);
+		
 	}
 	
 	public void  initCinematic(){
@@ -70,7 +75,10 @@ public class Level1 extends GameState {
 	public void update(){
 		bg.update();
 		p1.update();
-	
+		
+		if(cinematic.endCinematic())	
+			se.play();
+		
 		if(cinematic.enemyAppears) e.update();
 
 		if(!Ship.getPlayer().isAlive()) {
@@ -87,6 +95,7 @@ public class Level1 extends GameState {
 	
 	@Override
 	public void keyPressed(int k) {
+		if(k == KeyEvent.VK_ESCAPE) se.stop();
 		p1.keyPressed(k);		
 	}
 

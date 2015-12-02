@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import Effects.SoundEffects;
 import background.Background;
 import characters.Ship;
 import gameManager.GameStateManager;
@@ -20,6 +21,7 @@ public class EndGameMenu extends Menu {
 	Font f;
 	FontMetrics fm;
 	GameStateManager gsm;
+	SoundEffects se;
 	
 	private boolean cont = false;
 	private boolean nameSet = false;
@@ -28,7 +30,6 @@ public class EndGameMenu extends Menu {
 	public EndGameMenu(GameStateManager gsm) {
 		this.gsm = gsm;
 		np = new NamePopup(gsm, "");
-		init();
 	}
 	
 	@Override
@@ -43,6 +44,11 @@ public class EndGameMenu extends Menu {
 		nameSet = false;
 		np.reset();
 		egBG = new Background(Background.ENDGAME, 0);
+		
+		se = new SoundEffects();
+		se.FXSound(6);
+		se.play();
+		
 	}
 
 	@Override

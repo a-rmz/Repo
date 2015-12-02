@@ -37,7 +37,9 @@ public class SoundEffects {
 			"/Sounds/Control_tower_radio.mp3",
 			"/Sounds/Keyboard.mp3",
 			"/Sounds/hurt.mp3",
-			"/Sounds/levelUp.mp3"
+			"/Sounds/levelUp.mp3",
+			"/Sounds/BgMusic.mp3",
+			"/Sounds/EndGame.mp3"
 	};
 	
 	public SoundEffects(){
@@ -262,6 +264,7 @@ public void FXSound(int n){
 	public void stop() {
 		try{
 		clip.stop();
+		
 		} catch( Exception e){
 			e.printStackTrace();
 		}
