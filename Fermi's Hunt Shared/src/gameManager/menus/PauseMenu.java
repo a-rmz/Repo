@@ -82,6 +82,10 @@ public class PauseMenu extends Menu implements Runnable{
 			HelpMenu.menu().update();
 			return;
 		}
+		if(highscoreMenu) {
+			HighscoreMenu.menu().update();
+			return;
+		}
 		pBG.update();
 	}
 
@@ -89,6 +93,10 @@ public class PauseMenu extends Menu implements Runnable{
 	public void draw(Graphics2D g) {
 		if(helpMenu) {
 			HelpMenu.menu().draw(g);
+			return;
+		}
+		if(highscoreMenu) {
+			HighscoreMenu.menu().draw(g);
 			return;
 		}
 		// Draw bg
@@ -137,7 +145,8 @@ public class PauseMenu extends Menu implements Runnable{
 			break;
 		case 1:
 			// High Scores
-			
+			highscoreMenu = true;
+			break;
 		case 2:
 			// Help
 			helpMenu = true;
@@ -155,6 +164,10 @@ public class PauseMenu extends Menu implements Runnable{
 	public void keyPressed(int k) {
 		if(helpMenu) {
 			HelpMenu.menu().keyPressed(k);
+			return;
+		}
+		if(highscoreMenu) {
+			HighscoreMenu.menu().keyPressed(k);
 			return;
 		}
 		if(k == KeyEvent.VK_ENTER) {
@@ -203,6 +216,10 @@ public class PauseMenu extends Menu implements Runnable{
 	public boolean mouseOver(MouseEvent e) {
 		if(helpMenu) {
 			// HelpMenu stuff here
+			return false;
+		}
+		if(highscoreMenu) {
+			// High Score stuff here
 			return false;
 		}
 
