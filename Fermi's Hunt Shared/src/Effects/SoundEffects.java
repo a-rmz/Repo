@@ -1,9 +1,6 @@
 package Effects;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 
 public class SoundEffects {
 	
@@ -12,7 +9,8 @@ public class SoundEffects {
 	
 	public  String[] shipShotSound = {
 			"/Sounds/ShipShot1.mp3",
-			"/Sounds/ShipShot3.mp3"
+			"/Sounds/DoubleShot.mp3",
+			"/Sounds/Rocket.mp3"
 	};
 	
 	public  String[] enemyShotSound ={

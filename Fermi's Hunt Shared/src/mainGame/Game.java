@@ -168,7 +168,6 @@ public class Game extends JPanel implements
 					  new ArrayList<Map.Entry<String, Integer>>(scores.entrySet());
 			
 			Collections.sort(unsorted, new Comparator<Map.Entry<String, Integer>>() {
-				@Override
 				public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
 					return -a.getValue().compareTo(b.getValue());
 				}
@@ -195,7 +194,6 @@ public class Game extends JPanel implements
 			}
 		}
 		
-		@Override
 		public String toString() {
 			String ret = "";
 			Iterator<Map.Entry<String, Integer>> it = scores.entrySet().iterator();

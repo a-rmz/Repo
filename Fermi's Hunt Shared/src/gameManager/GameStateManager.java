@@ -3,10 +3,7 @@ package gameManager;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import gameManager.menus.CustomizeMenu;
-import gameManager.menus.EndGameMenu;
-import gameManager.menus.MainMenu;
-import gameManager.menus.PauseMenu;
+import gameManager.menus.*;
 import mainGame.Game;
 
 public class GameStateManager {

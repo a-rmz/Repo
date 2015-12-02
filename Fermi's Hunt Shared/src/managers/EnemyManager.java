@@ -4,10 +4,10 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import Effects.Explosion;
-import Effects.SoundEffects;
 import characters.BasicEnemy;
 import characters.Ship;
+import Effects.Explosion;
+import Effects.SoundEffects;
 
 
 public class EnemyManager extends Manager<BasicEnemy> implements Runnable {

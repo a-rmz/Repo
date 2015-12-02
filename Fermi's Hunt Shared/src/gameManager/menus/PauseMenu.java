@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 
 import Effects.SoundEffects;
 import background.Background;
-import gameManager.GameStateManager;
+import gameManager.*;
 import mainGame.Game;
 
 @SuppressWarnings("serial")

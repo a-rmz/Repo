@@ -21,7 +21,7 @@ public class NewGameCM implements Runnable {
 	
 	Thread t;
 	
-	String[] resources= {
+	String[] resources = {
 		"/newGameCM/Text1.png", //0
 		"/newGameCM/Text2.png",//1
 		"/newGameCM/Text3.png",	//2
