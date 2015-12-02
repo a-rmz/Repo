@@ -150,7 +150,9 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Loads the ship image
 		setSpaceObjectImage();
 		SoundEffects ShotSound = new SoundEffects();
-		effects.put("shot", ShotSound);	
+
+		effects.put("shot", ShotSound);
+		
 		// ship damage effect
 		damage = new Damage();
 		levelUp = new LevelUp();
@@ -324,7 +326,7 @@ public class Ship extends SpaceObject implements MouseListener{
 				for(int i = 0; i < level; i++) {
 					bp.setPosY(p.getY() + (i * 30));
 					bm.add(bp);
-					effects.get("shot").shipShotSound(0);
+					effects.get("shot").shipShotSound(1);
 					canShoot = false;
 					FireRateTimer.restart();
 				}
@@ -332,10 +334,27 @@ public class Ship extends SpaceObject implements MouseListener{
 			if(level == 3) {
 				bm.add(p);
 				url = resources[shipType][level-1][SHIP_SHOOT];
-				effects.get("shot").shipShotSound(0);
+				effects.get("shot").shipShotSound(2);
+				canShoot = false;
+				FireRateTimer.restart();
+				
+			}
+			
+			//////////////////////////////////
+			else
+			if(level >=4){
+				shipType=2;
+				level=2;
+				
+				bm.add(p);
+				url = resources[2][2][2];
+				effects.get("shot").shipShotSound(2);
 				canShoot = false;
 				FireRateTimer.restart();
 			}
+			
+			
+			/////////////////////////////////////
 		}
 	}
 	
@@ -358,6 +377,8 @@ public class Ship extends SpaceObject implements MouseListener{
 			this.weaponNumber++;
 			
 			levelUp.start();
+			
+			if(weaponNumber > 2) weaponNumber = 2;
 			hud.changeHUDWeapon(weaponNumber);
 			
 		}
