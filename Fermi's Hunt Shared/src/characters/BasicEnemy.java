@@ -144,7 +144,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 			// Determines if the ship got hit
 			gotHit();
 			
-			if( (p.getX() % 102) == 0) enemyAttack();
+			if( (p.getX() % 2) == 0) enemyAttack();
 			
 		} else {
 			
