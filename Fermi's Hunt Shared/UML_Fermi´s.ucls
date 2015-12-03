@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="gameManager.menus.Menu" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/Menu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="363" x="1074" y="55"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="gameManager.menus.EndGameMenu" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/EndGameMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="405" width="201" x="1619" y="284"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="gameManager.menus.HelpMenu" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/HelpMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="193" x="586" y="284"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="navigation.KeyInput" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/navigation/KeyInput.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="130" x="364" y="1089"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="managers.Manager" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/managers/Manager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="160" x="1369" y="1750"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="cinematics.NewGameCM" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/cinematics/NewGameCM.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="405" width="144" x="1329" y="2979"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="managers.HUD" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/managers/HUD.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="981" width="187" x="572" y="2979"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="mainGame.Game.Highscore" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/mainGame/Game.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="218" x="1611" y="1750"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="characters.SpaceObject" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/characters/SpaceObject.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="211" x="113" y="1089"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="gameManager.menus.popups.Keyboard.SpecialKey" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/popups/Keyboard.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="187" x="2396" y="4000"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="gameManager.GameState" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/GameState.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="197" x="1114" y="284"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="gameManager.GameStateManager" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/GameStateManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="193" x="1115" y="1750"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="gameManager.menus.CreditsMenu" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/CreditsMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="193" x="343" y="284"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="gameManager.menus.popups.Keyboard.Key" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/popups/Keyboard.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="187" x="2188" y="2979"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="background.Background" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/background/Background.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="166" x="888" y="1750"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="gameManager.menus.PauseMenu" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/PauseMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="513" width="193" x="901" y="1089"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="characters.Ship" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/characters/Ship.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1179" width="202" x="364" y="1750"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="gameManager.levels.Level1" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/levels/Level1.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="193" x="1354" y="1089"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="gameManager.menus.HighscoreMenu" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/HighscoreMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="193" x="829" y="284"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="mainGame.Game" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/mainGame/Game.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="567" width="193" x="1629" y="1089"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="managers.BulletManager" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/managers/BulletManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="213" x="799" y="2979"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="characters.Bullet" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/characters/Bullet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="134" x="-39" y="2979"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="gameManager.menus.popups.NamePopup" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/popups/NamePopup.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="621" width="244" x="1883" y="1089"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="characters.Sprite" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/characters/Sprite.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="175" x="181" y="55"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="Effects.Damage" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/Effects/Damage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="147" x="177" y="2979"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="managers.Position" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/managers/Position.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="144" x="137" y="4000"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="managers.EnemyManager" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/managers/EnemyManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="279" x="1550" y="2979"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="gameManager.menus.MainMenu" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/MainMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="193" x="647" y="1089"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="mainGame.MainClass" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/mainGame/MainClass.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="658" y="55"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="characters.BasicEnemy" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/characters/BasicEnemy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="585" width="202" x="-39" y="1750"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="gameManager.menus.CustomizeMenu" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/CustomizeMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="765" width="228" x="1351" y="284"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="Effects.SoundEffects" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/Effects/SoundEffects.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="405" width="181" x="1329" y="4000"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="gameManager.menus.CustomizeMenu.ShipThumb" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/CustomizeMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="117" x="1176" y="1089"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="Effects.LevelUp" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/Effects/LevelUp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="147" x="364" y="2979"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="Effects.Explosion" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/Effects/Explosion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="154" x="1550" y="4000"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="gameManager.menus.popups.Keyboard" project="Fermi&apos;s Hunt Shared" 
+    file="/Fermi&apos;s Hunt Shared/src/gameManager/menus/popups/Keyboard.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="215" x="2259" y="1750"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="37">    
+    <bendpoint x="1063" y="2979"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="38" name="pbg1"/>      
+      <multiplicity id="39" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="40">    
+    <bendpoint x="-70" y="2979"/>    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="41" name="p"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="43">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="44" name="bm"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="46">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="47">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="48" name="instance"/>      
+      <multiplicity id="49" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="50">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="51">    
+    <bendpoint x="1598" y="1089"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="52" name="gsm"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="55" name="se"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <bendpoint x="2426" y="2979"/>    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="58" name="specialKeys"/>      
+      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="60">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="33"/>  
+  </nesting>  
+  <association id="61">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="62" name="thumbs"/>      
+      <multiplicity id="63" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="65" name="hud"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <bendpoint x="1852" y="1089"/>    
+    <bendpoint x="1859" y="1750"/>    
+    <bendpoint x="1859" y="2979"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="68" name="se"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="71" name="np"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="74" name="se4"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="77" name="gsm"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <bendpoint x="541" y="2979"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="80" name="effects"/>      
+      <multiplicity id="81" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="82">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="83" name="damage"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="85">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="86" name="se"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="88">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="89">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="90" name="keyboard"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="92">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="93" name="instance"/>      
+      <multiplicity id="94" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="95">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="96" name="keyboard"/>      
+      <multiplicity id="97" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="98">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="99" name="b"/>      
+      <multiplicity id="100" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="102" name="se"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="105">    
+    <bendpoint x="595" y="1089"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="106" name="hBG"/>      
+      <multiplicity id="107" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="108">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="109" name="se5"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <bendpoint x="1338" y="1750"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="112" name="cinematic"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="115" name="pBG"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="118" name="p"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="120">    
+    <bendpoint x="1084" y="1750"/>    
+    <bendpoint x="1084" y="2979"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="121" name="se"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="123">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="124" name="bg"/>      
+      <multiplicity id="125" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="126">    
+    <bendpoint x="616" y="1089"/>    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="127" name="hBG"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="130" name="mBG"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="132">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="133">    
+    <bendpoint x="1580" y="1750"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="134" name="e"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <bendpoint x="1042" y="2979"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="137" name="pbg2"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="139">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="140" name="bm"/>      
+      <multiplicity id="141" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="142">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="143" name="previousUsed"/>      
+      <multiplicity id="144" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="145">    
+    <bendpoint x="1083" y="284"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="146">    
+    <bendpoint x="125" y="2979"/>    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="147" name="se"/>      
+      <multiplicity id="148" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="149">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="150" name="instance"/>      
+      <multiplicity id="151" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="152">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="14"/>  
+  </nesting>  
+  <nesting id="153">    
+    <bendpoint x="2405" y="2979"/>    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
+  <association id="154">    
+    <bendpoint x="1559" y="1750"/>    
+    <bendpoint x="1519" y="2979"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="155" name="se"/>      
+      <multiplicity id="156" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="157">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="158">    
+    <bendpoint x="1145" y="1089"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="159" name="gameStates"/>      
+      <multiplicity id="160" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="161">    
+    <bendpoint x="870" y="1089"/>    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="162" name="cBG"/>      
+      <multiplicity id="163" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="164">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="165">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="166" name="hs"/>      
+      <multiplicity id="167" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="168">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="169">    
+    <bendpoint x="1577" y="1089"/>    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="170" name="gsm"/>      
+      <multiplicity id="171" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="172">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="173" name="levelUp"/>      
+      <multiplicity id="174" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="175">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="176">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="177" name="ship"/>      
+      <multiplicity id="178" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="179">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="180" name="p1"/>      
+      <multiplicity id="181" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="182">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="183" name="se"/>      
+      <multiplicity id="184" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="185">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="186" name="BUUM"/>      
+      <multiplicity id="187" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="188">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="189" name="mainShip"/>      
+      <multiplicity id="190" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="191">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="192" name="np"/>      
+      <multiplicity id="193" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="194">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="195" name="instance"/>      
+      <multiplicity id="196" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="197">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="198">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="199" name="gsm"/>      
+      <multiplicity id="200" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="201">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="202" name="gsm"/>      
+      <multiplicity id="203" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="204">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="205" name="b"/>      
+      <multiplicity id="206" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="207">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="208">    
+    <bendpoint x="1323" y="1089"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="209" name="egBG"/>      
+      <multiplicity id="210" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="211">    
+    <bendpoint x="2157" y="284"/>    
+    <bendpoint x="2157" y="1089"/>    
+    <bendpoint x="2157" y="1750"/>    
+    <bendpoint x="2157" y="2979"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="212" name="se"/>      
+      <multiplicity id="213" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="214">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="215" name="game"/>      
+      <multiplicity id="216" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="217">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="218" name="se3"/>      
+      <multiplicity id="219" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="220">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="221" name="gsm"/>      
+      <multiplicity id="222" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="223">    
+    <bendpoint x="-91" y="2979"/>    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="224" name="origin"/>      
+      <multiplicity id="225" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="226">    
+    <bendpoint x="146" y="2979"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="227" name="p"/>      
+      <multiplicity id="228" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="229">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="230">    
+    <bendpoint x="1062" y="284"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="231">    
+    <bendpoint x="1124" y="1089"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="232" name="gsm"/>      
+      <multiplicity id="233" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="234">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="235" name="se2"/>      
+      <multiplicity id="236" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="237">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="8"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

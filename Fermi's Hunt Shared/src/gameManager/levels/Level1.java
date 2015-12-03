@@ -13,7 +13,7 @@ import cinematics.NewGameCM;
 import gameManager.GameState;
 import gameManager.GameStateManager;
 import managers.EnemyManager;
-import soundtracks.Soundtrack;
+
 
 @SuppressWarnings("serial")
 public class Level1 extends GameState {
@@ -28,7 +28,7 @@ public class Level1 extends GameState {
 	
 	// Graphics
 	Background bg;
-	Soundtrack st;
+	
 		
 	public Level1(GameStateManager gsm){
 		this.gsm = gsm;
@@ -37,7 +37,7 @@ public class Level1 extends GameState {
 		e = new EnemyManager(2, 4, 20); //TODO
 		cinematic = new NewGameCM();
 		se = new SoundEffects();
-		se.FXSound(5);
+		se.FXSound(7);
 		
 	}
 	

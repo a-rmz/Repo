@@ -21,10 +21,6 @@ public class SoundEffects {
 			"/Sounds/ExplosionSound.mp3"
 	};
 	
-	public  String[] bossBattleTheme = {
-			"/Sounds/Fyrus.mp3"
-	};
-	
 	public  String[] backGroundMusic ={
 			"/Sounds/sectorZ.mp3",
 			"/Sounds/warning.mp3"
@@ -40,7 +36,8 @@ public class SoundEffects {
 			"/Sounds/hurt.mp3",
 			"/Sounds/levelUp.mp3",
 			"/Sounds/BgMusic.mp3",
-			"/Sounds/EndGame.mp3"
+			"/Sounds/EndGame.mp3",
+			"/Sounds/Fyrus.mp3"
 	};
 	
 	public SoundEffects(){
