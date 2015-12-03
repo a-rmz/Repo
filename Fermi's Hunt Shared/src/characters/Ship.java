@@ -30,17 +30,17 @@ public class Ship extends SpaceObject implements MouseListener{
 			// Ship TYPE 1
 		{
 			{
-			"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot.gif",
-			"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_1/Single_shot/sprite_ship1_singleShot.gif",
+			"/Sprites/Ship/Ship_1/Single_shot/sprite_ship1_singleShot_Up.gif",
 			"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_Down.gif",
-			"/Sprites/Ship/Ship_1/Single_Shot/sprite_ship1_singleShot_shoot.gif",
+			"/Sprites/Ship/Ship_1/Single_shot/sprite_ship1_singleShot_shoot.gif",
 			},
 			// Ship level 2
 			{
-			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot.gif",
-			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Up.gif",
-			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_Down.gif",
-			"/Sprites/Ship/Ship_1/Double_Shot/sprite_ship1_doubleShot_shoot.gif",
+			"/Sprites/Ship/Ship_1/Double_shot/sprite_ship1_doubleShot.gif",
+			"/Sprites/Ship/Ship_1/Double_shot/sprite_ship1_doubleShot_Up.gif",
+			"/Sprites/Ship/Ship_1/Double_shot/sprite_ship1_doubleShot_Down.gif",
+			"/Sprites/Ship/Ship_1/Double_shot/sprite_ship1_doubleShot_shoot.gif",
 			},
 			// Ship level 3
 			{
@@ -53,17 +53,17 @@ public class Ship extends SpaceObject implements MouseListener{
 			// Ship TYPE 2
 		{
 			{
-			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot.gif",
-			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_Up.gif",
-			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_Down.gif",
-			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_shoot.gif",
+			"/Sprites/Ship/Ship_2/Single_shot/sprite_ship2_singleShot.gif",
+			"/Sprites/Ship/Ship_2/Single_shot/sprite_ship2_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_2/Single_shot/sprite_ship2_singleShot_Down.gif",
+			"/Sprites/Ship/Ship_2/Single_shot/sprite_ship2_singleShot_shoot.gif",
 			},
 			// Ship level 2
 			{
-			"/Sprites/Ship/Ship_2/Double_Shot/sprite_ship2_doubleShot.gif",
-			"/Sprites/Ship/Ship_2/Double_Shot/sprite_ship2_doubleShot_Up.gif",
-			"/Sprites/Ship/Ship_2/Double_Shot/sprite_ship2_doubleShot_Down.gif",
-			"/Sprites/Ship/Ship_2/Double_Shot/sprite_ship2_doubleShot_shoot.gif",
+			"/Sprites/Ship/Ship_2/Double_shot/sprite_ship2_doubleShot.gif",
+			"/Sprites/Ship/Ship_2/Double_shot/sprite_ship2_doubleShot_Up.gif",
+			"/Sprites/Ship/Ship_2/Double_shot/sprite_ship2_doubleShot_Down.gif",
+			"/Sprites/Ship/Ship_2/Double_shot/sprite_ship2_doubleShot_shoot.gif",
 			},
 			// Ship level 3
 			{
@@ -76,17 +76,17 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Ship TYPE 3
 		{
 			{
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_singleShot.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_singleShot_Up.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_singleShot_Down.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_singleShot_shoot.gif",
+			"/Sprites/Ship/Ship_3/Single_shot/sprite_ship3_singleShot.gif",
+			"/Sprites/Ship/Ship_3/Single_shot/sprite_ship3_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_3/Single_shot/sprite_ship3_singleShot_Down.gif",
+			"/Sprites/Ship/Ship_3/Single_shot/sprite_ship3_singleShot_shoot.gif",
 			},
 			// Ship level 2
 			{
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_doubleShot.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_doubleShot_Up.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_doubleShot_Down.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_doubleShot_shoot.gif",
+			"/Sprites/Ship/Ship_3/Double_shot/sprite_ship3_doubleShot.gif",
+			"/Sprites/Ship/Ship_3/Double_shot/sprite_ship3_doubleShot_Up.gif",
+			"/Sprites/Ship/Ship_3/Double_shot/sprite_ship3_doubleShot_Down.gif",
+			"/Sprites/Ship/Ship_3/Double_shot/sprite_ship3_doubleShot_shoot.gif",
 			},
 			// Ship level 3
 			{

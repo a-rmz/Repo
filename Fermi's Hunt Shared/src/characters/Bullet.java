@@ -46,7 +46,6 @@ public class Bullet {
 			url = resources[1];
 			bulletDamage = Ship.getPlayer().getLevel();
 			ship = true;
-			System.out.println(bulletDamage);
 		} else {
 			// Sets the url for the Bullet image. 
 			url = resources[0];

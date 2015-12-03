@@ -2,7 +2,8 @@ package Effects;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
+
+import characters.Sprite;
 
 public class Explosion  {
 	
@@ -26,7 +27,7 @@ public class Explosion  {
 	public void setExplosionImage(){
 		try {
 			// Gets the image from the url defined by the resources array
-			explosion = Toolkit.getDefaultToolkit().getImage(getClass().getResource(url));
+			explosion = Sprite.loadSprite(url, this);
 		} catch (Exception e) {
 			explosion = null;
 		}

@@ -62,7 +62,6 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 		for(int x =0 ; x< BUUM.size(); x++){
 			Explosion e = BUUM.get(x);
 			e.draw(g);
-			
 		}
 		
 		
@@ -137,18 +136,17 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 		// TODO Auto-generated method stub
 		
 		while(isRunning){
-		for(int x=0; x<BUUM.size() ; x++){
-			try {
-				Thread.sleep(400);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-			BUUM.remove(x);
-		}
-	}
-		
+			for(int x=0; x<BUUM.size() ; x++){
+				try {
+					Thread.sleep(400);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				BUUM.remove(x);
+				System.out.println("Boom removed");
+			} // End For
+		} // End while
 	}
 
 }
