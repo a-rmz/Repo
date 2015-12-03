@@ -76,19 +76,26 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Ship TYPE 3
 		{
 			{
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_Up.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_Down.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_shoot.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_singleShot.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_singleShot_Up.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_singleShot_Down.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_singleShot_shoot.gif",
 			},
 			// Ship level 2
 			{
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_Up.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_Down.gif",
-			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship1_singleShot_shoot.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_doubleShot.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_doubleShot_Up.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_doubleShot_Down.gif",
+			"/Sprites/Ship/Ship_3/Single_Shot/sprite_ship3_doubleShot_shoot.gif",
+			},
+			// Ship level 3
+			{
+			"/Sprites/Ship/Ship_3/Missile/sprite_ship3_missile.gif",
+			"/Sprites/Ship/Ship_3/Missile/sprite_ship3_missile_Up.gif",
+			"/Sprites/Ship/Ship_3/Missile/sprite_ship3_missile_Down.gif",
+			"/Sprites/Ship/Ship_3/Missile/sprite_ship3_missile_Shoot.gif",
 			}
-		}, 
+		} 
 	};
 	public int shipType = 0;
 	private final int BASIC_SHIP = 0;
