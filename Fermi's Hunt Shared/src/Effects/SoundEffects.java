@@ -10,7 +10,7 @@ public class SoundEffects {
 	public  String[] shipShotSound = {
 			"/Sounds/ShipShot1.mp3",
 			"/Sounds/DoubleShot.mp3",
-			"/Sounds/Rocket.mp3"
+			"/Sounds/rocket.mp3"
 	};
 	
 	public  String[] enemyShotSound ={
@@ -31,7 +31,7 @@ public class SoundEffects {
 	};
 	public  String[] EffectsSounds ={
 			"/Sounds/Alarm.mp3",
-			"/Sounds/Control_tower_radio.mp3",
+			"/Sounds/control_tower_radio.mp3",
 			"/Sounds/Keyboard.mp3",
 			"/Sounds/hurt.mp3",
 			"/Sounds/levelUp.mp3",
