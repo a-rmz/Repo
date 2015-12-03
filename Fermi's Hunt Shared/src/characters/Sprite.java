@@ -25,6 +25,7 @@ public class Sprite {
 		} catch (Exception e) {
 			System.out.println("Failed to load sprite: " + url);
 			e.printStackTrace();
+			System.out.print("Message: "); e.getMessage();
 			img = null;
 		}
 		return img;
