@@ -103,16 +103,17 @@ public class PauseMenu extends Menu implements Runnable{
 		pBG.draw(g);
 		
 		// Draw title
-		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 60);
+		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 100);
 		g.setColor(FontColor);
 		g.setFont(font);
-		g.drawString("Pause", Game.WIDTH/3, 150);
+		FontMetrics fm = g.getFontMetrics(font);
+		g.drawString("Pause", Game.WIDTH/2 - fm.stringWidth("Pause")/2, 250);
 		
 		// Draw menu options
 		font = new Font("8BIT WONDER Nominal", Font.PLAIN, 30);
 		g.setFont(font);
 		// Helps to center the text.
-		FontMetrics fm = g.getFontMetrics(font);
+		fm = g.getFontMetrics(font);
 		for(int i = 0; i < options.length; i++) {
 			
 			if(i == currentChoice) {
