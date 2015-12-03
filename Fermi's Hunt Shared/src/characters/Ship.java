@@ -358,8 +358,8 @@ public class Ship extends SpaceObject implements MouseListener{
 				level=2;
 				
 				bm.add(p);
-				url = resources[2][2][2];
-				effects.get("shot").shipShotSound(2);
+				url = resources[3][3][3];
+				effects.get("shot").shipShotSound(3);
 				canShoot = false;
 				FireRateTimer.restart();
 			}
@@ -383,6 +383,14 @@ public class Ship extends SpaceObject implements MouseListener{
 	private void levelUp() {
 		if(xp == (300 * Math.pow(level, 3))) {
 			this.level++;
+			
+			this.hp = 8 + (level * 2); 
+			
+			if(hp >= 8){
+				hud.change_HUD_Live(8);
+			}else{
+				hud.change_HUD_Live(hp);
+			}
 			
 			// Change the weapon sprite in the HUD
 			this.weaponNumber++;
@@ -422,7 +430,13 @@ public class Ship extends SpaceObject implements MouseListener{
 				if(shieldOff) {
 					// Stat modifiers.
 					hp -= 1;
-					hud.change_HUD_Live(hp);
+					
+					if(hp >= 8){
+						hud.change_HUD_Live(8);
+					}else{
+						hud.change_HUD_Live(hp);
+					}
+			
 				} else {
 					shield -= 1;
 				}

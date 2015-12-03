@@ -34,7 +34,7 @@ public class Level1 extends GameState {
 		this.gsm = gsm;
 		p1 = Ship.getPlayer();
 		bg = new Background(Background.LEVEL_1);
-		e = new EnemyManager(2, 3, 20); //TODO
+		e = new EnemyManager(2, 4, 20); //TODO
 		cinematic = new NewGameCM();
 		se = new SoundEffects();
 		se.FXSound(5);
