@@ -24,6 +24,7 @@ public class Sprite {
 			img = Toolkit.getDefaultToolkit().getImage(o.getClass().getResource(url));
 		} catch (Exception e) {
 			System.out.println("Failed to load sprite: " + url);
+			e.printStackTrace();
 			img = null;
 		}
 		return img;
