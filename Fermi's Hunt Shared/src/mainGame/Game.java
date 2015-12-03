@@ -186,6 +186,7 @@ public class Game extends JPanel implements
 			g.setFont(f);
 			g.setColor(Color.WHITE);
 			
+			if(scores.isEmpty()) lfil();
 			Iterator<Map.Entry<String, Integer>> it = scores.entrySet().iterator();
 			for(int i = 0; i < 5; i++) {
 				Map.Entry<String, Integer> tmp = it.next();
