@@ -60,10 +60,17 @@ public class Ship extends SpaceObject implements MouseListener{
 			},
 			// Ship level 2
 			{
-			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot.gif",
-			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_Up.gif",
-			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_Down.gif",
-			"/Sprites/Ship/Ship_2/Single_Shot/sprite_ship2_singleShot_shoot.gif",
+			"/Sprites/Ship/Ship_2/Double_Shot/sprite_ship2_doubleShot.gif",
+			"/Sprites/Ship/Ship_2/Double_Shot/sprite_ship2_doubleShot_Up.gif",
+			"/Sprites/Ship/Ship_2/Double_Shot/sprite_ship2_doubleShot_Down.gif",
+			"/Sprites/Ship/Ship_2/Double_Shot/sprite_ship2_doubleShot_shoot.gif",
+			},
+			// Ship level 3
+			{
+			"/Sprites/Ship/Ship_2/Missile/sprite_ship2_missile.gif",
+			"/Sprites/Ship/Ship_2/Missile/sprite_ship2_missile_Up.gif",
+			"/Sprites/Ship/Ship_2/Missile/sprite_ship2_missile_Down.gif",
+			"/Sprites/Ship/Ship_2/Missile/sprite_ship2_missile_Shoot.gif",
 			}
 		}, 
 		// Ship TYPE 3
@@ -433,7 +440,7 @@ public class Ship extends SpaceObject implements MouseListener{
 					
 					if(hp >= 8){
 						hud.change_HUD_Live(8);
-					}else{
+					}else if(hp >= 0){
 						hud.change_HUD_Live(hp);
 					}
 			
@@ -606,6 +613,9 @@ public class Ship extends SpaceObject implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println("Shiptype: " + shipType);
+		System.out.println("level - 1: " + (level-1));
+		System.out.println("BASIC_SHIP: " + BASIC_SHIP);
 		url = resources[shipType][level-1][BASIC_SHIP];
 	}	
 	
