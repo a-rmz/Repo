@@ -95,13 +95,24 @@ public class NewGameCM implements Runnable {
 			
 			switch (i){
 			case 0:
-			case 1:
 				se3.play();
 				se.play();
 				update();
 				try {
 					
-					Thread.sleep(1000); //7
+					Thread.sleep(14000); //7
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				i++;
+				break;
+			case 1:
+			
+				update();
+				try {
+					
+					Thread.sleep(7000); //7
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -112,7 +123,7 @@ public class NewGameCM implements Runnable {
 				
 				try {
 					
-					Thread.sleep(1000); // 2
+					Thread.sleep(2000); // 2
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -127,7 +138,7 @@ public class NewGameCM implements Runnable {
 				
 				try {
 					
-					Thread.sleep(1000); // 12
+					Thread.sleep(12000); // 12
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -138,7 +149,7 @@ public class NewGameCM implements Runnable {
 				update();
 				try {
 					
-					Thread.sleep(1000); // 10
+					Thread.sleep(10000); // 10
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -151,7 +162,7 @@ public class NewGameCM implements Runnable {
 				update();
 				try {
 					
-					Thread.sleep(1000); // 11
+					Thread.sleep(11000); // 11
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -170,7 +181,7 @@ public class NewGameCM implements Runnable {
 				
 				try {
 					
-					Thread.sleep(1000); // 5
+					Thread.sleep(5000); // 5
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
