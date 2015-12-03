@@ -620,9 +620,6 @@ public class Ship extends SpaceObject implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("Shiptype: " + shipType);
-		System.out.println("level - 1: " + (level-1));
-		System.out.println("BASIC_SHIP: " + BASIC_SHIP);
 		url = resources[shipType][level-1][BASIC_SHIP];
 	}	
 	
