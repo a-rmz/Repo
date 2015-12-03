@@ -248,7 +248,7 @@ public class Ship extends SpaceObject implements MouseListener{
 
 
 	public void initPlayer() {
-		hud.setHUDstats(shield , speed, fireRate);
+		hud.setHUDstats(shield , speed, fireRate, shipName);
 		initTimers();
 		if(speed == 0) {
 			speed = 5;

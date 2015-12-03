@@ -10,12 +10,12 @@ import mainGame.Game;
 
 public class HUD {
 	
-	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 15);
+	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 12);
 	private boolean wait;
 	private Image hud, hudDown, hudWeapon;
 	private Image shieldBar, speedBar, fireRateBar;
-	private String url, urlHudDown, urlWeapon, urlShield, urlSpeed, urlFire, Sscore;
-	private int X, Y, bX, bY, wX, wY, sX, sY,  score;
+	private String url, urlHudDown, urlWeapon, urlShield, urlSpeed, urlFire, Sscore, SshipName;
+	private int X, Y, bX, bY, wX, wY, sX, sY, nX, nY,  score;
 
 	
 	public  String[] HUD_Live = {
@@ -76,7 +76,9 @@ public class HUD {
 		wX =((Game.WIDTH / 2) - 700) + 1027;
 		wY = (Game.HEIGHT - 200) + 44;
 		sX = ((Game.WIDTH / 2) - 700) + 490;
-		sY = (Game.HEIGHT - 200) + 64;
+		sY = (Game.HEIGHT - 200) + 62;
+		nX = ((Game.WIDTH / 2) - 700) +85;
+		nY = (Game.HEIGHT - 200) +26 ;
 		
 		
 		wait = false;
@@ -117,12 +119,13 @@ public class HUD {
 	public void HUD_Start(){
 		wait = false;
 	}
-	public void setHUDstats(int shield, int speed, int fire){
+	public void setHUDstats(int shield, int speed, int fire, String name){
 		
 		if (speed > 10) speed = 10;
 		if (shield > 10) shield = 10;
 		if (fire> 10) fire = 10;
 		
+		SshipName = name;
 		
 		urlShield = HUD_StatsBar[shield];
 		urlSpeed = HUD_StatsBar[speed];
@@ -172,6 +175,7 @@ public class HUD {
 		g.drawImage(getHUDDownImage(), (Game.WIDTH / 2) - 700, (Game.HEIGHT - 200), null);
 		g.drawImage(getHUDWeapon(), wX, wY, null);
 		g.drawString(Sscore, sX, sY);
+		g.drawString(SshipName, nX, nY);
 		g.drawImage(getShieldBarImage(), bX, bY, null);
 		g.drawImage(getSpeedBarImage(), bX, (bY + 50), null);
 		g.drawImage(getFireRateBarImage(), bX, (bY + 100),null);

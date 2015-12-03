@@ -139,7 +139,7 @@ public class EnemyManager extends Manager<BasicEnemy> implements Runnable {
 		while(isRunning){
 		for(int x=0; x<BUUM.size() ; x++){
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(400);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
