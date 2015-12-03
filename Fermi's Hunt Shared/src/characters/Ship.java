@@ -107,7 +107,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	public String shipName;
 	public int hp;
 	private int level;
-	private int killedEnemies;
+	public int killedEnemies;
 	private int xp;
 	public int shield;
 	private int shieldTop;

@@ -39,7 +39,6 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 	
 	// **** ENEMY STATS ****
 	private int enemyLevel;
-	private int attackSpeed =  15;
 	private int hp;
 	
 	
@@ -143,15 +142,20 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 			bm.update();
 			// Determines if the ship got hit
 			gotHit();
-			
+			levelUp();
 			if( (p.getX() % 102) == 0) enemyAttack();
 			
 		} else {
 			
 			entering();
 		}
+	}
 	
-}
+	private void levelUp() {
+		enemyLevel = (Ship.getPlayer().killedEnemies % 50 == 0) ?
+				Ship.getPlayer().killedEnemies % 50 :
+					enemyLevel;
+	}
 	
 	private void entering() {
 		// Checks if the Enemy is within a range of velX from the origin.

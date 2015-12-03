@@ -20,7 +20,7 @@ public class Bullet {
 
 	
 	// **** BULLET STATS ****
-	private int bulletSpeed = -30; 
+	private int bulletSpeed = -20; 
 	private int bulletDamage = 0;
 	
 	
@@ -50,7 +50,10 @@ public class Bullet {
 		} else {
 			// Sets the url for the Bullet image. 
 			url = resources[0];
-			bulletDamage = 1;
+			// If the bullet is from an enemy, increases the damage according to
+			// the Player level.
+			bulletDamage = (1 * Ship.getPlayer().killedEnemies % 50 > 0) ?
+					1 * Ship.getPlayer().killedEnemies % 50 : 1;
 		}
 		
 		// Loads the bullet image.
