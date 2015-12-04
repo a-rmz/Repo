@@ -103,16 +103,17 @@ public class Ship extends SpaceObject implements MouseListener{
 	private final int SHIP_DOWN = 2;
 	private final int SHIP_SHOOT = 3;
 	
+	// Initializes the basic Ship.
 	private String url = resources[shipType][0][BASIC_SHIP];
 	
 	Image ship = null; 
 	HashMap<String, SoundEffects> effects = new HashMap<>();
 	
-	//********HUD********
+	// ***** HUD ***** 
 	HUD hud = new HUD();
 	int hpCounter = 8;
 	
-	//*********Effects*****
+	// ***** Effects ***** 
 	Damage damage;
 	LevelUp levelUp;
 	
@@ -153,16 +154,13 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	// **** CONSTRUCTOR ****
 	private Ship() {
+		// Initializes the Ship stats.
 		init();
-		// Loads the ship image
-		setSpaceObjectImage();
-		SoundEffects ShotSound = new SoundEffects();
-		effects.put("shot", ShotSound);	
-		// ship damage effect
-		damage = new Damage();
-		levelUp = new LevelUp();
 	}
 	
+	/**
+	 *  Initialization of the Ship values, stats, and objects.
+	 */
 	public void init() {
 		// Initialize ship stats
 		hp = 5;
@@ -174,11 +172,11 @@ public class Ship extends SpaceObject implements MouseListener{
 		weaponNumber = 0;
 		// Loads the ship image
 		setSpaceObjectImage();
+		// Creates a new instance of SoundEffects.
 		SoundEffects ShotSound = new SoundEffects();
-
-		effects.put("shot", ShotSound);
-		
-		// ship damage effect
+		// Adds the "shot" sound to the ship SoundEffects.
+		effects.put("shot", ShotSound);	
+		// ship damage and LevelUp effect
 		damage = new Damage();
 		levelUp = new LevelUp();
 	}
@@ -188,6 +186,10 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	// ***** SINGLETON *****
 	
+	/**
+	 *  Returns the instance of the Singleton.
+	 * @return Ship.
+	 */
 	public static Ship getPlayer() {
 		return instance;
 	}
@@ -212,21 +214,22 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	
 	/**
-	 *  Draws the enemy ship image and the Bullets fired.
+	 *  Draws the Ship, the Bullets, the HUD, the damage received, and the LevelUp animation.
 	 * @param
 	 */
 	public void draw(Graphics g){
-		
-		// Draws the enemy image.
+		// Draws the Ship image.
 		g.drawImage(getSpaceObjectImage(), p.getX(), p.getY(),
 				getSpaceObjectImage().getWidth(null)*2,
 				getSpaceObjectImage().getHeight(null)*2,  null);
+		
 		// Draw method from BulletManager.
 		bm.draw(g);
 		
-		//Draws HUD
+		//Draw method for the HUD.
 		hud.draw(g);
 		
+		// Draw method for the damage and LevelUp.
 		damage.draw(g);
 		levelUp.draw(g);
 	}
@@ -252,15 +255,21 @@ public class Ship extends SpaceObject implements MouseListener{
 		bm.update();
 		// Checks if the Player has leveled up.
 		levelUp();
+		// Modifies the HUD to fit the new stats.
 		changeScoreAndXpInHUD();
 	}
 	
+	/**
+	 *  Modifies the HUD to fit the XP.
+	 */
 	private void changeScoreAndXpInHUD() {
 		hud.setScoreAndXP(xp);
 		
 	}
 
-
+	/**
+	 *  Sets the values selected on the Customization menu and passes them to the HUD.
+	 */
 	public void initPlayer() {
 		hud.setHUDstats(shield , speed, fireRate, shipName);
 		initTimers();
@@ -270,30 +279,45 @@ public class Ship extends SpaceObject implements MouseListener{
 		speed *= 2.5;
 	}
 	
+	/**
+	 * Starts the timers for the player, such as FireRate timer, and the ShieldRegen.
+	 */
 	private void initTimers() {
+		// To avoid /0 division, the fire rate is set to 1 if it is 0.
 		if(fireRate == 0) fireRate = 1;
+		// Initializes the FireRateTimer.
 		FireRateTimer = new Timer(
+				// The fire rate wait time is defined by this.
 				1_000 / fireRate,
+				// Creates a new ActionListener that allows the Ship to fire.
 				new ActionListener() {
 					@Override
+					// Every time the action is performed, the ship is allowed to shoot. 
 					public void actionPerformed(ActionEvent e) {
 						canShoot = true;
 					}
 				});
-		
+		// To have a top on the shield regen, the shieldTop equals the original shield value.
 		shieldTop = shield;
+		// If the ship has no shield, then the timer is not initialized.
 		if(shield > 0) {
 			shieldOff = false;
+			// Initializes the ShieldRegenTimer.
 			ShieldRegenTimer = new Timer(
+				// The shield regen time is given by this.
 				15_000 / shield,
+				// Creates a new ActionListener that regenerates the shield.
 				new ActionListener() {
 					@Override
+					// Every time the action is performed, the shield regens.
 					public void actionPerformed(ActionEvent e) {
 						shieldRegen();
 					}
 				});
+			// Starts the ShieldRegenRimer.
 			ShieldRegenTimer.start();
 		}
+		// Starts the FireRateTimer.
 		FireRateTimer.start();
 		
 	}
@@ -329,13 +353,19 @@ public class Ship extends SpaceObject implements MouseListener{
 		}
 	}
 	
+	/**
+	 *  Regenerates the shield of the ship. Called by the ShieldRegenTimer.
+	 */
 	private void shieldRegen() {
+		// If the shield is lower than the top, increases the shield on one.
 		if(shield < shieldTop) {
 			shield++;
 		}
 	}
 
-	// TODO
+	/**
+	 *  The attack method from Ship.
+	 */
 	public void attack() {
 		if(canShoot) {
 			if(level == 1) {
@@ -363,13 +393,10 @@ public class Ship extends SpaceObject implements MouseListener{
 				canShoot = false;
 				FireRateTimer.restart();
 				
-			}
-			
-			//////////////////////////////////
-			else
-			if(level >=4){
-				shipType=2;
-				level=2;
+			} else
+			if(level >= 4){
+				shipType = 2;
+				level = 2;
 				
 				bm.add(p);
 				url = resources[3][3][3];
@@ -377,9 +404,6 @@ public class Ship extends SpaceObject implements MouseListener{
 				canShoot = false;
 				FireRateTimer.restart();
 			}
-			
-			
-			/////////////////////////////////////
 		}
 	}
 	
