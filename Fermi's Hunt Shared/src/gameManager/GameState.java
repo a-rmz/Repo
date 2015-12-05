@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public abstract class GameState extends JPanel{
 
+	// **** GAMESTATE MODIFIERS ****
 	protected GameStateManager gsm;
 	
 	public abstract void init();
