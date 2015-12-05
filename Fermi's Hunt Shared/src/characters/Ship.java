@@ -369,46 +369,53 @@ public class Ship extends SpaceObject implements MouseListener{
 	 *  The attack method from Ship.
 	 */
 	public void attack() {
+		// First, checks if the ship can shoot determined by the FireRateTimer.
 		if(canShoot) {
+			// Selects the image of the shooting ship.
+			url = resources[shipType][level-1][SHIP_SHOOT];
+			
 			if(level == 1) {
-				url = resources[shipType][level-1][SHIP_SHOOT];
+				// Adds a bullet to the BulletManager.
 				bm.add(p);
 				// Play the "shot" sound
 				effects.get("shot").shipShotSound(0);
-				canShoot = false;
-				FireRateTimer.restart();
 			} else 
 			if(level == 2) {
+				// Duplicates the original position of the ship for the bullets to come out from the same x.
 				Position bp = p.clone();
-				url = resources[shipType][level-1][SHIP_SHOOT];
 				for(int i = 0; i < level; i++) {
+					// Adds the bullet i * 30 pixels under the ship's position.
 					bp.setPosY(p.getY() + (i * 30));
+					// Adds the bullet to the BulletManager.
 					bm.add(bp);
+					// Discards the temporal position.
+					bp = null;
 					// Play the "shot" sound
 					effects.get("shot").shipShotSound(1);
-					canShoot = false;
-					FireRateTimer.restart();
 				}
 			} else
 			if(level == 3) {
 				bm.add(p);
-				url = resources[shipType][level-1][SHIP_SHOOT];
 				// Play the "shot" sound
 				effects.get("shot").shipShotSound(2);
-				canShoot = false;
-				FireRateTimer.restart();
 				
 			} else
 			if(level >= 4){
+				// Restarts the ship type.
 				shipType = 2;
+				// Restarts the level.
 				level = 2;
-				
-				bm.add(p);
+				// Changes the image to display.
 				url = resources[3][3][3];
+				// Adds a bullet to the BulletManager.
+				bm.add(p);
+				// Play the "shot" sound
 				effects.get("shot").shipShotSound(3);
-				canShoot = false;
-				FireRateTimer.restart();
 			}
+			// Disables the canShoot flag.
+			canShoot = false;
+			// Restarts the timer.
+			FireRateTimer.restart();
 		}
 	}
 	
@@ -473,20 +480,23 @@ public class Ship extends SpaceObject implements MouseListener{
 				if(shieldOff) {
 					// Stat modifiers.
 					hp -= 1;
-					
+					// To avoid problems with the display of the HUD.
 					if(hp >= 8){
+						// Sets the HUD life image to the highest. 
 						hud.change_HUD_Live(8);
 					}else if(hp >= 0){
+						// Sets the HUD life image to the current hp.
 						hud.change_HUD_Live(hp);
 					}
-			
+				// The bullet lowers the shield.
 				} else {
 					shield -= 1;
 				}
+				// Starts the damage animation.
 				damage.start();
-				}
-			}
-		}
+				} // End if collider.
+			} // End for.
+		} // End synchronized.
 	}
 	
 	/**
