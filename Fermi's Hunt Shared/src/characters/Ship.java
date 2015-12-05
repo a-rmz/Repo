@@ -138,7 +138,6 @@ public class Ship extends SpaceObject implements MouseListener{
 	private Timer ShieldRegenTimer;
 	private boolean shieldOff = true;
 	
-	private boolean gotHit = false;
 	public Position p = new Position(50, (screenSize().height / 2));
 	// New BulletManager to handle the bullets
 	private static BulletManager bm = new BulletManager(BulletManager.SHIP);
@@ -427,7 +426,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		// Increases the killedEnemies.
 		killedEnemies++;
 		// Increases the xp.
-		xp += 100; // TODO multiply by enemyLevel
+		xp += 100;
 	}
 	
 	private void levelUp() {
@@ -473,9 +472,6 @@ public class Ship extends SpaceObject implements MouseListener{
 			Bullet hitter = a.next();
 			// Checks if the actual Bullet's collider rectangle intersects with this'.
 			if(collider().intersects(hitter.collider())) {
-				// If the ship got hit, activates the gotHit switch.
-				// The gotHit switch affects the graphic representation of the hits.
-				gotHit = true;
 				// If the ship has no shield, the attack enters straight.
 				if(shieldOff) {
 					// Stat modifiers.
@@ -516,23 +512,44 @@ public class Ship extends SpaceObject implements MouseListener{
 		return bm.returnManager();
 	}
 	
+	/**
+	 *  Setter for the ship name to be displayed on the HUD.
+	 * @param shipName
+	 */
 	public void setShipName(String shipName) {
 		this.shipName = shipName;
 	}
 	
+	/**
+	 *  Getter for the ship name displayed on the HUD.
+	 * @return Ship name
+	 */
 	public String getShipName() {
 		return this.shipName;
 	}
 	
+	/**
+	 *  Changes the type of ship (1, 2, or 3) on the Customization menu.
+	 * @param shipType
+	 */
 	public void changeType(int shipType) {
 		this.shipType = shipType;
+		// Sets the Ship image according to the type. 
 		url = resources[shipType][0][BASIC_SHIP];
 	}
 	
+	/**
+	 *  Getter for the ship level.
+	 * @return Ship level
+	 */
 	public int getLevel() {
 		return this.level;
 	}
 	
+	/**
+	 *  Getter for the ship score.
+	 * @return Ship xp
+	 */
 	public int getScore() {
 		return this.xp;
 	}
@@ -585,7 +602,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	
 	// **** INHERITED FROM KEYLISTENER ****
 	/* These methods are NOT IMPLEMENTING the KeyListener ones.
-	 * These are independent, getting called by the TODO Game class.
+	 * These are independent, getting called by the Game class.
 	 */
 	
 	public void keyPressed(int code) {
@@ -634,45 +651,31 @@ public class Ship extends SpaceObject implements MouseListener{
 	}
 
 
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	// **** INHERITED FROM MOUSELISTENER AND MOUSEACTIONLISTENER ****
+	
+	/* These methods are NOT IMPLEMENTING the MouseListener and MouseActionListener ones.
+	 * These are independent, getting called by the Game class.
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
+		// If the left mouse button is clicked, calls the attack method.
 		if(e.getButton() == MouseEvent.BUTTON1) {
 			attack();
 		}
 		
 	}
 
-
-	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// When the mouse is released, the ship image goes back to the normal.
 		url = resources[shipType][level-1][BASIC_SHIP];
 	}	
 	
-	public void mouseMoved(MouseEvent e) {
-		
-	}
-
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	
+	// **** UNUSED INHERITED METHODS ****
+	public void mouseMoved(MouseEvent e) {}
+	public void mouseEntered(MouseEvent arg0) {}
+	public void mouseExited(MouseEvent e) {}
+	public void mouseClicked(MouseEvent e) {}
 	
 }
