@@ -124,6 +124,7 @@ public class HUD {
 		setHUDWeapon();
 	}
 	
+	// This Method set the shield, speed and fire Images depending of the ship stats
 	public void setHUDstats(int shield, int speed, int fire, String name){
 		
 		if (speed > 10) speed = 10;
@@ -138,7 +139,7 @@ public class HUD {
 		set_HUD_StatsImage();
 	}
 	
-	
+	// ********** Set methods **********
 	public void set_HUD_Image(){
 		hud = Sprite.loadSprite(url, this);
 	}
@@ -167,10 +168,8 @@ public class HUD {
 		fireRateBar = Sprite.loadSprite(urlFire, this);
 	}   
 	
-	public void drawDamage(){
-		
-	}
 	
+	// Draw all components of the HUD, including Strings  
 	public void draw(Graphics g){ 
 		g.setColor(Color.WHITE);
 		g.setFont(f);
