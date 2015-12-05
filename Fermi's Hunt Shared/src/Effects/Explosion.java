@@ -17,27 +17,32 @@ public class Explosion  {
 			"/Sprites/Effects/Explosion.gif"
 	};
 	
-	// The constructor set the gif to explosion effect and the position
+	/**
+	 *  The constructor sets the GIF to explosion effect and the position
+	 * @param x position
+	 * @param y position
+	 */
 	public Explosion(int x, int y){
 		url= resources[0];
 		setExplosionImage();
 		
-		// the x an y position are the same that enemy position 
+		// the x an y position are the same than enemy's position 
 		X = x;
 		Y = y;
 	}
 	
 	
+	/**
+	 * Sets the image from the URL defined by the resources array
+	 */
 	public void setExplosionImage(){
-		try {
-			// Gets the image from the url defined by the resources array
-			explosion = Sprite.loadSprite(url, this);
-		} catch (Exception e) {
-			explosion = null;
-		}
-		
+		explosion = Sprite.loadSprite(url, this);
 	}
 	
+	/**
+	 *  Gets the explosion image loaded.
+	 * @return explosion image
+	 */
 	public Image getExplosionImage(){
 		return this.explosion;
 	}
@@ -46,8 +51,5 @@ public class Explosion  {
 	public void draw(Graphics g){
 		g.drawImage(getExplosionImage(), X, Y, null);
 	}
-
-
-	
 
 }

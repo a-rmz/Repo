@@ -21,49 +21,67 @@ public class LevelUp implements Runnable {
 		private boolean print, listen;
 		private String url;
 		
-		// The constructor create instances of soundEffect, thread and set initial attributes
+		/**
+		 *  The constructor creates instances of soundEffect, thread and sets initial attributes.
+		 */
 		public LevelUp(){
 			
 			se = new SoundEffects();
-			// Set a specific sound to Damage effect
+			// Sets a specific sound to Damage effect
 			se.FXSound(4);
 			
 			thread = new Thread(this);
 			// The Thread is constantly listening 
 			listen = true;
-			
+			// Loads the levelup image
 			setLevelUpImage();
 			thread.start();
 		}
 		
-		// When the player levelUp, this method is called 
+		/**
+		 *  When the player levelUp, this method is called 
+		 */
 		public void start(){
 			print = true;
 			// PLay the Damage sound effect
 			se.playAgain();
 		}
 		
-		// This method draw a green level up string in all the screen
+		/**
+		 *  This method draw a green level up string in all the screen
+		 * @param g
+		 */
 		public void draw(Graphics g){
 			if(print)
 				g.drawImage(getLevelUpImage(), (Game.WIDTH / 2 ) - 700 , (Game.HEIGHT / 2) - 200, null);
 		}
 		
-		// This Method is only to re-call the method "draw" automatically 
+		/**
+		 *  This Method is only to re-call the method "draw" automatically 
+		 */
 		public void update(){
 			
 		}
 		
+		/**
+		 * Sets the image from the URL defined by the resources array
+		 */
 		public void setLevelUpImage(){
 			url = levelUpImage[0];
 			levelUP = Sprite.loadSprite(url, this);
 		}
 		
+		/**
+		 *  Gets the explosion image loaded.
+		 * @return levelup image
+		 */
 		public Image getLevelUpImage(){
 			return levelUP;
 		}
 
-		// This method control the time of the "levelUp" effect on screen
+		/**
+		 *  This method controls the time of the "levelUp" effect on screen
+		 */
 		public void run() {
 			
 			while(listen){

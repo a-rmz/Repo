@@ -102,8 +102,8 @@ public class NewGameCM implements Runnable {
 
 
 	/*
-	 * This method is controled by the thread, 
-	 * the thread determinate the time on the screen of each image in the cinematic
+	 * This method is controlled by the thread, 
+	 * the thread determines the time on the screen of each image in the cinematic
 	 */
 	public void run() {
 	
@@ -130,7 +130,7 @@ public class NewGameCM implements Runnable {
 				break;
 				
 				/*
-				 * It´s the same actions for each  "switch case"
+				 * Itï¿½s the same actions for each  "switch case"
 				 */
 				
 			case 1:

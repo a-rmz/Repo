@@ -40,14 +40,18 @@ public class SoundEffects {
 			"/Sounds/Fyrus.mp3"
 	};
 	
-	// The constructor doesn´t do anything special
+	/**
+	 * Empty constructor.
+	 */
 	public SoundEffects(){
 		
 	}
 	
-	// This methods are complicated to explain but they work pretty good 
+	/**
+	 *  Loads a sound effect.
+	 * @param n
+	 */
 	public void FXSound(int n){
-	
 		
 		try{
 			// All of this Try catch is only for set the mp3 file in the clip object 
@@ -77,9 +81,12 @@ public class SoundEffects {
 		
 	}
 	
+	/**
+	 * Loads a ship shot sound effect.
+	 * @param n
+	 */
 	public void shipShotSound(int n){
 	
-		
 		try{
 			
 			AudioInputStream ais =
@@ -102,9 +109,6 @@ public class SoundEffects {
 			clip = AudioSystem.getClip();
 			clip.open(dais);
 			clip.start();
-				
-					
-					
 					
 		} catch(Exception e){
 			e.printStackTrace();
@@ -112,9 +116,12 @@ public class SoundEffects {
 		
 	}
 	
+	/**
+	 * Loads an enemy shot sound effect.
+	 * @param n
+	 */
 	public void enemyShotSound(int n){
 	
-		
 		try{
 			
 			AudioInputStream ais =
@@ -136,19 +143,19 @@ public class SoundEffects {
 			
 			clip = AudioSystem.getClip();
 			clip.open(dais);
-		
-				
-					
-					
-					
+			
 		} catch(Exception e){
 			e.printStackTrace();
 		}
 		
 	}
+	
+	/**
+	 * Loads the explosion sound effect.
+	 * @param n
+	 */
 	public void ExplosionSound(int n){
 	
-		
 		try{
 			
 			AudioInputStream ais =
@@ -171,18 +178,19 @@ public class SoundEffects {
 			clip = AudioSystem.getClip();
 			clip.open(dais);
 			clip.start();
-				
-					
-					
 					
 		} catch(Exception e){
 			e.printStackTrace();
 		}
 		
 	}
+
+	/**
+	 * Loads the background music for the Game States.
+	 * @param n
+	 */
 	public void backGroundMusic(int n){
 	
-		
 		try{
 			
 			AudioInputStream ais =
@@ -203,19 +211,19 @@ public class SoundEffects {
 					decodeFormat, ais);
 			
 			clip = AudioSystem.getClip();
-			clip.open(dais);
-			//clip.start();
-				
-					
-					
+			clip.open(dais);		
 					
 		} catch(Exception e){
 			e.printStackTrace();
 		}
 		
 	}
-	public void backGroundMenuMusic(int n){
 	
+	/**
+	 * Loads the music for the backgrounds.
+	 * @param n
+	 */
+	public void backGroundMenuMusic(int n){
 	
 	try{
 		
@@ -238,25 +246,25 @@ public class SoundEffects {
 		
 		clip = AudioSystem.getClip();
 		clip.open(dais);
-		//clip.start();
-			
-				
-				
-				
+	
 	} catch(Exception e){
 		e.printStackTrace();
 	}
 	
 }
-	// This method play the mp3 file, but it doesn´t play the file again if the file is running
+	
+	/**
+	 *  This method plays the mp3 file, but it doesn't play the file again if the file is running.
+	 */
 	public void play(){
 		if (clip == null || clip.isRunning() ) {return;}
 		clip.setFramePosition(0);
 		clip.start();
-		
 	}
 	
-	// This method play the mp3 file, but it can play the file again if the file is running
+	/**
+	 * This method plays the mp3 file, but it can play the file again if the file is running.
+	 */
 	public void playAgain(){
 		if (clip == null) {return;}
 		clip.setFramePosition(0);
@@ -264,22 +272,27 @@ public class SoundEffects {
 		
 	}
 	
-	// This method stop the clip
+	/**
+	 * This method stops the clip
+	 */
 	public void stop() {
 		try{
-		clip.stop();
-		
+			clip.stop();
 		} catch( Exception e){
 			e.printStackTrace();
 		}
 	}
 	
-	// This method close the clip, and now it can be deleted
+	/**
+	 * This method closes the clip, so then it can be deleted.
+	 */
 	public void close(){
 		clip.close();
-	
 	}
-	
+
+	/**
+	 * This method pauses the clip.
+	 */
 	public void pause(){
 		try {
 			clip.wait();

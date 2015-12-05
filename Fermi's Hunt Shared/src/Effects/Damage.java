@@ -19,7 +19,9 @@ public class Damage implements Runnable {
 	private boolean print, listen;
 	private String url;
 	
-	// The constructor create instances of soundEffect, thread and set initial attributes
+	/**
+	 *  The constructor creates instances of soundEffect, thread and set initial attributes
+	 */
 	public Damage(){
 		
 		se = new SoundEffects();
@@ -35,34 +37,50 @@ public class Damage implements Runnable {
 		thread.start();
 	}
 	
-	// When the player get damage, this method is called 
+	/**
+	 *  When the player get damage, this method is called 
+	 */
 	public void start(){
 		print = true;
 		// PLay the Damage sound effect
 		se.playAgain();
 	}
 	
-	// This method draw a red image in all the screen
+	/**
+	 *  This method draw a red image in all the screen
+	 * @param g
+	 */
 	public void draw(Graphics g){
 		if(print)
 			g.drawImage(getDamageImage(), 0, 0, null);
 	}
 	
-	// This Method is only to re-call the method "draw" automatically 
+	/**
+	 * This Method is only to re-call the method "draw" automatically 
+	 */
 	public void update(){
 		
 	}
 	
+	/**
+	 * Sets the damage image from the resources.
+	 */
 	public void setDamegeImage(){
 		url = damageImage[0];
 		damage = Sprite.loadSprite(url, this);
 	}
 	
+	/**
+	 *  Gets the damage image.
+	 * @return damage image
+	 */
 	public Image getDamageImage(){
 		return damage;
 	}
 
-	// This method control the time of the Damage effect on screen
+	/**
+	 *  This method controls the time of the Damage effect on screen
+	 */
 	public void run() {
 		
 		while(listen){
