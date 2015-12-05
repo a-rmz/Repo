@@ -138,7 +138,7 @@ public class Ship extends SpaceObject implements MouseListener{
 	private Timer ShieldRegenTimer;
 	private boolean shieldOff = true;
 	
-	public Position p = new Position(50, (screenSize().height / 2));
+	public Position p = new Position(50, (Game.HEIGHT / 2));
 	// New BulletManager to handle the bullets
 	private static BulletManager bm = new BulletManager(BulletManager.SHIP);
 	// Imports the list of Enemy bullets
