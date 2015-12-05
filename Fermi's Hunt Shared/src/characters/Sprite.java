@@ -13,19 +13,19 @@ public class Sprite {
 	
 	/**
 	 *  Loads the sprite to the indicated image.
-	 * @param url
-	 * @param o
+	 * @param url -> of the image
+	 * @param o -> object calling the method
 	 * @return Sprite image
 	 */
 	public static Image loadSprite(String url, Object o) {
 		Image img;
 		try {
-			// Gets the image from the url defined by the resources array
+			// Gets the image from the URL given.
 			img = Toolkit.getDefaultToolkit().getImage(o.getClass().getResource(url));
 		} catch (Exception e) {
 			System.out.println("Failed to load sprite: " + url);
 			e.printStackTrace();
-			System.out.print("Message: "); e.getMessage();
+			// The image is set to null.
 			img = null;
 		}
 		return img;
