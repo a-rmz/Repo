@@ -44,6 +44,11 @@ import gameManager.GameStateManager;
 public class Game extends JPanel implements 
 	Runnable, KeyListener, MouseMotionListener, MouseListener{
 
+	/**
+	 * Inner class to controll the high scores.
+	 * @author alex
+	 *
+	 */
 	public class Highscore {
 		
 		private LinkedHashMap<String, Integer> scores = new LinkedHashMap<String, Integer>(5);
@@ -53,29 +58,44 @@ public class Game extends JPanel implements
 		private Path mkf;
 		private File hsFile;
 		
+		/**
+		 * Constructor of the Highscore
+		 */
 		public Highscore() {			
 			char os;
+			// Verifies the operating System.
 			os = (System.getProperty("os.name").contains("Win")) ? 'w' : 'o';
+			// OS is Windows.
 			if(os == 'w') {
 				dir = System.getenv("AppData");
 				dir += "/Fermi/";
 			}
+			// OS is Other (MacOS, any Linux distro)
 			if(os == 'o') {
 				dir = System.getProperty("user.home");
 				dir += "/Library/Application Support/Fermi/";
 			}
+			// Path for the directory.
 			mkd = Paths.get(dir);
+			// Path for the file.
 			mkf = Paths.get(dir + fName);
+			// Creates a new file on the file path.
 			hsFile = mkf.toFile();
 			if(Files.notExists(mkd)) {
+				// Creates the directory.
 				mkdir();
 			}
 			if(Files.notExists(mkf)) {
+				// Creates the file.
 				mkfil();
+				// Initializes the High scores.
 				initHS();
-			} else lfil();
+			} else lfil(); // Loads the file.
 		}
 		
+		/**
+		 * Creates the directory for the high score save.
+		 */
 		private void mkdir() {
 			try {
 				Files.createDirectories(mkd);
@@ -85,6 +105,9 @@ public class Game extends JPanel implements
 				e.printStackTrace();
 			}
 		}
+		/**
+		 * Creates the file for the high score save.
+		 */
 		private void mkfil() {
 			try {
 				System.out.println("Archivo creado.");
@@ -94,6 +117,9 @@ public class Game extends JPanel implements
 				e.printStackTrace();
 			}
 		}
+		/**
+		 * Creates the default values for the high scores and puts them into the file.
+		 */
 		private void initHS() {
 			scores.put("Javier Davalos", 1000);
 			scores.put("John Cena", 1000);
@@ -103,6 +129,9 @@ public class Game extends JPanel implements
 			save();
 		}
 		
+		/**
+		 * Loads the table from the file.
+		 */
 		@SuppressWarnings("unchecked")
 		private void lfil() {
 			FileInputStream fis;
@@ -112,6 +141,7 @@ public class Game extends JPanel implements
 				fis = new FileInputStream(hsFile);
 				ois = new ObjectInputStream(fis);
 				
+				// Necesary cast to LinkedHashMap.
 				scores = (LinkedHashMap<String, Integer>) ois.readObject();
 				ois.close();
 			} catch (Exception e) {
@@ -119,7 +149,9 @@ public class Game extends JPanel implements
 				e.printStackTrace();
 			}
 		}
-		
+		/**
+		 * Saves the table on the file.
+		 */
 		private void save() {
 			FileOutputStream fos;
 			ObjectOutputStream oos;
@@ -137,6 +169,11 @@ public class Game extends JPanel implements
 			
 		}
 	
+		/** 
+		 * Every time the game ends, adds a score and check if it has to go to the table.
+		 * @param name
+		 * @param score
+		 */
 		public void addScore(String name, int score) {
 			boolean mustReplace = false;
 			for(Integer value : scores.values()) {
@@ -149,21 +186,26 @@ public class Game extends JPanel implements
 			if(mustReplace) {
 				LinkedHashMap<String, Integer> newScores = 
 						new LinkedHashMap<String, Integer>(5);
-				
+				// Copies the first 4 elements (Excludes only the last).
 				Iterator<Map.Entry<String, Integer>> i = scores.entrySet().iterator();
 				for(int ctr = 0; ctr < 4; ctr++) {
 					Map.Entry<String, Integer> tmp = i.next();
 					newScores.put(tmp.getKey(), tmp.getValue());
 				}
+				// Adds the new score on the last position.
 				newScores.put(name, score);
 				scores = newScores;
 				newScores = null;
 				System.out.println("Score added: " + name + " || " + score);
+				// Sorts and saves the table.
 				sort();
 				save();
 			}
 		}
 
+		/**
+		 * Sorts the table with a Comparator, from the highest to the lowest.
+		 */
 		private void sort() {
 			List<Map.Entry<String, Integer>> unsorted =
 					  new ArrayList<Map.Entry<String, Integer>>(scores.entrySet());
@@ -180,12 +222,18 @@ public class Game extends JPanel implements
 			}
 		}
 			
-		
+		/**
+		 * Draw method for the High scores.
+		 * @param g
+		 * @param x -> position on x
+		 * @param y -> position on y
+		 */
 		public void draw(java.awt.Graphics2D g, int x, int y) {
 			Font f = new Font("8-Bit Madness", Font.PLAIN, 80);
 			g.setFont(f);
 			g.setColor(Color.WHITE);
 			
+			// If the list, for any reason, is empty, loads it.
 			if(scores.isEmpty()) lfil();
 			Iterator<Map.Entry<String, Integer>> it = scores.entrySet().iterator();
 			for(int i = 0; i < 5; i++) {
@@ -196,29 +244,13 @@ public class Game extends JPanel implements
 			}
 		}
 		
-		public String toString() {
-			String ret = "";
-			Iterator<Map.Entry<String, Integer>> it = scores.entrySet().iterator();
-			for(int i = 0; i < 5; i++) {
-				Map.Entry<String, Integer> tmp = it.next();
-				if(tmp.getKey().length() < 5) {
-					ret += (i+1) + ". " + tmp.getKey() + "\t\t\t" + tmp.getValue() + "\n";
-				} else if(tmp.getKey().length() < 13) {
-					ret += (i+1) + ". " + tmp.getKey() + "\t\t" + tmp.getValue() + "\n";
-				} else {
-					ret += (i+1) + ". " + tmp.getKey() + "\t" + tmp.getValue() + "\n";
-				}
-				
-			}
-			return ret;
-		}
 	}
 	
 	// Dimensions
 	public static final int WIDTH = (int) screenSize().getWidth();
 	public static final int HEIGHT = (int) screenSize().getHeight();
 	
-	
+	// Thread
 	private static Thread LoopThread;
 	private static boolean paused = false;
 	private boolean isRunning = false;
@@ -228,25 +260,32 @@ public class Game extends JPanel implements
 	// Scores
 	public static Highscore hs;
 	
-	
 	// Game State Manager
 	private static GameStateManager gsm;
 	
+	
+	// **** CONSTRUCTOR ****
+	/**
+	 * Constructor for the Game.
+	 */
 	public Game() {
 		super();
 		init();
 		setFocusable(true);
 		requestFocus();
 		LoopThread = new Thread(this);
-		isRunning= true;
+		isRunning = true;
 		LoopThread.start();
 		addKeyListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		
 }
-	
-	
+
+	/**
+	 * Gets the actual dimensions of the screen.
+	 * @return Dimension of the screen
+	 */
 	private static Dimension screenSize() {
 		int xMax = (int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth());
 		int yMax = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight());
@@ -254,6 +293,10 @@ public class Game extends JPanel implements
 		return d;
 	}
 	
+	/**
+	 * Icon list for the main game.
+	 * @return Icon list
+	 */
 	public List<Image> iconList() {
 		List<Image> i = new ArrayList<Image>(2);
 		i.add(Sprite.loadSprite("/icon/icon16.png", this));
@@ -261,7 +304,11 @@ public class Game extends JPanel implements
 		return i;
 	}
 	
+	/**
+	 * Initializes the game.
+	 */
 	private void init() {
+		// Creates the High Score.
 		hs = new Highscore();
 		// Font load
 		try {
@@ -285,8 +332,6 @@ public class Game extends JPanel implements
 			e.printStackTrace();
 		     System.out.println("Fonts not loaded.");
 		}
-		
-		// Icon load
 		
 		// Initialize game
 		isRunning = true;		
@@ -329,10 +374,14 @@ public class Game extends JPanel implements
 	}
 	}
 	
+	/**
+	 * Update method called every iteration of the Game Loop.
+	 */
 	private void update() {
+		// Updates the selected state of the GSM.
 		gsm.update();
 		
-    // Checks if the Game is paused.
+		// Checks if the Game is paused.
 		try {
 		    if (paused) {
 		  
@@ -346,24 +395,29 @@ public class Game extends JPanel implements
 		}
 	}
 
-	
+	/**
+	 * Draws all the components.
+	 */
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-    // Calls the GameStateManager draw method.
-		
+		// Calls the GameStateManager draw method.
 		gsm.draw(g2d);
 	}
 	
 	
-  // Sets the Game to pause.
+	/**
+	 *  Sets the Game to pause.
+	 */
 	public static void pauseMenu() {
 		gsm.setState(GameStateManager.PAUSESTATE);
 			
 	}
 	
-  // Resumes the game.
+  	/**
+  	 * Resumes the game.
+  	 */
 	public static synchronized void resumeGame() {
 		// Sets the paused state to false.
 		paused = false;
@@ -375,6 +429,9 @@ public class Game extends JPanel implements
 		gsm.setState(GameStateManager.LEVEL1STATE);
 	}
 	
+	/** 
+	 * Hides the cursor
+	 */
 	public void hideCursor() {
 		//Transparent 16 x 16 pixel cursor image.
 		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
@@ -384,10 +441,19 @@ public class Game extends JPanel implements
 		    cursorImg, new Point(0, 0), "blank cursor");
 		setCursor(blankCursor);
 	}
+	/**
+	 * Shows the cursor.
+	 */
 	public void showCursor() {
 		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	}
 	
+	
+	// **** LISTENERS ****
+	/*
+	 * Listen the action performed by the event.
+	 */
+	// ** KEYLISTENER **
 	@Override
 	public void keyPressed(KeyEvent key) {
 		gsm.keyPressed(key.getKeyCode());
@@ -397,52 +463,36 @@ public class Game extends JPanel implements
 	public void keyReleased(KeyEvent key) {
 		gsm.keyReleased(key.getKeyCode());
 	}
-	
-	@Override
-	public void keyTyped(KeyEvent key) { 
-	}
 
-
+	// ** MOUSEMOTIONLISTENER **
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		gsm.mouseMoved(e);
 	}
-
-
-	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
+	// ** MOUSELISTENER **
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		gsm.mouseClicked(e);
 	}
 
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-	
-	}
-	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		gsm.mousePressed(e);
 	}
 	
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		gsm.mouseReleased(e);
 	}
 	
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+
+	// **** UNUSED METHODS ****
+	public void mouseDragged(MouseEvent arg0) {}
+	public void mouseExited(MouseEvent e) {}
+	public void mouseEntered(MouseEvent e) {}
+	public void keyTyped(KeyEvent key) {}
+
 
 
 	}
