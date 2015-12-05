@@ -312,6 +312,7 @@ public class BasicEnemy extends SpaceObject implements ActionListener{
 		return hp;
 	}
 	
+	// ***** Control enemy Actions*******
 	public void stopSound(){
 		enemyFire.stop();
 	}

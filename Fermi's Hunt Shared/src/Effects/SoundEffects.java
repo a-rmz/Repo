@@ -3,10 +3,10 @@ package Effects;
 import javax.sound.sampled.*;
 
 public class SoundEffects {
-	
+	// Clip is the object that can play a mp3 file
 	public Clip clip;
 	
-	
+	// ********* Resources ***********
 	public  String[] shipShotSound = {
 			"/Sounds/ShipShot1.mp3",
 			"/Sounds/DoubleShot.mp3",
@@ -40,14 +40,17 @@ public class SoundEffects {
 			"/Sounds/Fyrus.mp3"
 	};
 	
+	// The constructor doesn´t do anything special
 	public SoundEffects(){
 		
 	}
-public void FXSound(int n){
+	
+	// This methods are complicated to explain but they work pretty good 
+	public void FXSound(int n){
 	
 		
 		try{
-			
+			// All of this Try catch is only for set the mp3 file in the clip object 
 			AudioInputStream ais =
 					AudioSystem.getAudioInputStream(
 						getClass().getResourceAsStream(EffectsSounds[n])	
@@ -64,10 +67,10 @@ public void FXSound(int n){
 					);
 			AudioInputStream dais = AudioSystem.getAudioInputStream(
 					decodeFormat, ais);
-			
+			// Open the clip
 			clip = AudioSystem.getClip();
 			clip.open(dais);													
-					
+			// now the clip can be played	
 		} catch(Exception e){
 			e.printStackTrace();
 		}
@@ -245,20 +248,23 @@ public void FXSound(int n){
 	}
 	
 }
-	
+	// This method play the mp3 file, but it doesn´t play the file again if the file is running
 	public void play(){
 		if (clip == null || clip.isRunning() ) {return;}
 		clip.setFramePosition(0);
 		clip.start();
 		
 	}
+	
+	// This method play the mp3 file, but it can play the file again if the file is running
 	public void playAgain(){
 		if (clip == null) {return;}
 		clip.setFramePosition(0);
 		clip.start();
 		
 	}
-
+	
+	// This method stop the clip
 	public void stop() {
 		try{
 		clip.stop();
@@ -268,6 +274,7 @@ public void FXSound(int n){
 		}
 	}
 	
+	// This method close the clip, and now it can be deleted
 	public void close(){
 		clip.close();
 	

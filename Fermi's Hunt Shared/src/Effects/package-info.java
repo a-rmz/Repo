@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author kevin
- *
- */
-package Effects;

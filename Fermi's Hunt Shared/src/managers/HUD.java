@@ -10,6 +10,9 @@ import mainGame.Game;
 
 public class HUD {
 	
+	//****** Attributes of HUD *********
+	
+	// Font of the HUD 
 	private Font f = new Font("8BIT WONDER Nominal", Font.PLAIN, 12);
 	private boolean wait;
 	private Image hud, hudDown, hudWeapon;
@@ -17,7 +20,7 @@ public class HUD {
 	private String url, urlHudDown, urlWeapon, urlShield, urlSpeed, urlFire, Sscore, SshipName;
 	private int X, Y, bX, bY, wX, wY, sX, sY, nX, nY,  score;
 
-	
+	// *************** Resources ***************
 	public  String[] HUD_Live = {
 			"/HUD/test0.png",
 			"/HUD/test1.png",
@@ -51,11 +54,15 @@ public class HUD {
 			"/HUD/RocketLauncher.png"
 	};
 	
-	String[] levelUpResource = {
+	public String[] levelUpResource = {
 			"/newGameCM/LevelUp.png"
 	};
 
 	
+	/*
+	 * The Constructor set initial urls and relative coordinates to all HUD´s elements.
+	 * The coordinates work in all screens whit all sizes  
+	 */
 	public HUD(){
 		
 		url= HUD_Live[8];
@@ -84,6 +91,7 @@ public class HUD {
 		wait = false;
 	}
 	
+	// ********** get methods ************
 	public Image getHUDImage(){
 		return hud;
 	}
@@ -103,22 +111,19 @@ public class HUD {
 	public Image getFireRateBarImage(){
 		return fireRateBar;
 	}
+	
+	// This method changes the image that show the actual energy 
 	public void change_HUD_Live(int n){
 		url = HUD_Live[n];
 		set_HUD_Image();
 	}
 	
+	// Changes the weapon in HUD when ship level up
 	public void changeHUDWeapon(int n){
 		urlWeapon = HUD_Weapon[n];	
 		setHUDWeapon();
 	}
 	
-	public void HUD_Wait(){
-		wait = true;
-	}
-	public void HUD_Start(){
-		wait = false;
-	}
 	public void setHUDstats(int shield, int speed, int fire, String name){
 		
 		if (speed > 10) speed = 10;

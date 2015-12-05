@@ -104,15 +104,15 @@ public class Ship extends SpaceObject implements MouseListener{
 	private final int SHIP_SHOOT = 3;
 	
 	private String url = resources[shipType][0][BASIC_SHIP];
-	
 	Image ship = null; 
-	HashMap<String, SoundEffects> effects = new HashMap<>();
+
 	
 	//********HUD********
 	HUD hud = new HUD();
 	int hpCounter = 8;
 	
 	//*********Effects*****
+	HashMap<String, SoundEffects> effects = new HashMap<>(); // control instances of shot sounds
 	Damage damage;
 	LevelUp levelUp;
 	
@@ -227,6 +227,7 @@ public class Ship extends SpaceObject implements MouseListener{
 		//Draws HUD
 		hud.draw(g);
 		
+		// Draw Effects
 		damage.draw(g);
 		levelUp.draw(g);
 	}
@@ -255,14 +256,16 @@ public class Ship extends SpaceObject implements MouseListener{
 		changeScoreAndXpInHUD();
 	}
 	
+	// Change attributes in HUD to print the score
 	private void changeScoreAndXpInHUD() {
 		hud.setScoreAndXP(xp);
-		
 	}
 
 
 	public void initPlayer() {
+		// Constructor of HUD to set a visual stats and shipname  
 		hud.setHUDstats(shield , speed, fireRate, shipName);
+		
 		initTimers();
 		if(speed == 0) {
 			speed = 5;
@@ -341,6 +344,7 @@ public class Ship extends SpaceObject implements MouseListener{
 			if(level == 1) {
 				url = resources[shipType][level-1][SHIP_SHOOT];
 				bm.add(p);
+				// Play the "shot" sound
 				effects.get("shot").shipShotSound(0);
 				canShoot = false;
 				FireRateTimer.restart();
@@ -351,6 +355,7 @@ public class Ship extends SpaceObject implements MouseListener{
 				for(int i = 0; i < level; i++) {
 					bp.setPosY(p.getY() + (i * 30));
 					bm.add(bp);
+					// Play the "shot" sound
 					effects.get("shot").shipShotSound(1);
 					canShoot = false;
 					FireRateTimer.restart();
@@ -359,6 +364,7 @@ public class Ship extends SpaceObject implements MouseListener{
 			if(level == 3) {
 				bm.add(p);
 				url = resources[shipType][level-1][SHIP_SHOOT];
+				// Play the "shot" sound
 				effects.get("shot").shipShotSound(2);
 				canShoot = false;
 				FireRateTimer.restart();
@@ -634,12 +640,6 @@ public class Ship extends SpaceObject implements MouseListener{
 		
 	}
 	
-	public void hudWaith(){
-		hud.HUD_Wait();
-	}
-	public void hudstart(){
-		hud.HUD_Start();
-	}
 	
 	
 }

@@ -10,6 +10,7 @@ import mainGame.Game;
 
 public class NewGameCM implements Runnable {
 	
+	// Attributes of newGameCinematic
 	private Image text;
 	public SoundEffects se, se2, se3, se4, se5;
 	public boolean isRunning;
@@ -17,10 +18,13 @@ public class NewGameCM implements Runnable {
 	public boolean levelUp;
 	
 	private String url;
-	private int X, Y, i, r;
 	
+	// Variables to position and counters 
+	private int X, Y, i, r;
+	// A thread that control the time of the cinematic
 	Thread t;
 	
+	// ******* Resources *********** 
 	String[] resources = {
 		"/newGameCM/Text1.png", //0
 		"/newGameCM/Text2.png",//1
@@ -35,7 +39,10 @@ public class NewGameCM implements Runnable {
 		
 	};
 
-	
+	/*
+	 * The constructor of NewGameCinematic create instances 
+	 * of the thread and soundEffects and set the cinematic position 
+	 */
 	public NewGameCM(){
 		t = new Thread(this);
 		X= 0;
@@ -48,7 +55,7 @@ public class NewGameCM implements Runnable {
 		se3 = new SoundEffects();
 		se4 = new SoundEffects();
 		se5 = new SoundEffects();
-	
+		// Assigns a sound to each instance of sound effects 
 		se.backGroundMenuMusic(0);
 		se2.backGroundMusic(1);
 		se3.FXSound(2);
@@ -57,18 +64,23 @@ public class NewGameCM implements Runnable {
 	}
 	
 	public void startAnimation(){
+		// Start the cinematic 
 		isRunning = true;
 		t.start();	
 	}
 
 	public boolean endCinematic(){
+		// Ask if the cinematic still running
 		return isRunning;
 	}
+	
+	// This method draw the cinematic 
 	public void draw(Graphics g){
 		if(i<=9)
 		g.drawImage(getActualImage(), X, Y, null);
 	}
 	
+	// This method refresh the status of the cinematic 
 	public void update(){
 		if(i == 10 ) {
 			return;
@@ -77,6 +89,7 @@ public class NewGameCM implements Runnable {
 		url = resources[i];
 		
 		setActualImage();
+		// This method call the method "draw" at the end
 	}
 	
 	public Image getActualImage(){
@@ -87,26 +100,39 @@ public class NewGameCM implements Runnable {
 		text = Sprite.loadSprite(url, this);
 	}
 
-	@Override
+
+	/*
+	 * This method is controled by the thread, 
+	 * the thread determinate the time on the screen of each image in the cinematic
+	 */
 	public void run() {
-		// TODO Auto-generated method stub
+	
 	
 		while(isRunning){
 			
 			switch (i){
 			case 0:
+				// Start the sounds and update the cinematic
 				se3.play();
 				se.play();
 				update();
+				
+				// The thread wait 14 seconds before to change to other case in the "switch"
 				try {
 					
 					Thread.sleep(14000); //7
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
+				// increase "i", "i" is the position of resources[], resources[] contains the relative directions of the images
 				i++;
 				break;
+				
+				/*
+				 * It´s the same actions for each  "switch case"
+				 */
+				
 			case 1:
 			
 				update();
@@ -114,7 +140,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(7000); //7
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
 				i++;
@@ -125,7 +151,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(2000); // 2
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
 				update();
@@ -140,7 +166,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(12000); // 12
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
 				i++;
@@ -151,7 +177,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(10000); // 10
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 			
@@ -164,7 +190,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(11000); // 11
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
 				
@@ -183,7 +209,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(5000); // 5
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
 				i++;
@@ -214,7 +240,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(500); // .5
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				
@@ -232,7 +258,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(2000); // 2
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				
@@ -245,7 +271,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(10000); // 2
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
 				isRunning = false;
@@ -259,7 +285,7 @@ public class NewGameCM implements Runnable {
 					
 					Thread.sleep(2000); // 2
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				
 					e.printStackTrace();
 				}
 				

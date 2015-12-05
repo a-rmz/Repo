@@ -20,6 +20,7 @@ public class Background {
 			"/BackgroundImg/Level_1/l1_img.png",
 			"/BackgroundImg/EndGame/endgame_anim.gif"
 	};
+	// ******* Attributes of Background *****
 	private String url;
 	public Image bg1, bg2;
 	
