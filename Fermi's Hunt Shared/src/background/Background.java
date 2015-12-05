@@ -58,6 +58,7 @@ public class Background {
 		// Loads the image to both background images.
 		bg1 = setBackgroundImage();
 		bg2 = setBackgroundImage();
+		// Defines the position of both backgrounds.
 		pbg1 = new Position(0, 0);
 		pbg2 = new Position(imgSize, 0);
 	}
@@ -69,13 +70,16 @@ public class Background {
 	 * @param level
 	 */
 	public Background(int index, int rate){
+		// Sets the speed rate for the background.
 		this.rate = -rate;
+		// If the rate is 0, there's only going to be one static image.
 		if(rate == 0) imgSize = Game.WIDTH;
 		// Defines the image to be loaded.
 		url = backgrounds[index];
 		// Loads the image to both background images.	
 		bg1 = setBackgroundImage();
 		bg2 = setBackgroundImage();
+		// Defines the position of both backgrounds.
 		pbg1 = new Position(0, 0);
 		pbg2 = new Position(imgSize, 0);
 	}
@@ -91,6 +95,7 @@ public class Background {
 		pbg1.increasePosX(rate);
 		pbg2.increasePosX(rate);
 		
+		// Sets the image one after another after they have gone off-screen.
 		if(pbg1.getX() + imgSize <= 0){
 			pbg1.setPosX(imgSize);
 		}
@@ -118,7 +123,7 @@ public class Background {
 	}
 	
 	public void draw(Graphics2D g) {
-		// Prints background
+		// Prints background on the given position.
 		g.drawImage(getBackgroundImage(), pbg1.getX(), 0, 
 				imgSize + 10,
 				Game.HEIGHT,
