@@ -1,0 +1,11 @@
+package main;
+
+import javax.swing.JFrame;
+
+public class MainClass {
+
+	JFrame frame = new JFrame("Strategics 0.1");
+	
+	frame
+	
+}

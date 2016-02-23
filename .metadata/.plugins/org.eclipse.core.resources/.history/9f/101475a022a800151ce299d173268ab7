@@ -1,0 +1,8 @@
+package main;
+
+public class MainClass {
+
+	JFrame frame = new JFrame("Strategics 0.1");
+	
+	
+}

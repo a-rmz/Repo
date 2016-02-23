@@ -1,0 +1,12 @@
+package main;
+
+import javax.swing.*;
+
+@SuppressWarnings("serial")
+public class Game extends JPanel{
+	
+	public static Dimension getScreenSize() {
+		
+	}
+	
+}
