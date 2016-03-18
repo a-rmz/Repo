@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/alex/Documents/Repo/Cookit/app/build/intermediates/res/merged/debug/menu/main_activity_actions.xml",
+        "source": "/home/alex/Documents/Repo/Cookit/app/src/main/res/menu/main_activity_actions.xml"
+    },
+    {
+        "merged": "/home/alex/Documents/Repo/Cookit/app/build/intermediates/res/merged/debug/menu/actions_drawer.xml",
+        "source": "/home/alex/Documents/Repo/Cookit/app/src/main/res/menu/actions_drawer.xml"
+    }
+]
